@@ -1,0 +1,13 @@
+.dropzone-container .dropzone {
+    width: 50vw;
+    height: 20vh;
+    border: 2px dashed #999;
+    margin: 0 auto;
+}
+
+
+.dropzone-container .dropzone p {
+    margin-top: 10%;
+    text-align: center;
+}
+
