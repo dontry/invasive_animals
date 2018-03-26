@@ -1,16 +1,20 @@
-import axios from "axios";
+import ax from "axios";
 
-//API_KEY PWrqdqmyEc89eBv4rAfyWiqLcVZTV8I
+//API_KEY AIzaSyC-PWrqdqmyEc89eBv4rAfyWiqLcVZTV8I
 const GOOGLE_VISION_API_URL =
-  "https://vision.googleapis.com/v1/images:annotate?key=PWrqdqmyEc89eBv4rAfyWiqLcVZTV8I";
+  "https://vision.googleapis.com/v1/images:annotate?key=AIzaSyC-PWrqdqmyEc89eBv4rAfyWiqLcVZTV8I";
+
 export function sendImage(content, options) {
   const payload = {
-    requests: [
+    "requests": [
       {
-        image: { content },
-        features: [options.features]
+        "image": { "content": content },
+        "features": options.features
       }
     ]
   };
   return ax.post(GOOGLE_VISION_API_URL, payload);
 }
+
+ 
+

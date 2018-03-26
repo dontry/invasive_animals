@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 import Dropzone from "react-dropzone";
 import "../assets/DropImageZone.css";
-import encodeImage from "../utils/encodeImage";
+import { encodeImageFromFile, encodeImageFromDir } from "../utils/encodeImage";
 
 const styles = {
   dropZone: {
@@ -35,19 +35,22 @@ class DropImageZone extends Component {
   };
 
   handleDrop = (accepted, rejected) => {
+    let image;
     if (accepted.length > 1) {
       window.alert("Sorry, you can only drop one photo.");
     } else {
+      image = accepted[0];
       this.setState({
-        image: accepted[0]
+        image
       });
+      this.props.uploadImage(image);
     }
   };
 
-  createImageURL = blob => {
-    const urlCreator = window.URL || window.webkitURL;
-    return urlCreator.createObjectURL(blob);
-  };
+  // createImageURL = blob => {
+  //   const urlCreator = window.URL || window.webkitURL;
+  //   return urlCreator.createObjectURL(blob);
+  // };
 
   render() {
     const { classes } = this.props;
@@ -75,7 +78,15 @@ class DropImageZone extends Component {
 }
 
 DropImageZone.propTypes = {
-  classes: PropTypes.object
+  classes: PropTypes.object.isRequired,
+  uploadImage: PropTypes.func.isRequired
+};
+
+DropImageZone.defaultProps = {
+  classes: {},
+  uploadImage() {
+    console.log("upload image");
+  }
 };
 
 export default withStyles(styles)(DropImageZone);

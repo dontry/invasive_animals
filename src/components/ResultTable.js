@@ -20,9 +20,9 @@ const createTableHead = names => {
   return <TableRow>{row}</TableRow>;
 };
 const createTableBody = items => {
-  return items.map(item => {
+  return items.map((item,idx) => {
     const children = createTableRow(item);
-    return <TableRow key={item.mid}>{children}</TableRow>;
+    return <TableRow key={`${item.mid} ${idx}`}>{children}</TableRow>;
   });
 };
 
