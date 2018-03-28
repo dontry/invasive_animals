@@ -14,7 +14,8 @@ import "../assets/NavHeader.css";
 
 const styles = {
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    witdh: "100vw"
   },
   flex: {
     flex: 1
@@ -71,8 +72,8 @@ NavAppBar.propTypes = {
 NavAppBar.defaultProps = {
   title: "Title",
   menuItems: [
-    { name: "Home", path: "home" },
-    { name: "Get Involved", path: "participate" }
+    { name: "Home", path: "" },
+    { name: "Get Involved", path: "getinvolved/participate" }
   ]
 };
 

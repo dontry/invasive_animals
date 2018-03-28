@@ -10,7 +10,6 @@ import PageContainer from "../components/PageContainer";
 const Participate = () => {
   return (
     <Fragment>
-      <NavAppBar title="Get Involved" />
       <PageContainer>
         <UploadImageContainer className="module" />
         <DetectionResultContainer className="module" />

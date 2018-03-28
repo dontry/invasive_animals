@@ -1,4 +1,4 @@
 import React from 'react';
 
 
-export default ({children}) => <div className="page-container">{children}</div>
+export default ({style, children}) => <div style={style} className="page-container">{children}</div>

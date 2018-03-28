@@ -19,6 +19,7 @@ function dataPreprocessing(data) {
 
 function compare(label, name) {
   label = label.toLowerCase();
+  name = name.toLowerCase();
   return label.includes(name);
 }
 

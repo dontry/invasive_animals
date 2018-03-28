@@ -53,7 +53,7 @@ const UploadImageModule = ({
           </Button>
         </Grid>
         <Grid item sm={8}>
-          <DropImageZone uploadImage={uploadImage} />
+            <DropImageZone uploadImage={uploadImage} />
         </Grid>
         <Grid item sm={8}>
           <Button

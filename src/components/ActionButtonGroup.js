@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button } from "react-toolbox/lib/button";
+import { withStyles } from "material-ui/styles";
+import Button from "material-ui/Button";
 
 const styles = {
   button: {
@@ -9,72 +10,73 @@ const styles = {
   }
 };
 
-const initialiseProps = props => ({
-  style: { ...styles.button, ...props.style },
-  name: props.name,
-  className: props.className || "",
-  isRaised: !!props.isRaised,
-  action: props.action || function() {},
-  primary: !!props.primary
-});
+const ActionButton = props => (
+  <Button
+    variant={props.raised ? "raised" : "flat"}
+    style={styles.button}
+    className={props.className}
+    color="primary"
+    disabled={props.disabled}
+    onClick={props.action}
+    type={props.type}
+  >
+    {props.label}
+  </Button>
+);
 
-const createButton = props => {
-  const newProps = initialiseProps(props);
-  if (newProps.isRaised) {
-    return (
-      <Button
-        raised={true}
-        className={newProps.className}
-        style={newProps.style}
-        label={newProps.name}
-        primary={newProps.primary}
-        secondary={!newProps.primary}
-        onClick={newProps.action}
-      />
-    );
-  } else {
-    return (
-      <Button
-        raised={true}
-        className={newProps.className}
-        style={newProps.style}
-        label={newProps.name}
-        primary={newProps.primary}
-        secondary={!newProps.primary}
-        onClick={newProps.action}
-      />
-    );
-  }
-};
-
-const ActionButtonGroup = ({ style, primaryProps, secondaryProps }) => {
-  const PrimaryButton = createButton(primaryProps);
-  const SecondaryButton = createButton(secondaryProps);
-
+const ActionButtonGroup = ({ className, primaryProps, secondaryProps }) => {
   return (
-    <div style={style}>
-      {PrimaryButton}
-      {SecondaryButton}
+    <div className={className}>
+      <ActionButton {...primaryProps} />
+      <ActionButton {...secondaryProps} />
     </div>
   );
 };
 
 ActionButtonGroup.propTypes = {
-  style: PropTypes.object,
+  className: PropTypes.string,
   primaryProps: PropTypes.shape({
     className: PropTypes.string,
-    style: PropTypes.object,
-    label: PropTypes.oneOf([PropTypes.string, PropTypes.element]),
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     primary: PropTypes.bool,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    disabled: PropTypes.bool,
+    type: PropTypes.string
   }),
   secondaryProps: PropTypes.shape({
     className: PropTypes.string,
-    style: PropTypes.object,
-    label: PropTypes.oneOf([PropTypes.string, PropTypes.element]),
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     primary: PropTypes.bool,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    disabled: PropTypes.bool,
+    type: PropTypes.string
   })
 };
 
-export default ActionButtonGroup;
+ActionButtonGroup.defaultProps = {
+  className: "",
+  primaryProps: {
+    className: "",
+    raised: true,
+    label: "label",
+    primary: false,
+    action() {
+      console.log("onClick");
+    },
+    disabled: true,
+    type: "button"
+  },
+  secondaryProps: {
+    className: "",
+    label: "label",
+    raised: false,
+    primary: false,
+    action() {
+      console.log("onClick");
+    },
+    disabled: true,
+    type: "button"
+  }
+};
+
+export default withStyles(styles)(ActionButtonGroup);

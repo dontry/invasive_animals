@@ -25,7 +25,8 @@ const styles = {
   p: {
     marginTop: "2rem",
     padding: "1rem",
-    textAlign: "center"
+    textAlign: "center",
+    maxWidth: 600
   }
 };
 
@@ -33,6 +34,12 @@ class DropImageZone extends Component {
   state = {
     image: null
   };
+
+  componentDidMount() {
+    if (this.props.image && null !== this.props.image.entity) {
+      this.setState({ image: this.props.image.entity });
+    }
+  }
 
   handleDrop = (accepted, rejected) => {
     let image;
@@ -68,7 +75,10 @@ class DropImageZone extends Component {
             {image ? (
               <img className={classes.image} src={image.preview} />
             ) : (
-              <p className={classes.p}>Please drop your photo here(jpg, png)</p>
+              <p className={classes.p}>
+                Please drop the suspicious invasive species here, we will tell
+                you if it is.<br />(Accept image format: jpg, png)
+              </p>
             )}
           </Dropzone>
         </div>

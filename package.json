@@ -6,6 +6,7 @@
     "@google-cloud/vision": "^0.17.0",
     "axios": "^0.18.0",
     "babel-preset-stage-2": "^6.24.1",
+    "date-fns": "^1.29.0",
     "material-ui": "next",
     "material-ui-icons": "^1.0.0-beta.36",
     "prop-types": "^15.6.1",

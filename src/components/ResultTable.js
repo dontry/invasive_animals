@@ -15,12 +15,14 @@ const styles = theme => ({
   }
 });
 
+const RefLink = link => <a href={link}>{link}</a>;
+
 const createTableHead = names => {
   const row = names.map(name => <TableCell key={name}>{name}</TableCell>);
   return <TableRow>{row}</TableRow>;
 };
 const createTableBody = items => {
-  return items.map((item,idx) => {
+  return items.map((item, idx) => {
     const children = createTableRow(item);
     return <TableRow key={`${item.mid} ${idx}`}>{children}</TableRow>;
   });
@@ -28,7 +30,10 @@ const createTableBody = items => {
 
 const createTableRow = item => {
   const keys = Object.keys(item);
-  return keys.map(key => <TableCell key={key}>{item[key]}</TableCell>);
+  return keys.map(key => {
+    const content = item[key].includes("://") ? RefLink(item[key]) : item[key];
+    return <TableCell key={key}>{content}</TableCell>;
+  });
 };
 
 const ResultTable = ({ classes, items, names }) => {
