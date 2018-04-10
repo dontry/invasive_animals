@@ -57,4 +57,9 @@ typings/
 # dotenv environment variables file
 .env
 
->>>>>>> 6afe6ab2ead3121fe7869d434c994bac28f4c968
+
+build/
+.vscode/
+
+
+
