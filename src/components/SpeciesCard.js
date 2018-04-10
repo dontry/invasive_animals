@@ -19,7 +19,7 @@ const styles = {
 
 const SpeciesCard = ({ classes, species }) => {
   return (
-    <a className={classes.link} href={species.reference} target="_blank" noreferrer>
+    <a className={classes.link} href={species.reference} target="_blank" noreferrer={true}>
       <Card className={classes.card}>
         <CardMedia
           className={classes.media}
@@ -27,7 +27,7 @@ const SpeciesCard = ({ classes, species }) => {
           title={species.name}
         />
         <CardContent>
-          <Typography gutterBottom variant="headlinew" component="h4">
+          <Typography gutterBottom variant="headline" component="h4">
             {species.name.toUpperCase()}
           </Typography>
           <Typography component="p">{species.description}</Typography>
@@ -37,7 +37,7 @@ const SpeciesCard = ({ classes, species }) => {
   );
 };
 
-SpeciesCard.PropTypes = {
+SpeciesCard.propTypes = {
   classes: PropTypes.object.isRequired,
   species: PropTypes.object.isRequired
 };
