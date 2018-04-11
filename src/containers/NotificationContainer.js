@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import Notification from "../components/Notification";
+import Notification from "../components/common/Notification";
 
 function mapStateToProps(state) {
     return {

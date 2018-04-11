@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import PageContainer from "../components/PageContainer";
+import PageContainer from "../components/common/PageContainer";
 
 const style = {
   lineHeight: "1.5em"

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
-import NavAppBar from "../components/NavAppBar";
-import PageContainer from '../components/PageContainer';
-import ReportForm from "../components/ReportForm";
+import NavAppBar from "../components/common/NavAppBar";
+import PageContainer from '../components/common/PageContainer';
+import ReportForm from "../components/Report/ReportForm";
 import ReportFormContainer from "../containers/ReportFormContainer";
 
 

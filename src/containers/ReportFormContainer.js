@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import ReportForm from "../components/ReportForm";
+import ReportForm from "../components/Report/ReportForm";
 
 const mapStateToProps = (state) => {
     return {

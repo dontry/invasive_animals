@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
-import NavAppBar from "../components/NavAppBar";
-import TabBar from "../components/TabBar";
+import NavAppBar from "../components/common/NavAppBar";
+import TabBar from "../components/common/TabBar";
 import { Route } from "react-router-dom";
 import Intro from './Intro';
 import AboutUs from "./AboutUs";

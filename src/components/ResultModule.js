@@ -6,9 +6,9 @@ import Button from "material-ui/Button";
 import Typography from "material-ui/Typography";
 import { Link } from "react-router-dom";
 
-import TableToolbar from "./TableToolbar";
+import TableToolbar from "./common/TableToolbar";
 import ResultTable from "./ResultTable";
-import LoadingSpinner from "./LoadingSpinner";
+import LoadingSpinner from "./common/LoadingSpinner";
 
 const styles = {
   root: {
