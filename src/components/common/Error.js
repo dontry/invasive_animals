@@ -1,24 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { red, grey } from "material-ui/colors";
 
-const styles = {
-  page: {
-    margin: 100
-  },
+const ErrorMessage = styled.h3`
+  text-align: center;
+  color: ${props => props.color || props.theme.error || red[500]};
+  font-weight: bold;
+`;
+{
   link: {
-      color: "#3c6cab"
+    color: "#3c6cab";
   }
-};
+}
 
-const Error = ({ errorCode = "" }) => {
+const ErrorLink = styled.h4`
+  text-align: center;
+  color: ${grey[700]}
+`;
+
+const Error = ({ errorCode = "404" }) => {
   return (
-    <div style={styles.page}>
-      <h3>
-        Oops, Error {errorCode}.<code />
-      </h3>
-      <h4>
-        Go back to <Link to="/" style={styles.link}>Homepage</Link>
-      </h4>
+    <div>
+      <ErrorMessage>Oops, Error {errorCode}</ErrorMessage>
+      <ErrorLink>
+        Please go back to <Link to="/">Homepage</Link>
+      </ErrorLink>
     </div>
   );
 };

@@ -1,14 +1,22 @@
 import React from "react";
 
-import { storiesOf } from "@storybook/react";
+import { storiesOf, addDecorator } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
-import BlankPage from "./BlankPage";
+import { WithNotes } from "@storybook/addon-notes";
+import { MemoryRouter } from "react-router-dom";
 
 import { Button, Welcome } from "@storybook/react/demo";
 
+import BlankPage from "./BlankPage";
 import { ScreenMask, Mask } from "../components/common/Mask";
 import Loading from "../components/common/LoadingSpinner";
+import Error from "../components/common/Error";
+import { BreadcrumbsItem, Breadcrumbs } from "../components/common/Breadcrumbs";
+
+addDecorator(story => (
+  <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+));
 
 storiesOf("Welcome", module).add("to Storybook", () => (
   <Welcome showApp={linkTo("Button")} />
@@ -51,3 +59,15 @@ storiesOf("Loading", module)
       <Loading type="bars" />
     </BlankPage>
   ));
+
+storiesOf("Error ", module).add("Default Error 404", () => <Error />);
+
+// storiesOf("Drop zone", module).add("Drop zone", () => <DropImageZone />);
+
+storiesOf("Breadcrumbs", module).add("Breadcrumbs", () => (
+  <Breadcrumbs>
+    <BreadcrumbsItem href="/" text="Home" />
+    <BreadcrumbsItem href="/getinvolved" text="Get involved" />
+    <BreadcrumbsItem href="/getinvolved/detect" text="detect" />
+  </Breadcrumbs>
+));
