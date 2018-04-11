@@ -1,16 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Loading from "react-loading";
+import ReactLoading from "react-loading";
+import { ScreenMask } from "./Mask";
+import styled from "styled-components";
 
-const LoadingSpinner = ({ type = "spin", color = "#222" }) => (
-  <div className="loading-wrapper">
-    <Loading delay={200} type={type} color={color} className="loading" />
-  </div>
+const Wrapper = styled.div`
+  position: absolute;
+  z-index: 100;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%, -50%);
+`;
+
+const Loading = ({ type = "spin", color = "#222" }) => (
+  <Wrapper>
+    <ReactLoading delay={200} type={type} color={color} />
+  </Wrapper>
 );
 
-LoadingSpinner.propTypes = {
+Loading.propTypes = {
   type: PropTypes.string,
   color: PropTypes.string
-}
-
-export default LoadingSpinner;
+};
+export default Loading;
