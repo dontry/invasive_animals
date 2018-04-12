@@ -15,8 +15,9 @@ import Error from "../components/common/Error";
 import { BreadcrumbsItem, Breadcrumbs } from "../components/common/Breadcrumbs";
 import DropImageZone from "../components/Detect/DropImageZone";
 import ActionButtonGroup from "../components/common/ActionButtonGroup";
+import NavAppBar from "../components/common/NavAppBar";
 
-addDecorator(story => <ThemeProvider theme={theme}>{story()}</ThemeProvider>)
+addDecorator(story => <ThemeProvider theme={theme}>{story()}</ThemeProvider>);
 
 storiesOf("Welcome", module).add("to Storybook", () => (
   <Welcome showApp={linkTo("Button")} />
@@ -76,3 +77,9 @@ storiesOf("Buttons", module).add(
   "Action button group",
   withNotes("primary and secondary buttons")(() => <ActionButtonGroup />)
 );
+
+storiesOf("Navigation", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("Default AppBar", () => <NavAppBar />);

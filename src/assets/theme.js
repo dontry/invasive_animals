@@ -14,7 +14,7 @@ import {
 export const theme = {
   palette: {
     primary: {
-      light: lightGreen[300],
+      light: lightGreen[200],
       main: green[500],
       dark: green[800],
       contrastText: "#fff"
@@ -33,8 +33,9 @@ export const theme = {
     }
   },
   textSize: {
-    small: "12px",
-    medium: "16px",
+    xsmall: "12px",
+    small: "16px",
+    medium: "20px",
     large: "24px",
     xlarge: "32px"
   }

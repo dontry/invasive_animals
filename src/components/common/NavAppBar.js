@@ -5,68 +5,62 @@ import AppBar from "material-ui/AppBar";
 import IconButton from "material-ui/IconButton";
 import Book from "material-ui-icons/Book";
 import { grey50 } from "material-ui/styles/colors";
-import MenuItem from "material-ui/MenuItem";
+// import MenuItem from "material-ui/MenuItem";
 import Toolbar from "material-ui/Toolbar";
 import Typography from "material-ui/Typography";
 
-import { NavLink, Link } from "react-router-dom";
-import "../../assets/NavHeader.css";
+import NavLink from "./NavLink";
+import styled from "styled-components";
 
-const styles = {
-  root: {
-    flexGrow: 1,
-    witdh: "100vw"
-  },
-  flex: {
-    flex: 1
-  },
-  title: {
-    color: "#fff"
-  },
-  navMenu: {
-    flex: 5,
-    flexGrow: 1,
-    textAlign: "right"
-  },
-  menuItem: {
-    display: "inline",
-    marginLeft: 20,
-    color: "#fff"
+const AppBarWrapper = styled.div`
+  flex-grow: 1;
+  margin-bottom: 2rem;
+`;
+
+const StyledAppBar = styled(AppBar)`
+  && {
+    background-color: ${props => props.theme.palette.primary.main};
   }
-};
+`;
 
-class NavAppBar extends Component {
-  state = {};
-  createMenuItem = (items, className) => {
+const NavMenu = styled.div`
+  flex: 5;
+  flex-grow: 1;
+  text-align: right;
+`;
+
+const MenuItem = styled(NavLink)`
+  && {
+    display: inline-block;
+    margin-right: 20;
+  }
+`;
+
+const NavAppBar = ({ title, menuItems }) => {
+  const _renderMenuItem = items => {
     return items.map(item => (
-      <Link key={item.name} to={`/${item.path}`}>
-        <Typography className={className} variant="title">
-          {item.name}
-        </Typography>
-      </Link>
+      <MenuItem block key={item.name} to={`/${item.path}`}>
+        {item.name}
+      </MenuItem>
     ));
   };
 
-  render() {
-    const { title, menuItems, classes } = this.props;
-    const NavMenu = this.createMenuItem(menuItems, classes.menuItem);
-    return (
-      <div className={classes.root}>
-        <AppBar position="static">
-          <Toolbar>
-            <Typography variant="title" className={classes.title}>
-              {title}
-            </Typography>
-            <div className={classes.navMenu}>{NavMenu} </div>
-          </Toolbar>
-        </AppBar>
-      </div>
-    );
-  }
-}
+  const NavItems = _renderMenuItem(menuItems);
+  return (
+    <AppBarWrapper>
+      <StyledAppBar position="static">
+        <Toolbar>
+          <Typography variant="title">{title}</Typography>
+          <NavMenu>{NavItems}</NavMenu>
+        </Toolbar>
+      </StyledAppBar>
+    </AppBarWrapper>
+  );
+};
 
 NavAppBar.propTypes = {
-  classes: PropTypes.object.isRequired
+  menuItems: PropTypes.array.isRequired,
+  title: PropTypes.object
 };
 
 NavAppBar.defaultProps = {
@@ -77,4 +71,4 @@ NavAppBar.defaultProps = {
   ]
 };
 
-export default withStyles(styles)(NavAppBar);
+export default NavAppBar;

@@ -7,7 +7,7 @@ import NavigationLink from "./NavLink";
 
 const Separator = styled.span`
     display: inline-block;
-    color: ${props => props.color || grey[400]}
+    color: ${props => props.color || grey[400]};
     text-align: center;
     flex-shrink: 0;
     padding: ${props => props.padding || '0.5rem'};
