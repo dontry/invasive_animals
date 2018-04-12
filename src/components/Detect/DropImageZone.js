@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 import Dropzone from "react-dropzone";
-import { encodeImageFromFile, encodeImageFromDir } from "../../utils/encodeImage";
+import styled from "styled-components";
+import MoveToInbox from "material-ui-icons/MoveToInbox";
+import { grey } from "material-ui/colors";
 
 const styles = {
   dropZone: {
@@ -28,6 +30,33 @@ const styles = {
     maxWidth: 600
   }
 };
+
+const StyledDropzone = styled(Dropzone)`
+  position: relative;
+  display: flex;
+  height: 30vh;
+  width: 60vw;
+  min-width: 360px;
+  min-height: 360px;
+  border: 2px dashed #999;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  color: ${grey[600]};
+  background-color: ${grey[200]};
+  text-align: center;
+  &:hover *{
+    color: ${grey[900]};
+  }
+`;
+
+const StyledMoveToInbox = styled(MoveToInbox)`
+  color: ${grey[600]};
+  && {
+    width: 3em;
+    height: 3em;
+  }
+`;
 
 class DropImageZone extends Component {
   state = {
@@ -65,21 +94,23 @@ class DropImageZone extends Component {
     return (
       <section className={classes.root}>
         <div>
-          <Dropzone
+          <StyledDropzone
             id="dropzone"
             onDrop={this.handleDrop}
             accept="image/jpeg, image/png, image/jpg"
-            className={classes.dropZone}
           >
             {image ? (
               <img className={classes.image} src={image.preview} />
             ) : (
-              <p className={classes.p}>
-                Please drop the suspicious invasive species here, we will tell
-                you if it is.<br />(Accept image format: jpg, png)
-              </p>
+              <di>
+                <p className={classes.p}>
+                  Please drop the suspicious invasive species here, we will tell
+                  you if it is.<br />(Accept image format: jpg, png)
+                </p>
+                <StyledMoveToInbox />
+              </di>
             )}
-          </Dropzone>
+          </StyledDropzone>
         </div>
       </section>
     );
