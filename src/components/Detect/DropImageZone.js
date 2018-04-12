@@ -6,31 +6,6 @@ import styled from "styled-components";
 import MoveToInbox from "material-ui-icons/MoveToInbox";
 import { grey } from "material-ui/colors";
 
-const styles = {
-  dropZone: {
-    position: "relative",
-    height: "30vh",
-    width: "60wh",
-    minWidth: "360px",
-    border: "2px dashed #999",
-    margin: "0 auto"
-  },
-  image: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    maxWidth: "80%",
-    maxHeight: "90%"
-  },
-  p: {
-    marginTop: "2rem",
-    padding: "1rem",
-    textAlign: "center",
-    maxWidth: 600
-  }
-};
-
 const StyledDropzone = styled(Dropzone)`
   position: relative;
   display: flex;
@@ -45,9 +20,16 @@ const StyledDropzone = styled(Dropzone)`
   color: ${grey[600]};
   background-color: ${grey[200]};
   text-align: center;
-  &:hover *{
+  &:hover * {
     color: ${grey[900]};
   }
+`;
+
+const HintText = styled.p`
+  margin-top: 2rem;
+  padding: 1rem;
+  text-align: center;
+  max-width: 600;
 `;
 
 const StyledMoveToInbox = styled(MoveToInbox)`
@@ -56,6 +38,15 @@ const StyledMoveToInbox = styled(MoveToInbox)`
     width: 3em;
     height: 3em;
   }
+`;
+
+const UploadedImage = styled.img`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 80%;
+  max-height: 90%;
 `;
 
 class DropImageZone extends Component {
@@ -72,7 +63,8 @@ class DropImageZone extends Component {
   handleDrop = (accepted, rejected) => {
     let image;
     if (accepted.length > 1) {
-      window.alert("Sorry, you can only drop one photo.");
+      //TODO: use modal box
+      window.alert("Sorry, you can only drop one photo at a time");
     } else {
       image = accepted[0];
       this.setState({
@@ -82,37 +74,28 @@ class DropImageZone extends Component {
     }
   };
 
-  // createImageURL = blob => {
-  //   const urlCreator = window.URL || window.webkitURL;
-  //   return urlCreator.createObjectURL(blob);
-  // };
-
   render() {
     const { classes } = this.props;
     const { image } = this.state;
     // const imageURL = image && this.createImageURL(image.preview);
     return (
-      <section className={classes.root}>
-        <div>
-          <StyledDropzone
-            id="dropzone"
-            onDrop={this.handleDrop}
-            accept="image/jpeg, image/png, image/jpg"
-          >
-            {image ? (
-              <img className={classes.image} src={image.preview} />
-            ) : (
-              <di>
-                <p className={classes.p}>
-                  Please drop the suspicious invasive species here, we will tell
-                  you if it is.<br />(Accept image format: jpg, png)
-                </p>
-                <StyledMoveToInbox />
-              </di>
-            )}
-          </StyledDropzone>
-        </div>
-      </section>
+      <StyledDropzone
+        id="dropzone"
+        onDrop={this.handleDrop}
+        accept="image/jpeg, image/png, image/jpg"
+      >
+        {image ? (
+          <UploadedImage src={image.preview} />
+        ) : (
+          <di>
+            <HintText>
+              Please drop the suspicious invasive species here, we will tell you
+              if it is.<br />(Accept image format: jpg, png)
+            </HintText>
+            <StyledMoveToInbox />
+          </di>
+        )}
+      </StyledDropzone>
     );
   }
 }
@@ -129,4 +112,4 @@ DropImageZone.defaultProps = {
   }
 };
 
-export default withStyles(styles)(DropImageZone);
+export default DropImageZone;
