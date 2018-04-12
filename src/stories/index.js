@@ -3,32 +3,24 @@ import React from "react";
 import { storiesOf, addDecorator } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
-import { WithNotes } from "@storybook/addon-notes";
+import { withNotes } from "@storybook/addon-notes";
 import { MemoryRouter } from "react-router-dom";
-
-import { Button, Welcome } from "@storybook/react/demo";
+import { ThemeProvider } from "styled-components";
+import { theme } from "../assets/theme";
 
 import BlankPage from "./BlankPage";
 import { ScreenMask, Mask } from "../components/common/Mask";
 import Loading from "../components/common/LoadingSpinner";
 import Error from "../components/common/Error";
 import { BreadcrumbsItem, Breadcrumbs } from "../components/common/Breadcrumbs";
+import DropImageZone from "../components/Detect/DropImageZone";
+import ActionButtonGroup from "../components/common/ActionButtonGroup";
 
-addDecorator(story => (
-  <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
-));
+addDecorator(story => <ThemeProvider theme={theme}>{story()}</ThemeProvider>)
 
 storiesOf("Welcome", module).add("to Storybook", () => (
   <Welcome showApp={linkTo("Button")} />
 ));
-
-storiesOf("Button", module)
-  .add("with text", () => (
-    <Button onClick={action("clicked")}>Hello Button</Button>
-  ))
-  .add("with some emoji", () => (
-    <Button onClick={action("clicked")}>😀 😎 👍 💯</Button>
-  ));
 
 storiesOf("Mask", module)
   .add("screen mask", () => (
@@ -60,14 +52,27 @@ storiesOf("Loading", module)
     </BlankPage>
   ));
 
-storiesOf("Error ", module).add("Default Error 404", () => <Error />);
+storiesOf("Error ", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("Default Error 404", () => <Error />);
 
-// storiesOf("Drop zone", module).add("Drop zone", () => <DropImageZone />);
+storiesOf("Drop zone", module).add("Drop zone", () => <DropImageZone />);
 
-storiesOf("Breadcrumbs", module).add("Breadcrumbs", () => (
-  <Breadcrumbs>
-    <BreadcrumbsItem href="/" text="Home" />
-    <BreadcrumbsItem href="/getinvolved" text="Get involved" />
-    <BreadcrumbsItem href="/getinvolved/detect" text="detect" />
-  </Breadcrumbs>
-));
+storiesOf("Breadcrumbs", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("Breadcrumbs", () => (
+    <Breadcrumbs>
+      <BreadcrumbsItem href="/" text="Home" />
+      <BreadcrumbsItem href="/getinvolved" text="Get involved" />
+      <BreadcrumbsItem href="/getinvolved/detect" text="detect" />
+    </Breadcrumbs>
+  ));
+
+storiesOf("Buttons", module).add(
+  "Action button group",
+  withNotes("primary and secondary buttons")(() => <ActionButtonGroup />)
+);

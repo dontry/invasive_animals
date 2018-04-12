@@ -2,33 +2,40 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "material-ui/styles";
 import Button from "material-ui/Button";
+import styled from "styled-components";
 
-const styles = {
-  button: {
-    marginLeft: 5,
-    marginRight: 5
+export const StyledButton = styled(Button)`
+  && {
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: ${props => props.theme.palette[props.type][props.trait]};
+  color: ${props => props.theme.palette[props.type].contrastText};
+  font-size: ${props => props.theme.textSize.size};
   }
-};
+`;
 
-const ActionButton = props => (
-  <Button
-    variant={props.raised ? "raised" : "flat"}
-    style={styles.button}
-    className={props.className}
-    color="primary"
-    disabled={props.disabled}
-    onClick={props.action}
-    type={props.type}
+export const ActionButton = ({
+  raised,
+  action,
+  label,
+  type = "primary",
+  trait = "main"
+}) => (
+  <StyledButton
+    variant={raised ? "raised" : "flat"}
+    onClick={action}
+    type={type}
+    trait={trait}
   >
-    {props.label}
-  </Button>
+    {label}
+  </StyledButton>
 );
 
 const ActionButtonGroup = ({ className, primaryProps, secondaryProps }) => {
   return (
     <div className={className}>
-      <ActionButton {...primaryProps} />
-      <ActionButton {...secondaryProps} />
+      <ActionButton  {...primaryProps} />
+      <ActionButton  {...secondaryProps} />
     </div>
   );
 };
@@ -36,7 +43,6 @@ const ActionButtonGroup = ({ className, primaryProps, secondaryProps }) => {
 ActionButtonGroup.propTypes = {
   className: PropTypes.string,
   primaryProps: PropTypes.shape({
-    className: PropTypes.string,
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     primary: PropTypes.bool,
     onClick: PropTypes.func,
@@ -44,7 +50,6 @@ ActionButtonGroup.propTypes = {
     type: PropTypes.string
   }),
   secondaryProps: PropTypes.shape({
-    className: PropTypes.string,
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     primary: PropTypes.bool,
     onClick: PropTypes.func,
@@ -58,25 +63,27 @@ ActionButtonGroup.defaultProps = {
   primaryProps: {
     className: "",
     raised: true,
-    label: "label",
+    label: "Primary",
     primary: false,
     action() {
       console.log("onClick");
     },
-    disabled: true,
-    type: "button"
+    disabled: false,
+    type: "primary",
+    trait: "main"
   },
   secondaryProps: {
     className: "",
-    label: "label",
+    label: "Secondary",
     raised: false,
     primary: false,
     action() {
       console.log("onClick");
     },
-    disabled: true,
-    type: "button"
+    disabled: false,
+    type: "secondary",
+    trait: "light"
   }
 };
 
-export default withStyles(styles)(ActionButtonGroup);
+export default ActionButtonGroup;

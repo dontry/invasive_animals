@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import Routes from "./Routes";
+import CssBaseLine from "material-ui/CssBaseline";
 import NotificationContainer from "./containers/NotificationContainer";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./assets/theme";
@@ -10,7 +11,9 @@ const App = ({ children }) => (
   <ThemeProvider theme={theme}>
     <div className="App">
       <BrowserRouter>
-        <Routes />
+        <CssBaseLine>
+          <Routes />
+        </CssBaseLine>
       </BrowserRouter>
       <NotificationContainer />
     </div>
