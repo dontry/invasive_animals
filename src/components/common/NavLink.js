@@ -19,7 +19,6 @@ const StyledNavLink = styled(NavLink)`
         ? props.theme.textSize[props.textSize]
         : props.theme.textSize.medium};
     &:hover {
-      color: ${props => props.theme.palette.primary.light};
       background-color: ${props =>
         props.block && props.theme.palette.primary.dark};
       text-decoration: ${props => (props.underline ? "underline" : "none")};
@@ -32,8 +31,8 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-export default ({ to, activeStyle, children, block = false }) => (
-  <StyledNavLink to={to} block>
+export default ({ to, activeStyle, children, block = null }) => (
+  <StyledNavLink to={to} block={block}>
     {children}
   </StyledNavLink>
 );

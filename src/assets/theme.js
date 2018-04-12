@@ -21,8 +21,8 @@ export const theme = {
     },
     secondary: {
       light: lime[100],
-      main: lime[500],
-      dark: lime[700],
+      main: lime[300],
+      dark: lime[600],
       contrastText: lime[900]
     },
     error: {

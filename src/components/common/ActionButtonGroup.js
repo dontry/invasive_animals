@@ -8,9 +8,12 @@ export const StyledButton = styled(Button)`
   && {
   margin-left: 5px;
   margin-right: 5px;
-  background-color: ${props => props.theme.palette[props.type][props.trait]};
+  background-color: ${props => props.theme.palette[props.type].main};
   color: ${props => props.theme.palette[props.type].contrastText};
   font-size: ${props => props.theme.textSize.size};
+
+  &:hover {
+    background-color: ${props => props.theme.palette[props.type].dark};
   }
 `;
 
@@ -34,8 +37,8 @@ export const ActionButton = ({
 const ActionButtonGroup = ({ className, primaryProps, secondaryProps }) => {
   return (
     <div className={className}>
-      <ActionButton  {...primaryProps} />
-      <ActionButton  {...secondaryProps} />
+      <ActionButton {...primaryProps} />
+      <ActionButton {...secondaryProps} />
     </div>
   );
 };
