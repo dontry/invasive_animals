@@ -31,8 +31,8 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-export default ({ to, activeStyle, children, block = null }) => (
-  <StyledNavLink to={to} block={block}>
+export default ({ to, activeStyle, children, block = null, textSize=null }) => (
+  <StyledNavLink to={to} block={block} textSize={textSize}>
     {children}
   </StyledNavLink>
 );

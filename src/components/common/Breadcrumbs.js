@@ -4,29 +4,34 @@ import { grey } from "material-ui/colors";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import NavigationLink from "./NavLink";
+import Icon from "material-ui/Icon";
+import { findRouteName } from "../../utils/routing";
 
-const Separator = styled.span`
-    display: inline-block;
-    color: ${props => props.color || grey[400]};
-    text-align: center;
-    flex-shrink: 0;
-    padding: ${props => props.padding || '0.5rem'};
+export const Separator = styled.span`
+  display: inline-block;
+  color: ${props => props.color || grey[400]};
+  text-align: center;
+  flex-shrink: 0;
+  padding: ${props => props.padding || "0.5rem"};
 `;
 
 Separator.displayName = "Separator";
 
-export const BreadcrumbsItem = ({ href, text, hasSeparator = false }) => {
-  return (
-    <span>
-      <NavigationLink to={href}>{text || href}</NavigationLink>
-      {hasSeparator && <Separator>/</Separator>}
-    </span>
-  );
+export const BreadcrumbsItem = ({ match,  hasSeparator }) => {
+  let routeName = findRouteName(match.url);
+  let content = null;
+  if (routeName) {
+    routeName = routeName !== "HOME" ? routeName : <Icon style={{ verticalAlign: "-0.2rem" }}>home</Icon> 
+    return (
+      <span>
+        <NavigationLink textSize={"small"} to={match.url || ''}>{routeName}</NavigationLink>
+        {hasSeparator && <Separator>/</Separator>}
+      </span>
+    );
+  }
 };
 
 BreadcrumbsItem.propTypes = {
-  href: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
   hasSeparator: PropTypes.bool
 };
 

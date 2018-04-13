@@ -13,15 +13,12 @@ import { ScreenMask, Mask } from "../components/common/Mask";
 import Loading from "../components/common/LoadingSpinner";
 import Error from "../components/common/Error";
 import { BreadcrumbsItem, Breadcrumbs } from "../components/common/Breadcrumbs";
+import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
 import DropImageZone from "../components/Detect/DropImageZone";
 import ActionButtonGroup from "../components/common/ActionButtonGroup";
 import NavAppBar from "../components/common/NavAppBar";
 
 addDecorator(story => <ThemeProvider theme={theme}>{story()}</ThemeProvider>);
-
-storiesOf("Welcome", module).add("to Storybook", () => (
-  <Welcome showApp={linkTo("Button")} />
-));
 
 storiesOf("Mask", module)
   .add("screen mask", () => (
@@ -55,7 +52,7 @@ storiesOf("Loading", module)
 
 storiesOf("Error ", module)
   .addDecorator(story => (
-    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+    <MemoryRouter initialEntries={["/abc/asaa","/abc","adf"]}>{story()}</MemoryRouter>
   ))
   .add("Default Error 404", () => <Error />);
 
@@ -63,15 +60,11 @@ storiesOf("Drop zone", module).add("Drop zone", () => <DropImageZone />);
 
 storiesOf("Breadcrumbs", module)
   .addDecorator(story => (
-    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+    <MemoryRouter initialEntries={["/contact","/about"]}>{story()}</MemoryRouter>
   ))
-  .add("Breadcrumbs", () => (
-    <Breadcrumbs>
-      <BreadcrumbsItem href="/" text="Home" />
-      <BreadcrumbsItem href="/getinvolved" text="Get involved" />
-      <BreadcrumbsItem href="/getinvolved/detect" text="detect" />
-    </Breadcrumbs>
-  ));
+  .add("Breadcrumbs on Home page", () => (
+    <BreadcrumbsWithRouter />
+  ))
 
 storiesOf("Buttons", module).add(
   "Action button group",
