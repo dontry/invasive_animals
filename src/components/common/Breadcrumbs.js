@@ -17,14 +17,14 @@ export const Separator = styled.span`
 
 Separator.displayName = "Separator";
 
-export const BreadcrumbsItem = ({ match,  hasSeparator }) => {
+export const BreadcrumbsItem = ({match,  hasSeparator = false }) => {
   let routeName = findRouteName(match.url);
   let content = null;
   if (routeName) {
     routeName = routeName !== "HOME" ? routeName : <Icon style={{ verticalAlign: "-0.2rem" }}>home</Icon> 
     return (
       <span>
-        <NavigationLink textSize={"small"} to={match.url || ''}>{routeName}</NavigationLink>
+        <NavigationLink textSize="small" to={match.url || ''}>{routeName}</NavigationLink>
         {hasSeparator && <Separator>/</Separator>}
       </span>
     );

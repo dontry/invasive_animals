@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { Route, withRouter } from "react-router-dom";
-import { Breadcrumbs, BreadcrumbsItem, Separator } from "./Breadcrumbs";
+import { BreadcrumbsItem, Separator } from "./Breadcrumbs";
 
 function renderBreadcrumbItems(paths) {
   return paths.map((p, index) => {
     if (index < paths.length - 1) {
       return (
-        <span>
-          <Route key={p} path={p} component={BreadcrumbsItem} />
-          <Separator>/</Separator>
-        </span>
+        <Route
+          path={p}
+          render={props => <BreadcrumbsItem {...props} hasSeparator={true} />}
+        />
       );
     } else {
       return <Route key={p} path={p} component={BreadcrumbsItem} />;
@@ -23,9 +23,9 @@ const BreadcrumbsWithRouter = ({ location, match }) => {
     paths[index] = `${prev}/${curr}`;
     return paths[index];
   });
-  if(paths[1] !== "/") paths[0] = "/";
+  if (paths[1] !== "/") paths[0] = "/";
   const breadcrumbsItems = renderBreadcrumbItems(paths);
-  return <Breadcrumbs>{breadcrumbsItems}</Breadcrumbs>;
+  return <div>{breadcrumbsItems}</div>;
 };
 
 export default withRouter(BreadcrumbsWithRouter);
