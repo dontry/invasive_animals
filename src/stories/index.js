@@ -65,7 +65,7 @@ storiesOf("Drop zone", module).add("Drop zone", () => <DropImageZone />);
 
 storiesOf("Breadcrumbs", module)
   .addDecorator(story => (
-    <MemoryRouter initialEntries={["/contact", "/about"]}>
+    <MemoryRouter initialEntries={["/get_involved/detect", "/about"]}>
       {story()}
     </MemoryRouter>
   ))

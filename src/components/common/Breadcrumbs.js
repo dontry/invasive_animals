@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import NavigationLink from "./NavLink";
 import Icon from "material-ui/Icon";
 import { findRouteName } from "../../utils/routing";
+import { strEqual } from "../../utils/tools";
 
 export const Separator = styled.span`
   display: inline-block;
@@ -17,14 +18,20 @@ export const Separator = styled.span`
 
 Separator.displayName = "Separator";
 
-export const BreadcrumbsItem = ({match,  hasSeparator = false }) => {
+export const BreadcrumbsItem = ({ match, hasSeparator = false }) => {
   let routeName = findRouteName(match.url);
   let content = null;
   if (routeName) {
-    routeName = routeName !== "HOME" ? routeName : <Icon style={{ verticalAlign: "-0.2rem" }}>home</Icon> 
+    routeName = strEqual.call(routeName, "Home") ? (
+      <Icon style={{ verticalAlign: "-0.2rem" }}>home</Icon>
+    ) : (
+      routeName
+    );
     return (
       <span>
-        <NavigationLink textSize="small" to={match.url || ''}>{routeName}</NavigationLink>
+        <NavigationLink textSize="small" to={match.url || ""}>
+          {routeName}
+        </NavigationLink>
         {hasSeparator && <Separator>/</Separator>}
       </span>
     );
