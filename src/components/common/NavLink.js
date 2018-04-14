@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import { grey, indigo } from "material-ui/colors";
 import styled from "styled-components";
@@ -31,8 +32,15 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-export default ({ to, activeStyle, children, block = null, textSize=null }) => (
-  <StyledNavLink to={to} block={block} textSize={textSize}>
-    {children}
-  </StyledNavLink>
-);
+StyledNavLink.propTypes = {
+  to: PropTypes.string.isRequired,
+  block: PropTypes.bool,
+  textSize: PropTypes.string
+};
+
+StyledNavLink.defaultProps = {
+  block: false,
+  textSize: "sm"
+};
+
+export default StyledNavLink;

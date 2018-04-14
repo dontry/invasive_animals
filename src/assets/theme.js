@@ -33,10 +33,17 @@ export const theme = {
     }
   },
   textSize: {
-    xsmall: "12px",
-    small: "16px",
-    medium: "20px",
-    large: "24px",
-    xlarge: "32px"
+    xsm: "12px",
+    sm: "16px",
+    md: "20px",
+    lg: "24px",
+    xl: "32px"
+  },
+  spacing: {
+    xs: 0,
+    sm: 8,
+    md: 16,
+    lg: 24,
+    xl: 40
   }
 };

@@ -17,6 +17,9 @@ import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
 import DropImageZone from "../components/Detect/DropImageZone";
 import ActionButtonGroup from "../components/common/ActionButtonGroup";
 import NavAppBar from "../components/common/NavAppBar";
+import Banner from "../components/common/Banner";
+
+import imageFile from '../assets/images/dandenong-ranges.jpg'
 
 addDecorator(story => <ThemeProvider theme={theme}>{story()}</ThemeProvider>);
 
@@ -52,7 +55,9 @@ storiesOf("Loading", module)
 
 storiesOf("Error ", module)
   .addDecorator(story => (
-    <MemoryRouter initialEntries={["/abc/asaa","/abc","adf"]}>{story()}</MemoryRouter>
+    <MemoryRouter initialEntries={["/abc/asaa", "/abc", "adf"]}>
+      {story()}
+    </MemoryRouter>
   ))
   .add("Default Error 404", () => <Error />);
 
@@ -60,11 +65,11 @@ storiesOf("Drop zone", module).add("Drop zone", () => <DropImageZone />);
 
 storiesOf("Breadcrumbs", module)
   .addDecorator(story => (
-    <MemoryRouter initialEntries={["/contact","/about"]}>{story()}</MemoryRouter>
+    <MemoryRouter initialEntries={["/contact", "/about"]}>
+      {story()}
+    </MemoryRouter>
   ))
-  .add("Breadcrumbs on Home page", () => (
-    <BreadcrumbsWithRouter />
-  ))
+  .add("Breadcrumbs on Home page", () => <BreadcrumbsWithRouter />);
 
 storiesOf("Buttons", module).add(
   "Action button group",
@@ -76,3 +81,14 @@ storiesOf("Navigation", module)
     <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
   ))
   .add("Default AppBar", () => <NavAppBar />);
+
+storiesOf("Banner", module)
+  .add("Default Banner", () => <Banner />)
+  .add("Banner with title, subheading and text", () => (
+    <Banner
+      title="New title"
+      subheading="nice heading"
+      description="Consequat id eiusmod laboris esse reprehenderit excepteur minim anim mollit incididunt sunt. Reprehenderit excepteur irure et enim amet laboris amet reprehenderit laboris qui amet. Sint id mollit minim enim consequat laborum officia mollit ex irure. Ipsum dolore enim consequat enim nulla culpa reprehenderit velit adipisicing nulla ullamco in et occaecat. Non consectetur dolor commodo incididunt aliqua velit velit enim."
+      imgUrl={imageFile}
+    />
+  ));
