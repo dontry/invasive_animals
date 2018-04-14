@@ -18,6 +18,7 @@ import DropImageZone from "../components/Detect/DropImageZone";
 import ActionButtonGroup from "../components/common/ActionButtonGroup";
 import NavAppBar from "../components/common/NavAppBar";
 import Banner from "../components/common/Banner";
+import { FooterCopyright } from "../components/common/Footer";
 
 import imageFile from '../assets/images/dandenong-ranges.jpg'
 
@@ -92,3 +93,7 @@ storiesOf("Banner", module)
       imgUrl={imageFile}
     />
   ));
+
+
+storiesOf("Footer", module)
+  .add("Footer Copyright", () => <FooterCopyright />)
