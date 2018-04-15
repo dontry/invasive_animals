@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { grey } from "material-ui/colors";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import NavigationLink from "./NavLink";
+import NavLink from "./NavLink";
 import Icon from "material-ui/Icon";
 import { findRouteName } from "../../utils/routing";
 import { strEqual } from "../../utils/tools";
@@ -29,9 +29,9 @@ export const BreadcrumbsItem = ({ match, hasSeparator = false }) => {
     );
     return (
       <span>
-        <NavigationLink textSize="small" to={match.url || ""}>
+        <NavLink display="inline" textSize="small" to={match.url || ""}>
           {routeName}
-        </NavigationLink>
+        </NavLink>
         {hasSeparator && <Separator>/</Separator>}
       </span>
     );
