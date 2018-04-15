@@ -19,9 +19,13 @@ import ActionButtonGroup from "../components/common/ActionButtonGroup";
 import NavAppBar from "../components/common/NavAppBar";
 import Banner from "../components/common/Banner";
 import Sidebar from "../components/common/Sidebar";
-import { FooterCopyright } from "../components/common/Footer";
+import Footer, {
+  Copyright,
+  Sitemap
+} from "../components/common/Footer";
 import { BrandIcon } from "../components/common/Icons";
 import imageFile from "../assets/images/dandenong-ranges.jpg";
+import "../index.css";
 
 addDecorator(story => <ThemeProvider theme={theme}>{story()}</ThemeProvider>);
 
@@ -96,7 +100,13 @@ storiesOf("Banner", module)
     />
   ));
 
-storiesOf("Footer", module).add("Footer Copyright", () => <FooterCopyright />);
+storiesOf("Footer", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("Copyright", () => <Copyright />)
+  .add("Site map", () => <Sitemap />)
+  .add("Footer", () => <Footer />);
 
 storiesOf("Icons", module).add("Brand icons", () => (
   <div>
