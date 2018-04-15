@@ -39,19 +39,13 @@ const NavMenu = styled.div`
   text-align: right;
 `;
 
-const NavItem = styled(NavLink)`
+export const NavItem = styled(NavLink)`
   && {
     margin-right: 20;
   }
 `;
 
 const NavButton = NavItem.withComponent(Button);
-
-const NavMenuItemLink = ({ item }) => (
-  <Link to={item.path} {...item}>
-    {item.name}
-  </Link>
-);
 
 const StyledMenuList = styled(MenuList)`
   && {
@@ -86,7 +80,6 @@ class DropdownNavMenu extends Component {
   render() {
     const { navItem } = this.props;
     const { open } = this.state;
-    const NavMenuItems = this.renderMenuItems(navItem.children);
     return (
       <div style={{ position: "relative", display: "inline-block" }}>
         <Manager>
@@ -100,27 +93,20 @@ class DropdownNavMenu extends Component {
                 aria-owns={open ? "menu-list-collapse" : null}
                 aria-haspopup="true"
                 onClick={this.handleToggle}
-                style={{color: '#fff'}}
+                style={{ color: "#fff" }}
               >
                 {navItem.name}
               </NavButton>
             </div>
           </Target>
-          <Portal>
-            <Popper placement="bottom" eventsEnabled={open}>
-              <ClickAwayListener onClickAway={this.handleClose}>
-                <Collapse
-                  in={open}
-                  id="menu-list-collapse"
-                  style={{ transformOrigin: "0 0 0" }}
-                >
-                  <Paper style={{ margin: 3, width: "100%" }}>
-                    <StyledMenuList role="menu">{NavMenuItems}</StyledMenuList>
-                  </Paper>
-                </Collapse>
-              </ClickAwayListener>
-            </Popper>
-          </Portal>
+          <DropdownMenu
+            placement="bottom"
+            open={open}
+            handleClose={this.handleClose}
+            menuId="nav-list-collapse"
+            menuItems={navItem.children}
+            // ref={ref.bind(this)}
+          />
         </Manager>
       </div>
     );
@@ -128,7 +114,7 @@ class DropdownNavMenu extends Component {
 }
 
 const NavAppBar = ({ title, menuItems }) => {
-  const _renderMenuItem = items => {
+  const _renderMenuItems = items => {
     return items.map(item => {
       if (item.path) {
         return (
@@ -142,7 +128,7 @@ const NavAppBar = ({ title, menuItems }) => {
     });
   };
 
-  const NavItems = _renderMenuItem(menuItems);
+  const NavItems = _renderMenuItems(menuItems);
   return (
     <AppBarWrapper>
       <StyledAppBar position="static">

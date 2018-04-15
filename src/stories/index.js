@@ -18,6 +18,7 @@ import DropImageZone from "../components/Detect/DropImageZone";
 import ActionButtonGroup from "../components/common/ActionButtonGroup";
 import NavAppBar from "../components/common/NavAppBar";
 import Banner from "../components/common/Banner";
+import Sidebar from "../components/common/Sidebar";
 import { FooterCopyright } from "../components/common/Footer";
 
 import imageFile from '../assets/images/dandenong-ranges.jpg'
@@ -81,7 +82,8 @@ storiesOf("Navigation", module)
   .addDecorator(story => (
     <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
   ))
-  .add("Default AppBar", () => <NavAppBar />);
+  .add("Default AppBar", () => <NavAppBar />)
+  .add("Sidebar", () => <Sidebar />)
 
 storiesOf("Banner", module)
   .add("Default Banner", () => <Banner />)
