@@ -20,8 +20,8 @@ import NavAppBar from "../components/common/NavAppBar";
 import Banner from "../components/common/Banner";
 import Sidebar from "../components/common/Sidebar";
 import { FooterCopyright } from "../components/common/Footer";
-
-import imageFile from '../assets/images/dandenong-ranges.jpg'
+import { BrandIcon } from "../components/common/Icons";
+import imageFile from "../assets/images/dandenong-ranges.jpg";
 
 addDecorator(story => <ThemeProvider theme={theme}>{story()}</ThemeProvider>);
 
@@ -83,7 +83,7 @@ storiesOf("Navigation", module)
     <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
   ))
   .add("Default AppBar", () => <NavAppBar />)
-  .add("Sidebar", () => <Sidebar />)
+  .add("Sidebar", () => <Sidebar />);
 
 storiesOf("Banner", module)
   .add("Default Banner", () => <Banner />)
@@ -96,6 +96,11 @@ storiesOf("Banner", module)
     />
   ));
 
+storiesOf("Footer", module).add("Footer Copyright", () => <FooterCopyright />);
 
-storiesOf("Footer", module)
-  .add("Footer Copyright", () => <FooterCopyright />)
+storiesOf("Icons", module).add("Brand icons", () => (
+  <div>
+    <BrandIcon color="#000" />
+    <BrandIcon color="#f00" size={"50px"} />
+  </div>
+));
