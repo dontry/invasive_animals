@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { grey, indigo } from "material-ui/colors";
 import styled from "styled-components";
 import Typography from "material-ui/Typography";
-import {Title} from './Text';
+import { Title } from "./Text";
 
 const StyledNavLink = styled(NavLink)`
   && {
@@ -12,10 +12,6 @@ const StyledNavLink = styled(NavLink)`
     height: ${props => props.display !== "inline" && "100%"};
     text-decoration: none;
     cursor: ${props => (props.disabled ? "not-allowed" : "pointer")};
-    color: ${props =>
-      props.block
-        ? props.theme.palette.primary.contrastText
-        : props.theme.palette.primary.main};
     padding: ${props =>
       props.display !== "inline" && (props.padding || "0.2rem 0.5rem")};
     font-size: ${props =>
@@ -35,6 +31,16 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
+const StyledLinkText = styled(Typography)`
+  && {
+    display: ${props => props.display};
+    color: ${props =>
+      props.display !== "inline"
+        ? props.theme.palette.primary.contrastText
+        : (props.color || props.theme.palette.primary.main)};
+  }
+`;
+
 StyledNavLink.propTypes = {
   to: PropTypes.string.isRequired,
   textSize: PropTypes.string
@@ -49,7 +55,9 @@ StyledNavLink.defaultProps = {
 
 const CustomizedNavLink = ({ children, to, display, textSize }) => (
   <StyledNavLink to={to} display={display} textSize={textSize}>
-    <Title invariant="body">{children}</Title>
+    <StyledLinkText invariant="caption" display={display}>
+      {children}
+    </StyledLinkText>
   </StyledNavLink>
 );
 

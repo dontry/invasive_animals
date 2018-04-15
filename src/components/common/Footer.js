@@ -21,7 +21,7 @@ const FooterWrapper = styled(Grid)`
 export const FooterCopyright = () => (
   <FooterWrapper container direction="column">
     <Grid item>
-      <Title>© 2018 OzInvasiveAnimal</Title>
+      <Title>© 2018 OzInvasiveSpecies</Title>
       <Title>Powered by G4</Title>
     </Grid>
   </FooterWrapper>
