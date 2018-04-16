@@ -10,7 +10,6 @@ const GridWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   overflow: hidden;
-  background-color: ${props => props.bgColor || "#efefef"};
 `;
 const StyledGridList = styled(GridList)`
   && {
@@ -31,9 +30,9 @@ const IntroGrid = ({ tileData }) => {
     <GridWrapper>
       <StyledGridList cols={3}>
         {tileData.map(tile => (
-          <StyledGridListTile key={tile.title} cols={tile.cols || 1}>
-            <Tile tile={tile} />
-          </StyledGridListTile>
+            <StyledGridListTile key={tile.title} cols={tile.cols || 1}>
+              <Tile tile={tile} />
+            </StyledGridListTile>
         ))}
       </StyledGridList>
     </GridWrapper>

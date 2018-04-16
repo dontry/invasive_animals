@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import Grid from "material-ui/Grid";
 import { Title } from "../common/Text";
 import { green } from "material-ui/colors";
@@ -34,18 +35,22 @@ const TileTitle = Title.extend`
 `;
 
 const Tile = ({ tile }) => (
-  <TileWrapper
-    container
-    direction="column"
-    justify="center"
-    alignItems="center"
-    style={{ height: "100%" }}
-  >
-    <Grid item>
-      <TileTitle className="title" variant="title">{tile.title}</TileTitle>
-    </Grid>
-    <Grid item>{tile.icon}</Grid>
-  </TileWrapper>
+  <Link to={tile.path}>
+    <TileWrapper
+      container
+      direction="column"
+      justify="center"
+      alignItems="center"
+      style={{ height: "100%" }}
+    >
+      <Grid item>
+        <TileTitle className="title" variant="title">
+          {tile.title}
+        </TileTitle>
+      </Grid>
+      <Grid item>{tile.icon}</Grid>
+    </TileWrapper>
+  </Link>
 );
 
 Tile.defaultTypes = {

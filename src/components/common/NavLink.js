@@ -13,7 +13,7 @@ const StyledNavLink = styled(NavLink)`
     text-decoration: none;
     cursor: ${props => (props.disabled ? "not-allowed" : "pointer")};
     padding: ${props =>
-      props.display !== "inline" && (props.padding || "0.2rem 0.5rem")};
+      props.display !== "inline" && (props.padding || "0.5rem 0.8rem")};
     font-size: ${props =>
       props.textSize
         ? props.theme.textSize[props.textSize]
@@ -37,7 +37,7 @@ const StyledLinkText = styled(Typography)`
     color: ${props =>
       props.display !== "inline"
         ? props.theme.palette.primary.contrastText
-        : (props.color || props.theme.palette.primary.main)};
+        : (props.txtColor || props.theme.palette.primary.main)};
   }
 `;
 

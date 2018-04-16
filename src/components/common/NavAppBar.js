@@ -21,6 +21,8 @@ import DropdownMenu from "./DropdownMenu";
 import Paper from "material-ui/Paper";
 import ClickAwayListener from "material-ui/utils/ClickAwayListener";
 import Menu, { MenuItem, MenuList } from "material-ui/Menu";
+import { BrandIcon } from "./Icons";
+
 
 const AppBarWrapper = styled.div`
   flex-grow: 1;
@@ -147,7 +149,11 @@ NavAppBar.propTypes = {
 };
 
 NavAppBar.defaultProps = {
-  title: "Title",
+  title: (
+    <Link to="/">
+      <BrandIcon size={"40px"}/>
+    </Link>
+  ),
   menuItems: [
     { name: "HOME", path: "/" },
     {

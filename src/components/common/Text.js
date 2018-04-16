@@ -4,16 +4,14 @@ import Typography from "material-ui/Typography";
 
 export const Paragraph = styled(Typography)`
   && {
-    color: ${props => props.color || "#fff"};
+    color: ${props => props.txtColor || "#fff"};
     text-align: ${props => props.align || "start"};
+    padding: ${props => props.padding || "none"};
+    font-weight: ${props => props.fontWeight};
   }
 `;
 export const Title = Paragraph.extend`
   && {
     text-align: ${props => props.align || "center"};
-    padding: ${props => props.padding || "none"};
-    @media screen and (max-width: 599px) {
-      text-align: center;
-    }
   }
 `;
