@@ -19,7 +19,7 @@ const SideListWrapper = FullListWrapper.extend`
 class Sidebar extends Component {
   _renderListItems = items => {
     return items.map(item => (
-      <ListItem button>
+      <ListItem button key={item.path}>
         <NavLink to={item.path}>
           <ListItemText primary={item.name} />
         </NavLink>

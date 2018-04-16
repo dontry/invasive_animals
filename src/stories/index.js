@@ -6,7 +6,9 @@ import { linkTo } from "@storybook/addon-links";
 import { withNotes } from "@storybook/addon-notes";
 import { MemoryRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import { lightGreen} from 'material-ui/colors';
 import { theme } from "../assets/theme";
+import "../index.css";
 
 import BlankPage from "./BlankPage";
 import { ScreenMask, Mask } from "../components/common/Mask";
@@ -19,13 +21,17 @@ import ActionButtonGroup from "../components/common/ActionButtonGroup";
 import NavAppBar from "../components/common/NavAppBar";
 import Banner from "../components/common/Banner";
 import Sidebar from "../components/common/Sidebar";
-import Footer, {
-  Copyright,
-  Sitemap
-} from "../components/common/Footer";
-import { BrandIcon } from "../components/common/Icons";
-import imageFile from "../assets/images/dandenong-ranges.jpg";
-import "../index.css";
+import Footer, { Copyright, Sitemap } from "../components/common/Footer";
+import {
+  BrandIcon,
+  TargetIcon,
+  DetectionIcon,
+  Target2Icon,
+  BinocularsIcon,
+  MagnifierIcon
+} from "../components/common/Icons";
+import Icon from "material-ui/Icon";
+import IntroGrid from "../components/Home/IntroGrid";
 
 addDecorator(story => <ThemeProvider theme={theme}>{story()}</ThemeProvider>);
 
@@ -108,9 +114,36 @@ storiesOf("Footer", module)
   .add("Site map", () => <Sitemap />)
   .add("Footer", () => <Footer />);
 
-storiesOf("Icons", module).add("Brand icons", () => (
-  <div>
-    <BrandIcon color="#000" />
-    <BrandIcon color="#f00" size={"50px"} />
-  </div>
+storiesOf("Icons", module)
+  .add("Brand icons", () => (
+    <div>
+      <BrandIcon color="#000" />
+      <BrandIcon color="#f00" size={"50px"} />
+    </div>
+  ))
+  .add("Home page icons", () => (
+    <div>
+      <DetectionIcon color="#000" />
+      <TargetIcon color="#000" />
+      <Target2Icon color="#000" />
+      <BinocularsIcon color="#000" />
+    </div>
+  ));
+
+const introData = [
+  {
+    title: "Detect",
+    icon: <TargetIcon color={lightGreen[500]}/>
+  },
+  {
+    title: "Find",
+    icon: <MagnifierIcon color={lightGreen[500]}/>
+  },
+  {
+    title: "Trend Observation",
+    icon: <BinocularsIcon color={lightGreen[500]}/>
+  }
+];
+storiesOf("Home", module).add("Intro grid", () => (
+  <IntroGrid tileData={introData} />
 ));

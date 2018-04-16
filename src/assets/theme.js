@@ -37,7 +37,8 @@ export const theme = {
     sm: "16px",
     md: "20px",
     lg: "24px",
-    xl: "32px"
+    xl: "32px",
+    xxl: "48px"
   },
   spacing: {
     xs: 0,
