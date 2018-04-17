@@ -14,7 +14,6 @@ const StyledDropzone = styled(Dropzone)`
   min-width: 360px;
   min-height: 360px;
   border: 2px dashed #999;
-  margin: 0 auto;
   align-items: center;
   justify-content: center;
   color: ${grey[600]};

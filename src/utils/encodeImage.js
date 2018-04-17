@@ -4,6 +4,7 @@ import path from "path";
 
 // Covert the image data to a Buffer and base64 encode it.
 export function encodeImageFromDir(imageDir) {
+  if(!fs) return ;
   const imageFile = fs.readFileSync(path.resolve(__dirname, imageDir));
   return new Buffer(imageFile).toString("base64");
 }

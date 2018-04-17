@@ -8,6 +8,7 @@ import { MemoryRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { lightGreen } from "material-ui/colors";
 import { theme } from "../assets/theme";
+import Provider from "./Provider";
 import "../index.css";
 
 import BlankPage from "./BlankPage";
@@ -36,7 +37,13 @@ import Testimonial from "../components/About/Testimonial";
 import Profile from "../components/About/Profile";
 import ProfileGrid from "../components/About/ProfileGrid";
 
-import imageFile from "../assets/images/dandenong-ranges.jpg"
+import ReportForm  from "../components/Report/ReportForm";
+
+import imageFile from "../assets/images/dandenong-ranges.jpg";
+
+addDecorator(story => {
+  return <Provider story={story()} />;
+});
 
 addDecorator(story => <ThemeProvider theme={theme}>{story()}</ThemeProvider>);
 
@@ -139,17 +146,17 @@ const introData = [
   {
     title: "Detect",
     icon: <TargetIcon color={lightGreen[500]} />,
-    path: '/detect'
+    path: "/detect"
   },
   {
     title: "Find",
     icon: <MagnifierIcon color={lightGreen[500]} />,
-    path: '/find'
+    path: "/find"
   },
   {
     title: "Trend Observation",
     icon: <BinocularsIcon color={lightGreen[500]} />,
-    path: '/observe'
+    path: "/observe"
   }
 ];
 
@@ -164,4 +171,12 @@ storiesOf("Home", module)
 storiesOf("About", module)
   .add("Testimonial", () => <Testimonial />)
   .add("Profile", () => <Profile />)
-  .add("ProfileGrid", () => <ProfileGrid />)
+  .add("ProfileGrid", () => <ProfileGrid />);
+
+storiesOf("Report", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/get_involved/detect", "/about"]}>
+      {story()}
+    </MemoryRouter>
+  ))
+  .add("Form", () => <ReportForm />);

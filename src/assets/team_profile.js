@@ -1,7 +1,7 @@
 export default [
   {
     name: "Tram Ngo",
-    role: "Team Coordinator",
+    role: "Team Facilitator",
     photo: "assets/images/profiles/tram.jpg",
     description:
       "Tram’s responsibilities include - but not limited to - developing project schedule, agendas and meeting minutes as well as managing deliverables according to the plan. Her knowledge on different programming languages and data analysis tools also has enabled her to assist other team members with their technical tasks."

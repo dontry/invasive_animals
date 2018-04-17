@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 import { withStyles } from "material-ui/styles";
 import { format } from "date-fns";
 import { Field, reduxForm } from "redux-form";
@@ -10,17 +11,9 @@ import ActionButtonGroup from "../common/ActionButtonGroup";
 import Grid from "material-ui/Grid";
 import { Redirect, withRouter } from "react-router-dom";
 import { validate } from "../../utils/formValidation";
+import { grey } from "material-ui/colors";
 
 const styles = {
-  textField: {
-    display: "block",
-    marginTop: "1rem"
-  },
-  dropzone: {
-    width: "50vw",
-    minWidth: 376,
-    marginTop: "1rem"
-  },
   btnGroup: {
     marginTop: "1rem",
     float: "right"
@@ -35,21 +28,73 @@ const styles = {
   }
 };
 
+const FormWrapper = styled.form`
+  width: 80%;
+  margin: 0 auto;
+  padding: 1rem 2rem 3rem;
+  @media screen and (max-width: 599px) {
+    width: 100%;
+  }
+`;
+
+const FormBody = styled(Grid)`
+  && {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid ${grey[300]};
+  }
+`;
+
+const FormFooter = styled(Grid)`
+  && {
+    width: 100%;
+    padding-top: 1rem;
+    & * {
+      text-align: right;
+    }
+  }
+`;
+
+const FieldWrapper = styled(Grid)`
+  && {
+    width: ${props => props.width || "50%"};
+    margin-top: 1rem;
+    padding: 1rem;
+    @media screen and (max-width: 599px) {
+      width: 100%;
+    }
+  }
+`;
+
+const DropzoneWrapper = styled.div`
+  width: 80%;
+  min-width: 376px;
+  margin-top: 1rem;
+`;
+
+const StyledTextField = styled(TextField)`
+  && {
+    width: ${props => props.width || "100%"};
+  }
+`;
+
 const renderTextField = ({
   input,
   label,
   meta: { touched, error },
+  width,
   ...custom
 }) => {
   return (
-    <TextField
-      label={label}
-      InputLabelProps={{ shrink: true }}
-      error={touched && !!error}
-      helperText={error}
-      {...input}
-      {...custom}
-    />
+    <FieldWrapper item width={width}>
+      <StyledTextField
+        label={label}
+        InputLabelProps={{ shrink: true }}
+        error={touched && !!error}
+        helperText={error}
+        {...input}
+        {...custom}
+      />
+    </FieldWrapper>
   );
 };
 
@@ -59,27 +104,31 @@ const renderDateField = ({
   meta: { touched, error },
   ...custom
 }) => (
-  <TextField
-    label={label}
-    type="date"
-    InputLabelProps={{ shrink: true }}
-    error={touched && !!error}
-    helperText={error}
-    {...input}
-    {...custom}
-  />
+  <FieldWrapper item>
+    <StyledTextField
+      label={label}
+      type="date"
+      InputLabelProps={{ shrink: true }}
+      error={touched && !!error}
+      helperText={error}
+      {...input}
+      {...custom}
+    />
+  </FieldWrapper>
 );
 
 const renderDropZone = ({ name, label, image, className, ...custom }) => (
-  <div className={className}>
+  <FieldWrapper>
     <InputLabel style={{ fontSize: "0.75rem" }} shrink={true}>
       {label}
     </InputLabel>
-    <DropImageZone image={image} />
-  </div>
+    <DropzoneWrapper>
+      <DropImageZone image={image} />
+    </DropzoneWrapper>
+  </FieldWrapper>
 );
 
-class ReportForm extends Component {
+export class ReportForm extends Component {
   static contextTypes = {
     router: PropTypes.object // replace with PropTypes.object if you use them
   };
@@ -90,7 +139,7 @@ class ReportForm extends Component {
 
   submit = () => {
     console.log("submit");
-  }
+  };
 
   cancel = () => {
     this.props.reset();
@@ -118,7 +167,7 @@ class ReportForm extends Component {
       action: null,
       disabled: false,
       raised: true,
-      type: "submit"
+      type: "primary"
     };
     const CancelProps = {
       className: classes.Cancel,
@@ -126,72 +175,68 @@ class ReportForm extends Component {
       primary: false,
       action: this.cancel.bind(this),
       disabled: false,
-      raise: false
+      raise: false,
+      type: "secondary"
     };
 
     return (
-      <form onSubmit={handleSubmit(this.submit)} noValidate autoComplete="off">
-        <Field
-          name="username"
-          component={renderTextField}
-          label="Your name"
-          className={classes.textField}
-        />
-        <Field
-          name="email"
-          component={renderTextField}
-          label="Email"
-          type="email"
-          className={classes.textField}
-        />
-        <Field
-          name="species"
-          component={renderTextField}
-          label="Species"
-          className={classes.textField}
-        />
-        <Field
-          name="picture"
-          component={renderDropZone}
-          label="Picture"
-          image={image}
-          className={classes.dropzone}
-        />
-        <Field
-          name="date"
-          component={renderDateField}
-          label="Date"
-          className={classes.textField}
-        />
-        <Field
-          name="description"
-          label="Description"
-          component={renderTextField}
-          className={classes.textField}
-          fullWidth
-          multiline={true}
-          rows={5}
-        />
-        <Grid container justify="flex-end">
-          <Grid item sm={4}>
+      <FormWrapper
+        onSubmit={handleSubmit(this.submit)}
+        noValidate
+        autoComplete="off"
+      >
+        <FormBody container direction="row" justify="flex-start">
+          <Field
+            name="username"
+            component={renderTextField}
+            label="Your name"
+          />
+          <Field
+            name="email"
+            component={renderTextField}
+            label="Email"
+            type="email"
+          />
+          <Field name="location" component={renderTextField} label="Location" />
+          <Field name="date" component={renderDateField} label="Date" />
+          <Field name="species" component={renderTextField} label="Species" />
+          <Field name="amount" component={renderTextField} label="Amount" />
+          <Field
+            name="description"
+            label="Description"
+            component={renderTextField}
+            fullwidth
+            multiline={true}
+            rows={5}
+            width={"100%"}
+          />
+          <Field
+            name="picture"
+            component={renderDropZone}
+            label="Picture"
+            image={image}
+          />
+        </FormBody>
+        <FormFooter container justify="flex-end">
+          <Grid item sm={12}>
             <ActionButtonGroup
               className={classes.btnGroup}
               primaryProps={SubmitProps}
               secondaryProps={CancelProps}
             />
           </Grid>
-        </Grid>
-      </form>
+        </FormFooter>
+      </FormWrapper>
     );
   }
 }
 
 ReportForm.defaultProps = {
   classes: {},
+  handleSubmit() {
+    console.log("submit");
+  },
   candidate: null
 };
 
-let EnhancedReportForm = withStyles(styles)(ReportForm);
-EnhancedReportForm = withRouter(EnhancedReportForm);
-
-export default reduxForm({ form: "report", validate })(EnhancedReportForm);
+export default reduxForm({ form: "report", validate })(withRouter(ReportForm));

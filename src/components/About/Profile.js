@@ -25,7 +25,7 @@ const Photo = styled.img`
 
 const Profile = ({ profile }) => (
   <ProfileWrapper item>
-    <Paper style={{height: "600px"}}>
+    {/* <Paper style={{height: "600px"}}> */}
       <Photo src={profile.photo || ImagePlaceholder} alt={profile.name} />
       <Title
         variant="title"
@@ -41,7 +41,7 @@ const Profile = ({ profile }) => (
       <Paragraph variant="body" txtColor={grey[700]} padding="1rem">
         {profile.description}
       </Paragraph>
-    </Paper>
+    {/* </Paper> */}
   </ProfileWrapper>
 );
 
