@@ -60,6 +60,7 @@ typings/
 
 build/
 .vscode/
+src/utils/credentials.js
 
 
 

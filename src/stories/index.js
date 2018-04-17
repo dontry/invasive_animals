@@ -6,7 +6,7 @@ import { linkTo } from "@storybook/addon-links";
 import { withNotes } from "@storybook/addon-notes";
 import { MemoryRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import { lightGreen} from 'material-ui/colors';
+import { lightGreen } from "material-ui/colors";
 import { theme } from "../assets/theme";
 import "../index.css";
 
@@ -32,6 +32,11 @@ import {
 } from "../components/common/Icons";
 import Icon from "material-ui/Icon";
 import IntroGrid from "../components/Home/IntroGrid";
+import Testimonial from "../components/About/Testimonial";
+import Profile from "../components/About/Profile";
+import ProfileGrid from "../components/About/ProfileGrid";
+
+import imageFile from "../assets/images/dandenong-ranges.jpg"
 
 addDecorator(story => <ThemeProvider theme={theme}>{story()}</ThemeProvider>);
 
@@ -133,17 +138,30 @@ storiesOf("Icons", module)
 const introData = [
   {
     title: "Detect",
-    icon: <TargetIcon color={lightGreen[500]}/>
+    icon: <TargetIcon color={lightGreen[500]} />,
+    path: '/detect'
   },
   {
     title: "Find",
-    icon: <MagnifierIcon color={lightGreen[500]}/>
+    icon: <MagnifierIcon color={lightGreen[500]} />,
+    path: '/find'
   },
   {
     title: "Trend Observation",
-    icon: <BinocularsIcon color={lightGreen[500]}/>
+    icon: <BinocularsIcon color={lightGreen[500]} />,
+    path: '/observe'
   }
 ];
-storiesOf("Home", module).add("Intro grid", () => (
-  <IntroGrid tileData={introData} />
-));
+
+storiesOf("Home", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/get_involved/detect", "/about"]}>
+      {story()}
+    </MemoryRouter>
+  ))
+  .add("Intro grid", () => <IntroGrid tileData={introData} />);
+
+storiesOf("About", module)
+  .add("Testimonial", () => <Testimonial />)
+  .add("Profile", () => <Profile />)
+  .add("ProfileGrid", () => <ProfileGrid />)
