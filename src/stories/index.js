@@ -39,6 +39,8 @@ import ProfileGrid from "../components/About/ProfileGrid";
 
 import ReportForm  from "../components/Report/ReportForm";
 
+import SidePane from "../components/Search/SidePane";
+
 import imageFile from "../assets/images/dandenong-ranges.jpg";
 
 addDecorator(story => {
@@ -180,3 +182,6 @@ storiesOf("Report", module)
     </MemoryRouter>
   ))
   .add("Form", () => <ReportForm />);
+
+storiesOf("Search", module)
+.add("Sidepane", () => <SidePane />)
