@@ -12,7 +12,6 @@ class GalleryComposite extends Component {
   };
 
   selectImage = event => {
-    debugger;
     this.setState({ open: true, imgIndex: event.target.dataset.index });
   };
 

@@ -12,6 +12,7 @@ import Grid from "material-ui/Grid";
 import { Redirect, withRouter } from "react-router-dom";
 import { validate } from "../../utils/formValidation";
 import { grey } from "material-ui/colors";
+import {getCurrentDateString} from '../../utils/tools'
 
 const styles = {
   btnGroup: {
@@ -111,6 +112,7 @@ const renderDateField = ({
       InputLabelProps={{ shrink: true }}
       error={touched && !!error}
       helperText={error}
+      defaultValue="2018-04-01"
       {...input}
       {...custom}
     />

@@ -86,13 +86,13 @@ class DropImageZone extends Component {
         {image ? (
           <UploadedImage src={image.preview} />
         ) : (
-          <di>
+          <div>
             <HintText>
               Please drop the suspicious invasive species here, we will tell you
               if it is.<br />(Accept image format: jpg, png)
             </HintText>
             <StyledMoveToInbox />
-          </di>
+          </div>
         )}
       </StyledDropzone>
     );
