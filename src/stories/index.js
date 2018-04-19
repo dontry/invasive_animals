@@ -23,25 +23,27 @@ import NavAppBar from "../components/common/NavAppBar";
 import Banner from "../components/common/Banner";
 import Sidebar from "../components/common/Sidebar";
 import Footer, { Copyright, Sitemap } from "../components/common/Footer";
-import {
-  BrandIcon,
-  TargetIcon,
-  DetectionIcon,
-  Target2Icon,
-  BinocularsIcon,
-  MagnifierIcon
-} from "../components/common/Icons";
 import Icon from "material-ui/Icon";
+
 import IntroGrid from "../components/Home/IntroGrid";
+import Home from "../pages/Home";
+
 import Testimonial from "../components/About/Testimonial";
 import Profile from "../components/About/Profile";
 import ProfileGrid from "../components/About/ProfileGrid";
+import AboutUs from "../pages/AboutUs";
 
-import ReportForm  from "../components/Report/ReportForm";
+import ReportForm from "../components/Report/ReportForm";
 
+import SearchBar from "../components/Search/SearchBar";
+import ResultList from "../components/Search/ResultList";
 import SidePane from "../components/Search/SidePane";
+import Search from "../pages/Search";
+
+import Gallery from "../components/Info/Gallery";
 
 import imageFile from "../assets/images/dandenong-ranges.jpg";
+import GalleryComposite from "../components/Info/GalleryComposite";
 
 addDecorator(story => {
   return <Provider story={story()} />;
@@ -144,36 +146,20 @@ storiesOf("Icons", module)
     </div>
   ));
 
-const introData = [
-  {
-    title: "Detect",
-    icon: <TargetIcon color={lightGreen[500]} />,
-    path: "/detect"
-  },
-  {
-    title: "Find",
-    icon: <MagnifierIcon color={lightGreen[500]} />,
-    path: "/find"
-  },
-  {
-    title: "Trend Observation",
-    icon: <BinocularsIcon color={lightGreen[500]} />,
-    path: "/observe"
-  }
-];
-
 storiesOf("Home", module)
   .addDecorator(story => (
     <MemoryRouter initialEntries={["/get_involved/detect", "/about"]}>
       {story()}
     </MemoryRouter>
   ))
-  .add("Intro grid", () => <IntroGrid tileData={introData} />);
+  .add("Intro grid", () => <IntroGrid />)
+  .add("Home page", () => <Home />);
 
 storiesOf("About", module)
   .add("Testimonial", () => <Testimonial />)
   .add("Profile", () => <Profile />)
-  .add("ProfileGrid", () => <ProfileGrid />);
+  .add("ProfileGrid", () => <ProfileGrid />)
+  .add("About Us page", () => <AboutUs />);
 
 storiesOf("Report", module)
   .addDecorator(story => (
@@ -183,5 +169,27 @@ storiesOf("Report", module)
   ))
   .add("Form", () => <ReportForm />);
 
+const results = [
+  {
+    commonName: "Cane Toad",
+    scientificName: "valua dfuir"
+  },
+  {
+    commonName: "Brumby",
+    scientificName: "yare wony"
+  },
+  {
+    commonName: "European Rabbit",
+    scientificName: "valua dfuir"
+  }
+];
+
 storiesOf("Search", module)
-.add("Sidepane", () => <SidePane />)
+  .add("Search bar", () => <SearchBar />)
+  .add("Sidepane", () => <SidePane />)
+  .add("Result List", () => <ResultList results={results} />)
+  .add("Search", () => <Search results={results} />);
+
+storiesOf("Species info", module)
+  .add("Gallery", () => <Gallery />)
+  .add("Gallery Composite", () => <GalleryComposite />);

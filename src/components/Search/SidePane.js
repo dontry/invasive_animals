@@ -8,8 +8,8 @@ import { grey } from "material-ui/colors";
 import Typography from "material-ui/Typography";
 
 const ListWrapper = styled(List)`
-  width: 300px;
   border: 1px solid ${grey[300]};
+  background-color: ${grey[100]};
 `;
 
 const ListTitle = styled(Typography)`

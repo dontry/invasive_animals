@@ -2,13 +2,11 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import MUISearchBar from "material-ui-search-bar";
-import Grid from "material-ui/Grid";
 import { ActionButton } from "../common/ActionButtonGroup";
 
 const StyledSearchBar = styled(MUISearchBar)`
   && {
-    width: 80%;
-    max-width: 600px;
+    width: 100%;
     margin: 0 auto;
     text-align: center;
     padding: 1rem;
@@ -18,9 +16,7 @@ const StyledSearchBar = styled(MUISearchBar)`
 
 const SearchBar = ({ handleChange, handleSearch }) => {
   return (
-    <Grid item xs={8}>
-      <StyledSearchBar onChange={handleChange} onRequestSearch={handleSearch} />
-    </Grid>
+    <StyledSearchBar onChange={handleChange} onRequestSearch={handleSearch} />
   );
 };
 

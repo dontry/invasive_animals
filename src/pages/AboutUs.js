@@ -4,7 +4,7 @@ import ProfileGrid from "../components/About/ProfileGrid";
 import Testimonial from "../components/About/Testimonial";
 import { Title } from "../components/common/Text";
 
-const About = () => (
+const AboutUs = () => (
   <Fragment>
     <PageContainer>
       <Title variant="title" align="center">
@@ -16,4 +16,4 @@ const About = () => (
   </Fragment>
 );
 
-export default About;
+export default AboutUs;
