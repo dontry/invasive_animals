@@ -11,6 +11,7 @@ export const StyledButton = styled(Button)`
     background-color: ${props => props.theme.palette[props.type].main};
     color: ${props => props.theme.palette[props.type].contrastText};
     font-size: ${props => props.theme.textSize.size};
+    height: ${props => props.height || "auto"};
   }
 
   &:hover {
@@ -22,6 +23,7 @@ export const ActionButton = ({
   raised,
   action,
   label,
+  height,
   type = "primary",
   trait = "main"
 }) => (
@@ -30,6 +32,7 @@ export const ActionButton = ({
     onClick={action}
     type={type}
     trait={trait}
+    height={height}
   >
     {label}
   </StyledButton>
