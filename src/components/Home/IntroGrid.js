@@ -4,6 +4,30 @@ import styled from "styled-components";
 import GridList, { GridListTile } from "material-ui/GridList";
 import ImgPlaceholder from "../../assets/images/placeholder.png";
 import Tile from "./Tile";
+import  {lightGreen} from 'material-ui/colors'
+import {
+  TargetIcon,
+  MagnifierIcon,
+  BinocularsIcon,
+} from "../common/Icons";
+
+const introData = [
+  {
+    title: "Detect",
+    icon: <TargetIcon color={lightGreen[500]} />,
+    path: "/detect"
+  },
+  {
+    title: "Find",
+    icon: <MagnifierIcon color={lightGreen[500]} />,
+    path: "/find"
+  },
+  {
+    title: "Trend Observation",
+    icon: <BinocularsIcon color={lightGreen[500]} />,
+    path: "/observe"
+  }
+];
 
 const GridWrapper = styled.div`
   display: flex;
@@ -42,5 +66,9 @@ const IntroGrid = ({ tileData }) => {
 IntroGrid.propTypes = {
   tileData: PropTypes.array.isRequired
 };
+
+IntroGrid.defaultProps = {
+  tileData: introData
+}
 
 export default IntroGrid;

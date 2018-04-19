@@ -38,7 +38,7 @@ const Profile = ({ profile }) => (
       <Title variant="subheading" txtColor={grey[800]}>
         {profile.role}
       </Title>
-      <Paragraph variant="body" txtColor={grey[700]} padding="1rem">
+      <Paragraph variant="body1" txtColor={grey[700]} padding="1rem">
         {profile.description}
       </Paragraph>
     {/* </Paper> */}

@@ -26,7 +26,6 @@ import { BrandIcon } from "./Icons";
 
 const AppBarWrapper = styled.div`
   flex-grow: 1;
-  margin-bottom: 2rem;
 `;
 
 const StyledAppBar = styled(AppBar)`

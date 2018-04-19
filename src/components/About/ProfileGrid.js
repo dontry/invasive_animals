@@ -16,14 +16,12 @@ const GridWrapper = styled(Grid)`
     overflow: hidden;
     padding: 0.5rem;
     margin: 0 auto;
-    @media screen and (max-width: 599px) {
-      width: 100%;
-    }
+    width: ${props => props.width || "100%"};
   }
 `;
 
-const ProfileGrid = ({ profiles }) => (
-  <GridWrapper container direction="row" justify="space-between">
+const ProfileGrid = ({ profiles, width }) => (
+  <GridWrapper container direction="row" justify="space-between" width={width}>
     {profiles.map(profile => <Profile profile={profile} key={profile.name} />)}
   </GridWrapper>
 );

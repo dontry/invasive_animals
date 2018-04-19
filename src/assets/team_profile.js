@@ -14,14 +14,14 @@ export default [
   },
   {
     name: "Yunqi Mo",
-    role: "Data analyst",
+    role: "Data Analyst",
     photo: "assets/images/profiles/patrick.png",
     description:
       "Patrick’s responsibilities include - but not limited to - collecting, interpreting, wrangling, analysing and visualizing data to assist team with better business decisions. Also he is in charge of identifying patterns and trends in data sets and report the results back to the team for further development decisions. Being a part of an Agile team allows him to work alongside with other members to establish business needs."
   },
   {
     name: "Dong Cai",
-    role: "Web developer",
+    role: "Web Developer",
     photo: "assets/images/profiles/dong.jpg",
     description:
       "Dong’s responsibilities include - but not limited to - developing website and ensuring the technical feasibility of UI designs. As a developer, he also focuses on planning and maintaining evolutionary paths for future iterations."

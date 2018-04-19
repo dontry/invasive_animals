@@ -1,24 +1,16 @@
 import React, { Fragment } from "react";
 import NavAppBar from "../components/common/NavAppBar";
-import TabBar from "../components/common/TabBar";
-import { Route } from "react-router-dom";
-import Intro from './Intro';
-import AboutUs from "./AboutUs";
-import ContactUs from './ContactUs';
-
-const tabLabels = [
-  { path: "", name: "Introduction" },
-  { path: "about", name: "About us" },
-  { path: "contact", name: "Contact us" }
-];
+import PageContainer from "../components/common/PageContainer";
+import Banner from "../components/common/Banner";
+import IntroGrid from "../components/Home/IntroGrid";
 
 const Home = () => (
   <Fragment>
     <NavAppBar title="Home" />
-    <TabBar labels={tabLabels} />
-    <Route exact path="/" component={Intro}/>
-    <Route exact path="/about" component={AboutUs} />
-    <Route exact path="/contact" component={ContactUs} />
+    <PageContainer>
+      <Banner />
+      <IntroGrid />
+    </PageContainer>
   </Fragment>
 );
 
