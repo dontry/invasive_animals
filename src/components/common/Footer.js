@@ -8,7 +8,11 @@ import Typography from "material-ui/Typography";
 import { Title } from "./Text";
 import { SITE_MAP } from "../../utils/routing";
 
-const FooterWrapper = styled(Grid)`
+const FooterWrapper = styled.div`
+  position: relative;
+  bottom: 0;
+`;
+const ContentWrapper = styled(Grid)`
   && {
     position: relative;
     width: 100vw;
@@ -24,7 +28,7 @@ function renderFooterMenuList(menu) {
   return menu.map(list => {
     const listItems = renderMenuItems(list.children);
     return (
-      <Grid item xs={3} md={2} >
+      <Grid item xs={3} md={2}>
         <Title variant="subheading" color={grey[300]} padding={"0 0 0.5rem 0"}>
           {list.name}
         </Title>
@@ -45,28 +49,28 @@ function renderMenuItems(items) {
 }
 
 export const Copyright = () => (
-  <FooterWrapper container direction="column">
+  <ContentWrapper container direction="column">
     <Grid item>
       <Title color={grey[500]}>© 2018 OzInvasiveSpecies</Title>
       <Title color={grey[500]}>Powered by G4</Title>
     </Grid>
-  </FooterWrapper>
+  </ContentWrapper>
 );
 
 export const Sitemap = ({ menu }) => {
   const MenuList = renderFooterMenuList(menu);
   return (
-    <FooterWrapper container direction="row" justify="center">
+    <ContentWrapper container direction="row" justify="center">
       {MenuList}
-    </FooterWrapper>
+    </ContentWrapper>
   );
 };
 
 const Footer = () => (
-  <div style={{ position: "absolute", bottom: 0 }}>
+  <FooterWrapper>
     <Sitemap />
     <Copyright />
-  </div>
+  </FooterWrapper>
 );
 
 Sitemap.propTypes = {

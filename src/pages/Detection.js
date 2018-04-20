@@ -9,7 +9,7 @@ import SwipeableViews from "react-swipeable-views";
 import PageContainer from "../components/common/PageContainer";
 import Grid from "material-ui/Grid";
 import { Title } from "../components/common/Text";
-import { green } from "material-ui/colors";
+import { green, lime } from "material-ui/colors";
 import BriefInfo from "../components/Info/BriefInfo";
 import NavAppBar from "../components/common/NavAppBar";
 
@@ -45,30 +45,53 @@ class Detection extends Component {
     return (
       <Fragment>
         <NavAppBar />
-        <PageContainer>
-          <SwipeableViews
-            axis={"x"}
-            index={viewIndex}
-            onChangeIndex={() => {
-              console.log("no change view");
-            }}
-          >
-            <ViewWrapper>
-              <DropboxWrapper>
-                <Title variant="display1" txtColor={green[700]} padding="0 0 2rem">
-                  Detect the invasive species
-                </Title>
-                <UploadImageModule handleSubmit={this.handleSubmit} />
-              </DropboxWrapper>
-            </ViewWrapper>
-            <ViewWrapper>
+        <SwipeableViews
+          axis={"x"}
+          index={viewIndex}
+          onChangeIndex={() => {
+            console.log("no change view");
+          }}
+          style={{overflow: "hidden"}}
+        >
+          <PageContainer height="90vh">
+            <DropboxWrapper>
+              <Title
+                variant="display1"
+                txtColor={green[700]}
+                padding="0 0 2rem"
+              >
+                Detect the invasive species
+              </Title>
+              <UploadImageModule handleSubmit={this.handleSubmit} />
+            </DropboxWrapper>
+          </PageContainer>
+          <PageContainer bgColor={lime[300]} height="100vh">
+            {species && (
               <BriefInfo handleBack={this.handleBack} species={species} />
-            </ViewWrapper>
-          </SwipeableViews>
-        </PageContainer>
+            )}
+            {/* <Button
+              onClick={handleBack}
+              style={{
+                position: "absolute",
+                zIndex: 100,
+                bottom: "2rem",
+                left: "2rem"
+              }}
+            >
+              ⬅ back
+            </Button> */}
+          </PageContainer>
+        </SwipeableViews>
       </Fragment>
     );
   }
 }
+
+Detection.defaultProps = {
+  species: {
+    CommonName: "Cane toad",
+    AcademicalName: "adfas"
+  }
+};
 
 export default Detection;

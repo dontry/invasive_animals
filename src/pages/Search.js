@@ -11,7 +11,7 @@ const SearchBarWrapper = styled(Grid)`
   && {
     padding: 3rem 0 2rem;
   }
-`
+`;
 
 const SidePaneWrapper = styled(Grid)`
   && {
@@ -21,27 +21,29 @@ const SidePaneWrapper = styled(Grid)`
 `;
 
 const ResultWrapper = styled(Grid)`
-  &&{
+  && {
     padding-right: 2rem !important;
   }
-`
+`;
 
-const Search = ({results}) => (
+const Search = ({ results }) => (
   <Fragment>
     <NavAppBar />
-    <SearchBarWrapper container justify="center">
-      <Grid item xs={12} sm={10} md={8}>
-        <SearchBar />
+    <PageContainer height="90vh">
+      <SearchBarWrapper container justify="center">
+        <Grid item xs={12} sm={10} md={8}>
+          <SearchBar />
+        </Grid>
+      </SearchBarWrapper>
+      <Grid container justify="space-around">
+        <SidePaneWrapper item sm={4}>
+          <SidePane />
+        </SidePaneWrapper>
+        <ResultWrapper item xs={10} sm={8}>
+          <ResultList results={results} />
+        </ResultWrapper>
       </Grid>
-    </SearchBarWrapper>
-    <Grid container justify="space-around">
-      <SidePaneWrapper item sm={4}>
-        <SidePane />
-      </SidePaneWrapper>
-      <ResultWrapper item xs={10} sm={8} >
-        <ResultList results={results}/>
-    </ResultWrapper>
-    </Grid>
+    </PageContainer>
   </Fragment>
 );
 

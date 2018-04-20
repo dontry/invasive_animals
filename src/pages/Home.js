@@ -8,7 +8,7 @@ import WebsiteBrand from "../components/Home/WebsiteBrand";
 const Home = () => (
   <Fragment>
     <WebsiteBrand />
-    <NavAppBar title="" />
+    <NavAppBar title={<div />} />
     <PageContainer>
       <Banner />
       <IntroGrid />

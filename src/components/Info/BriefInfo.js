@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -11,13 +11,12 @@ import Button from "material-ui/Button";
 import { ActionButton } from "../common/ActionButtonGroup";
 
 const Root = styled.div`
-  position: relative;
-  background-color: ${lime[300]};
-  height: 100%;
+    position: relative;
+    background-color: ${lime[300]};
 `;
 const BriefInfoWrapper = styled(Grid)`
   position: relative;
-  padding-top: 2rem;
+  padding-top: 10rem;
   padding-bottom: 2rem;
 `;
 
@@ -76,7 +75,9 @@ const BriefInfo = ({ species, handleBack }) => {
       <BriefInfoWrapper container justify="center" alignItems="center">
         <InfoGridItem item>
           <InfoPaper>
-            <Title variant="title" txtColor={red[700]}>Possible invasive species detected</Title>
+            <Title variant="title" txtColor={red[700]}>
+              Possible invasive species detected
+            </Title>
             <Image
               src={species.image || ImagePlaceHolder}
               alt={species.CommonName}

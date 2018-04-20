@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-import Routes from "./Routes";
+import Routes from "./routes";
 import CssBaseLine from "material-ui/CssBaseline";
 import NotificationContainer from "./containers/NotificationContainer";
 import { ThemeProvider } from "styled-components";

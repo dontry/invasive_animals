@@ -7,10 +7,6 @@ import DropImageZone from "./DropImageZone";
 import Button from "material-ui/Button";
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    paddingBottom: "1rem"
-  },
   browseButton: {},
   submitButton: {
     textAlign: "center",
@@ -47,7 +43,6 @@ const UploadImageModule = ({
     <Fragment>
       <Grid
         container
-        className={classes.root}
         direction="column"
         justify="center"
         alignItems="center"

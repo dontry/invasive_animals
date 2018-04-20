@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Route, Redirect } from "react-router";
 import Switch from "react-router-dom/Switch";
 
@@ -10,10 +10,15 @@ import AboutUs from "../pages/AboutUs";
 import Report from "../pages/Report";
 import Login from "../pages/Login";
 import Error404 from "../pages/Error404";
+import Footer from "../components/common/Footer";
 
 const CREDENTIAL = "fit5120";
 
-const ProtectedRoute = ({ component: Component, isAuthenticated, ...rest }) => {
+const ProtectedRoute = ({
+  component: Component,
+  isAuthenticated = true,
+  ...rest
+}) => {
   return (
     <Route
       {...rest}
@@ -53,40 +58,58 @@ class Routes extends Component {
     }
   };
   render() {
-    const { isAuthenticated } = this.state;
+    let { isAuthenticated } = this.state;
+    isAuthenticated = true;
     return (
-      <Switch>
-        <Route
-          path="/login"
-          render={() => (
-            <Login
-              handleChange={this.handleChange.bind(this)}
-              handleSubmit={this.handleSubmit.bind(this)}
-            />
-          )}
-        />
-        <ProtectedRoute
-          path="/"
-          component={Home}
-          isAuthenticated={isAuthenticated}
-        />
-        <ProtectedRoute
-          path="/detect"
-          component={Detection}
-          isAuthenticated={isAuthenticated}
-        />
-        <ProtectedRoute
-          path="/find"
-          component={Search}
-          isAuthenticated={isAuthenticated}
-        />
-        <ProtectedRoute
-          path="/detect"
-          isAuthenticated={isAuthenticated}
-          component={Detection}
-        />
-        <Route exact component={Error404} />
-      </Switch>
+      <Fragment>
+        <Switch>
+          <Route
+            path="/login"
+            render={() => (
+              <Login
+                handleChange={this.handleChange.bind(this)}
+                handleSubmit={this.handleSubmit.bind(this)}
+              />
+            )}
+          />
+          <ProtectedRoute
+            exact
+            path="/"
+            component={Home}
+            isAuthenticated={isAuthenticated}
+          />
+          <ProtectedRoute
+            exact
+            path="/detect"
+            component={Detection}
+            isAuthenticated={isAuthenticated}
+          />
+          <ProtectedRoute
+            exact
+            path="/report"
+            component={Report}
+            isAuthenticated={isAuthenticated}
+          />
+          <ProtectedRoute
+            path="/find"
+            component={Search}
+            isAuthenticated={isAuthenticated}
+          />
+          <ProtectedRoute
+            path="/about"
+            isAuthenticated={isAuthenticated}
+            component={AboutUs}
+          />
+          <ProtectedRoute
+            exact
+            path="/"
+            component={Home}
+            isAuthenticated={isAuthenticated}
+          />
+          <Route component={Error404} />
+        </Switch>
+        <Footer />
+      </Fragment>
     );
   }
 }

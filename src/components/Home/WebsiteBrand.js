@@ -6,11 +6,12 @@ import Grid from "material-ui/Grid";
 
 const Wrapper = styled(Grid)`
   && {
-    width: 100vw;
+    width: 100%;
     padding: 10px;
     line-height: 1.5rem;
     background-color: ${props => props.theme.palette.primary.dark};
     text-align: center;
+    margin: 0;
   }
 `;
 
