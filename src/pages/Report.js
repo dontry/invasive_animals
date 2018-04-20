@@ -1,23 +1,27 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from "react";
 import NavAppBar from "../components/common/NavAppBar";
-import PageContainer from '../components/common/PageContainer';
+import PageContainer from "../components/common/PageContainer";
 import ReportForm from "../components/Report/ReportForm";
 import ReportFormContainer from "../containers/ReportFormContainer";
-
+import { Title } from "../components/common/Text";
+import { lime } from "material-ui/colors";
 
 const style = {
-    width: "60vw",
-    padding: "1rem 2rem"
-}
+  padding: "1rem 2rem"
+};
 
 const Report = () => {
-    return (
-        <Fragment>
-            <PageContainer style={style}>
-               <ReportFormContainer /> 
-            </PageContainer>
-        </Fragment>
-    )
-}
+  return (
+    <Fragment>
+      <NavAppBar />
+      <PageContainer style={style}>
+        <Title variant="title" txtColor={lime[800]} align="left">
+          Report to Goverment
+        </Title>
+        <ReportForm />
+      </PageContainer>
+    </Fragment>
+  );
+};
 
 export default Report;

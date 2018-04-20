@@ -30,9 +30,8 @@ const styles = {
 };
 
 const FormWrapper = styled.form`
-  width: 80%;
   margin: 0 auto;
-  padding: 1rem 2rem 3rem;
+  padding: 2rem 0 3rem;
   @media screen and (max-width: 599px) {
     width: 100%;
   }
@@ -201,8 +200,8 @@ export class ReportForm extends Component {
           />
           <Field name="location" component={renderTextField} label="Location" />
           <Field name="date" component={renderDateField} label="Date" />
-          <Field name="species" component={renderTextField} label="Species" />
-          <Field name="amount" component={renderTextField} label="Amount" />
+          <Field name="species" component={renderTextField} label="Species Name" />
+          <Field name="amount" component={renderTextField} label="Number of species" />
           <Field
             name="description"
             label="Description"

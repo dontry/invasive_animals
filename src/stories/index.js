@@ -26,6 +26,7 @@ import Icon from "material-ui/Icon";
 
 import IntroGrid from "../components/Home/IntroGrid";
 import Home from "../pages/Home";
+import WebsiteBrand from "../components/Home/WebsiteBrand";
 
 import Testimonial from "../components/About/Testimonial";
 import Profile from "../components/About/Profile";
@@ -36,6 +37,7 @@ import DropImageZone from "../components/Detect/DropImageZone";
 import Detection from "../pages/Detection";
 
 import ReportForm from "../components/Report/ReportForm";
+import Report from "../pages/Report";
 
 import SearchBar from "../components/Search/SearchBar";
 import ResultList from "../components/Search/ResultList";
@@ -170,6 +172,7 @@ storiesOf("Home", module)
     </MemoryRouter>
   ))
   .add("Intro grid", () => <IntroGrid />)
+  .add("Website brand", () => <WebsiteBrand />)
   .add("Home page", () => <Home />);
 
 storiesOf("Detection", module)
@@ -182,6 +185,11 @@ storiesOf("Detection", module)
   .add("Detection page", () => <Detection species={results[0]} />);
 
 storiesOf("About", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/get_involved/detect", "/about"]}>
+      {story()}
+    </MemoryRouter>
+  ))
   .add("Testimonial", () => <Testimonial />)
   .add("Profile", () => <Profile />)
   .add("ProfileGrid", () => <ProfileGrid />)
@@ -193,9 +201,15 @@ storiesOf("Report", module)
       {story()}
     </MemoryRouter>
   ))
-  .add("Form", () => <ReportForm />);
+  .add("Form", () => <ReportForm />)
+  .add("Report page", () => <Report />);
 
 storiesOf("Search", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/get_involved/detect", "/about"]}>
+      {story()}
+    </MemoryRouter>
+  ))
   .add("Search bar", () => <SearchBar />)
   .add("Sidepane", () => <SidePane />)
   .add("Result List", () => <ResultList results={results} />)

@@ -11,14 +11,14 @@ import Grid from "material-ui/Grid";
 import { Title } from "../components/common/Text";
 import { green } from "material-ui/colors";
 import BriefInfo from "../components/Info/BriefInfo";
+import NavAppBar from "../components/common/NavAppBar";
 
 const ViewWrapper = styled.section`
-  width: 100vw;
-  height: 100vh;
+  height: 100%;
 `;
 
 const DropboxWrapper = styled.div`
-  margin-top: 15%;
+  margin-top: 50px;
 `;
 
 class Detection extends Component {
@@ -44,6 +44,7 @@ class Detection extends Component {
     console.log(viewIndex);
     return (
       <Fragment>
+        <NavAppBar />
         <PageContainer>
           <SwipeableViews
             axis={"x"}

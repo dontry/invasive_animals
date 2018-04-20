@@ -14,6 +14,7 @@ const GalleryWrapper = styled.div`
     justify-content: space-around;
     overflow: hidden;
     background-color: ${grey[200]};
+    cursor: pointer;
   }
 `;
 
@@ -21,6 +22,7 @@ const StyledGridList = styled(GridList)`
   && {
     flex-wrap: nowrap;
     transform: translateZ(0);
+    
   }
 `;
 

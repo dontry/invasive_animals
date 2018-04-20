@@ -22,6 +22,7 @@ import Paper from "material-ui/Paper";
 import ClickAwayListener from "material-ui/utils/ClickAwayListener";
 import Menu, { MenuItem, MenuList } from "material-ui/Menu";
 import { BrandIcon } from "./Icons";
+import {NAV_BAR} from "../../routes/routing";
 
 
 const AppBarWrapper = styled.div`
@@ -153,16 +154,7 @@ NavAppBar.defaultProps = {
       <BrandIcon size={"40px"}/>
     </Link>
   ),
-  menuItems: [
-    { name: "HOME", path: "/" },
-    {
-      name: "GET INVOLVED",
-      children: [
-        { name: "Detect", path: "/get_involved/detect" },
-        { name: "Report", path: "/get_involved/report" }
-      ]
-    }
-  ]
+  menuItems: NAV_BAR
 };
 
 export default NavAppBar;

@@ -4238,7 +4238,7 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "^2.0.0"
 
-fbjs@^0.8.1, fbjs@^0.8.12, fbjs@^0.8.16, fbjs@^0.8.5, fbjs@^0.8.9:
+fbjs@^0.8.1, fbjs@^0.8.12, fbjs@^0.8.16, fbjs@^0.8.4, fbjs@^0.8.5, fbjs@^0.8.9:
   version "0.8.16"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.16.tgz#5e67432f550dc41b572bf55847b8aca64e5337db"
   dependencies:
@@ -6584,7 +6584,7 @@ jws@^3.1.4:
     jwa "^1.1.4"
     safe-buffer "^5.0.1"
 
-keycode@^2.1.9:
+keycode@^2.1.7, keycode@^2.1.9:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/keycode/-/keycode-2.2.0.tgz#3d0af56dc7b8b8e5cba8d0a97f107204eec22b04"
 
@@ -6911,16 +6911,17 @@ marked@^0.3.9:
   version "0.3.17"
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.3.17.tgz#607f06668b3c6b1246b28f13da76116ac1aa2d2b"
 
-material-ui-icons@^1.0.0-beta.36:
+material-ui-icons@^1.0.0-beta.17, material-ui-icons@^1.0.0-beta.36:
   version "1.0.0-beta.36"
   resolved "https://registry.yarnpkg.com/material-ui-icons/-/material-ui-icons-1.0.0-beta.36.tgz#86390a61f4c83f718eaba77ccce575834f2cf2a8"
   dependencies:
     recompose "^0.26.0"
 
-material-ui-search-bar@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/material-ui-search-bar/-/material-ui-search-bar-0.4.1.tgz#821a81d6942dc92ade9d00103f08a961b93b243f"
+material-ui-search-bar@beta:
+  version "1.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/material-ui-search-bar/-/material-ui-search-bar-1.0.0-beta.4.tgz#4a951c3fef7fe5b5be796f1d7b6dc97ebace6720"
   dependencies:
+    material-ui-icons "^1.0.0-beta.17"
     prop-types "^15.5.8"
 
 material-ui@next:
@@ -9169,6 +9170,35 @@ react-style-proptype@^3.0.0:
   resolved "https://registry.yarnpkg.com/react-style-proptype/-/react-style-proptype-3.2.1.tgz#7cfeb9b87ec7ab9dcbde9715170ed10c11fb86aa"
   dependencies:
     prop-types "^15.5.4"
+
+react-swipeable-views-core@^0.12.11:
+  version "0.12.11"
+  resolved "https://registry.yarnpkg.com/react-swipeable-views-core/-/react-swipeable-views-core-0.12.11.tgz#3cf2b4daffbb36f9d69bd19bf5b2d5370b6b2c1b"
+  dependencies:
+    babel-runtime "^6.23.0"
+    warning "^3.0.0"
+
+react-swipeable-views-utils@^0.12.13:
+  version "0.12.13"
+  resolved "https://registry.yarnpkg.com/react-swipeable-views-utils/-/react-swipeable-views-utils-0.12.13.tgz#fe102524180bf568f746e844c8d74b9cd3e7e0b8"
+  dependencies:
+    babel-runtime "^6.23.0"
+    fbjs "^0.8.4"
+    keycode "^2.1.7"
+    prop-types "^15.6.0"
+    react-event-listener "^0.5.1"
+    react-swipeable-views-core "^0.12.11"
+
+react-swipeable-views@^0.12.13:
+  version "0.12.13"
+  resolved "https://registry.yarnpkg.com/react-swipeable-views/-/react-swipeable-views-0.12.13.tgz#247442dbe14922efe5ad6fe0297599c817600bf9"
+  dependencies:
+    babel-runtime "^6.23.0"
+    dom-helpers "^3.2.1"
+    prop-types "^15.5.4"
+    react-swipeable-views-core "^0.12.11"
+    react-swipeable-views-utils "^0.12.13"
+    warning "^3.0.0"
 
 react-toolbox-themr@^1.0.2:
   version "1.0.2"

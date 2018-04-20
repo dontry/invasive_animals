@@ -3,10 +3,12 @@ import NavAppBar from "../components/common/NavAppBar";
 import PageContainer from "../components/common/PageContainer";
 import Banner from "../components/common/Banner";
 import IntroGrid from "../components/Home/IntroGrid";
+import WebsiteBrand from "../components/Home/WebsiteBrand";
 
 const Home = () => (
   <Fragment>
-    <NavAppBar title="Home" />
+    <WebsiteBrand />
+    <NavAppBar title="" />
     <PageContainer>
       <Banner />
       <IntroGrid />

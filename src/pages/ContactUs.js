@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import NavAppBar from "../components/common/NavAppBar"
 import PageContainer from "../components/common/PageContainer";
 
 const style = {
@@ -7,6 +8,7 @@ const style = {
 
 export default () => (
   <Fragment>
+    <NavAppBar />
     <PageContainer>
       <h2>Contact Us</h2>
       <ul style={style}>

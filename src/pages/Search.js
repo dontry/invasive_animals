@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import styled from "styled-components";
 import PageContainer from "../components/common/PageContainer";
+import NavAppBar from "../components/common/NavAppBar";
 import SearchBar from "../components/Search/SearchBar";
 import SidePane from "../components/Search/SidePane";
 import ResultList from "../components/Search/ResultList";
@@ -8,7 +9,7 @@ import Grid from "material-ui/Grid";
 
 const SearchBarWrapper = styled(Grid)`
   && {
-    padding: 1rem 0 2rem;
+    padding: 3rem 0 2rem;
   }
 `
 
@@ -19,8 +20,15 @@ const SidePaneWrapper = styled(Grid)`
   }
 `;
 
+const ResultWrapper = styled(Grid)`
+  &&{
+    padding-right: 2rem !important;
+  }
+`
+
 const Search = ({results}) => (
   <Fragment>
+    <NavAppBar />
     <SearchBarWrapper container justify="center">
       <Grid item xs={12} sm={10} md={8}>
         <SearchBar />
@@ -30,9 +38,9 @@ const Search = ({results}) => (
       <SidePaneWrapper item sm={4}>
         <SidePane />
       </SidePaneWrapper>
-      <Grid item xs={10} sm={8} >
+      <ResultWrapper item xs={10} sm={8} >
         <ResultList results={results}/>
-    </Grid>
+    </ResultWrapper>
     </Grid>
   </Fragment>
 );

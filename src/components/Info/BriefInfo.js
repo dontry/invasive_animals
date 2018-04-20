@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Title, Paragraph } from "../common/Text";
 import ImagePlaceHolder from "../../assets/images/placeholder.png";
-import { grey, lime } from "material-ui/colors";
+import { grey, lime, red } from "material-ui/colors";
 import Paper from "material-ui/Paper";
 import Grid from "material-ui/Grid";
 import Button from "material-ui/Button";
@@ -13,11 +13,12 @@ import { ActionButton } from "../common/ActionButtonGroup";
 const Root = styled.div`
   position: relative;
   background-color: ${lime[300]};
+  height: 100%;
 `;
 const BriefInfoWrapper = styled(Grid)`
   position: relative;
-  width: 100%;
-  height: 100vh;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 `;
 
 const InfoGridItem = styled(Grid)`
@@ -75,6 +76,7 @@ const BriefInfo = ({ species, handleBack }) => {
       <BriefInfoWrapper container justify="center" alignItems="center">
         <InfoGridItem item>
           <InfoPaper>
+            <Title variant="title" txtColor={red[700]}>Possible invasive species detected</Title>
             <Image
               src={species.image || ImagePlaceHolder}
               alt={species.CommonName}
@@ -90,9 +92,9 @@ const BriefInfo = ({ species, handleBack }) => {
                 {species.BriefIntroduction}
               </Paragraph>
               <Link to={`/species/${species.CommonName.replace(" ", "_")}`}>
-                Learn More...
+                Learn More ……
               </Link>
-            </Intro>……
+            </Intro>
           </InfoPaper>
         </InfoGridItem>
       </BriefInfoWrapper>
