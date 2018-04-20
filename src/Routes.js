@@ -4,9 +4,9 @@ import Switch from "react-router-dom/Switch";
 
 //Pages
 import Home from "./pages/Home";
-import Participate from "./pages/Participate";
+import Search from "./pages/Search";
+import AboutUs from "./pages/AboutUs";
 import Report from "./pages/Report";
-import GetInvolved from "./pages/GetInvolved";
 import Login from "./pages/Login";
 import Error404 from "./pages/Error404";
 
@@ -65,10 +65,11 @@ class Routes extends Component {
           )}
         />
         <ProtectedRoute
-          path="/getinvolved"
-          component={GetInvolved}
+          path="/find"
+          component={Search}
           isAuthenticated={isAuthenticated}
         />
+        <ProtectedRoute path="/detect" isAuthenticated={isAuthenticated} />
         <ProtectedRoute
           path="/"
           component={Home}

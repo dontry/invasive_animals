@@ -20,6 +20,7 @@ function renderListItem(items, handleClick) {
   return items.map(item => (
     <ListItem button key={item.name} onClick={handleClick}>
       <ListItemText primary={item.name} />
+      <Divider />
     </ListItem>
   ));
 }

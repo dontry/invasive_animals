@@ -31,15 +31,15 @@ const Entry = ({ species }) => (
     <ContentWrapper item>
       <Thumbnail
         src={species.image || ImagePlaceholder}
-        alt={species.commonName}
+        alt={species.CommonName}
       />
     </ContentWrapper>
     <ContentWrapper item padding={"0.5rem 1rem"}>
       <Title variant="title" align="left" txtColor={grey[800]}>
-        {species.commonName}
+        {species.CommonName}
       </Title>
       <Title vairiant="body1" align="left" txtColor={grey[700]}>
-        {species.scientificName}
+        {species.AcademicalName}
       </Title>
     </ContentWrapper>
   </EntryWrapper>
@@ -51,8 +51,8 @@ Entry.propTypes = {
 
 Entry.defaultTypes = {
   species: {
-    commonName: "Common Name",
-    scientificName: "Scientific Name",
+    CommonName: "Common Name",
+    AcademicalName: "Scientific Name",
     image: ""
   }
 };

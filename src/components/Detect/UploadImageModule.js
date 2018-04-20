@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 import { withStyles } from "material-ui/styles";
 import Grid from "material-ui/Grid";
 import DropImageZone from "./DropImageZone";
@@ -18,20 +19,29 @@ const styles = theme => ({
   }
 });
 
+const BrowseButton = styled(Button)`
+  && {
+    background-color: ${props => props.theme.palette.primary.main};
+    color: #fff;
+  }
+`;
+
 const getSpacing = (number = 1) => Number(16 / number);
 
 const UploadImageModule = ({
   classes,
   image,
   uploadImage,
-  getDetectionResult
+  getDetectionResult,
+  handleSubmit
 }) => {
-  const handleBrowseClick = () => {
+  const handleBrowseBtnClick = () => {
     const $dropzone = document.getElementById("dropzone");
     $dropzone.click();
   };
-  const handleSubmitClick = () => {
-    getDetectionResult(image.entity);
+  const handleSubmitBtnClick = () => {
+    handleSubmit();
+    // getDetectionResult(image.entity);
   };
   return (
     <Fragment>
@@ -44,25 +54,23 @@ const UploadImageModule = ({
         spacing={getSpacing()}
       >
         <Grid item sm={8}>
-          <Button
+          <DropImageZone uploadImage={uploadImage} />
+        </Grid>
+        <Grid item sm={8}>
+          <BrowseButton
             variant="raised"
             className={classes.browseButton}
-            onClick={handleBrowseClick}
+            onClick={handleBrowseBtnClick}
           >
             Browse
-          </Button>
-        </Grid>
-        <Grid item sm={8}>
-            <DropImageZone uploadImage={uploadImage} />
-        </Grid>
-        <Grid item sm={8}>
-          <Button
+          </BrowseButton>
+          <BrowseButton
             variant="raised"
-            className={classes.submitButton}
-            onClick={handleSubmitClick}
+            className={classes.browseButton}
+            onClick={handleSubmitBtnClick}
           >
             Submit
-          </Button>
+          </BrowseButton>
         </Grid>
       </Grid>
     </Fragment>

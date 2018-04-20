@@ -17,7 +17,6 @@ import Loading from "../components/common/LoadingSpinner";
 import Error from "../components/common/Error";
 import { BreadcrumbsItem, Breadcrumbs } from "../components/common/Breadcrumbs";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
-import DropImageZone from "../components/Detect/DropImageZone";
 import ActionButtonGroup from "../components/common/ActionButtonGroup";
 import NavAppBar from "../components/common/NavAppBar";
 import Banner from "../components/common/Banner";
@@ -33,6 +32,9 @@ import Profile from "../components/About/Profile";
 import ProfileGrid from "../components/About/ProfileGrid";
 import AboutUs from "../pages/AboutUs";
 
+import DropImageZone from "../components/Detect/DropImageZone";
+import Detection from "../pages/Detection";
+
 import ReportForm from "../components/Report/ReportForm";
 
 import SearchBar from "../components/Search/SearchBar";
@@ -41,9 +43,26 @@ import SidePane from "../components/Search/SidePane";
 import Search from "../pages/Search";
 
 import Gallery from "../components/Info/Gallery";
+import BriefInfo from "../components/Info/BriefInfo";
 
 import imageFile from "../assets/images/dandenong-ranges.jpg";
 import GalleryComposite from "../components/Info/GalleryComposite";
+
+const results = [
+  {
+    CommonName: "Cane Toad",
+    AcademicalName: "valua dfuir",
+    BriefIntroduction: "asdfasdfly asdfyasdfas fnasdfasdf"
+  },
+  {
+    CommonName: "Brumby",
+    AcademicalName: "yare wony"
+  },
+  {
+    CommonName: "European Rabbit",
+    AcademicalName: "valua dfuir"
+  }
+];
 
 addDecorator(story => {
   return <Provider story={story()} />;
@@ -88,8 +107,6 @@ storiesOf("Error ", module)
     </MemoryRouter>
   ))
   .add("Default Error 404", () => <Error />);
-
-storiesOf("Drop zone", module).add("Drop zone", () => <DropImageZone />);
 
 storiesOf("Breadcrumbs", module)
   .addDecorator(story => (
@@ -155,6 +172,15 @@ storiesOf("Home", module)
   .add("Intro grid", () => <IntroGrid />)
   .add("Home page", () => <Home />);
 
+storiesOf("Detection", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/get_involved/detect", "/about"]}>
+      {story()}
+    </MemoryRouter>
+  ))
+  .add("Drop zone", () => <DropImageZone />)
+  .add("Detection page", () => <Detection species={results[0]} />);
+
 storiesOf("About", module)
   .add("Testimonial", () => <Testimonial />)
   .add("Profile", () => <Profile />)
@@ -169,21 +195,6 @@ storiesOf("Report", module)
   ))
   .add("Form", () => <ReportForm />);
 
-const results = [
-  {
-    commonName: "Cane Toad",
-    scientificName: "valua dfuir"
-  },
-  {
-    commonName: "Brumby",
-    scientificName: "yare wony"
-  },
-  {
-    commonName: "European Rabbit",
-    scientificName: "valua dfuir"
-  }
-];
-
 storiesOf("Search", module)
   .add("Search bar", () => <SearchBar />)
   .add("Sidepane", () => <SidePane />)
@@ -191,5 +202,11 @@ storiesOf("Search", module)
   .add("Search", () => <Search results={results} />);
 
 storiesOf("Species info", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/get_involved/detect", "/about"]}>
+      {story()}
+    </MemoryRouter>
+  ))
   .add("Gallery", () => <Gallery />)
-  .add("Gallery Composite", () => <GalleryComposite />);
+  .add("Gallery Composite", () => <GalleryComposite />)
+  .add("Brief Info", () => <BriefInfo species={results[0]} />);
