@@ -3,7 +3,7 @@ import ResultModule from "../components/ResultModule";
 
 const mapStateToProps = state => {
   return {
-    result: state.images.detectionResult
+    result: state.detection.detectionResult
   };
 };
 

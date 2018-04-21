@@ -19,6 +19,7 @@ const StyledDropzone = styled(Dropzone)`
   color: ${grey[600]};
   background-color: ${grey[200]};
   text-align: center;
+  cursor: pointer;
   &:hover * {
     color: ${grey[900]};
   }

@@ -5,12 +5,17 @@ import Banner from "../components/common/Banner";
 import IntroGrid from "../components/Home/IntroGrid";
 import WebsiteBrand from "../components/Home/WebsiteBrand";
 
+const BANNER_DESCRIPTION = `
+ Welcome, this is a place where 
+ you get help to know more about the species you found...
+ Is it invasive? Let's find out...`
+
 const Home = () => (
   <Fragment>
     <WebsiteBrand />
     <NavAppBar title={<div />} />
     <PageContainer>
-      <Banner />
+      <Banner description={BANNER_DESCRIPTION} />
       <IntroGrid />
     </PageContainer>
   </Fragment>

@@ -6,6 +6,7 @@ import Switch from "react-router-dom/Switch";
 import Home from "../pages/Home";
 import Detection from "../pages/Detection";
 import Search from "../pages/Search";
+import SpeciesInfo from "../pages/SpeciesInfo";
 import AboutUs from "../pages/AboutUs";
 import Report from "../pages/Report";
 import Login from "../pages/Login";
@@ -93,6 +94,11 @@ class Routes extends Component {
           <ProtectedRoute
             path="/find"
             component={Search}
+            isAuthenticated={isAuthenticated}
+          />
+          <ProtectedRoute
+            path="/species/:id"
+            component={SpeciesInfo}
             isAuthenticated={isAuthenticated}
           />
           <ProtectedRoute

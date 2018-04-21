@@ -3,7 +3,7 @@ import { encodeImageFromDir } from "../utils/encodeImage";
 import { getInvasiveSpecies } from "../utils/detectInvasiveSpecies";
 
 test("detect an image of a cane toad", async () => {
-  const content = encodeImageFromDir("./canetoad2.jpeg");
+  const content = encodeImageFromDir("/public/assets/images/species/cane_toad.jpeg");
   const option = {
     features: [
       {
@@ -32,3 +32,14 @@ test("detect an image of a cane toad", async () => {
     console.log(exception);
   }
 });
+
+
+test("get species from firebase", async() => {
+  const species = await api.getAllSpecies();
+  expect(species.length).toBe(10);
+})
+
+test("get images by species id", async() => {
+  const images = await api.getImagesById(1);
+  expect(images.length).toBeGreaterThan(1);
+})

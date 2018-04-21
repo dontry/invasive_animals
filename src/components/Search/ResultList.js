@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import Title from "../common/Text";
+import { Title } from "../common/Text";
 import Entry from "../Info/Entry";
 
 const ResultListWrapper = styled.div`
@@ -9,19 +9,34 @@ const ResultListWrapper = styled.div`
 `;
 
 const ResultList = ({ results }) => {
+  if (results.length === 0) {
+    return (
+      <Fragment>
+        <Title variant="title" txtColor="#666">
+          Sorry, no matched result found.
+        </Title>
+        <Title variant="title" txtColor="#666">
+          Can you have another try?
+        </Title>
+      </Fragment>
+    );
+  }
   return (
     <ResultListWrapper>
-      {results && results.map(item => <Entry species={item} />)}
+      {results &&
+        results.map((item, index) => (
+          <Entry key={`results-${index}`} species={item} />
+        ))}
     </ResultListWrapper>
   );
 };
 
 ResultList.propTypes = {
-    results: PropTypes.array.isRequired
-}
+  results: PropTypes.array.isRequired
+};
 
 ResultList.defaultTypes = {
-    results: []
-}
+  results: []
+};
 
 export default ResultList;

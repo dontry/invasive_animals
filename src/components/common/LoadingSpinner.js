@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   text-align: center;
   top: 50%;
   left: 50%;
-  transform: translateY(-50%, -50%);
+  transform: translate(-80%, -50%);
 `;
 
 const Loading = ({ type = "spin", color = "#222" }) => (

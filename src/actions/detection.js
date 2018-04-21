@@ -58,7 +58,7 @@ export async function fetchDetectionResult(image, options = DEFAULT_OPTIONS) {
     try {
       const res = await api.sendImage(content, options);
       const data = res.data.responses[0];
-      const result = getInvasiveSpecies(data);
+      const result = await getInvasiveSpecies(data);
       dispatch(fetchDetectionResultSuccess(result));
     } catch (error) {
       dispatch(fetchDetectionResultFailure(error));

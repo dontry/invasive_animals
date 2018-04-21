@@ -1,6 +1,12 @@
 import React, { Component } from "react";
+import styled from "styled-components";
 import { Route, withRouter } from "react-router-dom";
 import { BreadcrumbsItem, Separator } from "./Breadcrumbs";
+
+const BreadcrumbsWrapper = styled.div`
+  padding-top: 1rem;
+  padding-left: 2rem;
+`;
 
 function renderBreadcrumbItems(paths) {
   return paths.map((p, index) => {
@@ -8,6 +14,7 @@ function renderBreadcrumbItems(paths) {
       return (
         <Route
           path={p}
+          key={p}
           render={props => <BreadcrumbsItem {...props} hasSeparator={true} />}
         />
       );
@@ -25,7 +32,7 @@ const BreadcrumbsWithRouter = ({ location, match }) => {
   });
   if (paths[1] !== "/") paths[0] = "/";
   const breadcrumbsItems = renderBreadcrumbItems(paths);
-  return <div>{breadcrumbsItems}</div>;
+  return <BreadcrumbsWrapper>{breadcrumbsItems}</BreadcrumbsWrapper>;
 };
 
 export default withRouter(BreadcrumbsWithRouter);

@@ -51,8 +51,8 @@ function renderMenuItems(items) {
 export const Copyright = () => (
   <ContentWrapper container direction="column">
     <Grid item>
-      <Title color={grey[500]}>© 2018 OzInvasiveSpecies</Title>
-      <Title color={grey[500]}>Powered by G4</Title>
+      <Title txtColor={grey[500]}>© 2018 OzInvasiveSpecies</Title>
+      <Title txtColor={grey[500]}>Powered by G4</Title>
     </Grid>
   </ContentWrapper>
 );
@@ -68,7 +68,7 @@ export const Sitemap = ({ menu }) => {
 
 const Footer = () => (
   <FooterWrapper>
-    <Sitemap />
+    {/* <Sitemap /> */}
     <Copyright />
   </FooterWrapper>
 );

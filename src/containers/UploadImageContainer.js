@@ -4,7 +4,7 @@ import UploadImageModule from "../components/Detect/UploadImageModule";
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    image: state.images.uploadImage
+    image: state.detection.uploadImage
   };
 };
 

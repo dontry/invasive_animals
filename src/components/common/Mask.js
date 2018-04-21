@@ -10,12 +10,16 @@ export const Mask = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, ${props => props.opacity || 0.2});
+    background-color: rgba(255, 255, 255, ${props => props.opacity || 0.5});
   }
 `;
 
-
 export const ScreenMask = Mask.extend`
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  background: transparent;
   &:after {
     position: fixed;
     content: "";

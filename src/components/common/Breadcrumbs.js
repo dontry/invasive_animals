@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import NavLink from "./NavLink";
 import Icon from "material-ui/Icon";
-import { findRouteName } from "../../utils/routing";
+import { findRouteName } from "../../routes/routing";
 import { strEqual } from "../../utils/tools";
 
 export const Separator = styled.span`
@@ -35,6 +35,8 @@ export const BreadcrumbsItem = ({ match, hasSeparator = false }) => {
         {hasSeparator && <Separator>/</Separator>}
       </span>
     );
+  } else {
+    return <div />;
   }
 };
 

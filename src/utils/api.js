@@ -1,5 +1,5 @@
 import ax from "axios";
-import firebase from "./firebase";
+import { SpeciesDB, ImageDB } from "./firebase";
 
 //API_KEY AIzaSyC-PWrqdqmyEc89eBv4rAfyWiqLcVZTV8I
 const GOOGLE_VISION_API_URL =
@@ -7,22 +7,32 @@ const GOOGLE_VISION_API_URL =
 
 export function sendImage(content, options) {
   const payload = {
-    "requests": [
+    requests: [
       {
-        "image": { "content": content },
-        "features": options.features
+        image: { content: content },
+        features: options.features
       }
     ]
   };
   return ax.post(GOOGLE_VISION_API_URL, payload);
 }
 
-
-var database = firebase.database();
-
-export function getSpecies() {
-  const speciesRef = firebase.database().ref('species');
-
+export async function getAllSpecies() {
+  const speciesRef = SpeciesDB.database().ref();
+  const snap = await speciesRef.once("value");
+  return snap.val();
 }
- 
 
+export async function getAllImages() {
+  const imageRef = ImageDB.database().ref();
+  const snap = await imageRef.once("value");
+  // const snap = imageRef.orderByValue("SpeciesID").equalTo(id).once();
+  return snap.val();
+}
+
+export async function getImagesById(id) {
+  const allImages = await getAllImages();
+  return allImages
+    .filter(item => item.SpeciesID === id)
+    .map(item => item.ImageURL);
+}

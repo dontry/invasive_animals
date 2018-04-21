@@ -1,19 +1,9 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { withStyles } from "material-ui/styles";
 import Grid from "material-ui/Grid";
 import DropImageZone from "./DropImageZone";
 import Button from "material-ui/Button";
-
-const styles = theme => ({
-  browseButton: {},
-  submitButton: {
-    textAlign: "center",
-    width: "80%",
-    marginLeft: "10%"
-  }
-});
 
 const BrowseButton = styled(Button)`
   && {
@@ -36,8 +26,8 @@ const UploadImageModule = ({
     $dropzone.click();
   };
   const handleSubmitBtnClick = () => {
+    getDetectionResult(image.entity);
     handleSubmit();
-    // getDetectionResult(image.entity);
   };
   return (
     <Fragment>
@@ -52,18 +42,13 @@ const UploadImageModule = ({
           <DropImageZone uploadImage={uploadImage} />
         </Grid>
         <Grid item sm={8}>
-          <BrowseButton
+          {/* <BrowseButton
             variant="raised"
-            className={classes.browseButton}
             onClick={handleBrowseBtnClick}
           >
             Browse
-          </BrowseButton>
-          <BrowseButton
-            variant="raised"
-            className={classes.browseButton}
-            onClick={handleSubmitBtnClick}
-          >
+          </BrowseButton> */}
+          <BrowseButton variant="raised" onClick={handleSubmitBtnClick}>
             Submit
           </BrowseButton>
         </Grid>
@@ -73,21 +58,22 @@ const UploadImageModule = ({
 };
 
 UploadImageModule.propTypes = {
-  classes: PropTypes.object.isRequired,
   image: PropTypes.object.isRequired,
   uploadImage: PropTypes.func.isRequired,
   getDetectionResult: PropTypes.func.isRequired
 };
 
 UploadImageModule.defaultProps = {
-  classes: {},
   image: null,
   uploadImage() {
     console.log("uploadImage");
   },
   getDetectionResult() {
     console.log("getDetectionResult");
+  },
+  handleSubmit() {
+    console.log("handleSubmit");
   }
 };
 
-export default withStyles(styles)(UploadImageModule);
+export default UploadImageModule;

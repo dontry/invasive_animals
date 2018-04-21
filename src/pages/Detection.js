@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { connect } from "react-redux";
 import UploadImageModule from "../components/Detect/UploadImageModule";
+import UploadImageContainer from "../containers/UploadImageContainer";
 import DetectionResultContainer from "../containers/DetectionResultContainer";
 import Divider from "material-ui/Divider";
 import ResultModule from "../components/ResultModule";
@@ -12,26 +14,36 @@ import { Title } from "../components/common/Text";
 import { green, lime } from "material-ui/colors";
 import BriefInfo from "../components/Info/BriefInfo";
 import NavAppBar from "../components/common/NavAppBar";
+import LoadingSpinner from "../components/common/LoadingSpinner";
+import { ScreenMask, Mask } from "../components/common/Mask";
 
 const ViewWrapper = styled.section`
   height: 100%;
 `;
 
 const DropboxWrapper = styled.div`
+  height: 100%;
   margin-top: 50px;
 `;
 
 class Detection extends Component {
   state = {
-    viewIndex: 0
+    viewIndex: 0,
+    loading: false
   };
 
   handeChangeIndex = index => {
     this.setState({ viewIndex: index });
   };
 
+  componentWillReceiveProps(nxtProps) {
+    if (nxtProps.species.entity && nxtProps.species.entity != this.props.species.entity) {
+      this.setState({ viewIndex: 1, loading: false });
+    }
+  }
+
   handleSubmit = () => {
-    this.setState({ viewIndex: 1 });
+    this.setState({ loading: true });
   };
 
   handleBack = () => {
@@ -39,19 +51,24 @@ class Detection extends Component {
   };
 
   render() {
-    const { viewIndex } = this.state;
+    const { viewIndex, loading } = this.state;
     const { species } = this.props;
     console.log(viewIndex);
     return (
       <Fragment>
         <NavAppBar />
+        {species.loading && (
+          <ScreenMask>
+            <LoadingSpinner />
+          </ScreenMask>
+        )}
         <SwipeableViews
           axis={"x"}
           index={viewIndex}
           onChangeIndex={() => {
             console.log("no change view");
           }}
-          style={{overflow: "hidden"}}
+          style={{ overflow: "hidden" }}
         >
           <PageContainer height="90vh">
             <DropboxWrapper>
@@ -62,24 +79,16 @@ class Detection extends Component {
               >
                 Detect the invasive species
               </Title>
-              <UploadImageModule handleSubmit={this.handleSubmit} />
+              <UploadImageContainer handleSubmit={this.handleSubmit} />
             </DropboxWrapper>
           </PageContainer>
-          <PageContainer bgColor={lime[300]} height="100vh">
-            {species && (
-              <BriefInfo handleBack={this.handleBack} species={species} />
+          <PageContainer bgColor={lime[300]} >
+            {species.entity && (
+              <BriefInfo
+                handleBack={this.handleBack}
+                species={species.entity.candidates}
+              />
             )}
-            {/* <Button
-              onClick={handleBack}
-              style={{
-                position: "absolute",
-                zIndex: 100,
-                bottom: "2rem",
-                left: "2rem"
-              }}
-            >
-              ⬅ back
-            </Button> */}
           </PageContainer>
         </SwipeableViews>
       </Fragment>
@@ -89,9 +98,15 @@ class Detection extends Component {
 
 Detection.defaultProps = {
   species: {
-    CommonName: "Cane toad",
-    AcademicalName: "adfas"
+    CommonName: "",
+    AcademicalName: ""
   }
 };
 
-export default Detection;
+const mapStateToProps = state => {
+  return {
+    species: state.detection.detectionResult
+  };
+};
+
+export default connect(mapStateToProps)(Detection);

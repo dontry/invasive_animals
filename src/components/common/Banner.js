@@ -17,7 +17,7 @@ const BannerWrapper = styled.div`
   &::before {
     content: "";
     position: absolute;
-    margin: ${props => props.padding ? "-"+props.padding : "-1rem"};
+    margin: ${props => (props.padding ? "-" + props.padding : "-1rem")};
     width: 100%;
     height: 100%;
     z-index: -10;
@@ -30,9 +30,15 @@ const BannerWrapper = styled.div`
   }
 `;
 
+const BlurbWrapper = styled(Grid)`
+  && {
+    padding: 2rem;
+  }
+`;
+
 const Banner = ({ heading, subheading, description, imgUrl, textColor }) => (
   <BannerWrapper imgUrl={imgUrl}>
-    <Grid container direction="column" spacing={8}>
+    <BlurbWrapper container direction="column" spacing={8}>
       <Grid item>
         <Title variant="display1" textColor={textColor} align="left">
           {heading}
@@ -46,15 +52,15 @@ const Banner = ({ heading, subheading, description, imgUrl, textColor }) => (
         </Grid>
       )}
       <Grid item xs={12} sm={8}>
-        <Paragraph variant="Body1" textColor={textColor}>
+        <Paragraph variant="title" textColor={textColor} lineHeight={"1.5em"}>
           {description}
         </Paragraph>
       </Grid>
-    </Grid>
+    </BlurbWrapper>
   </BannerWrapper>
 );
 
-Banner.PropTypes = {
+Banner.propTypes = {
   heading: PropTypes.string.isRequired,
   subheading: PropTypes.string,
   description: PropTypes.string,
@@ -62,8 +68,8 @@ Banner.PropTypes = {
 };
 
 Banner.defaultProps = {
-  heading: "Title",
-  description: "Description",
+  heading: "",
+  description: "",
   imgUrl: "",
   textColor: "#fff"
 };

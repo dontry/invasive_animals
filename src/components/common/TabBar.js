@@ -10,7 +10,7 @@ const TabContainer = props => {
   return <Typography component="div">{props.children}</Typography>;
 };
 
-TabContainer.PropTypes = {
+TabContainer.propTypes = {
   children: PropTypes.node.isRequired
 };
 

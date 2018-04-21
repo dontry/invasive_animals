@@ -1,4 +1,5 @@
-import InvasiveSpecies from "./InvasiveSpecies";
+// import InvasiveSpecies from "./InvasiveSpecies";
+import * as api from "./api";
 
 function createSpeciesMap(speciesArray) {
   const speciesMap = new Map();
@@ -23,19 +24,29 @@ function compare(label, name) {
   return label.includes(name);
 }
 
-const speciesArray = InvasiveSpecies.species;
-export const INVASIVE_SPECIES = createSpeciesMap(speciesArray);
-export const INVASIVE_SPECIES_NAMES = speciesArray.map(item => item.name);
+// const speciesArray = InvasiveSpecies.species;
+// export const INVASIVE_SPECIES = createSpeciesMap(speciesArray);
+// export const INVASIVE_SPECIES_NAMES = speciesArray.map(item => item.name);
 
-export function getBestGuessLabels(labels) {
+export async function getBestGuessLabels(labels) {
   let candidates = [];
+  const InvasiveSpecies = await api.getAllSpecies();
+  const INVASIVE_SPECIES_NAMES = InvasiveSpecies.map(item => item.Species);
   for (const name of INVASIVE_SPECIES_NAMES) {
     candidates = labels.filter(label => compare(label.desscription, name));
   }
   return candidates;
 }
 
-export function getInvasiveSpecies(data) {
+export function getByName(name) {
+  const items = this.filter(item => item.Species === name);
+  return items[0];
+}
+
+let INVASIVE_SPECIES = null;
+export async function getInvasiveSpecies(data) {
+  INVASIVE_SPECIES = INVASIVE_SPECIES || (await api.getAllSpecies());
+  const INVASIVE_SPECIES_NAMES = INVASIVE_SPECIES.map(item => item.Species);
   const candidateNames = [];
   const info = [];
   const labels = dataPreprocessing(data);
@@ -53,11 +64,16 @@ export function getInvasiveSpecies(data) {
     }
   }
 
-  const uniqueSpecies = candidateNames
+  const uniqueSpecies = await candidateNames
     .filter((value, index, array) => array.indexOf(value) === index)
-    .map(name => INVASIVE_SPECIES.get(name));
+    .map(name => getByName.call(INVASIVE_SPECIES, name));
   return {
     candidates: uniqueSpecies,
     info
   };
+}
+
+export async function getSpeciesById(id) {
+  INVASIVE_SPECIES = INVASIVE_SPECIES || (await api.getAllSpecies());
+  return INVASIVE_SPECIES.filter(item => item.SpeciesID == id)[0];
 }

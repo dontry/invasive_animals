@@ -1,3 +1,5 @@
+import React from "react";
+
 export function indicesOf(substr, str) {
   const indices = [];
   let i = -1;
@@ -38,4 +40,16 @@ export function getCurrentGeoLocation() {
   } else {
     /* geolocation IS NOT available */
   }
+}
+
+export function addLineBreaker(text, breaker= "/n") {
+  return text.split(breaker).map((item, index) => {
+    return (
+      <span key={index}>
+        {item}
+        <br />
+        <br />
+      </span>
+    );
+  });
 }

@@ -3,7 +3,7 @@ import ReportForm from "../components/Report/ReportForm";
 
 const mapStateToProps = (state) => {
     return {
-        image: state.images.uploadImage,
+        image: state.detection.uploadImage,
     }
 }
 

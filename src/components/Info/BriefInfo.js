@@ -9,15 +9,16 @@ import Paper from "material-ui/Paper";
 import Grid from "material-ui/Grid";
 import Button from "material-ui/Button";
 import { ActionButton } from "../common/ActionButtonGroup";
+import speciesImageUrls from "../../assets/species_img_url";
 
 const Root = styled.div`
-    position: relative;
-    background-color: ${lime[300]};
+  position: relative;
+  background-color: ${lime[300]};
 `;
 const BriefInfoWrapper = styled(Grid)`
   position: relative;
-  padding-top: 10rem;
-  padding-bottom: 2rem;
+  min-height: 80vh;
+  padding: 5rem 3rem 2rem;
 `;
 
 const InfoGridItem = styled(Grid)`
@@ -25,6 +26,7 @@ const InfoGridItem = styled(Grid)`
     height: 80%;
     width: 50%;
     max-width: 400px;
+    margin: 1rem;
   }
 `;
 
@@ -56,60 +58,85 @@ const Intro = styled.div`
   margin: 0 auto;
 `;
 
-const BackButton = styled(ActionButton)`
+const InfoDescription = Paragraph.extend`
+  overflow: hidden;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  line-height: 1.5em !important;
+  padding: 0 !important;
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
+`;
+
+const MessageWrapper = Title.extend`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+const BackButton = styled(Button)`
   &&& {
     position: absolute;
     z-index: 100;
-    margin: 2rem;
-    top: 2rem
+    top: 50%;
     left: 2rem;
     color: #fff;
   }
 `;
 
 const BASE_URL = "/species/";
+const IMAGE_URL = "/assets/images/species/";
+
+function renderSpeciesInfo(speciesArray) {
+  return speciesArray.map(species => {
+    const speciesId = species.Species.replace(" ", "_").toLowerCase();
+    return (
+      <InfoGridItem item>
+        <InfoPaper>
+          <Title variant="title" txtColor={red[700]}>
+            Possible invasive species detected
+          </Title>
+          <Image
+            src={`${IMAGE_URL}${speciesId}.jpg` || ImagePlaceHolder}
+            alt={species.Species}
+          />
+          <Intro>
+            <Title variant="title" align="left" txtColor={grey[800]}>
+              {species.Species}
+            </Title>
+            <Title variant="subheading" align="left" txtColor={grey[600]}>
+              {species.AcademicalName}
+            </Title>
+            <InfoDescription txtColor={grey[800]} padding={"1rem 0 1rem"}>
+              {species.BriefIntroduction}
+            </InfoDescription>
+            <Link to={`/species/${species.SpeciesID}`}>Learn More ……</Link>
+          </Intro>
+        </InfoPaper>
+      </InfoGridItem>
+    );
+  });
+}
 
 const BriefInfo = ({ species, handleBack }) => {
   return (
     <Root>
-      <BriefInfoWrapper container justify="center" alignItems="center">
-        <InfoGridItem item>
-          <InfoPaper>
-            <Title variant="title" txtColor={red[700]}>
-              Possible invasive species detected
-            </Title>
-            <Image
-              src={species.image || ImagePlaceHolder}
-              alt={species.CommonName}
-            />
-            <Intro>
-              <Title variant="title" align="left" txtColor={grey[800]}>
-                {species.CommonName}
-              </Title>
-              <Title variant="subheading" align="left" txtColor={grey[600]}>
-                {species.AcademicalName}
-              </Title>
-              <Paragraph txtColor={grey[800]} padding={"1rem 0 1rem"}>
-                {species.BriefIntroduction}
-              </Paragraph>
-              <Link to={`/species/${species.CommonName.replace(" ", "_")}`}>
-                Learn More ……
-              </Link>
-            </Intro>
-          </InfoPaper>
-        </InfoGridItem>
+      <BriefInfoWrapper container justify="center" alignItems="flex-start">
+        {species.length === 0 ? (
+          <MessageWrapper variant="display3" txtColor={red[500]}>
+            It may be not an invasive species.
+          </MessageWrapper>
+        ) : (
+          renderSpeciesInfo(species)
+        )}
       </BriefInfoWrapper>
-      <Button
-        onClick={handleBack}
-        style={{
-          position: "absolute",
-          zIndex: 100,
-          bottom: "2rem",
-          left: "2rem"
-        }}
-      >
-        ⬅ back
-      </Button>
+      <BackButton onClick={handleBack}>
+        <Title variant="display2" txtColor={lime[800]}>
+          ⬅ BACK
+        </Title>
+      </BackButton>
     </Root>
   );
 };

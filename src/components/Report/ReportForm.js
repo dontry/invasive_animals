@@ -12,7 +12,7 @@ import Grid from "material-ui/Grid";
 import { Redirect, withRouter } from "react-router-dom";
 import { validate } from "../../utils/formValidation";
 import { grey } from "material-ui/colors";
-import {getCurrentDateString} from '../../utils/tools'
+import { getCurrentDateString } from "../../utils/tools";
 
 const styles = {
   btnGroup: {
@@ -112,6 +112,7 @@ const renderDateField = ({
       error={touched && !!error}
       helperText={error}
       defaultValue="2018-04-01"
+      style={{ maxWidth: 200 }}
       {...input}
       {...custom}
     />
@@ -200,13 +201,21 @@ export class ReportForm extends Component {
           />
           <Field name="location" component={renderTextField} label="Location" />
           <Field name="date" component={renderDateField} label="Date" />
-          <Field name="species" component={renderTextField} label="Species Name" />
-          <Field name="amount" component={renderTextField} label="Number of species" />
+          <Field
+            name="species"
+            component={renderTextField}
+            label="Species Name"
+          />
+          <Field
+            name="amount"
+            component={renderTextField}
+            label="Number of species"
+          />
           <Field
             name="description"
             label="Description"
             component={renderTextField}
-            fullwidth
+            fullwidth={true}
             multiline={true}
             rows={5}
             width={"100%"}

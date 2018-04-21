@@ -11,7 +11,7 @@ const EntryWrapper = styled(Grid)`
     padding: 1rem;
     border-bottom: 1px solid ${grey[500]};
     &:first-child {
-        padding-top: 0;
+      padding-top: 0;
     }
   }
 `;
@@ -31,12 +31,12 @@ const Entry = ({ species }) => (
     <ContentWrapper item>
       <Thumbnail
         src={species.image || ImagePlaceholder}
-        alt={species.CommonName}
+        alt={species.Species}
       />
     </ContentWrapper>
     <ContentWrapper item padding={"0.5rem 1rem"}>
       <Title variant="title" align="left" txtColor={grey[800]}>
-        {species.CommonName}
+        {species.Species}
       </Title>
       <Title vairiant="body1" align="left" txtColor={grey[700]}>
         {species.AcademicalName}
@@ -51,8 +51,8 @@ Entry.propTypes = {
 
 Entry.defaultTypes = {
   species: {
-    CommonName: "Common Name",
-    AcademicalName: "Scientific Name",
+    Species: "Common Name",
+    AcademicalName: "Academical Name",
     image: ""
   }
 };

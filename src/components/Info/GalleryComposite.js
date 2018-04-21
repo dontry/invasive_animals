@@ -38,7 +38,6 @@ class GalleryComposite extends Component {
   render() {
     const { images } = this.props;
     const { imgIndex, open } = this.state;
-
     return (
       <Fragment>
         <Gallery images={images} handleClick={this.selectImage} />

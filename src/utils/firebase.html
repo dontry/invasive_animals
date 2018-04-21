@@ -19,9 +19,36 @@
         firebase.initializeApp(config);
         var species = firebase.database().ref('species');
         species.once('value').then(snap => {
-            debugger
             var species = snap.val();
         })
+    </script>
+    <!-- Patrick's Firebase Species API-->
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCEiBjDhDeseCifLgG8intXTJJ_9qpp1gg",
+            authDomain: "invasiveanimal-g4.firebaseapp.com",
+            databaseURL: "https://invasiveanimal-g4.firebaseio.com",
+            projectId: "invasiveanimal-g4",
+            storageBucket: "invasiveanimal-g4.appspot.com",
+            messagingSenderId: "832596993581"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <!-- Patrick's Firebase Image API -->
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBtw56QCjkazr8SmFkFlHH65R0_ZL3ddTo",
+            authDomain: "animal-images.firebaseapp.com",
+            databaseURL: "https://animal-images.firebaseio.com",
+            projectId: "animal-images",
+            storageBucket: "animal-images.appspot.com",
+            messagingSenderId: "328148993504"
+        };
+        firebase.initializeApp(config);
     </script>
 </head>
 
