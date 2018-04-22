@@ -1,11 +1,12 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
+import FacebookProvider, { Comments } from "react-facebook";
 import styled from "styled-components";
 import { Title, Paragraph } from "../common/Text";
-import { grey } from "material-ui/colors";
 import Gallery from "./GalleryComposite";
 import LoadingSpinner from "../common/LoadingSpinner";
 import { ScreenMask, Mask } from "../common/Mask";
+import { grey } from "material-ui/colors";
 import { addLineBreaker } from "../../utils/tools";
 
 const ATTRIBUTE_NAMES = [
@@ -26,7 +27,7 @@ const DetailInfoWrapper = styled.div`
   padding: 1rem 2rem 4rem;
 `;
 
-const InfoWrapper = styled.div`
+const SectionWrapper = styled.div`
   padding-top: 1rem;
 `;
 
@@ -64,7 +65,7 @@ function renderItem(info, type) {
   const passage = addLineBreaker(info.value);
 
   return (
-    <InfoWrapper>
+    <SectionWrapper key={info.name}>
       <Title
         variant="title"
         txtColor={grey[800]}
@@ -74,16 +75,25 @@ function renderItem(info, type) {
         {info.name}
       </Title>
       <Paragraph
-        variant="body1"
+        txtsize="1.1rem"
         txtColor={grey[600]}
         lineHeight="1.2em"
         padding="0.5rem 0 1rem"
       >
         {passage}
       </Paragraph>
-    </InfoWrapper>
+    </SectionWrapper>
   );
 }
+
+const CommentSection = () => (
+  <Fragment>
+    <Title variant="title" txtColor={grey[700]} align="left"/>
+    <FacebookProvider appId="439671156486299">
+      <Comments  />
+    </FacebookProvider>
+  </Fragment>
+);
 
 const DetailInfo = ({ content, images }) => {
   if (!content) {
@@ -102,6 +112,7 @@ const DetailInfo = ({ content, images }) => {
       />
       {images && images.length > 0 && <Gallery images={images} />}
       {speciesInfo}
+      <CommentSection />
     </DetailInfoWrapper>
   );
 };
