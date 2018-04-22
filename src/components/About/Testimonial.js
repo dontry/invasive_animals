@@ -15,18 +15,18 @@ const Testimonial = () => (
   <Fragment>
     <Wrapper>
       <Title variant="display1" gutterBottom txtColor={grey[700]} >
-        - Our Mission -
+        Our Mission
       </Title>
-      <Paragraph variant="subheading" txtColor={grey[600]} align="center">
+      <Paragraph  txtColor={grey[600]} align="center">
         To provide the fastest assistance against invasive species to Victorian
         farmers
       </Paragraph>
     </Wrapper>
     <Wrapper>
       <Title variant="display1" gutterBottom txtColor={grey[700]}>
-        - About Us -
+         About Us
       </Title>
-      <Paragraph variant="subheading" txtColor={grey[600]} align="center">
+      <Paragraph   txtColor={grey[600]} align="center">
         We at G4 is a team of researchers who wish to lend a helping hand to the
         Victorian farmers and save our million-dollar argricultural industry. We
         are partnered with Monash University to develop and design this

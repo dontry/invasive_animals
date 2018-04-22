@@ -26,6 +26,7 @@ const StyledGridList = styled(GridList)`
   }
 `;
 
+//Use slick js instead....
 const Gallery = ({ images, handleClick }) => {
   return (
     <GalleryWrapper>

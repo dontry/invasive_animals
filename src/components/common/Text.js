@@ -10,6 +10,7 @@ export const Paragraph = styled(Typography)`
     font-weight: ${props => props.fontWeight};
     white-space: ${props => props.whiteSpace || "pre-line"};
     line-height: ${props => props.lineHeight || "1em"};
+    font-size ${props => props.txtsize || "none"};
   }
 `;
 export const Title = Paragraph.extend`

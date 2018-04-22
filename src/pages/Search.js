@@ -10,6 +10,7 @@ import { Title } from "../components/common/Text";
 import Grid from "material-ui/Grid";
 import { getAllSpecies } from "../utils/api";
 import LoadingSpinner from "../components/common/LoadingSpinner";
+import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
 
 const SearchBarWrapper = styled(Grid)`
   && {
@@ -68,6 +69,7 @@ class Search extends Component {
       <Fragment>
         <NavAppBar />
         <PageContainer minHeight="90vh">
+          <BreadcrumbsWithRouter />
           <SearchBarWrapper container justify="center">
             <Grid item xs={12} sm={10} md={8}>
               <SearchBar handleSearch={this.handleSearch} />

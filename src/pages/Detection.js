@@ -16,6 +16,7 @@ import BriefInfo from "../components/Info/BriefInfo";
 import NavAppBar from "../components/common/NavAppBar";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 import { ScreenMask, Mask } from "../components/common/Mask";
+import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
 
 const ViewWrapper = styled.section`
   height: 100%;
@@ -37,7 +38,10 @@ class Detection extends Component {
   };
 
   componentWillReceiveProps(nxtProps) {
-    if (nxtProps.species.entity && nxtProps.species.entity != this.props.species.entity) {
+    if (
+      nxtProps.species.entity &&
+      nxtProps.species.entity != this.props.species.entity
+    ) {
       this.setState({ viewIndex: 1, loading: false });
     }
   }
@@ -71,6 +75,7 @@ class Detection extends Component {
           style={{ overflow: "hidden" }}
         >
           <PageContainer height="90vh">
+            <BreadcrumbsWithRouter />
             <DropboxWrapper>
               <Title
                 variant="display1"
@@ -82,7 +87,7 @@ class Detection extends Component {
               <UploadImageContainer handleSubmit={this.handleSubmit} />
             </DropboxWrapper>
           </PageContainer>
-          <PageContainer bgColor={lime[300]} >
+          <PageContainer bgColor={lime[300]}>
             {species.entity && (
               <BriefInfo
                 handleBack={this.handleBack}

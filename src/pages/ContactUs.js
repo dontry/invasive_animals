@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import NavAppBar from "../components/common/NavAppBar"
 import PageContainer from "../components/common/PageContainer";
+import BreadcrumbsWithRouter from '../components/common/BreadcrumbsWithRouter'
 
 const style = {
   lineHeight: "1.5em"
@@ -10,6 +11,7 @@ export default () => (
   <Fragment>
     <NavAppBar />
     <PageContainer>
+       <BreadcrumbsWithRouter  />
       <h2>Contact Us</h2>
       <ul style={style}>
         <li>Dong Cai: <a href="mailto:dcai16@student.monash.edu">dcai16@student.monash.edu</a></li>

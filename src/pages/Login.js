@@ -19,7 +19,6 @@ class Login extends Component {
   state = {
     redirectToReferrer: false,
     error: false,
-    helperText: "Please input the password."
   };
 
   login = () => {
@@ -46,7 +45,7 @@ class Login extends Component {
           <Grid item md={4}>
             <TextField
               id="login"
-              label="login"
+              label="Please input the password"
               margin="normal"
               type="password"
               onChange={handleChange}

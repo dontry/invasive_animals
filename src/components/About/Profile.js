@@ -23,24 +23,36 @@ const Photo = styled.img`
   border-radius: 50% 50%;
 `;
 
+const SkillList = styled.ul`
+  padding-left: 3rem;
+  list-style: disc;
+  line-height: 1.5em;
+`;
+
 const Profile = ({ profile }) => (
   <ProfileWrapper item>
     {/* <Paper style={{height: "600px"}}> */}
-      <Photo src={profile.photo || ImagePlaceholder} alt={profile.name} />
-      <Title
-        variant="title"
-        txtColor={grey[800]}
-        padding="1rem 0 0.5rem"
-        fontWeight="bold"
-      >
-        {profile.name}
-      </Title>
-      <Title variant="subheading" txtColor={grey[800]}>
-        {profile.role}
-      </Title>
-      <Paragraph variant="body1" txtColor={grey[700]} padding="1rem">
-        {profile.description}
-      </Paragraph>
+    <Photo src={profile.photo || ImagePlaceholder} alt={profile.name} />
+    <Title
+      variant="title"
+      txtColor={grey[800]}
+      padding="1rem 0 0.5rem"
+      fontWeight="bold"
+    >
+      {profile.name}
+    </Title>
+    <Title variant="subheading" txtColor={grey[800]}>
+      {profile.role}
+    </Title>
+    <SkillList>
+      {profile.description.map(item => (
+        <li>
+          <Paragraph variant="body1" txtColor={grey[600]}>
+            {item}
+          </Paragraph>
+        </li>
+      ))}
+    </SkillList>
     {/* </Paper> */}
   </ProfileWrapper>
 );
@@ -58,8 +70,7 @@ Profile.defaultProps = {
   profile: {
     name: "John Doe",
     role: "Data analyst",
-    description:
-      "John Doe is a good guy. He is dedicated to his career. He is a self-taught expert in data science."
+    description: ["Swimming", "Basketball"]
   }
 };
 
