@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import List, { ListItem, ListItemText } from "material-ui/List";
 import Divider from "material-ui/Divider";
 import Tooltip from "material-ui/Tooltip";
@@ -14,12 +15,14 @@ const ListWrapper = styled(List)`
 
 const ListTitle = styled(Typography)`
   padding: 1rem;
-`
+`;
 
 function renderListItem(items, handleClick) {
   return items.map(item => (
     <ListItem button key={item.name} onClick={handleClick}>
-      <ListItemText primary={item.name} />
+      <Link to={item.link}>
+        <ListItemText primary={item.name} />
+      </Link>
       <Divider />
     </ListItem>
   ));
@@ -29,7 +32,9 @@ const SidePane = ({ list, handleClick }) => {
   const listItems = renderListItem(list.children, handleClick);
   return (
     <ListWrapper>
-      <ListTitle variant="title" align="center">{list.name}</ListTitle>
+      <ListTitle variant="title" align="center">
+        {list.name}
+      </ListTitle>
       <Divider />
       {listItems}
     </ListWrapper>
@@ -49,12 +54,8 @@ SidePane.defaultProps = {
     name: "Popular search",
     children: [
       {
-        name: "Most harmful invasive species",
-        value: "MOST_HARMFUL_SPECIES"
-      },
-      {
-        name: "Invasive species in Victoria",
-        value: "VICTORIA_INVASIVE_SPECIES"
+        name: "Species Wiki",
+        link: "/species"
       }
     ]
   },

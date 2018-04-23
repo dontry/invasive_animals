@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 import AppBar from "material-ui/AppBar";
-import IconButton from "material-ui/IconButton";
 import Book from "material-ui-icons/Book";
 import { grey50 } from "material-ui/styles/colors";
 // import MenuItem from "material-ui/MenuItem";
@@ -21,8 +20,8 @@ import DropdownMenu from "./DropdownMenu";
 import Paper from "material-ui/Paper";
 import ClickAwayListener from "material-ui/utils/ClickAwayListener";
 import Menu, { MenuItem, MenuList } from "material-ui/Menu";
-import { BrandIcon } from "./Icons";
 import {NAV_BAR} from "../../routes/routing";
+import { LogoIcon } from "./Icons"; 
 
 
 const AppBarWrapper = styled.div`
@@ -151,7 +150,7 @@ NavAppBar.propTypes = {
 NavAppBar.defaultProps = {
   title: (
     <Link to="/">
-      <BrandIcon size={"40px"}/>
+      <LogoIcon size={"40px"}/>
     </Link>
   ),
   menuItems: NAV_BAR

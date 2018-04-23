@@ -5,7 +5,7 @@ import NavAppBar from "../components/common/NavAppBar";
 import SearchBar from "../components/Search/SearchBar";
 import SidePane from "../components/Search/SidePane";
 import ResultList from "../components/Search/ResultList";
-import SpeciesGallery from "../components/Info/SpeciesGallery";
+import TileBarGridList from "../components/Search/TileBarGridList";
 import { Title } from "../components/common/Text";
 import Grid from "material-ui/Grid";
 import { getAllSpecies } from "../utils/api";
@@ -83,9 +83,9 @@ class Search extends Component {
               {initialRender ? (
                 <div>
                   <Title variant="display1" txtColor="#666" align="center">
-                    10 Most harmful species
+                    6 Most Harmful Species
                   </Title>
-                  <SpeciesGallery />
+                  <TileBarGridList />
                 </div>
               ) : loading ? (
                 <LoadingSpinner />

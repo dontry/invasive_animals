@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Grid from "material-ui/Grid";
 import SpeciesCard from "./SpeciesCard";
-import speciesList from "../../assets/species_img_url"
+import speciesImageList from "../../assets/species_img_url"
 
 function createSpeciesCards(speciesArray) {
   const cards = speciesArray.map(species => (
@@ -13,8 +13,8 @@ function createSpeciesCards(speciesArray) {
   return cards;
 }
 
-const SpeciesGallery = ({ speciesList }) => {
-  const speciesCards = createSpeciesCards(speciesList);
+const SpeciesGallery = ({ dataList }) => {
+  const speciesCards = createSpeciesCards(dataList);
   return (
     <Grid container justify="flex-start">
       {speciesCards}
@@ -23,7 +23,7 @@ const SpeciesGallery = ({ speciesList }) => {
 };
 
 SpeciesGallery.defaultProps = {
-  speciesList: speciesList
+  dataList: speciesImageList
 };
 
 export default SpeciesGallery;

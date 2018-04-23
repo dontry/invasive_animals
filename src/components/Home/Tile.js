@@ -21,7 +21,7 @@ const TileWrapper = styled(Grid)`
     }
     &:hover .title {
       text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
-      filter: brightness(50%);
+      filter: brightness(80%);
     }
     &:hover svg {
       filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.2)) brightness(80%);
