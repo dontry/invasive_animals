@@ -13,7 +13,8 @@ export const ROUTE_TABLE = {
   "/observe": "Trend observation",
   "/contact": "Contact us",
   "/about": "About us",
-  "/species": "Species"
+  "/species": "Species",
+  "/report": "Report "
 };
 
 export const NAV_BAR = [

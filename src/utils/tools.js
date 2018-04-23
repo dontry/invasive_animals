@@ -42,7 +42,7 @@ export function getCurrentGeoLocation() {
   }
 }
 
-export function addLineBreaker(text, breaker= "/n") {
+export function addLineBreaker(text, breaker = "/n") {
   return text.split(breaker).map((item, index) => {
     return (
       <span key={index}>
@@ -52,4 +52,13 @@ export function addLineBreaker(text, breaker= "/n") {
       </span>
     );
   });
+}
+
+export function underscoreName(name) {
+  return name.toLowerCase().replace(" ", "_");
+}
+
+export function speciesPicFinder(speciesName) {
+  const fileName = underscoreName(speciesName);
+  return `/assets/images/species/${fileName}.jpg`;
 }

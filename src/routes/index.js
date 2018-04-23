@@ -7,6 +7,7 @@ import Home from "../pages/Home";
 import Detection from "../pages/Detection";
 import Search from "../pages/Search";
 import SpeciesInfo from "../pages/SpeciesInfo";
+import SpeciesWiki from "../pages/SpeciesWiki";
 import AboutUs from "../pages/AboutUs";
 import Report from "../pages/Report";
 import Login from "../pages/Login";
@@ -94,6 +95,12 @@ class Routes extends Component {
           <ProtectedRoute
             path="/find"
             component={Search}
+            isAuthenticated={isAuthenticated}
+          />
+          <ProtectedRoute
+            exact
+            path="/species"
+            component={SpeciesWiki}
             isAuthenticated={isAuthenticated}
           />
           <ProtectedRoute

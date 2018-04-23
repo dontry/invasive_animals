@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, PureComponent } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Grid from "material-ui/Grid";
@@ -14,48 +14,39 @@ const BrowseButton = styled(Button)`
 
 const getSpacing = (number = 1) => Number(16 / number);
 
-const UploadImageModule = ({
-  classes,
-  image,
-  uploadImage,
-  getDetectionResult,
-  handleSubmit
-}) => {
-  const handleBrowseBtnClick = () => {
-    const $dropzone = document.getElementById("dropzone");
-    $dropzone.click();
+class UploadImageModule extends PureComponent {
+  componentWillMount() {
+    this.props.resetImage();
+  }
+
+  handleSubmitBtnClick = () => {
+    this.getDetectionResult(this.props.image.entity);
+    this.handleSubmit();
   };
-  const handleSubmitBtnClick = () => {
-    getDetectionResult(image.entity);
-    handleSubmit();
-  };
-  return (
-    <Fragment>
-      <Grid
-        container
-        direction="column"
-        justify="center"
-        alignItems="center"
-        spacing={getSpacing()}
-      >
-        <Grid item sm={8}>
-          <DropImageZone uploadImage={uploadImage} />
+  render() {
+    const { image, uploadImage, getDetectionResult, handleSubmit } = this.props;
+    return (
+      <Fragment>
+        <Grid
+          container
+          direction="column"
+          justify="center"
+          alignItems="center"
+          spacing={getSpacing()}
+        >
+          <Grid item sm={8}>
+            <DropImageZone uploadImage={uploadImage} />
+          </Grid>
+          <Grid item sm={8}>
+            <BrowseButton variant="raised" onClick={this.handleSubmitBtnClick}>
+              Submit
+            </BrowseButton>
+          </Grid>
         </Grid>
-        <Grid item sm={8}>
-          {/* <BrowseButton
-            variant="raised"
-            onClick={handleBrowseBtnClick}
-          >
-            Browse
-          </BrowseButton> */}
-          <BrowseButton variant="raised" onClick={handleSubmitBtnClick}>
-            Submit
-          </BrowseButton>
-        </Grid>
-      </Grid>
-    </Fragment>
-  );
-};
+      </Fragment>
+    );
+  }
+}
 
 UploadImageModule.propTypes = {
   image: PropTypes.object.isRequired,
