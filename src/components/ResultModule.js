@@ -23,34 +23,6 @@ const styles = {
   }
 };
 
-const items = [
-  {
-    mid: "/m/0bt9lr",
-    description: "dog",
-    score: 0.97346616
-  },
-  {
-    mid: "/m/09686",
-    description: "vertebrate",
-    score: 0.85700572
-  },
-  {
-    mid: "/m/01pm38",
-    description: "clumber spaniel",
-    score: 0.84881884
-  },
-  {
-    mid: "/m/04rky",
-    description: "mammal",
-    score: 0.847575
-  },
-  {
-    mid: "/m/02wbgd",
-    description: "english cocker spaniel",
-    score: 0.75829375
-  }
-];
-
 const ResultMessage = ({ names = [], className }) => {
   const nameString = names.join(" or ").toUpperCase();
   return (
@@ -58,7 +30,7 @@ const ResultMessage = ({ names = [], className }) => {
       <Grid item sm={8}>
         {names.length === 0 ? (
           <Typography variant="display1">
-            Sorry, this may be not an invasive species.
+            Sorry, this may be not an i96Gnvasive species.
           </Typography>
         ) : (
           <Typography variant="display1" className={className}>
@@ -93,7 +65,7 @@ const ResultModule = ({ classes, result }) => {
     return <div />;
   }
 
-  const { candidates, info } = result.entity;
+  const { candidates  } = result.entity;
   const propertyNames =
     candidates.length === 0 ? [] : Object.keys(candidates[0]).filter(name => name !== "pic");
   const speciesNames = candidates.map(item => item.name);

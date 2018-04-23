@@ -65,9 +65,7 @@ function renderSpeciesInfo(content) {
 
 function renderItem(info, type) {
   if (info.value === "") return null;
-  const content = addLineBreaker(info.value);
-
-  return <Passage title={info.name} content={content} />;
+  return <Passage title={info.name} content={info.value} />;
 }
 
 const CommentSection = () => (

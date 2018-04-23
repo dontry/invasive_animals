@@ -23,8 +23,8 @@ class UploadImageModule extends PureComponent {
   }
 
   handleSubmitBtnClick = () => {
-    this.getDetectionResult(this.props.image.entity);
-    this.handleSubmit();
+    this.props.getDetectionResult(this.props.image.entity);
+    this.props.handleSubmit();
   };
   render() {
     const { image, uploadImage, getDetectionResult, handleSubmit } = this.props;

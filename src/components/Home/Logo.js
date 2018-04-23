@@ -16,10 +16,6 @@ const Wrapper = styled(Grid)`
   }
 `;
 
-const Icon = styled.img`
-  width: 46px;
-`;
-
 const Logo = () => (
   <Wrapper container justify="center" alignItems="center">
     <Grid item>
