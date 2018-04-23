@@ -1,8 +1,12 @@
 import * as firebase from "firebase";
+import { 
+  FIREBASE_SPECIES_APIKEY,
+  FIREBASE_IMAGE_APIKEY,
+  FIREBASE_HELP_CENTER_APIKEY
+ } from "./credentials";
 
 const config = {
-  apiKey: "AIzaSyD0kpwKo8KXcfUmCslP-2w_CjmUEOTq-C8",
-  authDomain: "invasivespecies-500c6.firebaseapp.com",
+  apiKey: FIREBASE_SPECIES_APIKEY authDomain: "invasivespecies-500c6.firebaseapp.com",
   databaseURL: "https://invasivespecies-500c6.firebaseio.com",
   projectId: "invasivespecies-500c6",
   storageBucket: "invasivespecies-500c6.appspot.com",
@@ -10,7 +14,7 @@ const config = {
 };
 
 const patrick_species_config = {
-  apiKey: "AIzaSyCEiBjDhDeseCifLgG8intXTJJ_9qpp1gg",
+  apiKey: FIREBASE_SPECIES_APIKEY,
   authDomain: "invasiveanimal-g4.firebaseapp.com",
   databaseURL: "https://invasiveanimal-g4.firebaseio.com",
   projectId: "invasiveanimal-g4",
@@ -19,8 +23,7 @@ const patrick_species_config = {
 };
 
 const patrick_image_config = {
-  // Initialize Firebase
-  apiKey: "AIzaSyBtw56QCjkazr8SmFkFlHH65R0_ZL3ddTo",
+  apiKey: FIREBASE_IMAGE_APIKEY,
   authDomain: "animal-images.firebaseapp.com",
   databaseURL: "https://animal-images.firebaseio.com",
   projectId: "animal-images",
@@ -29,7 +32,7 @@ const patrick_image_config = {
 };
 
 var patrick_help_center_config = {
-  apiKey: "AIzaSyDY4Ojxk39mjrjQGQXYP7U2fN1m8pHakTY",
+  apiKey:  FIREBASE_HELP_CENTER_APIKEY,
   authDomain: "helpcenter-g4.firebaseapp.com",
   databaseURL: "https://helpcenter-g4.firebaseio.com",
   projectId: "helpcenter-g4",
