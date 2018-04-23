@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import SvgIcon from "material-ui/SvgIcon";
+import Logo from "../../assets/images/logo.png";
 
 const StyledSvgIcon = styled(SvgIcon)`
   && {
@@ -91,4 +92,12 @@ export const MagnifierIcon = ({ color = "#fff", size }) => (
       fill={color}
     />
   </StyledSvgIcon>
+);
+
+const LogoWrapper = styled.img`
+  width: ${props => props.size || "48px"};
+`;
+
+export const LogoIcon = ({ size }) => (
+  <LogoWrapper src={Logo} alt="Brand logo - Victorian Guardian" />
 );

@@ -9,7 +9,7 @@ const BannerWrapper = styled.div`
   position: relative;
   box-sizing: border-box;
   padding: ${props => props.padding || "1rem 1rem"};
-  height: 30vh;
+  height: 40vh;
   min-height: 300px;
   max-height: 500px;
   width: 100%;

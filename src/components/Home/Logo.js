@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Title } from "../common/Text";
 import Grid from "material-ui/Grid";
-import LogoIcon from "../../assets/images/logo.png";
+import { LogoIcon } from "../common/Icons";
 import { green } from "material-ui/colors";
 
 const Wrapper = styled(Grid)`
@@ -23,7 +23,7 @@ const Icon = styled.img`
 const Logo = () => (
   <Wrapper container justify="center" alignItems="center">
     <Grid item>
-      <Icon src={LogoIcon} alt="logo" />
+      <LogoIcon size="64px" />
     </Grid>
     <Grid item>
       <Title variant="title" txtColor={green[900]}>
