@@ -9,7 +9,7 @@ import BreadcrumbsWithRouter from '../components/common/BreadcrumbsWithRouter'
 const AboutUs = () => (
   <Fragment>
     <NavAppBar />
-    <PageContainer>
+    <PageContainer style={{paddingBottom: "3rem"}}>
       <BreadcrumbsWithRouter />
       <Testimonial />
       <ProfileGrid width="90%" />

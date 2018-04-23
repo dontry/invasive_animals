@@ -8,25 +8,35 @@ const Wrapper = styled.div`
   min-width: 320px;
   max-width: 600px;
   text-align: center;
-  margin: 5rem auto;
+  margin: 3rem auto;
 `;
 
 const Testimonial = () => (
   <Fragment>
     <Wrapper>
-      <Title variant="display1" gutterBottom txtColor={grey[700]} >
+      <Title variant="display1" gutterBottom txtColor={grey[700]}>
         Our Mission
       </Title>
-      <Paragraph  txtColor={grey[600]} align="center">
+      <Paragraph
+        variant="body2"
+        txtColor={grey[600]}
+        align="center"
+        lineHeight="1.5em"
+      >
         To provide the fastest assistance against invasive species to Victorian
         farmers
       </Paragraph>
     </Wrapper>
     <Wrapper>
       <Title variant="display1" gutterBottom txtColor={grey[700]}>
-         About Us
+        About Us
       </Title>
-      <Paragraph   txtColor={grey[600]} align="center">
+      <Paragraph
+        variant="body2"
+        txtColor={grey[600]}
+        align="center"
+        lineHeight="1.5em"
+      >
         We at G4 is a team of researchers who wish to lend a helping hand to the
         Victorian farmers and save our million-dollar argricultural industry. We
         are partnered with Monash University to develop and design this

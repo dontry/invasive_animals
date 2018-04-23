@@ -24,7 +24,7 @@ const Photo = styled.img`
 `;
 
 const SkillList = styled.ul`
-  padding-left: 3rem;
+  padding-left: 5rem;
   list-style: disc;
   line-height: 1.5em;
 `;
