@@ -3,7 +3,7 @@ import NavAppBar from "../components/common/NavAppBar";
 import PageContainer from "../components/common/PageContainer";
 import Banner from "../components/common/Banner";
 import IntroGrid from "../components/Home/IntroGrid";
-import WebsiteBrand from "../components/Home/WebsiteBrand";
+import Logo from "../components/Home/Logo";
 
 const BANNER_DESCRIPTION = `
  Welcome, this is a place where 
@@ -12,7 +12,7 @@ const BANNER_DESCRIPTION = `
 
 const Home = () => (
   <Fragment>
-    <WebsiteBrand />
+    <Logo />
     <NavAppBar title={<div />} />
     <PageContainer>
       <Banner description={BANNER_DESCRIPTION} />

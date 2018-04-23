@@ -1,29 +1,36 @@
 import React from "react";
 import styled from "styled-components";
 import { Title } from "../common/Text";
-import { BrandIcon } from "../common/Icons";
 import Grid from "material-ui/Grid";
+import LogoIcon from "../../assets/images/logo.png";
+import { green } from "material-ui/colors";
 
 const Wrapper = styled(Grid)`
   && {
     width: 100%;
     padding: 10px;
     line-height: 1.5rem;
-    background-color: ${props => props.theme.palette.primary.dark};
+    background-color: ${props => props.theme.palette.primary.light};
     text-align: center;
     margin: 0;
   }
 `;
 
-const WebsiteBrand = () => (
+const Icon = styled.img`
+  width: 46px;
+`;
+
+const Logo = () => (
   <Wrapper container justify="center" alignItems="center">
     <Grid item>
-      <BrandIcon />
+      <Icon src={LogoIcon} alt="logo" />
     </Grid>
     <Grid item>
-      <Title variant="title">VicInvasiveStopper</Title>
+      <Title variant="title" txtColor={green[900]}>
+        Victorian Guardian
+      </Title>
     </Grid>
   </Wrapper>
 );
 
-export default WebsiteBrand;
+export default Logo;

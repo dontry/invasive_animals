@@ -11,20 +11,21 @@ import {
   BinocularsIcon,
 } from "../common/Icons";
 
+const ICON_SIZE = "64px";
 const introData = [
   {
     title: "Detect",
-    icon: <TargetIcon color={lightGreen[500]} />,
+    icon: <TargetIcon color={lightGreen[500]} size={ICON_SIZE} />,
     path: "/detect"
   },
   {
     title: "Find",
-    icon: <MagnifierIcon color={lightGreen[500]} />,
+    icon: <MagnifierIcon color={lightGreen[500]} size={ICON_SIZE}/>,
     path: "/find"
   },
   {
     title: "Trend Observation",
-    icon: <BinocularsIcon color={lightGreen[500]} />,
+    icon: <BinocularsIcon color={lightGreen[500]} size={ICON_SIZE}/>,
     path: "/observe"
   }
 ];
