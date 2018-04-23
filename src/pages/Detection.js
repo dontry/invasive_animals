@@ -2,6 +2,8 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+
 import UploadImageModule from "../components/Detect/UploadImageModule";
 import UploadImageContainer from "../containers/UploadImageContainer";
 import DetectionResultContainer from "../containers/DetectionResultContainer";
@@ -17,6 +19,7 @@ import NavAppBar from "../components/common/NavAppBar";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 import { ScreenMask, Mask } from "../components/common/Mask";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
+import ActionButtonGroup from "../components/common/ActionButtonGroup";
 
 const ViewWrapper = styled.section`
   height: 100%;
@@ -27,15 +30,37 @@ const DropboxWrapper = styled.div`
   margin-top: 50px;
 `;
 
+const ReportActionProps = history => ({
+  raised: true,
+  label: "Report",
+  action() {
+    console.log("click 1");
+    return history.push("/report");
+  },
+  disabled: false,
+  type: "primary",
+  trait: "dark"
+});
+
+const SeekHelpActionProps = history => ({
+  raised: true,
+  label: "Seek Help",
+  action() {
+    console.log("click 2");
+    return history.push("/help_center");
+  },
+  disabled: false,
+  type: "secondary",
+  trait: "dark"
+});
+
 class Detection extends Component {
   state = {
     viewIndex: 0,
     loading: false
   };
 
-  componentWillMount() {
-    
-  }
+  componentWillMount() {}
   handeChangeIndex = index => {
     this.setState({ viewIndex: index });
   };
@@ -59,7 +84,7 @@ class Detection extends Component {
 
   render() {
     const { viewIndex, loading } = this.state;
-    const { species } = this.props;
+    const { species, history } = this.props;
     console.log(viewIndex);
     return (
       <Fragment>
@@ -97,6 +122,11 @@ class Detection extends Component {
                 species={species.entity.candidates}
               />
             )}
+            <ActionButtonGroup
+              btnStyle={{ margin: "2rem" }}
+              primaryProps={ReportActionProps(history)}
+              secondaryProps={SeekHelpActionProps(history)}
+            />
           </PageContainer>
         </SwipeableViews>
       </Fragment>
@@ -117,4 +147,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Detection);
+export default connect(mapStateToProps)(withRouter(Detection));

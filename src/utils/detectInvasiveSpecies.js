@@ -75,5 +75,5 @@ export async function getInvasiveSpecies(data) {
 
 export async function getSpeciesById(id) {
   INVASIVE_SPECIES = INVASIVE_SPECIES || (await api.getAllSpecies());
-  return INVASIVE_SPECIES.filter(item => item.SpeciesID == id)[0];
+  return INVASIVE_SPECIES.filter(item => item.SpeciesID === id)[0];
 }

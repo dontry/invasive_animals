@@ -44,9 +44,10 @@ class Search extends Component {
   }
 
   handleSearch = query => {
+    this.setState({ initialRender: false });
     this.loading();
+
     setTimeout(() => {
-      this.setState({ initialRender: false });
       const result = this.searchByName(query);
       this.setState({ result, loading: false });
     }, 600);

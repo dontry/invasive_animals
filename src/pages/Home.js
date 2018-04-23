@@ -4,6 +4,7 @@ import PageContainer from "../components/common/PageContainer";
 import Banner from "../components/common/Banner";
 import IntroGrid from "../components/Home/IntroGrid";
 import Logo from "../components/Home/Logo";
+import banner from "../assets/images/dandenong-ranges.jpg"
 
 const BANNER_DESCRIPTION = `
  Welcome, this is a place where 
@@ -15,7 +16,7 @@ const Home = () => (
     <Logo />
     <NavAppBar title={<div />} />
     <PageContainer>
-      <Banner description={BANNER_DESCRIPTION} />
+      <Banner imgUrl={banner} description={BANNER_DESCRIPTION} />
       <IntroGrid />
     </PageContainer>
   </Fragment>

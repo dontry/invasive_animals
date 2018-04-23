@@ -8,8 +8,6 @@ import { grey, lime, red } from "material-ui/colors";
 import Paper from "material-ui/Paper";
 import Grid from "material-ui/Grid";
 import Button from "material-ui/Button";
-import { ActionButton } from "../common/ActionButtonGroup";
-import speciesImageUrls from "../../assets/species_img_url";
 
 const Root = styled.div`
   position: relative;

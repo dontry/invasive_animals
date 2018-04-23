@@ -12,6 +12,7 @@ import { Title } from "../components/common/Text";
 import LocationInfo from "../components/HelpCenter/LocationInfo";
 import SelectionField from "../components/HelpCenter/SelectionField";
 import { getAllHelpCenters } from "../utils/api";
+import VictoriaMap from "../assets/images/vitoria_map.png";
 
 const REGION_LIST = [
   "Loddon-Mallee",
@@ -26,6 +27,11 @@ const SelectionWrapper = styled(Grid)`
   padding: 1rem;
 `;
 
+const Map = styled.img`
+  max-width: 800px;
+  padding: 2rem;
+`
+
 const ResultWrapper = styled.div`
   position: relative;
   margin: 0 auto;
@@ -36,6 +42,7 @@ const ResultWrapper = styled.div`
 
 class HelpCenter extends Component {
   state = {
+    initialRender: true,
     region: "",
     centerList: [],
     result: [],
@@ -47,8 +54,10 @@ class HelpCenter extends Component {
     this.setState({ centerList });
   }
   handleSearch = event => {
-    const region = event.target.value;
+    this.setState({ initialRender: false });
     this.loading();
+
+    const region = event.target.value;
     this.setState({ region });
     setTimeout(() => {
       const result = this.searchByRegion(region);
@@ -65,7 +74,7 @@ class HelpCenter extends Component {
     this.setState({ loading: true });
   };
   render() {
-    const { region, result, loading } = this.state;
+    const { region, result, loading, initialRender } = this.state;
     return (
       <Fragment>
         <NavAppBar />
@@ -93,6 +102,7 @@ class HelpCenter extends Component {
             </Grid>
           </SelectionWrapper>
           <ResultWrapper>
+            {initialRender &&  <Map src={VictoriaMap} alt="Map of Victoria"/>}
             {loading ? (
               <LoadingSpinner type="bars" />
             ) : (

@@ -4,22 +4,13 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 import AppBar from "material-ui/AppBar";
-import Book from "material-ui-icons/Book";
-import { grey50 } from "material-ui/styles/colors";
-// import MenuItem from "material-ui/MenuItem";
 import Button from "material-ui/Button";
 import Toolbar from "material-ui/Toolbar";
 import Typography from "material-ui/Typography";
 
 import NavLink from "./NavLink";
-import Popover from "material-ui/Popover";
-import { Manager, Target, Popper } from "react-popper";
-import Portal from "material-ui/Portal";
-import Collapse from "material-ui/transitions/Collapse";
+import { Manager, Target } from "react-popper";
 import DropdownMenu from "./DropdownMenu";
-import Paper from "material-ui/Paper";
-import ClickAwayListener from "material-ui/utils/ClickAwayListener";
-import Menu, { MenuItem, MenuList } from "material-ui/Menu";
 import {NAV_BAR} from "../../routes/routing";
 import { LogoIcon } from "./Icons"; 
 
@@ -47,15 +38,6 @@ export const NavItem = styled(NavLink)`
 `;
 
 const NavButton = NavItem.withComponent(Button);
-
-const StyledMenuList = styled(MenuList)`
-  && {
-    box-sizing: border-box;
-    background-color: ${props =>
-      props.bgColor || props.theme.palette.primary.main};
-    padding: 0.1rem 0.5rem 0.1rem 0.5rem;
-  }
-`;
 
 class DropdownNavMenu extends Component {
   state = {
