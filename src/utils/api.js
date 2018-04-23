@@ -1,5 +1,5 @@
 import ax from "axios";
-import { SpeciesDB, ImageDB } from "./firebase";
+import { SpeciesDB, ImageDB, HelpCenterDB } from "./firebase";
 
 //API_KEY AIzaSyC-PWrqdqmyEc89eBv4rAfyWiqLcVZTV8I
 const GOOGLE_VISION_API_URL =
@@ -18,15 +18,14 @@ export function sendImage(content, options) {
 }
 
 export async function getAllSpecies() {
-  const speciesRef = SpeciesDB.database().ref();
-  const snap = await speciesRef.once("value");
+  const dbRef = SpeciesDB.database().ref();
+  const snap = await dbRef.once("value");
   return snap.val();
 }
 
 export async function getAllImages() {
-  const imageRef = ImageDB.database().ref();
-  const snap = await imageRef.once("value");
-  // const snap = imageRef.orderByValue("SpeciesID").equalTo(id).once();
+  const dbRef = ImageDB.database().ref();
+  const snap = await dbRef.once("value");
   return snap.val();
 }
 
@@ -35,4 +34,10 @@ export async function getImagesById(id) {
   return allImages
     .filter(item => item.SpeciesID === id)
     .map(item => item.ImageURL);
+}
+
+export async function getAllHelpCenters() {
+  const dbRef = HelpCenterDB.database().ref();
+  const snap = await dbRef.once("value");
+  return snap.val();
 }

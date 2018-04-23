@@ -28,7 +28,20 @@ const patrick_image_config = {
   messagingSenderId: "328148993504"
 };
 
+var patrick_help_center_config = {
+  apiKey: "AIzaSyDY4Ojxk39mjrjQGQXYP7U2fN1m8pHakTY",
+  authDomain: "helpcenter-g4.firebaseapp.com",
+  databaseURL: "https://helpcenter-g4.firebaseio.com",
+  projectId: "helpcenter-g4",
+  storageBucket: "helpcenter-g4.appspot.com",
+  messagingSenderId: "614740582032"
+};
+
 export const SpeciesDB = firebase.initializeApp(patrick_species_config);
-export const ImageDB = firebase.initializeApp(patrick_image_config, 'image');
+export const ImageDB = firebase.initializeApp(patrick_image_config, "image");
+export const HelpCenterDB = firebase.initializeApp(
+  patrick_help_center_config,
+  "help_center"
+);
 
 export default firebase;

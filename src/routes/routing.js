@@ -11,10 +11,11 @@ export const ROUTE_TABLE = {
   "/detect": "Detect",
   "/find": "Find",
   "/observe": "Trend observation",
-  "/contact": "Contact us",
-  "/about": "About us",
+  "/report": "Report",
+  "/help_center": "Help Center",
   "/species": "Species",
-  "/report": "Report "
+  "/about": "About us",
+  "/contact": "Contact us"
 };
 
 export const NAV_BAR = [
@@ -24,6 +25,7 @@ export const NAV_BAR = [
   },
   { name: "Detect", path: "/detect" },
   { name: "Find", path: "/find" },
+  { name: "Help Center", path: "/help_center" },
   { name: "Report", path: "/report" },
   {
     name: "About",

@@ -26,7 +26,7 @@ const introData = [
   {
     title: "Trend Observation",
     icon: <BinocularsIcon color={lightGreen[500]} size={ICON_SIZE}/>,
-    path: "/observe"
+    path: "/comingsoon"
   }
 ];
 

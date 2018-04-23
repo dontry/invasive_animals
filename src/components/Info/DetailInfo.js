@@ -1,12 +1,15 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import FacebookProvider, { Comments } from "react-facebook";
 import styled from "styled-components";
+
+import { grey } from "material-ui/colors";
+import FacebookProvider, { Comments } from "react-facebook";
+
 import { Title, Paragraph } from "../common/Text";
+import Passage from "../common/Passage";
+import { ScreenMask, Mask } from "../common/Mask";
 import Gallery from "./GalleryComposite";
 import LoadingSpinner from "../common/LoadingSpinner";
-import { ScreenMask, Mask } from "../common/Mask";
-import { grey } from "material-ui/colors";
 import { addLineBreaker } from "../../utils/tools";
 
 const ATTRIBUTE_NAMES = [
@@ -62,35 +65,16 @@ function renderSpeciesInfo(content) {
 
 function renderItem(info, type) {
   if (info.value === "") return null;
-  const passage = addLineBreaker(info.value);
+  const content = addLineBreaker(info.value);
 
-  return (
-    <SectionWrapper key={info.name}>
-      <Title
-        variant="title"
-        txtColor={grey[800]}
-        padding="1rem 0 0"
-        align="left"
-      >
-        {info.name}
-      </Title>
-      <Paragraph
-        txtsize="1.1rem"
-        txtColor={grey[600]}
-        lineHeight="1.2em"
-        padding="0.5rem 0 1rem"
-      >
-        {passage}
-      </Paragraph>
-    </SectionWrapper>
-  );
+  return <Passage title={info.name} content={content} />;
 }
 
 const CommentSection = () => (
   <Fragment>
-    <Title variant="title" txtColor={grey[700]} align="left"/>
+    <Title variant="title" txtColor={grey[700]} align="left" />
     <FacebookProvider appId="439671156486299">
-      <Comments  />
+      <Comments />
     </FacebookProvider>
   </Fragment>
 );

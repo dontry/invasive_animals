@@ -33,6 +33,9 @@ class Detection extends Component {
     loading: false
   };
 
+  componentWillMount() {
+    
+  }
   handeChangeIndex = index => {
     this.setState({ viewIndex: index });
   };

@@ -9,6 +9,9 @@ const BrowseButton = styled(Button)`
   && {
     background-color: ${props => props.theme.palette.primary.main};
     color: #fff;
+    &:hover {
+      background-color: ${props => props.theme.palette.primary.dark};
+    }
   }
 `;
 
@@ -38,7 +41,11 @@ class UploadImageModule extends PureComponent {
             <DropImageZone uploadImage={uploadImage} />
           </Grid>
           <Grid item sm={8}>
-            <BrowseButton variant="raised" onClick={this.handleSubmitBtnClick}>
+            <BrowseButton
+              variant="raised"
+              onClick={this.handleSubmitBtnClick}
+              disabled={!image.entity}
+            >
               Submit
             </BrowseButton>
           </Grid>

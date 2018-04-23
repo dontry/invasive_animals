@@ -8,9 +8,11 @@ import Detection from "../pages/Detection";
 import Search from "../pages/Search";
 import SpeciesInfo from "../pages/SpeciesInfo";
 import SpeciesWiki from "../pages/SpeciesWiki";
-import AboutUs from "../pages/AboutUs";
 import Report from "../pages/Report";
+import HelpCenter from "../pages/HelpCenter";
+import AboutUs from "../pages/AboutUs";
 import Login from "../pages/Login";
+import ComingSoon from "../pages/ComingSoon";
 import Error404 from "../pages/Error404";
 import Footer from "../components/common/Footer";
 
@@ -104,11 +106,19 @@ class Routes extends Component {
             isAuthenticated={isAuthenticated}
           />
           <ProtectedRoute
+            exact
             path="/species/:id"
             component={SpeciesInfo}
             isAuthenticated={isAuthenticated}
           />
           <ProtectedRoute
+            exact
+            path="/help_center"
+            component={HelpCenter}
+            isAuthenticated={isAuthenticated}
+          />
+          <ProtectedRoute
+            exact
             path="/about"
             isAuthenticated={isAuthenticated}
             component={AboutUs}
@@ -119,6 +129,7 @@ class Routes extends Component {
             component={Home}
             isAuthenticated={isAuthenticated}
           />
+          <Route path="/comingsoon" component={ComingSoon} />
           <Route component={Error404} />
         </Switch>
         <Footer />

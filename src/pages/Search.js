@@ -35,7 +35,7 @@ class Search extends Component {
   state = {
     initialRender: true,
     speciesList: [],
-    results: [],
+    result: [],
     loading: false
   };
   async componentWillMount() {
@@ -47,8 +47,8 @@ class Search extends Component {
     this.loading();
     setTimeout(() => {
       this.setState({ initialRender: false });
-      const results = this.searchBySpeciesName(query);
-      this.setState({ results, loading: false });
+      const result = this.searchByName(query);
+      this.setState({ result, loading: false });
     }, 600);
   };
 
@@ -56,7 +56,7 @@ class Search extends Component {
     this.setState({ loading: true });
   };
 
-  searchBySpeciesName = name => {
+  searchByName = name => {
     const { speciesList } = this.state;
     return speciesList.filter(item => {
       return item.Species.toLowerCase().includes(name.toLowerCase());
@@ -64,7 +64,7 @@ class Search extends Component {
   };
 
   render() {
-    const { initialRender, results, loading } = this.state;
+    const { initialRender, result, loading } = this.state;
     return (
       <Fragment>
         <NavAppBar />
@@ -90,7 +90,7 @@ class Search extends Component {
               ) : loading ? (
                 <LoadingSpinner />
               ) : (
-                <ResultList results={results} />
+                <ResultList results={result} />
               )}
             </ResultWrapper>
           </Grid>
