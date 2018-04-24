@@ -1,9 +1,7 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import styled from "styled-components";
 
-import { MenuItem } from "material-ui/Menu";
-import { FormControl, FormHelperText } from "material-ui/Form";
+import {MenuItem} from "material-ui/Menu";
 import Select from "material-ui/Select";
 
 const StyledSelect = styled(Select)`

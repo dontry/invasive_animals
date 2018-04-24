@@ -1,10 +1,6 @@
 import React from "react";
-import {
-  TargetIcon,
-  BinocularsIcon,
-  MagnifierIcon
-} from "../components/common/Icons";
-import { lightGreen } from "material-ui/colors";
+import {BinocularsIcon, MagnifierIcon, TargetIcon} from "../components/common/Icons";
+import {lightGreen} from "material-ui/colors";
 
 export const ROUTE_TABLE = {
   "/": "Home",

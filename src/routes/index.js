@@ -1,7 +1,6 @@
-import React, { Component, Fragment } from "react";
-import { Route, Redirect } from "react-router";
+import React, {Component, Fragment} from "react";
+import {Redirect, Route} from "react-router";
 import Switch from "react-router-dom/Switch";
-
 //Pages
 import Login from "../pages/Login";
 import Home from "../pages/Home";

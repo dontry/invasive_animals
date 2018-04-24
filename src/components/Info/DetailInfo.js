@@ -1,16 +1,14 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
+import React, {Fragment} from "react";
 import styled from "styled-components";
 
-import { grey } from "material-ui/colors";
-import FacebookProvider, { Comments } from "react-facebook";
+import {grey} from "material-ui/colors";
+import FacebookProvider, {Comments} from "react-facebook";
 
-import { Title, Paragraph } from "../common/Text";
+import {Title} from "../common/Text";
 import Passage from "../common/Passage";
-import { ScreenMask, Mask } from "../common/Mask";
+import {ScreenMask} from "../common/Mask";
 import Gallery from "./GalleryComposite";
 import LoadingSpinner from "../common/LoadingSpinner";
-import { addLineBreaker } from "../../utils/tools";
 
 const ATTRIBUTE_NAMES = [
   { key: "BriefIntroduction", value: "Brief Introduction" },

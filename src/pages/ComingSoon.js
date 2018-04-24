@@ -1,8 +1,8 @@
-import React, { Fragment } from "react";
+import React, {Fragment} from "react";
 import styled from "styled-components";
 import NavAppBar from "../components/common/NavAppBar";
 import PageContainer from "../components/common/PageContainer";
-import { Title  } from "../components/common/Text";
+import {Title} from "../components/common/Text";
 
 const ErrorMessageWrapper = styled.div`
   position: absolute;

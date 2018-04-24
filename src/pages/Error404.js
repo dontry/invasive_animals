@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, {Fragment} from "react";
 import styled from "styled-components";
 import Error from "../components/common/Error";
 import NavAppBar from "../components/common/NavAppBar";

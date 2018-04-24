@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, {Component, Fragment} from "react";
 import styled from "styled-components";
 import PageContainer from "../components/common/PageContainer";
 import NavAppBar from "../components/common/NavAppBar";
@@ -6,9 +6,9 @@ import SearchBar from "../components/Search/SearchBar";
 import SidePane from "../components/Search/SidePane";
 import ResultList from "../components/Search/ResultList";
 import TileBarGridList from "../components/Search/TileBarGridList";
-import { Title } from "../components/common/Text";
+import {Title} from "../components/common/Text";
 import Grid from "material-ui/Grid";
-import { getAllSpecies } from "../utils/api";
+import {getAllSpecies} from "../utils/api";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
 

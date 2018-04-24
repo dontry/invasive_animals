@@ -1,12 +1,11 @@
-import React, { Fragment } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import Grid from "material-ui/Grid";
-import { grey } from "material-ui/colors";
-import Typography from "material-ui/Typography";
-import { Title } from "./Text";
-import { SITE_MAP } from "../../utils/routing";
+import {grey} from "material-ui/colors";
+import {Title} from "./Text";
+import {SITE_MAP} from "../../utils/routing";
 
 const FooterWrapper = styled.div`
   position: relative;

@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import styled from "styled-components";
-import { red, grey } from "material-ui/colors";
+import {grey, red} from "material-ui/colors";
 
 const ErrorMessage = styled.h3`
   text-align: center;

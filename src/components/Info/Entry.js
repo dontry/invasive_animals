@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Grid from "material-ui/Grid";
-import { Link } from "react-router-dom";
-import { Title, Paragraph } from "../common/Text";
+import {Link} from "react-router-dom";
+import {Title} from "../common/Text";
 import ImagePlaceholder from "../../assets/images/placeholder.png";
-import { grey } from "material-ui/colors";
-import { speciesPicFinder } from "../../utils/tools";
+import {grey} from "material-ui/colors";
+import {speciesPicFinder} from "../../utils/tools";
 
 const EntryWrapper = styled(Grid)`
   && {

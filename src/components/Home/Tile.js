@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import Grid from "material-ui/Grid";
-import { Title } from "../common/Text";
-import { green } from "material-ui/colors";
+import {Title} from "../common/Text";
+import {green} from "material-ui/colors";
 
 const TileWrapper = styled(Grid)`
   && {

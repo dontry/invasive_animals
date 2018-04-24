@@ -1,11 +1,10 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import List, { ListItem, ListItemText } from "material-ui/List";
+import {Link} from "react-router-dom";
+import List, {ListItem, ListItemText} from "material-ui/List";
 import Divider from "material-ui/Divider";
-import Tooltip from "material-ui/Tooltip";
-import { grey } from "material-ui/colors";
+import {grey} from "material-ui/colors";
 import Typography from "material-ui/Typography";
 
 const ListWrapper = styled(List)`

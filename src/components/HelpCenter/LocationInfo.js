@@ -1,11 +1,10 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import styled from "styled-components";
 
-import { grey } from "material-ui/colors";
+import {grey} from "material-ui/colors";
 import Paper from "material-ui/Paper";
 import Passage from "../common/Passage";
-import { Title } from "../common/Text";
+import {Title} from "../common/Text";
 
 
 const PaperWrapper = styled(Paper)`

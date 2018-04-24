@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
-import { Route, withRouter } from "react-router-dom";
-import { BreadcrumbsItem, Separator } from "./Breadcrumbs";
+import {Route, withRouter} from "react-router-dom";
+import {BreadcrumbsItem} from "./Breadcrumbs";
 
 const BreadcrumbsWrapper = styled.div`
   padding-top: 1rem;

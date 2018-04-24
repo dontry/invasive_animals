@@ -1,8 +1,7 @@
-import React, { Fragment } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import MUISearchBar from "material-ui-search-bar";
-import { ActionButton } from "../common/ActionButtonGroup";
 
 const StyledSearchBar = styled(MUISearchBar)`
   && {

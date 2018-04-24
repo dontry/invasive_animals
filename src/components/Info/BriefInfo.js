@@ -1,10 +1,10 @@
-import React, { Fragment } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { Title, Paragraph } from "../common/Text";
+import {Link} from "react-router-dom";
+import {Paragraph, Title} from "../common/Text";
 import ImagePlaceHolder from "../../assets/images/placeholder.png";
-import { grey, lime, red } from "material-ui/colors";
+import {grey, lime, red} from "material-ui/colors";
 import Paper from "material-ui/Paper";
 import Grid from "material-ui/Grid";
 import Button from "material-ui/Button";

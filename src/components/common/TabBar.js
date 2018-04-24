@@ -1,9 +1,8 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "material-ui/styles";
-import AppBar from "material-ui/AppBar";
-import { Link, withRouter, Redirect } from "react-router-dom";
-import Tabs, { Tab } from "material-ui/Tabs";
+import {withStyles} from "material-ui/styles";
+import {Redirect, withRouter} from "react-router-dom";
+import Tabs, {Tab} from "material-ui/Tabs";
 import Typography from "material-ui/Typography";
 
 const TabContainer = props => {

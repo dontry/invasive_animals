@@ -1,7 +1,7 @@
-import React, { Fragment } from "react";
+import React, {Fragment} from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { Title } from "../common/Text";
+import {Title} from "../common/Text";
 import Entry from "../Info/Entry";
 
 const ResultListWrapper = styled.div`

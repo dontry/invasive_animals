@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from "react";
-import { withStyles } from "material-ui/styles";
+import React, {Component} from "react";
+import {withStyles} from "material-ui/styles";
 import TextField from "material-ui/TextField";
-import { StyledButton } from "../components/common/ActionButtonGroup";
+import {StyledButton} from "../components/common/ActionButtonGroup";
 import Grid from "material-ui/Grid";
-import { Redirect } from "react-router-dom";
+import {Redirect} from "react-router-dom";
 import Paper from "material-ui/Paper";
 import PageContainer from "../components/common/PageContainer";
 

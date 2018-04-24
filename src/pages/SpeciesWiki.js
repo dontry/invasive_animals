@@ -1,11 +1,9 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import React, {Fragment} from "react";
 
-import { lime } from "material-ui/colors";
+import {lime} from "material-ui/colors";
 
 import PageContainer from "../components/common/PageContainer";
-import { Title } from "../components/common/Text";
+import {Title} from "../components/common/Text";
 
 import NavAppBar from "../components/common/NavAppBar";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";

@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { Title, Paragraph } from "./Text";
-import { lightGreen } from "material-ui/colors";
+import {Paragraph, Title} from "./Text";
+import {lightGreen} from "material-ui/colors";
 import Grid from "material-ui/Grid";
 
 const BannerWrapper = styled.div`

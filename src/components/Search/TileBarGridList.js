@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import GridList, { GridListTile, GridListTileBar } from "material-ui/GridList";
+import {Link} from "react-router-dom";
+import GridList, {GridListTile, GridListTileBar} from "material-ui/GridList";
 import speciesImageList from "../../assets/species_img_url";
 
 const Wrapper = styled.div`

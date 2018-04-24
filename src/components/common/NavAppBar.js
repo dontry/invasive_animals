@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 import AppBar from "material-ui/AppBar";
 import Button from "material-ui/Button";
@@ -9,10 +9,10 @@ import Toolbar from "material-ui/Toolbar";
 import Typography from "material-ui/Typography";
 
 import NavLink from "./NavLink";
-import { Manager, Target } from "react-popper";
+import {Manager, Target} from "react-popper";
 import DropdownMenu from "./DropdownMenu";
-import { NAV_BAR } from "../../routes/routing";
-import { LogoIcon } from "./Icons";
+import {NAV_BAR} from "../../routes/routing";
+import {LogoIcon} from "./Icons";
 
 const AppBarWrapper = styled.div`
   flex-grow: 1;

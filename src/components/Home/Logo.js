@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { Title } from "../common/Text";
+import {Title} from "../common/Text";
 import Grid from "material-ui/Grid";
-import { LogoIcon } from "../common/Icons";
-import { green } from "material-ui/colors";
+import {LogoIcon} from "../common/Icons";
+import {green} from "material-ui/colors";
 
 const Wrapper = styled(Grid)`
   && {

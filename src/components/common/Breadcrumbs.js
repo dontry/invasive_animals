@@ -1,12 +1,11 @@
-import React, { Children } from "react";
+import React, {Children} from "react";
 import PropTypes from "prop-types";
-import { grey } from "material-ui/colors";
+import {grey} from "material-ui/colors";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import NavLink from "./NavLink";
 import Icon from "material-ui/Icon";
-import { findRouteName } from "../../routes/routing";
-import { strEqual } from "../../utils/tools";
+import {findRouteName} from "../../routes/routing";
+import {strEqual} from "../../utils/tools";
 
 export const Separator = styled.span`
   display: inline-block;

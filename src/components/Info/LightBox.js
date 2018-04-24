@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, {PureComponent} from "react";
 import ImageLightbox from "react-image-lightbox";
 
 import ImagePlaceholder from "../../assets/images/placeholder.png";

@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ReactLoading from "react-loading";
-import { ScreenMask } from "./Mask";
 import styled from "styled-components";
 
 const Wrapper = styled.div`

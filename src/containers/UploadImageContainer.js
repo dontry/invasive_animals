@@ -1,9 +1,5 @@
-import { connect } from "react-redux";
-import {
-  addImage,
-  fetchDetectionResult,
-  resetImage
-} from "../actions/detection";
+import {connect} from "react-redux";
+import {addImage, fetchDetectionResult, resetImage} from "../actions/detection";
 import UploadImageModule from "../components/Detect/UploadImageModule";
 
 const mapStateToProps = (state, ownProps) => {

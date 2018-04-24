@@ -1,9 +1,9 @@
-import React, { PureComponent } from "react";
+import React, {PureComponent} from "react";
 import styled from "styled-components";
-import Menu, { MenuItem, MenuList } from "material-ui/Menu";
-import { Manager, Target, Popper } from "react-popper";
+import {MenuList} from "material-ui/Menu";
+import {Popper} from "react-popper";
 import ClickAwayListener from "material-ui/utils/ClickAwayListener";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import Paper from "material-ui/Paper";
 import Portal from "material-ui/Portal";
 import Collapse from "material-ui/transitions/Collapse";

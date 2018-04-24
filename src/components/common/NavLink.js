@@ -1,10 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { NavLink } from "react-router-dom";
-import { grey, indigo } from "material-ui/colors";
+import {NavLink} from "react-router-dom";
 import styled from "styled-components";
 import Typography from "material-ui/Typography";
-import { Title } from "./Text";
 
 const StyledNavLink = styled(NavLink)`
   && {

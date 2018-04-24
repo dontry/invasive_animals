@@ -1,13 +1,8 @@
-import React, { Fragment, Component } from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import { withRouter } from "react-router-dom";
+import React, {Component, Fragment} from "react";
 import PageContainer from "../components/common/PageContainer";
 import DetailInfo from "../components/Info/DetailInfo";
-import { ScreenMask } from "../components/common/Mask";
-import LoadingSpinner from "../components/common/LoadingSpinner";
-import { getSpeciesById } from "../utils/detectInvasiveSpecies";
-import { getImagesById } from "../utils/api";
+import {getSpeciesById} from "../utils/detectInvasiveSpecies";
+import {getImagesById} from "../utils/api";
 import NavAppBar from "../components/common/NavAppBar";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
 

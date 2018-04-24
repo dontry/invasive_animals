@@ -1,11 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import GridList, { GridListTile } from "material-ui/GridList";
-import ImgPlaceholder from "../../assets/images/placeholder.png";
+import GridList, {GridListTile} from "material-ui/GridList";
 import Tile from "./Tile";
-import { lightGreen } from "material-ui/colors";
-import { TargetIcon, MagnifierIcon, BinocularsIcon } from "../common/Icons";
+import {lightGreen} from "material-ui/colors";
+import {BinocularsIcon, MagnifierIcon, TargetIcon} from "../common/Icons";
 
 const ICON_SIZE = "64px";
 const introData = [

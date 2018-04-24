@@ -1,11 +1,11 @@
-import React, { Fragment } from "react";
+import React, {Fragment} from "react";
 import styled from "styled-components";
 
-import { grey, green } from "material-ui/colors";
+import {green, grey} from "material-ui/colors";
 import NavAppBar from "../components/common/NavAppBar";
 import PageContainer from "../components/common/PageContainer";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
-import { Title, Paragraph } from "../components/common/Text";
+import {Paragraph, Title} from "../components/common/Text";
 
 const Wrapper = styled.div`
   padding: 1rem 2rem;

@@ -1,10 +1,9 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
-import { grey } from "material-ui/colors";
+import {grey} from "material-ui/colors";
 
-import { Title, Paragraph } from "../common/Text";
-import { addLineBreaker } from "../../utils/tools";
+import {Paragraph, Title} from "../common/Text";
+import {addLineBreaker} from "../../utils/tools";
 
 const Wrapper = styled.div`
   padding: ${props => props.padding || "0.5rem 1rem"};

@@ -1,10 +1,9 @@
-import React, { Fragment } from "react";
+import React, {Fragment} from "react";
 import PageContainer from "../components/common/PageContainer";
 import ProfileGrid from "../components/About/ProfileGrid";
 import Testimonial from "../components/About/Testimonial";
-import { Title } from "../components/common/Text";
-import NavAppBar from "../components/common/NavAppBar"
-import BreadcrumbsWithRouter from '../components/common/BreadcrumbsWithRouter'
+import NavAppBar from "../components/common/NavAppBar";
+import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
 
 const AboutUs = () => (
   <Fragment>

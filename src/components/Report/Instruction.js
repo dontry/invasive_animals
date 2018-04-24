@@ -1,11 +1,10 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import styled from "styled-components";
 
-import { grey } from "material-ui/colors";
+import {grey} from "material-ui/colors";
 import Icon from "material-ui/Icon";
 
-import { Title, Paragraph } from "../common/Text";
+import {Paragraph, Title} from "../common/Text";
 
 const Wrapper = styled.section`
   padding: 1rem 0;

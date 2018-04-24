@@ -1,23 +1,16 @@
-import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
+import React, {Component, Fragment} from "react";
 import styled from "styled-components";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-
-import UploadImageModule from "../components/Detect/UploadImageModule";
+import {connect} from "react-redux";
+import {withRouter} from "react-router-dom";
 import UploadImageContainer from "../containers/UploadImageContainer";
-import DetectionResultContainer from "../containers/DetectionResultContainer";
-import Divider from "material-ui/Divider";
-import ResultModule from "../components/ResultModule";
 import SwipeableViews from "react-swipeable-views";
 import PageContainer from "../components/common/PageContainer";
-import Grid from "material-ui/Grid";
-import { Title } from "../components/common/Text";
-import { green, lime } from "material-ui/colors";
+import {Title} from "../components/common/Text";
+import {green, lime} from "material-ui/colors";
 import BriefInfo from "../components/Info/BriefInfo";
 import NavAppBar from "../components/common/NavAppBar";
 import LoadingSpinner from "../components/common/LoadingSpinner";
-import { ScreenMask, Mask } from "../components/common/Mask";
+import {ScreenMask} from "../components/common/Mask";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
 import ActionButtonGroup from "../components/common/ActionButtonGroup";
 

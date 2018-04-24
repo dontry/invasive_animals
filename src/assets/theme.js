@@ -1,13 +1,4 @@
-import {
-  red,
-  blue,
-  yellow,
-  teal,
-  indigo,
-  lightGreen,
-  green,
-  lime
-} from "material-ui/colors";
+import {green, lightGreen, lime, red} from "material-ui/colors";
 /**
  * Created by caidong on 11/4/18.
  */

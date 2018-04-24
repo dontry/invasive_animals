@@ -1,17 +1,17 @@
-import React, { Component, Fragment } from "react";
+import React, {Component, Fragment} from "react";
 import styled from "styled-components";
 import Grid from "material-ui/Grid";
-import { green } from "material-ui/colors";
+import {green} from "material-ui/colors";
 
 import PageContainer from "../components/common/PageContainer";
 import NavAppBar from "../components/common/NavAppBar";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
 import LoadingSpinner from "../components/common/LoadingSpinner";
-import { Title } from "../components/common/Text";
+import {Title} from "../components/common/Text";
 
 import LocationInfo from "../components/HelpCenter/LocationInfo";
 import SelectionField from "../components/HelpCenter/SelectionField";
-import { getAllHelpCenters } from "../utils/api";
+import {getAllHelpCenters} from "../utils/api";
 import VictoriaMap from "../assets/images/vitoria_map.png";
 
 const REGION_LIST = [

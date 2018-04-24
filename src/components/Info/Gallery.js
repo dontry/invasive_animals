@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import GridList, { GridListTile, GridListTileBar } from "material-ui/GridList";
-import { grey } from "material-ui/colors";
+import GridList, {GridListTile} from "material-ui/GridList";
+import {grey} from "material-ui/colors";
 import ImagePlaceholder from "../../assets/images/placeholder.png";
 
 const GalleryWrapper = styled.div`

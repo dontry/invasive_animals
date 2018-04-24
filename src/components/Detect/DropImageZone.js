@@ -1,10 +1,9 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "material-ui/styles";
 import Dropzone from "react-dropzone";
 import styled from "styled-components";
 import MoveToInbox from "material-ui-icons/MoveToInbox";
-import { grey } from "material-ui/colors";
+import {grey} from "material-ui/colors";
 
 const StyledDropzone = styled(Dropzone)`
   position: relative;

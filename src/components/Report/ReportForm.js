@@ -1,20 +1,17 @@
-import React, { Component, Fragment } from "react";
+import React, {Component} from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { withStyles } from "material-ui/styles";
-import { format } from "date-fns";
-import { Field, reduxForm } from "redux-form";
-import { InputLabel } from "material-ui/Input";
+import {Field, reduxForm} from "redux-form";
+import {InputLabel} from "material-ui/Input";
 import TextField from "material-ui/TextField";
 import DropImageZone from "../Detect/DropImageZone";
 import ActionButtonGroup from "../common/ActionButtonGroup";
 import Grid from "material-ui/Grid";
-import { Redirect, withRouter } from "react-router-dom";
-import { validate } from "../../utils/formValidation";
-import { grey } from "material-ui/colors";
-import { getCurrentDateString } from "../../utils/tools";
+import {Redirect, withRouter} from "react-router-dom";
+import {validate} from "../../utils/formValidation";
+import {grey} from "material-ui/colors";
 
-import { Mask } from "../common/Mask";
+import {Mask} from "../common/Mask";
 import LoadingSpinner from "../common/LoadingSpinner";
 
 const styles = {
