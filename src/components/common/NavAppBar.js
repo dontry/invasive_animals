@@ -11,9 +11,8 @@ import Typography from "material-ui/Typography";
 import NavLink from "./NavLink";
 import { Manager, Target } from "react-popper";
 import DropdownMenu from "./DropdownMenu";
-import {NAV_BAR} from "../../routes/routing";
-import { LogoIcon } from "./Icons"; 
-
+import { NAV_BAR } from "../../routes/routing";
+import { LogoIcon } from "./Icons";
 
 const AppBarWrapper = styled.div`
   flex-grow: 1;
@@ -132,7 +131,7 @@ NavAppBar.propTypes = {
 NavAppBar.defaultProps = {
   title: (
     <Link to="/">
-      <LogoIcon size={"40px"}/>
+      <LogoIcon size={"40px"} />
     </Link>
   ),
   menuItems: NAV_BAR

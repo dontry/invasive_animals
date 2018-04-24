@@ -8,11 +8,6 @@ const ErrorMessage = styled.h3`
   color: ${props => props.color || props.theme.error || red[500]};
   font-weight: bold;
 `;
-{
-  link: {
-    color: "#3c6cab";
-  }
-}
 
 const ErrorLink = styled.h4`
   text-align: center;

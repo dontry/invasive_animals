@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { withStyles } from "material-ui/styles";
 import PropTypes from "prop-types";
 import Toolbar from "material-ui/Toolbar";

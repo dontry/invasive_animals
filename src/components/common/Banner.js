@@ -9,7 +9,7 @@ const BannerWrapper = styled.div`
   position: relative;
   box-sizing: border-box;
   padding: ${props => props.padding || "1rem 1rem"};
-  height: 40vh;
+  height: 45vh;
   min-height: 300px;
   max-height: 500px;
   width: 100%;
@@ -26,7 +26,7 @@ const BannerWrapper = styled.div`
     background-size: cover;
     background-attachment: fixed;
     background-color: ${lightGreen[500]};
-    filter: blur(1px) brightness(80%);
+    filter: brightness(80%);
   }
 `;
 

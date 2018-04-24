@@ -8,11 +8,11 @@ import { green } from "material-ui/colors";
 const Wrapper = styled(Grid)`
   && {
     width: 100%;
-    padding: 10px;
-    line-height: 1.5rem;
+    line-height: 2rem;
     background-color: ${props => props.theme.palette.primary.light};
     text-align: center;
     margin: 0;
+    height: ${props => props.height || "70px"};
   }
 `;
 

@@ -9,7 +9,6 @@ const StyledSearchBar = styled(MUISearchBar)`
     width: 100%;
     margin: 0 auto;
     text-align: center;
-    padding: 1rem;
     height: 1rem;
   }
 `;

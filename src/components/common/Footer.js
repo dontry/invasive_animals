@@ -10,17 +10,24 @@ import { SITE_MAP } from "../../utils/routing";
 
 const FooterWrapper = styled.div`
   position: relative;
+  width: 100vw;
   bottom: 0;
 `;
 const ContentWrapper = styled(Grid)`
   && {
+    box-sizing: content-box;
     position: relative;
-    width: 100vw;
     text-align: center;
     color: ${grey[600]};
     padding-top: 1rem;
     padding-bottom: 1.5rem;
     background-color: ${grey[800]};
+  }
+`;
+
+const CopyrightWrapper = ContentWrapper.extend`
+  && {
+    height: 80px;
   }
 `;
 
@@ -49,12 +56,12 @@ function renderMenuItems(items) {
 }
 
 export const Copyright = () => (
-  <ContentWrapper container direction="column">
+  <CopyrightWrapper container direction="column">
     <Grid item>
       <Title txtColor={grey[500]}>© 2018 Victorian Guardian</Title>
       <Title txtColor={grey[500]}>Powered by G4</Title>
     </Grid>
-  </ContentWrapper>
+  </CopyrightWrapper>
 );
 
 export const Sitemap = ({ menu }) => {

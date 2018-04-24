@@ -1,5 +1,9 @@
+html,
 body {
   margin: 0;
+  height: 100%;
+}
+body {
   padding: 0;
   font-family: sans-serif;
 }
@@ -11,4 +15,16 @@ ul {
 
 a {
   text-decoration: none !important;
+}
+
+#root {
+  height: 100%;
+}
+
+.App {
+  height: 100%;
+}
+
+.react-swipeable-view-container {
+  height: 100%;
 }

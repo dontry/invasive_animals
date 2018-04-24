@@ -22,11 +22,10 @@ import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
 import ActionButtonGroup from "../components/common/ActionButtonGroup";
 
 const ViewWrapper = styled.section`
-  height: 100%;
+  height: 100vh;
 `;
 
 const DropboxWrapper = styled.div`
-  height: 100%;
   margin-top: 50px;
 `;
 
@@ -34,7 +33,6 @@ const ReportActionProps = history => ({
   raised: true,
   label: "Report",
   action() {
-    console.log("click 1");
     return history.push("/report");
   },
   disabled: false,
@@ -46,7 +44,6 @@ const SeekHelpActionProps = history => ({
   raised: true,
   label: "Seek Help",
   action() {
-    console.log("click 2");
     return history.push("/help_center");
   },
   disabled: false,
@@ -100,9 +97,9 @@ class Detection extends Component {
           onChangeIndex={() => {
             console.log("no change view");
           }}
-          style={{ overflow: "hidden" }}
+          style={{ height: "100%" }}
         >
-          <PageContainer height="90vh">
+          <PageContainer>
             <BreadcrumbsWithRouter />
             <DropboxWrapper>
               <Title

@@ -3,6 +3,7 @@ import { Route, Redirect } from "react-router";
 import Switch from "react-router-dom/Switch";
 
 //Pages
+import Login from "../pages/Login";
 import Home from "../pages/Home";
 import Detection from "../pages/Detection";
 import Search from "../pages/Search";
@@ -11,7 +12,7 @@ import SpeciesWiki from "../pages/SpeciesWiki";
 import Report from "../pages/Report";
 import HelpCenter from "../pages/HelpCenter";
 import AboutUs from "../pages/AboutUs";
-import Login from "../pages/Login";
+import ContactUs from "../pages/ContactUs";
 import ComingSoon from "../pages/ComingSoon";
 import Error404 from "../pages/Error404";
 import Footer from "../components/common/Footer";
@@ -63,7 +64,6 @@ class Routes extends Component {
   };
   render() {
     let { isAuthenticated } = this.state;
-    isAuthenticated = true;
     return (
       <Fragment>
         <Switch>
@@ -122,6 +122,12 @@ class Routes extends Component {
             path="/about"
             isAuthenticated={isAuthenticated}
             component={AboutUs}
+          />
+          <ProtectedRoute
+            exact
+            path="/contact"
+            isAuthenticated={isAuthenticated}
+            component={ContactUs}
           />
           <ProtectedRoute
             exact

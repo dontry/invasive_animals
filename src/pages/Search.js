@@ -69,7 +69,7 @@ class Search extends Component {
     return (
       <Fragment>
         <NavAppBar />
-        <PageContainer minHeight="90vh">
+        <PageContainer>
           <BreadcrumbsWithRouter />
           <SearchBarWrapper container justify="center">
             <Grid item xs={12} sm={10} md={8}>

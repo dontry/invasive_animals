@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { withStyles } from "material-ui/styles";
@@ -14,6 +14,9 @@ import { validate } from "../../utils/formValidation";
 import { grey } from "material-ui/colors";
 import { getCurrentDateString } from "../../utils/tools";
 
+import { Mask } from "../common/Mask";
+import LoadingSpinner from "../common/LoadingSpinner";
+
 const styles = {
   btnGroup: {
     marginTop: "1rem",
@@ -28,6 +31,11 @@ const styles = {
     color: "red"
   }
 };
+
+const Wrapper = styled.div`
+  position: relative;
+  width: 100%;
+`;
 
 const FormWrapper = styled.form`
   margin: 0 auto;
@@ -135,6 +143,10 @@ export class ReportForm extends Component {
     router: PropTypes.object // replace with PropTypes.object if you use them
   };
 
+  componentWillUnmount() {
+    this.props.reset();
+  }
+
   handleChangeSpeciesField(event) {
     this.setState({ species: event.target.value });
   }
@@ -144,9 +156,9 @@ export class ReportForm extends Component {
   };
 
   cancel = () => {
-    this.props.reset();
     this.context.router.history.goBack();
   };
+
   render() {
     const {
       handleSubmit,
@@ -182,61 +194,72 @@ export class ReportForm extends Component {
     };
 
     return (
-      <FormWrapper
-        onSubmit={handleSubmit(this.submit)}
-        noValidate
-        autoComplete="off"
-      >
-        <FormBody container direction="row" justify="flex-start">
-          <Field
-            name="username"
-            component={renderTextField}
-            label="Your name"
-          />
-          <Field
-            name="email"
-            component={renderTextField}
-            label="Email"
-            type="email"
-          />
-          <Field name="location" component={renderTextField} label="Location" />
-          <Field name="date" component={renderDateField} label="Date" />
-          <Field
-            name="species"
-            component={renderTextField}
-            label="Species Name"
-          />
-          <Field
-            name="amount"
-            component={renderTextField}
-            label="Number of species"
-          />
-          <Field
-            name="description"
-            label="Description"
-            component={renderTextField}
-            fullwidth={true}
-            multiline={true}
-            rows={5}
-            width={"100%"}
-          />
-          <Field
-            name="picture"
-            component={renderDropZone}
-            label="Picture"
-            image={image}
-          />
-        </FormBody>
-        <FormFooter container justify="flex-end">
-          <Grid item sm={12}>
-            <ActionButtonGroup
-              className={classes.btnGroup}
-              primaryProps={SubmitProps}
-              secondaryProps={CancelProps}
+      <Wrapper>
+        {submitting && (
+          <Mask>
+            <LoadingSpinner />
+          </Mask>
+        )}
+        <FormWrapper
+          onSubmit={handleSubmit(this.submit)}
+          noValidate
+          autoComplete="off"
+        >
+          <FormBody container direction="row" justify="flex-start">
+            <Field
+              component={renderTextField}
+              name="username"
+              label="Your name *"
             />
-          </Grid>
-        </FormFooter>
-      </FormWrapper>
+            <Field
+              component={renderTextField}
+              name="email"
+              label="Email *"
+              type="email"
+            />
+            <Field
+              component={renderTextField}
+              name="location"
+              label="Location *"
+            />
+            <Field component={renderDateField} name="date" label="Date *" />
+            <Field
+              component={renderTextField}
+              name="species"
+              label="Species Name"
+            />
+            <Field
+              component={renderTextField}
+              name="amount"
+              label="Amount of sighting"
+            />
+            <Field
+              name="description"
+              label="Description"
+              component={renderTextField}
+              fullwidth={true}
+              multiline={true}
+              rows={5}
+              width={"100%"}
+            />
+            <Field
+              name="picture"
+              component={renderDropZone}
+              label="Picture"
+              image={image}
+            />
+          </FormBody>
+          <FormFooter container justify="flex-end">
+            <Grid item sm={12}>
+              <ActionButtonGroup
+                className={classes.btnGroup}
+                primaryProps={SubmitProps}
+                secondaryProps={CancelProps}
+              />
+            </Grid>
+          </FormFooter>
+        </FormWrapper>
+      </Wrapper>
     );
   }
 }
