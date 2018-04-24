@@ -3,18 +3,18 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import MUISearchBar from "material-ui-search-bar";
 
-const StyledSearchBar = styled(MUISearchBar)`
-  && {
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-    height: 1rem;
-  }
-`;
+const style = { 
+  maxWidth: 800,
+  margin: "0 auto" 
+};
 
 const SearchBar = ({ handleChange, handleSearch }) => {
   return (
-    <StyledSearchBar onChange={handleChange} onRequestSearch={handleSearch} />
+    <MUISearchBar
+      onChange={handleChange}
+      onRequestSearch={handleSearch}
+      style={style}
+    />
   );
 };
 

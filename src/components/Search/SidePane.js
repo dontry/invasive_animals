@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import {Link} from "react-router-dom";
-import List, {ListItem, ListItemText} from "material-ui/List";
+import { Link } from "react-router-dom";
+import List, { ListItem, ListItemText } from "material-ui/List";
 import Divider from "material-ui/Divider";
-import {grey} from "material-ui/colors";
+import { grey } from "material-ui/colors";
 import Typography from "material-ui/Typography";
 
 const ListWrapper = styled(List)`
@@ -18,12 +18,12 @@ const ListTitle = styled(Typography)`
 
 function renderListItem(items, handleClick) {
   return items.map(item => (
-    <ListItem button key={item.name} onClick={handleClick}>
-      <Link to={item.link}>
+    <Link to={item.link}>
+      <ListItem button key={item.name} onClick={handleClick}>
         <ListItemText primary={item.name} />
-      </Link>
-      <Divider />
-    </ListItem>
+        <Divider />
+      </ListItem>
+    </Link>
   ));
 }
 

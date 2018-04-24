@@ -1,20 +1,25 @@
-import React, {Component, Fragment} from "react";
+import React, { Component, Fragment } from "react";
 import styled from "styled-components";
 import PageContainer from "../components/common/PageContainer";
 import NavAppBar from "../components/common/NavAppBar";
+import { Mask } from "../components/common/Mask";
 import SearchBar from "../components/Search/SearchBar";
 import SidePane from "../components/Search/SidePane";
 import ResultList from "../components/Search/ResultList";
 import TileBarGridList from "../components/Search/TileBarGridList";
-import {Title} from "../components/common/Text";
+import { Title } from "../components/common/Text";
 import Grid from "material-ui/Grid";
-import {getAllSpecies} from "../utils/api";
+import { getAllSpecies } from "../utils/api";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
 
+const Wrapper = styled(Grid)`
+  padding-top: 3rem;
+`;
+
 const SearchBarWrapper = styled(Grid)`
   && {
-    padding: 3rem 0 2rem;
+    padding: 0rem 0 2rem;
   }
 `;
 
@@ -25,7 +30,8 @@ const SidePaneWrapper = styled(Grid)`
   }
 `;
 
-const ResultWrapper = styled(Grid)`
+const SearchWrapper = styled(Grid)`
+  position: relative;
   && {
     padding: 0 2rem 3rem 0 !important;
   }
@@ -65,22 +71,22 @@ class Search extends Component {
   };
 
   render() {
-    const { initialRender, result, loading } = this.state;
+    let { initialRender, result, loading } = this.state;
     return (
       <Fragment>
         <NavAppBar />
         <PageContainer>
           <BreadcrumbsWithRouter />
-          <SearchBarWrapper container justify="center">
-            <Grid item xs={12} sm={10} md={8}>
-              <SearchBar handleSearch={this.handleSearch} />
-            </Grid>
-          </SearchBarWrapper>
-          <Grid container justify="space-around">
+          <Wrapper container justify="space-around">
             <SidePaneWrapper item sm={4}>
               <SidePane />
             </SidePaneWrapper>
-            <ResultWrapper item xs={10} sm={8}>
+            <SearchWrapper item xs={12} sm={8}>
+              <SearchBarWrapper container justify="center">
+                <Grid item xs={10}>
+                  <SearchBar handleSearch={this.handleSearch} />
+                </Grid>
+              </SearchBarWrapper>
               {initialRender ? (
                 <div>
                   <Title variant="display1" txtColor="#666" align="center">
@@ -89,12 +95,14 @@ class Search extends Component {
                   <TileBarGridList />
                 </div>
               ) : loading ? (
-                <LoadingSpinner />
+                <Mask>
+                  <LoadingSpinner type="bars" />
+                </Mask>
               ) : (
                 <ResultList results={result} />
               )}
-            </ResultWrapper>
-          </Grid>
+            </SearchWrapper>
+          </Wrapper>
         </PageContainer>
       </Fragment>
     );
