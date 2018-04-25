@@ -13,9 +13,11 @@ export const StyledButton = styled(Button)`
     margin-left: 5px;
     margin-right: 5px;
     background-color: ${props =>
-      props.trait
-        ? props.theme.palette[props.type][props.trait]
-        : props.theme.palette[props.type].main};
+      props.type
+        ? props.trait
+          ? props.theme.palette[props.type][props.trait]
+          : props.theme.palette[props.type].main
+        : props.theme.primary.main};
     color: ${props => props.theme.palette[props.type].contrastText};
     font-size: ${props => props.theme.textSize.size};
     height: ${props => props.height || "auto"};

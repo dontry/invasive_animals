@@ -1,19 +1,26 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import {Field, reduxForm} from "redux-form";
-import {InputLabel} from "material-ui/Input";
+import { Redirect, withRouter } from "react-router-dom";
+import { Field, reduxForm } from "redux-form";
+//Material UI
+import { InputLabel } from "material-ui/Input";
 import TextField from "material-ui/TextField";
-import DropImageZone from "../Detect/DropImageZone";
-import ActionButtonGroup from "../common/ActionButtonGroup";
 import Grid from "material-ui/Grid";
-import {Redirect, withRouter} from "react-router-dom";
-import {validate} from "../../utils/formValidation";
-import {grey} from "material-ui/colors";
+import { grey } from "material-ui/colors";
+import Dialog, {
+  DialogActions,
+  DialogContent
+} from "material-ui/Dialog";
 
-import {Mask} from "../common/Mask";
+//Components
+import DropImageZone from "../Detect/DropImageZone";
+import ActionButtonGroup, { StyledButton } from "../common/ActionButtonGroup";
+import { Mask } from "../common/Mask";
+import { Title, Paragraph } from "../common/Text";
 import LoadingSpinner from "../common/LoadingSpinner";
-
+//Utils
+import { validate } from "../../utils/formValidation";
 const styles = {
   btnGroup: {
     marginTop: "1rem",
@@ -124,6 +131,37 @@ const renderDateField = ({
   </FieldWrapper>
 );
 
+const DialogBody = styled.div`
+  padding: 1rem 1.5rem;
+`;
+const ConfirmationDialog = ({ handleClose, title, message, ...rest }) => {
+  return (
+    <Dialog
+      disableBackdropClick
+      disableEscapeKeyDown
+      maxWidth="xs"
+      aria-lablledby={title}
+      {...rest}
+    >
+      <DialogContent>
+        <Paragraph variant="body1" txtColor={grey[700]}>
+          {message}
+        </Paragraph>
+      </DialogContent>
+      <DialogActions>
+        <StyledButton
+          onClick={handleClose}
+          type="message"
+          trait="main"
+          variant="flat"
+        >
+          Confirm
+        </StyledButton>
+      </DialogActions>
+    </Dialog>
+  );
+};
+
 const renderDropZone = ({ name, label, image, className, ...custom }) => (
   <FieldWrapper>
     <InputLabel style={{ fontSize: "0.75rem" }} shrink={true}>
@@ -140,19 +178,37 @@ export class ReportForm extends Component {
     router: PropTypes.object // replace with PropTypes.object if you use them
   };
 
+  state = {
+    dialogOpen: false,
+    complete: false
+  };
+
   componentWillUnmount() {
     this.props.reset();
   }
 
-  handleChangeSpeciesField(event) {
-    this.setState({ species: event.target.value });
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.submitSucceeded === true) this.setState({ dialogOpen: true });
   }
 
-  submit = () => {
-    console.log("submit");
+  handleChangeSpeciesField = event => {
+    this.setState({ species: event.target.value });
   };
 
-  cancel = () => {
+  handleDialogOpen = () => {
+    this.setState({ dialogOpen: true });
+  };
+
+  handleDialogClose = () => {
+    this.setState({ dialogOpen: false, complete: true });
+  };
+
+  handleSubmit = () => {
+    console.log("submit");
+    this.handleDialogOpen();
+  };
+
+  handleCancel = () => {
     this.context.router.history.goBack();
   };
 
@@ -166,8 +222,9 @@ export class ReportForm extends Component {
       submitSucceeded
     } = this.props;
 
-    if (submitSucceeded === true) {
-      window.alert("Your report is submitted");
+    const { dialogOpen, complete } = this.state;
+
+    if (complete === true) {
       return <Redirect to="/" />;
     }
 
@@ -184,7 +241,7 @@ export class ReportForm extends Component {
       className: classes.Cancel,
       label: "Cancel",
       primary: false,
-      action: this.cancel.bind(this),
+      action: this.handleCancel.bind(this),
       disabled: false,
       raise: false,
       type: "secondary"
@@ -198,37 +255,47 @@ export class ReportForm extends Component {
           </Mask>
         )}
         <FormWrapper
-          onSubmit={handleSubmit(this.submit)}
+          onSubmit={handleSubmit(this.handleSubmit)}
           noValidate
           autoComplete="off"
         >
           <FormBody container direction="row" justify="flex-start">
             <Field
+              required
               component={renderTextField}
               name="username"
-              label="Your name *"
+              label="Your name"
             />
             <Field
+              required
               component={renderTextField}
               name="email"
-              label="Email *"
+              label="Email"
               type="email"
             />
             <Field
+              required
               component={renderTextField}
               name="location"
-              label="Location *"
+              label="Location"
             />
-            <Field component={renderDateField} name="date" label="Date *" />
+            <Field
+              required
+              component={renderDateField}
+              name="date"
+              label="Date"
+            />
             <Field
               component={renderTextField}
               name="species"
               label="Species Name"
+              placeholder="Unknown"
             />
             <Field
               component={renderTextField}
               name="amount"
               label="Amount of sighting"
+              type="number"
             />
             <Field
               name="description"
@@ -256,6 +323,11 @@ export class ReportForm extends Component {
             </Grid>
           </FormFooter>
         </FormWrapper>
+        <ConfirmationDialog
+          open={dialogOpen}
+          handleClose={this.handleDialogClose}
+          message="Your report form has been submitted"
+        />
       </Wrapper>
     );
   }
