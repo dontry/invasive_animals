@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { Field, reduxForm } from "redux-form";
 import { Redirect, withRouter } from "react-router-dom";
 //Material UI
-import TextField from "material-ui/TextField";
 import Grid from "material-ui/Grid";
 import { grey } from "material-ui/colors";
 //Components
@@ -12,7 +11,7 @@ import { Title, Paragraph } from "../common/Text";
 import { Mask } from "../common/Mask";
 import { StyledButton } from "../common/ActionButtonGroup";
 import LoadingSpinner from "../common/LoadingSpinner";
-import { renderTextField } from "../common/FormFields";
+import { TextField } from "../common/FormFields";
 
 const StyledForm = styled.form`
   padding: 2.5rem 2rem 3rem 0;
@@ -45,20 +44,20 @@ export class ContactForm extends Component {
         <FormBody container direction="row" justify="flex-start">
           <Field
             required
-            component={renderTextField}
+            component={TextField}
             name="username"
             label="Name"
           />
           <Field
             required
-            component={renderTextField}
+            component={TextField}
             name="email"
             label="Email"
             type="email"
           />
           <Field
             required
-            component={renderTextField}
+            component={TextField}
             name="message"
             label="Message"
             multiline={true}

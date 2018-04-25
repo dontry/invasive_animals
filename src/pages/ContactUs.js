@@ -13,7 +13,7 @@ import ContactForm from "../components/Contact/ContactForm";
 
 const Wrapper = styled(Grid)`
   width: 100%;
-  height: calc(100vh - 80px);
+  min-height: calc(100vh - 80px);
 `;
 
 const MainBody = styled(Grid)`

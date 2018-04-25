@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 //Material UI
 import Grid from "material-ui/Grid";
-import TextField from "material-ui/TextField";
+import MUITextField from "material-ui/TextField";
 
 export const FieldWrapper = styled(Grid)`
   && {
@@ -15,13 +15,13 @@ export const FieldWrapper = styled(Grid)`
   }
 `;
 
-const StyledTextField = styled(TextField)`
+const StyledTextField = styled(MUITextField)`
   && {
     width: ${props => props.width || "100%"};
   }
 `;
 
-export const renderTextField = ({
+export const TextField = ({
   input,
   label,
   meta: { touched, error },
@@ -43,7 +43,7 @@ export const renderTextField = ({
   );
 };
 
-export const renderDateField = ({
+export const DateField = ({
   input,
   label,
   meta: { touched, error },

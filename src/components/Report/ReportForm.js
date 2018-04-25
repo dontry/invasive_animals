@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { Redirect, withRouter } from "react-router-dom";
 import { Field, reduxForm } from "redux-form";
 //Material UI
-import TextField from "material-ui/TextField";
 import { InputLabel } from "material-ui/Input";
 import Grid from "material-ui/Grid";
 import { grey } from "material-ui/colors";
@@ -16,7 +15,7 @@ import ActionButtonGroup, { StyledButton } from "../common/ActionButtonGroup";
 import { Mask } from "../common/Mask";
 import { Title, Paragraph } from "../common/Text";
 import LoadingSpinner from "../common/LoadingSpinner";
-import { renderDateField, renderTextField, FieldWrapper } from "../common/FormFields";
+import { DateField, TextField, FieldWrapper } from "../common/FormFields";
 //Utils
 import { validate } from "../../utils/formValidation";
 
@@ -191,38 +190,38 @@ export class ReportForm extends Component {
           <FormBody container direction="row" justify="flex-start">
             <Field
               required
-              component={renderTextField}
+              component={TextField}
               name="username"
               label="Your name"
             />
             <Field
               required
-              component={renderTextField}
+              component={TextField}
               name="email"
               label="Email"
               type="email"
             />
             <Field
               required
-              component={renderTextField}
+              component={TextField}
               name="location"
               label="Location"
             />
             <Field
               required
-              component={renderDateField}
+              component={DateField}
               name="date"
               label="Date"
               width="200px"
             />
             <Field
-              component={renderTextField}
+              component={TextField}
               name="species"
               label="Species Name"
               placeholder="Unknown"
             />
             <Field
-              component={renderTextField}
+              component={TextField}
               name="amount"
               label="Amount of sighting"
               type="number"
@@ -231,7 +230,7 @@ export class ReportForm extends Component {
             <Field
               name="description"
               label="Description"
-              component={renderTextField}
+              component={TextField}
               multiline={true}
               sm={12}
               rows={5}
