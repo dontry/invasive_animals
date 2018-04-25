@@ -4,14 +4,11 @@ import styled from "styled-components";
 import { Redirect, withRouter } from "react-router-dom";
 import { Field, reduxForm } from "redux-form";
 //Material UI
-import { InputLabel } from "material-ui/Input";
 import TextField from "material-ui/TextField";
+import { InputLabel } from "material-ui/Input";
 import Grid from "material-ui/Grid";
 import { grey } from "material-ui/colors";
-import Dialog, {
-  DialogActions,
-  DialogContent
-} from "material-ui/Dialog";
+import Dialog, { DialogActions, DialogContent } from "material-ui/Dialog";
 
 //Components
 import DropImageZone from "../Detect/DropImageZone";
@@ -19,29 +16,16 @@ import ActionButtonGroup, { StyledButton } from "../common/ActionButtonGroup";
 import { Mask } from "../common/Mask";
 import { Title, Paragraph } from "../common/Text";
 import LoadingSpinner from "../common/LoadingSpinner";
+import { renderDateField, renderTextField, FieldWrapper } from "../common/FormFields";
 //Utils
 import { validate } from "../../utils/formValidation";
-const styles = {
-  btnGroup: {
-    marginTop: "1rem",
-    float: "right"
-  },
-  submitBtn: {
-    backgroundColor: "blue",
-    color: "#fff"
-  },
-  cancelButton: {
-    backgroundColor: "red",
-    color: "red"
-  }
-};
 
-const Wrapper = styled.div`
+const FormWrapper = styled.div`
   position: relative;
   width: 100%;
 `;
 
-const FormWrapper = styled.form`
+const StyledForm = styled.form`
   margin: 0 auto;
   padding: 2rem 0 3rem;
   @media screen and (max-width: 599px) {
@@ -66,74 +50,22 @@ const FormFooter = styled(Grid)`
   }
 `;
 
-const FieldWrapper = styled(Grid)`
-  && {
-    width: ${props => props.width || "50%"};
-    margin-top: 1rem;
-    padding: 1rem;
-    @media screen and (max-width: 599px) {
-      width: 100%;
-    }
-  }
-`;
-
 const DropzoneWrapper = styled.div`
   width: 80%;
   min-width: 376px;
   margin-top: 1rem;
 `;
 
-const StyledTextField = styled(TextField)`
-  && {
-    width: ${props => props.width || "100%"};
-  }
+const FormButtonGroup = styled(ActionButtonGroup)`
+  margin-top: 1rem;
+  float: right;
 `;
 
-const renderTextField = ({
-  input,
-  label,
-  meta: { touched, error },
-  width,
-  ...custom
-}) => {
-  return (
-    <FieldWrapper item width={width}>
-      <StyledTextField
-        label={label}
-        InputLabelProps={{ shrink: true }}
-        error={touched && !!error}
-        helperText={error}
-        {...input}
-        {...custom}
-      />
-    </FieldWrapper>
-  );
-};
-
-const renderDateField = ({
-  input,
-  label,
-  meta: { touched, error },
-  ...custom
-}) => (
-  <FieldWrapper item>
-    <StyledTextField
-      label={label}
-      type="date"
-      InputLabelProps={{ shrink: true }}
-      error={touched && !!error}
-      helperText={error}
-      defaultValue="2018-04-01"
-      style={{ maxWidth: 200 }}
-      {...input}
-      {...custom}
-    />
-  </FieldWrapper>
-);
 
 const DialogBody = styled.div`
   padding: 1rem 1.5rem;
 `;
+
 const ConfirmationDialog = ({ handleClose, title, message, ...rest }) => {
   return (
     <Dialog
@@ -162,7 +94,7 @@ const ConfirmationDialog = ({ handleClose, title, message, ...rest }) => {
   );
 };
 
-const renderDropZone = ({ name, label, image, className, ...custom }) => (
+const renderDropZone = ({ name, label, image, ...custom }) => (
   <FieldWrapper>
     <InputLabel style={{ fontSize: "0.75rem" }} shrink={true}>
       {label}
@@ -215,7 +147,6 @@ export class ReportForm extends Component {
   render() {
     const {
       handleSubmit,
-      classes,
       image,
       pristine,
       submitting,
@@ -229,7 +160,6 @@ export class ReportForm extends Component {
     }
 
     const SubmitProps = {
-      className: classes.submitBtn,
       label: "Submit",
       primary: true,
       action: null,
@@ -238,7 +168,6 @@ export class ReportForm extends Component {
       type: "primary"
     };
     const CancelProps = {
-      className: classes.Cancel,
       label: "Cancel",
       primary: false,
       action: this.handleCancel.bind(this),
@@ -248,13 +177,13 @@ export class ReportForm extends Component {
     };
 
     return (
-      <Wrapper>
+      <FormWrapper>
         {submitting && (
           <Mask>
             <LoadingSpinner />
           </Mask>
         )}
-        <FormWrapper
+        <StyledForm
           onSubmit={handleSubmit(this.handleSubmit)}
           noValidate
           autoComplete="off"
@@ -284,6 +213,7 @@ export class ReportForm extends Component {
               component={renderDateField}
               name="date"
               label="Date"
+              width="200px"
             />
             <Field
               component={renderTextField}
@@ -296,15 +226,15 @@ export class ReportForm extends Component {
               name="amount"
               label="Amount of sighting"
               type="number"
+              width="200px"
             />
             <Field
               name="description"
               label="Description"
               component={renderTextField}
-              fullwidth={true}
               multiline={true}
+              sm={12}
               rows={5}
-              width={"100%"}
             />
             <Field
               name="picture"
@@ -315,29 +245,24 @@ export class ReportForm extends Component {
           </FormBody>
           <FormFooter container justify="flex-end">
             <Grid item sm={12}>
-              <ActionButtonGroup
-                className={classes.btnGroup}
+              <FormButtonGroup
                 primaryProps={SubmitProps}
                 secondaryProps={CancelProps}
               />
             </Grid>
           </FormFooter>
-        </FormWrapper>
+        </StyledForm>
         <ConfirmationDialog
           open={dialogOpen}
           handleClose={this.handleDialogClose}
           message="Your report form has been submitted"
         />
-      </Wrapper>
+      </FormWrapper>
     );
   }
 }
 
 ReportForm.defaultProps = {
-  classes: {},
-  handleSubmit() {
-    console.log("submit");
-  },
   candidate: null
 };
 

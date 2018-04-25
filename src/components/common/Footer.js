@@ -9,7 +9,8 @@ import {SITE_MAP} from "../../utils/routing";
 
 const FooterWrapper = styled.div`
   position: relative;
-  width: 100vw;
+  width: 100%;
+  margin: 0 !important;
   bottom: 0;
 `;
 const ContentWrapper = styled(Grid)`
@@ -27,6 +28,10 @@ const ContentWrapper = styled(Grid)`
 const CopyrightWrapper = ContentWrapper.extend`
   && {
     height: 80px;
+    width: 100%;
+    /* fixed footer margin overflow issue */
+    margin-left: 0 !important; 
+    margin-right: 0 !important;
   }
 `;
 

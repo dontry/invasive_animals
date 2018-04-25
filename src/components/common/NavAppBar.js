@@ -20,6 +20,8 @@ const AppBarWrapper = styled.div`
 
 const StyledAppBar = styled(AppBar)`
   && {
+    position: relative;
+    z-index: 100;
     background-color: ${props => props.theme.palette.primary.main};
   }
 `;
