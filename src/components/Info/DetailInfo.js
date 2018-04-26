@@ -1,14 +1,15 @@
-import React, {Fragment} from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components";
 
-import {grey} from "material-ui/colors";
-import FacebookProvider, {Comments} from "react-facebook";
+import { grey } from "material-ui/colors";
+import FacebookProvider, { Comments } from "react-facebook";
 
-import {Title} from "../common/Text";
+import { Title } from "../common/Text";
 import Passage from "../common/Passage";
-import {ScreenMask} from "../common/Mask";
-import Gallery from "./GalleryComposite";
+import { ScreenMask } from "../common/Mask";
+import Gallery, { Slider } from "./Gallery";
 import LoadingSpinner from "../common/LoadingSpinner";
+import GalleryComposite from "./GalleryComposite";
 
 const ATTRIBUTE_NAMES = [
   { key: "BriefIntroduction", value: "Brief Introduction" },
@@ -90,7 +91,12 @@ const DetailInfo = ({ content, images }) => {
         speciesName={content.Species}
         academicalName={content.AcademicalName}
       />
-      {images && images.length > 0 && <Gallery images={images} />}
+      {images &&
+        images.length > 0 && (
+          <GalleryComposite images={images}>
+            <Slider />
+          </GalleryComposite>
+        )}
       {speciesInfo}
       <CommentSection />
     </DetailInfoWrapper>

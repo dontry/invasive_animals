@@ -36,11 +36,13 @@ class GalleryComposite extends Component {
   };
 
   render() {
-    const { images } = this.props;
+    const { images, children } = this.props;
     const { imgIndex, open } = this.state;
+    const gallery = React.cloneElement(children, { handleClick: this.selectImage, images });
     return (
       <Fragment>
-        <Gallery images={images} handleClick={this.selectImage} />
+        {gallery}
+        {/* <Gallery images={images} handleClick={this.selectImage} /> */}
         <LightBox
           images={images}
           imgIndex={imgIndex}

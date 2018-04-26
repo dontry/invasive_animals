@@ -1,0 +1,8 @@
+.slick-arrow::before {
+  color: #8BC34A;
+  font-size: 1.5rem;
+  /* color: black; */
+}
+.slick-arrow:before:hover {
+  color: #DCE775;
+}

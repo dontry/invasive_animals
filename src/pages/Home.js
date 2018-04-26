@@ -5,7 +5,6 @@ import Banner from "../components/common/Banner";
 import IntroGrid from "../components/Home/IntroGrid";
 import Logo from "../components/Home/Logo";
 import banner from "../assets/images/dandenong-ranges.jpg";
-import Fade from "material-ui/transitions/Fade";
 
 const BANNER_DESCRIPTION = `
  Welcome, this is a place where 

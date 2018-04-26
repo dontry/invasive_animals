@@ -27,7 +27,7 @@ import Icon from "material-ui/Icon";
 
 import IntroGrid from "../components/Home/IntroGrid";
 import Home from "../pages/Home";
-import Logo from "../components/Home/Logo"
+import Logo from "../components/Home/Logo";
 
 import Testimonial from "../components/About/Testimonial";
 import Profile from "../components/About/Profile";
@@ -45,7 +45,7 @@ import ResultList from "../components/Search/ResultList";
 import SidePane from "../components/Search/SidePane";
 import Search from "../pages/Search";
 
-import Gallery from "../components/Info/Gallery";
+import Gallery, { Slider } from "../components/Info/Gallery";
 import BriefInfo from "../components/Info/BriefInfo";
 
 import imageFile from "../assets/images/dandenong-ranges.jpg";
@@ -150,75 +150,75 @@ storiesOf("Footer", module)
   .add("Site map", () => <Sitemap />)
   .add("Footer", () => <Footer />);
 
-  // storiesOf("Transition", module)
-    // .add("Banner", <Fade in={true} timeout={5000}><Banner /></Fade>)
+// storiesOf("Transition", module)
+// .add("Banner", <Fade in={true} timeout={5000}><Banner /></Fade>)
 
-storiesOf("Icons", module)
-  .add("Brand icons", () => (
-    <div>
-      <BrandIcon color="#000" />
-      <BrandIcon color="#f00" size={"50px"} />
-    </div>
-  ))
-  .add("Home page icons", () => (
-    <div>
-      <DetectionIcon color="#000" />
-      <TargetIcon color="#000" />
-      <Target2Icon color="#000" />
-      <BinocularsIcon color="#000" />
-    </div>
-  ));
+// storiesOf("Icons", module)
+//   .add("Brand icons", () => (
+//     <div>
+//       <BrandIcon color="#000" />
+//       <BrandIcon color="#f00" size={"50px"} />
+//     </div>
+//   ))
+//   .add("Home page icons", () => (
+//     <div>
+//       <DetectionIcon color="#000" />
+//       <TargetIcon color="#000" />
+//       <Target2Icon color="#000" />
+//       <BinocularsIcon color="#000" />
+//     </div>
+//   ));
 
-storiesOf("Home", module)
-  .addDecorator(story => (
-    <MemoryRouter initialEntries={["/get_involved/detect", "/about"]}>
-      {story()}
-    </MemoryRouter>
-  ))
-  .add("Intro grid", () => <IntroGrid />)
-  .add("Website Logo", () => <Logo />)
-  .add("Home page", () => <Home />);
-
-storiesOf("Detection", module)
-  .addDecorator(story => (
-    <MemoryRouter initialEntries={["/get_involved/detect", "/about"]}>
-      {story()}
-    </MemoryRouter>
-  ))
-  .add("Drop zone", () => <DropImageZone />)
-//   .add("Detection page", () => <Detection species={results[0]} />);
-
-storiesOf("About", module)
-  .addDecorator(story => (
-    <MemoryRouter initialEntries={["/get_involved/detect", "/about"]}>
-      {story()}
-    </MemoryRouter>
-  ))
-  .add("Testimonial", () => <Testimonial />)
-  .add("Profile", () => <Profile />)
-  .add("ProfileGrid", () => <ProfileGrid />)
-  .add("About Us page", () => <AboutUs />);
-
-//Due to async/await issue Report form is not available at the moment
-// storiesOf("Report", module)
+// storiesOf("Home", module)
 //   .addDecorator(story => (
 //     <MemoryRouter initialEntries={["/get_involved/detect", "/about"]}>
 //       {story()}
 //     </MemoryRouter>
 //   ))
-//   .add("Form", () => <ReportForm />)
-//   .add("Report page", () => <Report />);
+//   .add("Intro grid", () => <IntroGrid />)
+//   .add("Website Logo", () => <Logo />)
+//   .add("Home page", () => <Home />);
 
-storiesOf("Search", module)
-  .addDecorator(story => (
-    <MemoryRouter initialEntries={["/get_involved/detect", "/about"]}>
-      {story()}
-    </MemoryRouter>
-  ))
-  .add("Search bar", () => <SearchBar />)
-  .add("Sidepane", () => <SidePane />)
-  .add("Result List", () => <ResultList results={results} />)
-  .add("Search", () => <Search results={results} />);
+// storiesOf("Detection", module)
+//   .addDecorator(story => (
+//     <MemoryRouter initialEntries={["/get_involved/detect", "/about"]}>
+//       {story()}
+//     </MemoryRouter>
+//   ))
+//   .add("Drop zone", () => <DropImageZone />)
+// //   .add("Detection page", () => <Detection species={results[0]} />);
+
+// storiesOf("About", module)
+//   .addDecorator(story => (
+//     <MemoryRouter initialEntries={["/get_involved/detect", "/about"]}>
+//       {story()}
+//     </MemoryRouter>
+//   ))
+//   .add("Testimonial", () => <Testimonial />)
+//   .add("Profile", () => <Profile />)
+//   .add("ProfileGrid", () => <ProfileGrid />)
+//   .add("About Us page", () => <AboutUs />);
+
+// //Due to async/await issue Report form is not available at the moment
+// // storiesOf("Report", module)
+// //   .addDecorator(story => (
+// //     <MemoryRouter initialEntries={["/get_involved/detect", "/about"]}>
+// //       {story()}
+// //     </MemoryRouter>
+// //   ))
+// //   .add("Form", () => <ReportForm />)
+// //   .add("Report page", () => <Report />);
+
+// storiesOf("Search", module)
+//   .addDecorator(story => (
+//     <MemoryRouter initialEntries={["/get_involved/detect", "/about"]}>
+//       {story()}
+//     </MemoryRouter>
+//   ))
+//   .add("Search bar", () => <SearchBar />)
+//   .add("Sidepane", () => <SidePane />)
+//   .add("Result List", () => <ResultList results={results} />)
+//   .add("Search", () => <Search results={results} />);
 
 storiesOf("Species info", module)
   .addDecorator(story => (
@@ -227,5 +227,6 @@ storiesOf("Species info", module)
     </MemoryRouter>
   ))
   .add("Gallery", () => <Gallery />)
+  .add("Slider", () => <Slider />)
   .add("Gallery Composite", () => <GalleryComposite />)
-  .add("Brief Info", () => <BriefInfo species={results[0]} />);
+  // .add("Brief Info", () => <BriefInfo species={results[0]} />);
