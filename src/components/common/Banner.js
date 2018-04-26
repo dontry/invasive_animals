@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import {Paragraph, Title} from "./Text";
-import {lightGreen} from "material-ui/colors";
+import { Paragraph, Title } from "./Text";
+import { lightGreen } from "material-ui/colors";
 import Grid from "material-ui/Grid";
+import Fade from "material-ui/transitions/Fade";
 
 const BannerWrapper = styled.div`
   position: relative;
@@ -36,29 +37,38 @@ const BlurbWrapper = styled(Grid)`
   }
 `;
 
-const Banner = ({ heading, subheading, description, imgUrl, textColor }) => (
-  <BannerWrapper imgUrl={imgUrl}>
-    <BlurbWrapper container direction="column" spacing={8}>
-      <Grid item>
-        <Title variant="display1" textColor={textColor} align="left">
-          {heading}
-        </Title>
-      </Grid>
-      {subheading && (
-        <Grid item>
-          <Title variant="title" textColor={textColor} align="left">
-            {subheading}
-          </Title>
-        </Grid>
-      )}
-      <Grid item xs={12} sm={8}>
-        <Paragraph variant="title" textColor={textColor} lineHeight={"1.5em"}>
-          {description}
-        </Paragraph>
-      </Grid>
-    </BlurbWrapper>
-  </BannerWrapper>
-);
+
+const Banner = ({ timeout = 0, heading, subheading, description, imgUrl, textColor }) => {
+  return (
+    <Fade in={true} timeout={timeout}>
+      <BannerWrapper imgUrl={imgUrl}>
+        <BlurbWrapper container direction="column" spacing={8}>
+          <Grid item>
+            <Title variant="display1" textColor={textColor} align="left">
+              {heading}
+            </Title>
+          </Grid>
+          {subheading && (
+            <Grid item>
+              <Title variant="title" textColor={textColor} align="left">
+                {subheading}
+              </Title>
+            </Grid>
+          )}
+          <Grid item xs={12} sm={8}>
+            <Paragraph
+              variant="title"
+              textColor={textColor}
+              lineHeight={"1.5em"}
+            >
+              {description}
+            </Paragraph>
+          </Grid>
+        </BlurbWrapper>
+      </BannerWrapper>
+    </Fade>
+  );
+};
 
 Banner.propTypes = {
   heading: PropTypes.string.isRequired,

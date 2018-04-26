@@ -8,6 +8,7 @@ import { MemoryRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { lightGreen } from "material-ui/colors";
 import { theme } from "../assets/theme";
+import { Fade } from "material-ui/transitions";
 import Provider from "./Provider";
 import "../index.css";
 
@@ -26,7 +27,7 @@ import Icon from "material-ui/Icon";
 
 import IntroGrid from "../components/Home/IntroGrid";
 import Home from "../pages/Home";
-import WebsiteBrand from "../components/Home/WebsiteBrand";
+import Logo from "../components/Home/Logo"
 
 import Testimonial from "../components/About/Testimonial";
 import Profile from "../components/About/Profile";
@@ -34,7 +35,7 @@ import ProfileGrid from "../components/About/ProfileGrid";
 import AboutUs from "../pages/AboutUs";
 
 import DropImageZone from "../components/Detect/DropImageZone";
-import Detection from "../pages/Detection";
+// import Detection from "../pages/Detection";
 
 import ReportForm from "../components/Report/ReportForm";
 import Report from "../pages/Report";
@@ -149,6 +150,9 @@ storiesOf("Footer", module)
   .add("Site map", () => <Sitemap />)
   .add("Footer", () => <Footer />);
 
+  // storiesOf("Transition", module)
+    // .add("Banner", <Fade in={true} timeout={5000}><Banner /></Fade>)
+
 storiesOf("Icons", module)
   .add("Brand icons", () => (
     <div>
@@ -172,7 +176,7 @@ storiesOf("Home", module)
     </MemoryRouter>
   ))
   .add("Intro grid", () => <IntroGrid />)
-  .add("Website brand", () => <WebsiteBrand />)
+  .add("Website Logo", () => <Logo />)
   .add("Home page", () => <Home />);
 
 storiesOf("Detection", module)
@@ -182,7 +186,7 @@ storiesOf("Detection", module)
     </MemoryRouter>
   ))
   .add("Drop zone", () => <DropImageZone />)
-  .add("Detection page", () => <Detection species={results[0]} />);
+//   .add("Detection page", () => <Detection species={results[0]} />);
 
 storiesOf("About", module)
   .addDecorator(story => (
@@ -195,14 +199,15 @@ storiesOf("About", module)
   .add("ProfileGrid", () => <ProfileGrid />)
   .add("About Us page", () => <AboutUs />);
 
-storiesOf("Report", module)
-  .addDecorator(story => (
-    <MemoryRouter initialEntries={["/get_involved/detect", "/about"]}>
-      {story()}
-    </MemoryRouter>
-  ))
-  .add("Form", () => <ReportForm />)
-  .add("Report page", () => <Report />);
+//Due to async/await issue Report form is not available at the moment
+// storiesOf("Report", module)
+//   .addDecorator(story => (
+//     <MemoryRouter initialEntries={["/get_involved/detect", "/about"]}>
+//       {story()}
+//     </MemoryRouter>
+//   ))
+//   .add("Form", () => <ReportForm />)
+//   .add("Report page", () => <Report />);
 
 storiesOf("Search", module)
   .addDecorator(story => (

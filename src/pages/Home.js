@@ -1,11 +1,11 @@
-import React, {Fragment} from "react";
+import React, { Fragment } from "react";
 import NavAppBar from "../components/common/NavAppBar";
 import PageContainer from "../components/common/PageContainer";
 import Banner from "../components/common/Banner";
 import IntroGrid from "../components/Home/IntroGrid";
 import Logo from "../components/Home/Logo";
 import banner from "../assets/images/dandenong-ranges.jpg";
-import {Fade} from "material-ui";
+import Fade from "material-ui/transitions/Fade";
 
 const BANNER_DESCRIPTION = `
  Welcome, this is a place where 
@@ -17,9 +17,7 @@ const Home = () => (
     <Logo />
     <NavAppBar title={<div />} />
     <PageContainer minHeight="85%">
-      <Fade in={false} enter timeout={2000}>
-        <Banner imgUrl={banner} description={BANNER_DESCRIPTION} />
-      </Fade>
+      <Banner imgUrl={banner} description={BANNER_DESCRIPTION} timeout={3000} />
       <IntroGrid />
     </PageContainer>
   </Fragment>
