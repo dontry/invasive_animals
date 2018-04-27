@@ -44,8 +44,23 @@ export async function sendReportEmail(data) {
   });
 
   try {
-    return await  request
-  } catch(err) {
+    return await request;
+  } catch (err) {
     return err;
   }
+}
+
+// using SendGrid's v3 Node.js Library
+// https://github.com/sendgrid/sendgrid-nodejs
+const sgMail = require("@sendgrid/mail");
+export async function sendSGMail() {
+  sgMail.setApiKey("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");
+  const msg = {
+    to: "mccoy018@gmail.com",
+    from: "dcai16@student.monash.edu",
+    subject: "Sending with SendGrid is Fun",
+    text: "and easy to do anywhere, even with Node.js",
+    html: "<strong>and easy to do anywhere, even with Node.js</strong>"
+  };
+  return await sgMail.send(msg);
 }
