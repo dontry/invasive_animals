@@ -8,6 +8,7 @@ import Detection from "../pages/Detection";
 import Search from "../pages/Search";
 import SpeciesInfo from "../pages/SpeciesInfo";
 import SpeciesWiki from "../pages/SpeciesWiki";
+import Observe from "../pages/Observe";
 import Report from "../pages/Report";
 import HelpCenter from "../pages/HelpCenter";
 import AboutUs from "../pages/AboutUs";
@@ -109,6 +110,12 @@ class Routes extends Component {
             exact
             path="/species/:id"
             component={SpeciesInfo}
+            isAuthenticated={isAuthenticated}
+          />
+          <ProtectedRoute
+            exact
+            path="/observe"
+            component={Observe}
             isAuthenticated={isAuthenticated}
           />
           <ProtectedRoute

@@ -1,6 +1,10 @@
 import React from "react";
-import {BinocularsIcon, MagnifierIcon, TargetIcon} from "../components/common/Icons";
-import {lightGreen} from "material-ui/colors";
+import {
+  BinocularsIcon,
+  MagnifierIcon,
+  TargetIcon
+} from "../components/common/Icons";
+import { lightGreen } from "material-ui/colors";
 
 export const ROUTE_TABLE = {
   "/": "Home",
@@ -21,6 +25,7 @@ export const NAV_BAR = [
   },
   { name: "Identify", path: "/identify" },
   { name: "Find", path: "/find" },
+  { name: "Observe", path: "/observe" },
   { name: "Help Center", path: "/help_center" },
   { name: "Report", path: "/report" },
   {
@@ -88,11 +93,11 @@ export const SITE_MAP = [
 ];
 
 export function findRouteName(url) {
-  if(url.includes("/species/")) {
+  if (url.includes("/species/")) {
     const reg = /(\w+$)/;
-    const speciesName =  url.match(reg)[0].replace("_", " ");
+    const speciesName = url.match(reg)[0].replace("_", " ");
 
     return speciesName;
-  } 
+  }
   return ROUTE_TABLE[url];
 }

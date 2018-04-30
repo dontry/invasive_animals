@@ -236,9 +236,9 @@ export class ReportForm extends Component {
               rows={5}
             />
             <Field
-              name="picture"
+              name="image"
               component={renderDropZone}
-              label="Picture"
+              label="Image"
               image={image}
             />
           </FormBody>
