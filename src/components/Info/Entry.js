@@ -34,7 +34,7 @@ const Entry = ({ species }) => {
     image: speciesPicFinder(species.Species)
   };
   return (
-    <Link to={`/species/${species.SpeciesID}`}>
+    <Link to={`/species/${species.Species.toLowerCase().replace(" ", "_")}`}>
       <EntryWrapper container>
         <ContentWrapper item>
           <Thumbnail

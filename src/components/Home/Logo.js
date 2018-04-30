@@ -9,7 +9,7 @@ const Wrapper = styled(Grid)`
   && {
     width: 100%;
     line-height: 2rem;
-    background-color: ${props => props.theme.palette.primary.light};
+    background-color: #2cad31;
     text-align: center;
     margin: 0;
     height: ${props => props.height || "70px"};
@@ -22,7 +22,7 @@ const Logo = () => (
       <LogoIcon size="64px" />
     </Grid>
     <Grid item>
-      <Title variant="title" txtColor={green[900]}>
+      <Title variant="title" txtColor={green[50]}>
         Victorian Guardian
       </Title>
     </Grid>

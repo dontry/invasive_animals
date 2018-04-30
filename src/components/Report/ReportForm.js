@@ -16,6 +16,7 @@ import { Mask } from "../common/Mask";
 import { Title, Paragraph } from "../common/Text";
 import LoadingSpinner from "../common/LoadingSpinner";
 import { DateField, TextField, FieldWrapper } from "../common/FormFields";
+import Recaptcha from "../common/Recaptcha";
 //Utils
 import { validate } from "../../utils/formValidation";
 
@@ -59,7 +60,6 @@ const FormButtonGroup = styled(ActionButtonGroup)`
   margin-top: 1rem;
   float: right;
 `;
-
 
 const DialogBody = styled.div`
   padding: 1rem 1.5rem;
@@ -243,6 +243,9 @@ export class ReportForm extends Component {
             />
           </FormBody>
           <FormFooter container justify="flex-end">
+            <Grid item sm={6} >
+            <Recaptcha />
+            </Grid>
             <Grid item sm={12}>
               <FormButtonGroup
                 primaryProps={SubmitProps}

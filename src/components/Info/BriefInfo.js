@@ -110,7 +110,7 @@ function renderSpeciesInfo(speciesArray) {
             <InfoDescription txtColor={grey[800]} padding={"1rem 0 1rem"}>
               {species.BriefIntroduction}
             </InfoDescription>
-            <Link to={`/species/${species.SpeciesID}`}>Learn More ……</Link>
+            <Link to={`/species/${species.Species.toLowerCase().replace(" ", "_")}`}>Learn More ……</Link>
           </Intro>
         </InfoPaper>
       </InfoGridItem>

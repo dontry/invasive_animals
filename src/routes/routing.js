@@ -4,7 +4,7 @@ import {lightGreen} from "material-ui/colors";
 
 export const ROUTE_TABLE = {
   "/": "Home",
-  "/detect": "Detect",
+  "/identify": "Identify",
   "/find": "Find",
   "/observe": "Trend observation",
   "/report": "Report",
@@ -19,7 +19,7 @@ export const NAV_BAR = [
     name: "Home",
     path: "/"
   },
-  { name: "Detect", path: "/detect" },
+  { name: "Identify", path: "/identify" },
   { name: "Find", path: "/find" },
   { name: "Help Center", path: "/help_center" },
   { name: "Report", path: "/report" },
@@ -88,5 +88,11 @@ export const SITE_MAP = [
 ];
 
 export function findRouteName(url) {
+  if(url.includes("/species/")) {
+    const reg = /(\w+$)/;
+    const speciesName =  url.match(reg)[0].replace("_", " ");
+
+    return speciesName;
+  } 
   return ROUTE_TABLE[url];
 }

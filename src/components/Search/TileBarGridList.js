@@ -21,7 +21,7 @@ function renderTileItems(list) {
   return list.map(item => (
     <GridListTile key={item.image} style={{maxWidth: 280, padding: "1rem"}}>
       <img src={item.image} alt={item.name} />
-      <Link to={`/species/${item.id}`}>
+      <Link to={`/species/${item.name.toLowerCase().replace(" ", "_")}`}>
         <GridListTileBar title={item.name} />
       </Link>
     </GridListTile>

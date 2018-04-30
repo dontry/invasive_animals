@@ -84,7 +84,7 @@ class Routes extends Component {
           />
           <ProtectedRoute
             exact
-            path="/detect"
+            path="/identify"
             component={Detection}
             isAuthenticated={isAuthenticated}
           />

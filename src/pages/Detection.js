@@ -100,7 +100,7 @@ class Detection extends Component {
                 txtColor={green[700]}
                 padding="0 0 2rem"
               >
-                Detect the invasive species
+                Identify the invasive species
               </Title>
               <UploadImageContainer handleSubmit={this.handleSubmit} />
             </DropboxWrapper>

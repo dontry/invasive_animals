@@ -12,6 +12,7 @@ import { Mask } from "../common/Mask";
 import { StyledButton } from "../common/ActionButtonGroup";
 import LoadingSpinner from "../common/LoadingSpinner";
 import { TextField } from "../common/FormFields";
+import Recaptcha from "../common/Recaptcha";
 
 const StyledForm = styled.form`
   padding: 2.5rem 2rem 3rem 0;
@@ -24,7 +25,7 @@ const FormBody = styled(Grid)`
   }
 `;
 
-const FormFooter = styled.div`
+const FormFooter = styled(Grid)`
   && {
     width: 100%;
     text-align: right;
@@ -42,12 +43,7 @@ export class ContactForm extends Component {
     return (
       <StyledForm onSubmit={handleSubmit(this.handleSubmit)}>
         <FormBody container direction="row" justify="flex-start">
-          <Field
-            required
-            component={TextField}
-            name="username"
-            label="Name"
-          />
+          <Field required component={TextField} name="username" label="Name" />
           <Field
             required
             component={TextField}
@@ -67,8 +63,13 @@ export class ContactForm extends Component {
             rows={5}
           />
         </FormBody>
-        <FormFooter>
-          <StyledButton type="primary">Send</StyledButton>
+        <FormFooter container direction="column" alignItems="flex-end">
+          <Grid item>
+            <Recaptcha />
+          </Grid>
+          <Grid item>
+            <StyledButton type="primary">Send</StyledButton>
+          </Grid>
         </FormFooter>
       </StyledForm>
     );

@@ -51,8 +51,8 @@ StyledNavLink.defaultProps = {
   trait: "light"
 };
 
-const CustomizedNavLink = ({ children, to, display, textSize }) => (
-  <StyledNavLink to={to} display={display} textSize={textSize}>
+const CustomizedNavLink = ({ children, to, display, textSize, ...rest }) => (
+  <StyledNavLink to={to} display={display} textSize={textSize} {...rest}>
     <StyledLinkText invariant="caption" display={display}>
       {children}
     </StyledLinkText>

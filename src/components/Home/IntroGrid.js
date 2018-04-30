@@ -9,9 +9,9 @@ import {BinocularsIcon, MagnifierIcon, TargetIcon} from "../common/Icons";
 const ICON_SIZE = "64px";
 const introData = [
   {
-    title: "Detect",
+    title: "Identify",
     icon: <TargetIcon color={lightGreen[500]} size={ICON_SIZE} />,
-    path: "/detect"
+    path: "/identify"
   },
   {
     title: "Find",

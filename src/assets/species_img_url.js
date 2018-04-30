@@ -21,12 +21,12 @@ export default [
   },
   {
     id: 5,
-    name: "Eropean Rabbit",
+    name: "European Rabbit",
     image: "/assets/images/species/european_rabbit.jpg"
   },
   {
     id: 6,
-    name: "Feral Fox",
+    name: "Red Fox",
     image: "/assets/images/species/red_fox.jpg"
   },
   {
@@ -37,7 +37,7 @@ export default [
   {
     id: 8,
     name: "Fallow Deer",
-    image: "/assets/images/species/feral_deer.jpg"
+    image: "/assets/images/species/fallow_deer.jpg"
   },
   {
     id: 9,
