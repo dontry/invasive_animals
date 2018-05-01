@@ -1,18 +1,22 @@
-import React, {Component, Fragment} from "react";
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
 import Grid from "material-ui/Grid";
-import {green} from "material-ui/colors";
+import { green } from "material-ui/colors";
 
 import PageContainer from "../components/common/PageContainer";
 import NavAppBar from "../components/common/NavAppBar";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
-import LoadingSpinner from "../components/common/LoadingSpinner";
-import {Title} from "../components/common/Text";
+import Loader from "../components/common/LoadingSpinner";
+import { Title } from "../components/common/Text";
 
 import LocationInfo from "../components/HelpCenter/LocationInfo";
 import SelectionField from "../components/HelpCenter/SelectionField";
-import {getAllHelpCenters} from "../utils/api";
+import { getAllHelpCenters } from "../utils/api";
 import VictoriaMap from "../assets/images/vitoria_map.png";
+
+import { getServicesStatus } from "feathers-redux";
+import { reduxifiedServices } from "../reducers/feathers";
 
 const REGION_LIST = [
   "Loddon-Mallee",
@@ -20,7 +24,8 @@ const REGION_LIST = [
   "Grampians",
   "Port Philips",
   "Gippsland",
-  "Barwon South West"
+  "Barwon South West",
+  "All"
 ];
 
 const SelectionWrapper = styled(Grid)`
@@ -30,7 +35,7 @@ const SelectionWrapper = styled(Grid)`
 const Map = styled.img`
   max-width: 800px;
   padding: 2rem;
-`
+`;
 
 const ResultWrapper = styled.div`
   position: relative;
@@ -42,39 +47,25 @@ const ResultWrapper = styled.div`
 
 class HelpCenter extends Component {
   state = {
-    initialRender: true,
-    region: "",
-    centerList: [],
-    result: [],
-    loading: false
+    region: ""
   };
 
-  async componentWillMount() {
-    const centerList = await getAllHelpCenters();
-    this.setState({ centerList });
-  }
   handleSearch = event => {
     this.setState({ initialRender: false });
-    this.loading();
+    // this.loading();
 
     const region = event.target.value;
     this.setState({ region });
-    setTimeout(() => {
-      const result = this.searchByRegion(region);
-      this.setState({ result, loading: false });
-    }, 1000);
-  };
-  searchByRegion = region => {
-    const { centerList } = this.state;
-    return centerList.filter(item => {
-      return item.Region.toLowerCase().includes(region.toLowerCase());
-    });
-  };
-  loading = () => {
-    this.setState({ loading: true });
+    // const result = this.searchByRegion(region);
+    if (region === "All") {
+      this.props.onFind();
+    } else {
+      this.props.onFindByRegion(region);
+    }
   };
   render() {
-    const { region, result, loading, initialRender } = this.state;
+    const { region } = this.state;
+    const { helpCenters } = this.props;
     return (
       <Fragment>
         <NavAppBar />
@@ -102,11 +93,14 @@ class HelpCenter extends Component {
             </Grid>
           </SelectionWrapper>
           <ResultWrapper>
-            {initialRender &&  <Map src={VictoriaMap} alt="Map of Victoria"/>}
-            {loading ? (
-              <LoadingSpinner type="bars" />
+            {/* {initialRender && <Map src={VictoriaMap} alt="Map of Victoria" />} */}
+            {helpCenters.isLoading ? (
+              <Loader type="bars" />
             ) : (
-              result.map(item => <LocationInfo info={item} />)
+              Array.isArray(helpCenters.queryResult) &&
+              helpCenters.queryResult.map(center => (
+                <LocationInfo info={center} />
+              ))
             )}
           </ResultWrapper>
         </PageContainer>
@@ -115,4 +109,23 @@ class HelpCenter extends Component {
   }
 }
 
-export default HelpCenter;
+const mapStateToProps = state => {
+  return {
+    helpCenters: state.helpCenters
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onFind: () => {
+      dispatch(reduxifiedServices.help_centers.find());
+    },
+    onFindByRegion: region => {
+      dispatch(
+        reduxifiedServices.help_centers.find({ query: { Region: region } })
+      );
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HelpCenter);

@@ -41,7 +41,7 @@ class Login extends Component {
 
     if (redirectToReferrer) return <Redirect to={from} />;
     return (
-      <PageContainer >
+      <PageContainer>
         <Paper className={classes.root}>
           <h2 style={{ textAlign: "center" }}>Welcome to Victorian Guardian</h2>
           <Grid
