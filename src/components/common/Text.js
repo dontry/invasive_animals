@@ -9,7 +9,7 @@ export const Paragraph = styled(Typography)`
     padding: ${props => props.padding || "none"};
     font-weight: ${props => props.fontWeight};
     white-space: ${props => props.whiteSpace || "pre-line"};
-    line-height: ${props => props.lineHeight || "1em"};
+    line-height: ${props => props.lineHeight || "1.5em"};
     font-size ${props => props.txtSize || "none"};
   }
 `;

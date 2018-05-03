@@ -22,18 +22,18 @@ const styles = {
 
 const SpeciesCard = ({ classes, species }) => {
   return (
-    <Link to={`/species/${species.name.toUpperCase().replace(" ", "_")}`} >
+    <Link to={`/species/${species.CommonName.toUpperCase().replace(" ", "_")}`} >
       <Card className={classes.card}>
         <CardMedia
           className={classes.media}
-          image={species.image}
-          title={species.name}
+          image={species.ImageURL}
+          title={species.CommonName}
         />
         <CardContent>
           <Typography variant="subheading" component="h4" align="center">
-            {species.name.toUpperCase()}
+            {species.CommonName.toUpperCase()}
           </Typography>
-          <Typography component="p">{species.description}</Typography>
+          {/* <Typography component="p">{species.BriefIntroduction}</Typography> */}
         </CardContent>
       </Card>
     </Link>

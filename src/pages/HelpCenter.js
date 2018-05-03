@@ -7,15 +7,13 @@ import { green } from "material-ui/colors";
 import PageContainer from "../components/common/PageContainer";
 import NavAppBar from "../components/common/NavAppBar";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
-import Loader from "../components/common/LoadingSpinner";
+import Loader from "../components/common/Loader";
 import { Title } from "../components/common/Text";
 
 import LocationInfo from "../components/HelpCenter/LocationInfo";
 import SelectionField from "../components/HelpCenter/SelectionField";
-import { getAllHelpCenters } from "../utils/api";
 import VictoriaMap from "../assets/images/vitoria_map.png";
 
-import { getServicesStatus } from "feathers-redux";
 import { reduxifiedServices } from "../reducers/feathers";
 
 const REGION_LIST = [
@@ -63,6 +61,9 @@ class HelpCenter extends Component {
       this.props.onFindByRegion(region);
     }
   };
+  componentWillUnmount() {
+    this.props.onReset();
+  }
   render() {
     const { region } = this.state;
     const { helpCenters } = this.props;
@@ -124,6 +125,9 @@ const mapDispatchToProps = dispatch => {
       dispatch(
         reduxifiedServices.help_centers.find({ query: { Region: region } })
       );
+    },
+    onReset: () => {
+      dispatch(reduxifiedServices.help_centers.reset());
     }
   };
 };

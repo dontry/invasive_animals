@@ -1,15 +1,15 @@
 import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 //Components
 import PageContainer from "../components/common/PageContainer";
+import Loader from "../components/common/Loader";
 import DetailInfo from "../components/Info/DetailInfo";
-import {
-  getSpeciesById,
-  getSpeciesByName
-} from "../utils/detectInvasiveSpecies";
-import { getImagesById } from "../utils/api";
+import DetailInfoContainer from "../containers/DetailInfoContainer";
 import NavAppBar from "../components/common/NavAppBar";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
+import { reduxifiedServices } from "../reducers/feathers";
+import { renderMap } from "../components/Insight/DistributionMap";
 
 class SpeciesInfo extends Component {
   state = {
@@ -21,31 +21,60 @@ class SpeciesInfo extends Component {
     // const id = this.props.match.params.id;
     // const content = await getSpeciesById(parseInt(id));
     const name = this.props.match.params.id;
-    const content = await getSpeciesByName(
-      name.toLowerCase().replace("_", " ")
-    );
-    if (content) {
-      this.setState({ content });
-      // const images = await getImagesById(parseInt(id));
-      const images = await getImagesById(content.SpeciesID);
-      this.setState({ images });
-    } else {
-      this.setState({ notFound: true });
-    }
+    this.props.onFindByCommonName(name.toLowerCase().replace("_", " "));
+  }
+  componentDidUpdate() {
+    renderMap();
+  }
+  componentWillUnmount() {
+    this.props.onReset();
   }
   render() {
-    const { content, images, notFound } = this.state;
-    if (notFound) return <Redirect to="/error" />;
+    // const { content, images, notFound } = this.state;
+    const { species } = this.props;
+    if (species.isError) return <Redirect to="/error" />;
     return (
       <Fragment>
         <NavAppBar />
         <PageContainer minHeight="90vh">
           <BreadcrumbsWithRouter />
-          <DetailInfo content={content} images={images} />
+          {species.isLoading ? (
+            <Loader />
+          ) : (
+            species.isFinished &&
+            species.queryResult && (
+              <DetailInfoContainer species={species.queryResult[0]} />
+            )
+          )}
         </PageContainer>
       </Fragment>
     );
   }
 }
 
-export default SpeciesInfo;
+const mapStateToProps = state => {
+  return {
+    species: state.species
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onFindById: id => {
+      dispatch(reduxifiedServices.species.get(id));
+    },
+    onFindByCommonName: query => {
+      dispatch(
+        reduxifiedServices.species.find({
+          query: { CommonName: { $search: query } }
+        })
+      );
+    },
+
+    onReset: () => {
+      dispatch(reduxifiedServices.species.reset());
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SpeciesInfo);

@@ -8,7 +8,7 @@ import Detection from "../pages/Detection";
 import Search from "../pages/Search";
 import SpeciesInfo from "../pages/SpeciesInfo";
 import SpeciesWiki from "../pages/SpeciesWiki";
-import Observe from "../pages/Observe";
+import Insight from "../pages/Insight";
 import Report from "../pages/Report";
 import HelpCenter from "../pages/HelpCenter";
 import AboutUs from "../pages/AboutUs";
@@ -114,8 +114,8 @@ class Routes extends Component {
           />
           <ProtectedRoute
             exact
-            path="/observe"
-            component={Observe}
+            path="/insight"
+            component={Insight}
             isAuthenticated={isAuthenticated}
           />
           <ProtectedRoute

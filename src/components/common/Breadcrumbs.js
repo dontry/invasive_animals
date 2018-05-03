@@ -28,7 +28,7 @@ export const BreadcrumbsItem = ({ match, hasSeparator = false }) => {
     );
     return (
       <span>
-        <NavLink style={{textTransform: "capitalize"}}display="inline" textSize="small" to={match.url || ""}>
+        <NavLink style={{textTransform: "uppercase"}}display="inline" textSize="small" to={match.url || ""}>
           {routeName}
         </NavLink>
         {hasSeparator && <Separator>/</Separator>}

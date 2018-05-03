@@ -1,5 +1,5 @@
 // import InvasiveSpecies from "./InvasiveSpecies";
-import * as api from "./api";
+import { client } from "./api";
 
 function createSpeciesMap(speciesArray) {
   const speciesMap = new Map();
@@ -28,58 +28,31 @@ function compare(label, name) {
 // export const INVASIVE_SPECIES = createSpeciesMap(speciesArray);
 // export const INVASIVE_SPECIES_NAMES = speciesArray.map(item => item.name);
 
-export async function getBestGuessLabels(labels) {
-  let candidates = [];
-  const InvasiveSpecies = await api.getAllSpecies();
-  const INVASIVE_SPECIES_NAMES = InvasiveSpecies.map(item => item.Species);
-  for (const name of INVASIVE_SPECIES_NAMES) {
-    candidates = labels.filter(label => compare(label.desscription, name));
-  }
-  return candidates;
-}
-
 export function getByName(name) {
-  const items = this.filter(item => item.Species === name);
+  const items = this.filter(item => item.CommonName === name);
   return items[0];
 }
 
 let INVASIVE_SPECIES = null;
 export async function getInvasiveSpecies(data) {
-  INVASIVE_SPECIES = INVASIVE_SPECIES || (await api.getAllSpecies());
-  const INVASIVE_SPECIES_NAMES = INVASIVE_SPECIES.map(item => item.Species);
   const candidateNames = [];
   const info = [];
   const labels = dataPreprocessing(data);
-  for (const name of INVASIVE_SPECIES_NAMES) {
-    const res = labels.filter(label => {
-      if (label.description && compare(label.description, name)) {
-        candidateNames.push(name);
-        return true;
-      } else {
-        return false;
+  const queries =
+    labels.reduce((acc, label, index) => {
+      return acc + label.description + (index < labels.length - 1 && "|");
+    }, "(") + ")";
+  const candidates = await client.service("species").find({
+    query: {
+      CommonName: {
+        $regex: queries,
+        $options: "i"
       }
-    });
-    if (res.length > 0) {
-      info.push(...res);
     }
-  }
+  });
 
-  const uniqueSpecies = await candidateNames
-    .filter((value, index, array) => array.indexOf(value) === index)
-    .map(name => getByName.call(INVASIVE_SPECIES, name));
   return {
-    candidates: uniqueSpecies,
+    candidates,
     info
   };
-}
-
-export async function getSpeciesById(id) {
-  INVASIVE_SPECIES = INVASIVE_SPECIES || (await api.getAllSpecies());
-  return INVASIVE_SPECIES.filter(item => item.SpeciesID === id)[0];
-}
-
-export async function getSpeciesByName(name) {
-  INVASIVE_SPECIES = INVASIVE_SPECIES || (await api.getAllSpecies());
-  debugger;
-  return INVASIVE_SPECIES.filter(item => item.Species.toLowerCase()=== name.toLowerCase())[0];
 }

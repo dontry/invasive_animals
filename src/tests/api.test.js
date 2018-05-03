@@ -3,7 +3,9 @@ import { encodeImageFromDir } from "../utils/encodeImage";
 import { getInvasiveSpecies } from "../utils/detectInvasiveSpecies";
 
 test("detect an image of a cane toad", async () => {
-  const content = encodeImageFromDir("/public/assets/images/species/cane_toad.jpeg");
+  const content = encodeImageFromDir(
+    "../../public/assets/images/species/cane_toad.jpg"
+  );
   const option = {
     features: [
       {
@@ -23,23 +25,12 @@ test("detect an image of a cane toad", async () => {
   try {
     const res = await api.sendImage(content, option);
     const data = res.data.responses[0];
-    const labels = getInvasiveSpecies(data).map(item =>
-      item.description.toLowerCase()
+    const names = getInvasiveSpecies(data).candidates.map(item =>
+      item.CommonName.toLowerCase()
     );
 
-    expect(labels).toContain("cane toad");
+    expect(names).toContain("cane toad");
   } catch (exception) {
     console.log(exception);
   }
 });
-
-
-test("get species from firebase", async() => {
-  const species = await api.getAllSpecies();
-  expect(species.length).toBe(10);
-})
-
-test("get images by species id", async() => {
-  const images = await api.getImagesById(1);
-  expect(images.length).toBeGreaterThan(1);
-})

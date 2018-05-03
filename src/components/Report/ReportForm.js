@@ -8,13 +8,12 @@ import { InputLabel } from "material-ui/Input";
 import Grid from "material-ui/Grid";
 import { grey } from "material-ui/colors";
 import Dialog, { DialogActions, DialogContent } from "material-ui/Dialog";
-
 //Components
 import DropImageZone from "../Detect/DropImageZone";
 import ActionButtonGroup, { StyledButton } from "../common/ActionButtonGroup";
 import { Mask } from "../common/Mask";
 import { Title, Paragraph } from "../common/Text";
-import LoadingSpinner from "../common/LoadingSpinner";
+import Loader from "../common/Loader";
 import { DateField, TextField, FieldWrapper } from "../common/FormFields";
 import Recaptcha from "../common/Recaptcha";
 //Utils
@@ -179,7 +178,7 @@ export class ReportForm extends Component {
       <FormWrapper>
         {submitting && (
           <Mask>
-            <LoadingSpinner />
+            <Loader />
           </Mask>
         )}
         <StyledForm

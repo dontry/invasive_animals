@@ -6,22 +6,27 @@ import GridList, { GridListTile, GridListTileBar } from "material-ui/GridList";
 import speciesImageList from "../../assets/species_img_url";
 
 const StyledGridList = styled(GridList)`
-&&{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  overflow: hidden;
-  width: 100%;
-  padding-top: 2rem;
-}
+  && {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 2rem;
+  }
 `;
+
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+`
 
 const species = speciesImageList.slice(0, 6);
 function renderTileItems(list) {
   return list.map(item => (
-    <GridListTile key={item.image} style={{maxWidth: 280, padding: "1rem"}}>
-      <img src={item.image} alt={item.name} />
+    <GridListTile key={item.image} style={{ maxWidth: 280, padding: "1rem" }}>
       <Link to={`/species/${item.name.toLowerCase().replace(" ", "_")}`}>
+        <Image src={item.image} alt={item.name} />
         <GridListTileBar title={item.name} />
       </Link>
     </GridListTile>

@@ -1,17 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import {Link} from "react-router-dom";
-import {Paragraph, Title} from "../common/Text";
+import { Link } from "react-router-dom";
+import { Paragraph, Title } from "../common/Text";
 import ImagePlaceHolder from "../../assets/images/placeholder.png";
-import {grey, lime, red} from "material-ui/colors";
+import { grey, lime, red } from "material-ui/colors";
 import Paper from "material-ui/Paper";
 import Grid from "material-ui/Grid";
 import Button from "material-ui/Button";
 
 const Root = styled.div`
   position: relative;
-  background-color: ${lime[300]};
 `;
 const BriefInfoWrapper = styled(Grid)`
   position: relative;
@@ -84,12 +83,10 @@ const BackButton = styled(Button)`
   }
 `;
 
-const BASE_URL = "/species/";
-const IMAGE_URL = "/assets/images/species/";
 
-function renderSpeciesInfo(speciesArray) {
+function renderSpeciesInfo(speciesArray = []) {
   return speciesArray.map(species => {
-    const speciesId = species.Species.replace(" ", "_").toLowerCase();
+    const speciesId = species.CommonName.replace(" ", "_").toLowerCase();
     return (
       <InfoGridItem item>
         <InfoPaper>
@@ -97,12 +94,12 @@ function renderSpeciesInfo(speciesArray) {
             Possible invasive species detected
           </Title>
           <Image
-            src={`${IMAGE_URL}${speciesId}.jpg` || ImagePlaceHolder}
-            alt={species.Species}
+            src={species.ImageURL || ImagePlaceHolder}
+            alt={species.CommonName}
           />
           <Intro>
             <Title variant="title" align="left" txtColor={grey[800]}>
-              {species.Species}
+              {species.CommonName}
             </Title>
             <Title variant="subheading" align="left" txtColor={grey[600]}>
               {species.AcademicalName}
@@ -110,7 +107,11 @@ function renderSpeciesInfo(speciesArray) {
             <InfoDescription txtColor={grey[800]} padding={"1rem 0 1rem"}>
               {species.BriefIntroduction}
             </InfoDescription>
-            <Link to={`/species/${species.Species.toLowerCase().replace(" ", "_")}`}>Learn More ……</Link>
+            <Link
+              to={`/species/${species.CommonName.toLowerCase().replace( " ", "_")}`}
+            >
+              Learn More ……
+            </Link>
           </Intro>
         </InfoPaper>
       </InfoGridItem>

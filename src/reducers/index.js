@@ -9,5 +9,6 @@ export default combineReducers({
   notifications,
   form: formReducer,
   helpCenters: reduxifiedServices.help_centers.reducer,
-  species: reduxifiedServices.species.reducer
+  species: reduxifiedServices.species.reducer,
+  speciesImages: reduxifiedServices.species_images.reducer
 });

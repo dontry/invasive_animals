@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, Component } from "react";
 import styled from "styled-components";
 
 import { grey } from "material-ui/colors";
@@ -8,8 +8,9 @@ import { Title } from "../common/Text";
 import Passage from "../common/Passage";
 import { ScreenMask } from "../common/Mask";
 import Gallery, { Slider } from "./Gallery";
-import LoadingSpinner from "../common/LoadingSpinner";
+import Loader from "../common/Loader";
 import GalleryComposite from "./GalleryComposite";
+import DistributionMap from "../Insight/DistributionMap";
 
 const ATTRIBUTE_NAMES = [
   { key: "BriefIntroduction", value: "Brief Introduction" },
@@ -33,11 +34,11 @@ const SectionWrapper = styled.div`
   padding-top: 1rem;
 `;
 
-const SpeciesName = ({ speciesName, academicalName }) => {
+const SpeciesName = ({ commonName, academicalName }) => {
   return (
     <Fragment>
       <Title variant="display1" txtColor={grey[800]} align="left">
-        {speciesName}
+        {commonName}
       </Title>
       <Title
         variant="title"
@@ -53,18 +54,26 @@ const SpeciesName = ({ speciesName, academicalName }) => {
 
 function renderSpeciesInfo(content) {
   return ATTRIBUTE_NAMES.map(attr => {
-    const type = attr.key === "Species" ? "display1" : "title";
-    const info = renderItem(
-      { name: attr.value, value: content[attr.key] },
-      type
-    );
+    const info = renderItem.call(content, attr);
     return info;
   });
 }
 
-function renderItem(info, type) {
-  if (info.value === "") return null;
-  return <Passage title={info.name} content={info.value} />;
+function renderItem(attr) {
+  if (this[attr.key] === "") return null;
+  return (
+    <Fragment>
+      <Passage title={attr.value} content={this[attr.key]} />
+      {attr.key == "Distribution" && (
+        <div style={{ width: "75%", margin: "0 auto" }}>
+          <DistributionMap species={this.AcademicalName} />
+          <Title txtColor={grey[700]}>
+            Distribution of {this.CommonName} in Australia
+          </Title>
+        </div>
+      )}
+    </Fragment>
+  );
 }
 
 const CommentSection = () => (
@@ -76,31 +85,45 @@ const CommentSection = () => (
   </Fragment>
 );
 
-const DetailInfo = ({ content, images }) => {
-  if (!content) {
+class DetailInfo extends Component {
+  componentWillMount() {
+    const { species } = this.props;
+    if (species.ID) {
+      this.props.onFindImagesBySpeciesId(species.ID);
+    }
+  }
+  componentWillUnmount() {
+    this.props.onReset();
+  }
+  render() {
+    const { species, images } = this.props;
+    if (!species) {
+      return (
+        <ScreenMask>
+          <Loader />
+        </ScreenMask>
+      );
+    }
+    const speciesInfo = renderSpeciesInfo(species);
     return (
-      <ScreenMask>
-        <LoadingSpinner />
-      </ScreenMask>
+      <DetailInfoWrapper>
+        <SpeciesName
+          commonName={species.CommonName}
+          academicalName={species.AcademicalName}
+        />
+        {images &&
+          images.isFinished &&
+          Array.isArray(images.queryResult) && (
+            <GalleryComposite
+              images={images.queryResult.map(img => img.ImageURL)}
+            >
+              <Slider />
+            </GalleryComposite>
+          )}
+        {speciesInfo}
+        <CommentSection />
+      </DetailInfoWrapper>
     );
   }
-  const speciesInfo = renderSpeciesInfo(content);
-  return (
-    <DetailInfoWrapper>
-      <SpeciesName
-        speciesName={content.Species}
-        academicalName={content.AcademicalName}
-      />
-      {images &&
-        images.length > 0 && (
-          <GalleryComposite images={images}>
-            <Slider />
-          </GalleryComposite>
-        )}
-      {speciesInfo}
-      <CommentSection />
-    </DetailInfoWrapper>
-  );
-};
-
+}
 export default DetailInfo;

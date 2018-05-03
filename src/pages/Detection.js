@@ -9,7 +9,7 @@ import {Title} from "../components/common/Text";
 import {green, lime} from "material-ui/colors";
 import BriefInfo from "../components/Info/BriefInfo";
 import NavAppBar from "../components/common/NavAppBar";
-import LoadingSpinner from "../components/common/LoadingSpinner";
+import Loader from "../components/common/Loader";
 import {ScreenMask} from "../components/common/Mask";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
 import ActionButtonGroup from "../components/common/ActionButtonGroup";
@@ -81,7 +81,7 @@ class Detection extends Component {
         <NavAppBar />
         {species.loading && (
           <ScreenMask>
-            <LoadingSpinner />
+            <Loader />
           </ScreenMask>
         )}
         <SwipeableViews
@@ -105,7 +105,7 @@ class Detection extends Component {
               <UploadImageContainer handleSubmit={this.handleSubmit} />
             </DropboxWrapper>
           </PageContainer>
-          <PageContainer bgColor={lime[300]}>
+          <PageContainer >
             {species.entity && (
               <BriefInfo
                 handleBack={this.handleBack}

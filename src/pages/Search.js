@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
 import PageContainer from "../components/common/PageContainer";
 import NavAppBar from "../components/common/NavAppBar";
@@ -9,9 +10,9 @@ import ResultList from "../components/Search/ResultList";
 import TileBarGridList from "../components/Search/TileBarGridList";
 import { Title } from "../components/common/Text";
 import Grid from "material-ui/Grid";
-import { getAllSpecies } from "../utils/api";
-import LoadingSpinner from "../components/common/LoadingSpinner";
+import Loader from "../components/common/Loader";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
+import { reduxifiedServices } from "../reducers/feathers";
 
 const Wrapper = styled(Grid)`
   padding-top: 3rem;
@@ -40,38 +41,21 @@ const SearchWrapper = styled(Grid)`
 class Search extends Component {
   state = {
     initialRender: true,
-    speciesList: [],
-    result: [],
-    loading: false
+    result: []
   };
-  async componentWillMount() {
-    const speciesList = await getAllSpecies();
-    this.setState({ speciesList });
-  }
 
   handleSearch = query => {
     this.setState({ initialRender: false });
-    this.loading();
-
-    setTimeout(() => {
-      const result = this.searchByName(query);
-      this.setState({ result, loading: false });
-    }, 600);
+    this.props.onFindByCommonName(query);
   };
 
-  loading = () => {
-    this.setState({ loading: true });
-  };
-
-  searchByName = name => {
-    const { speciesList } = this.state;
-    return speciesList.filter(item => {
-      return item.Species.toLowerCase().includes(name.toLowerCase());
-    });
-  };
+  componentWillUnmount() {
+    this.props.onReset();
+  }
 
   render() {
-    let { initialRender, result, loading } = this.state;
+    const { initialRender } = this.state;
+    const { species } = this.props;
     return (
       <Fragment>
         <NavAppBar />
@@ -94,12 +78,14 @@ class Search extends Component {
                   </Title>
                   <TileBarGridList />
                 </div>
-              ) : loading ? (
+              ) : species.isLoading ? (
                 <Mask>
-                  <LoadingSpinner type="bars" />
+                  <Loader type="bars" />
                 </Mask>
               ) : (
-                <ResultList results={result} />
+                species.isFinished && species.queryResult && (
+                  <ResultList results={species.queryResult} />
+                )
               )}
             </SearchWrapper>
           </Wrapper>
@@ -109,4 +95,25 @@ class Search extends Component {
   }
 }
 
-export default Search;
+const mapStateToProps = state => {
+  return {
+    species: state.species
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onFindByCommonName: query => {
+      dispatch(
+        reduxifiedServices.species.find({
+          query: { CommonName: { $search: query } }
+        })
+      );
+    },
+    onReset: () => {
+      dispatch(reduxifiedServices.species.reset());
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

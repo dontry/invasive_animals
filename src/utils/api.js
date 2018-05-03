@@ -1,5 +1,8 @@
 import ax from "axios";
 import { SpeciesDB, ImageDB, HelpCenterDB } from "./firebase";
+import feathers from "@feathersjs/client";
+import rest from "@feathersjs/rest-client";
+import superagent from "superagent";
 
 //API_KEY AIzaSyC-PWrqdqmyEc89eBv4rAfyWiqLcVZTV8I
 const GOOGLE_VISION_API_URL =
@@ -23,21 +26,7 @@ export async function getAllSpecies() {
   return snap.val();
 }
 
-export async function getAllImages() {
-  const dbRef = ImageDB.database().ref();
-  const snap = await dbRef.once("value");
-  return snap.val();
-}
 
-export async function getImagesById(id) {
-  const allImages = await getAllImages();
-  return allImages
-    .filter(item => item.SpeciesID === id)
-    .map(item => item.ImageURL);
-}
-
-export async function getAllHelpCenters() {
-  const dbRef = HelpCenterDB.database().ref();
-  const snap = await dbRef.once("value");
-  return snap.val();
-}
+export const client = feathers()
+// .configure(rest("https://invasive-node.appspot.com").superagent(superagent));
+    .configure(rest("http://localhost:3030").superagent(superagent));

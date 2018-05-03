@@ -10,7 +10,7 @@ import { grey } from "material-ui/colors";
 import { Title, Paragraph } from "../common/Text";
 import { Mask } from "../common/Mask";
 import { StyledButton } from "../common/ActionButtonGroup";
-import LoadingSpinner from "../common/LoadingSpinner";
+import Loader from "../common/Loader";
 import { TextField } from "../common/FormFields";
 import Recaptcha from "../common/Recaptcha";
 

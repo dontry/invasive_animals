@@ -10,7 +10,7 @@ export const ROUTE_TABLE = {
   "/": "Home",
   "/identify": "Identify",
   "/find": "Find",
-  "/observe": "Trend observation",
+  "/insight": "Insight",
   "/report": "Report",
   "/help_center": "Help Center",
   "/species": "Species",
@@ -25,7 +25,7 @@ export const NAV_BAR = [
   },
   { name: "Identify", path: "/identify" },
   { name: "Find", path: "/find" },
-  { name: "Observe", path: "/observe" },
+  { name: "Insight", path: "/insight" },
   { name: "Help Center", path: "/help_center" },
   { name: "Report", path: "/report" },
   {
@@ -50,8 +50,8 @@ export const HOMEPAGE_TILES = [
     icon: <MagnifierIcon color={lightGreen[500]} />
   },
   {
-    title: "Trend Observation",
-    path: "/observe",
+    title: "Insight",
+    path: "/insight",
     icon: <BinocularsIcon color={lightGreen[500]} />
   }
 ];

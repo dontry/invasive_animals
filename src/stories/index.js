@@ -14,7 +14,7 @@ import "../index.css";
 
 import BlankPage from "./BlankPage";
 import { ScreenMask, Mask } from "../components/common/Mask";
-import Loading from "../components/common/LoadingSpinner";
+import Loader from "../components/common/Loader";
 import Error from "../components/common/Error";
 import { BreadcrumbsItem, Breadcrumbs } from "../components/common/Breadcrumbs";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
@@ -94,12 +94,12 @@ storiesOf("Mask", module)
 storiesOf("Loading", module)
   .add("default loading spinner", () => (
     <BlankPage>
-      <Loading />
+      <Loader />
     </BlankPage>
   ))
   .add("loading bar ", () => (
     <BlankPage>
-      <Loading type="bars" />
+      <Loader type="bars" />
     </BlankPage>
   ));
 

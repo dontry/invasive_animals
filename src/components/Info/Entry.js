@@ -2,24 +2,22 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Grid from "material-ui/Grid";
-import {Link} from "react-router-dom";
-import {Title} from "../common/Text";
+import { Link } from "react-router-dom";
+import { Title, Paragraph } from "../common/Text";
 import ImagePlaceholder from "../../assets/images/placeholder.png";
-import {grey} from "material-ui/colors";
-import {speciesPicFinder} from "../../utils/tools";
+import { grey } from "material-ui/colors";
+import { speciesPicFinder } from "../../utils/tools";
 
 const EntryWrapper = styled(Grid)`
   && {
     padding: 1rem;
     border-bottom: 1px solid ${grey[500]};
-    &:first-child {
-      padding-top: 0;
-    }
   }
 `;
 const ContentWrapper = styled(Grid)`
   && {
     padding: ${props => props.padding || "none"};
+    overflow: hidden;
   }
 `;
 
@@ -28,27 +26,36 @@ const Thumbnail = styled.img`
   height: ${props => props.size || "180px"};
 `;
 
+const BriefIntroWrapper = styled.div`
+  padding-top: 1rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+`;
+
 const Entry = ({ species }) => {
-  species = {
-    ...species,
-    image: speciesPicFinder(species.Species)
-  };
   return (
-    <Link to={`/species/${species.Species.toLowerCase().replace(" ", "_")}`}>
+    <Link to={`/species/${species.CommonName.toLowerCase().replace(" ", "_")}`}>
       <EntryWrapper container>
         <ContentWrapper item>
           <Thumbnail
-            src={species.image || ImagePlaceholder}
-            alt={species.Species}
+            src={species.ImageURL || ImagePlaceholder}
+            alt={species.CommonName}
           />
         </ContentWrapper>
-        <ContentWrapper item padding={"0.5rem 1rem"}>
+        <ContentWrapper item padding={"0.5rem 1rem"} xs={12} sm={7}>
           <Title variant="title" align="left" txtColor={grey[800]}>
-            {species.Species}
+            {species.CommonName}
           </Title>
-          <Title vairiant="body1" align="left" txtColor={grey[700]}>
+          <Title variant="body1" align="left" txtColor={grey[700]}>
             {species.AcademicalName}
           </Title>
+          <BriefIntroWrapper>
+            <Paragraph txtColor={grey[700]}>
+              {species.BriefIntroduction}
+            </Paragraph>
+          </BriefIntroWrapper>
         </ContentWrapper>
       </EntryWrapper>
     </Link>
@@ -61,7 +68,7 @@ Entry.propTypes = {
 
 Entry.defaultTypes = {
   species: {
-    Species: "Common Name",
+    CommonName: "Common Name",
     AcademicalName: "Academical Name"
   }
 };

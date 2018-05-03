@@ -4,18 +4,19 @@ import Grid from "material-ui/Grid";
 import PageContainer from "../components/common/PageContainer";
 import NavAppBar from "../components/common/NavAppBar";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
-import LoadingSpinner from "../components/common/LoadingSpinner";
+import Loader from "../components/common/Loader";
 import { Title } from "../components/common/Text";
 
-export default class Observe extends Component {
+export default class Insight extends Component {
   state = {
     height: "100%"
   };
   componentDidMount() {
-    var divElement = document.getElementById("viz1525064740653");
+    const divElement = document.getElementById("viz1525064740653");
     const vizElement = divElement.getElementsByTagName("object")[0];
+    vizElement.style.width = "100%";
+    vizElement.style.height = divElement.offsetWidth * 0.75 + "px";
     const scriptElement = document.createElement("script");
-    document.createElement("script");
     scriptElement.src = "https://public.tableau.com/javascripts/api/viz_v1.js";
     vizElement.parentNode.insertBefore(scriptElement, vizElement);
   }
@@ -23,13 +24,14 @@ export default class Observe extends Component {
     return (
       <Fragment>
         <NavAppBar />
+        <BreadcrumbsWithRouter />
         <PageContainer>
-          <Grid container>
-            <Grid item xs={12}>
+          <Grid container justify="center">
+            <Grid item xs={8}>
               <div
                 className="tableauPlaceholder"
                 id="viz1525064740653"
-                style={{ position: "relative", width: "100%", height: "500px" }}
+                style={{ position: "relative" }}
               >
                 <noscript>
                   <a href="#">
@@ -60,7 +62,10 @@ export default class Observe extends Component {
                   <param name="display_spinner" value="yes" />
                   <param name="display_overlay" value="yes" />
                   <param name="display_count" value="yes" />
-                  <param name="filter" value="publish=yes" />
+                  <param
+                    name="filter"
+                    value="publish=yes&Scientific Name=Sus scrofa"
+                  />
                 </object>
               </div>
             </Grid>
