@@ -12,6 +12,7 @@ import { Title } from "../components/common/Text";
 
 import LocationInfo from "../components/HelpCenter/LocationInfo";
 import SelectionField from "../components/HelpCenter/SelectionField";
+import MapWithKmlLayers from "../components/HelpCenter/MapWithKmlLayers";
 import VictoriaMap from "../assets/images/vitoria_map.png";
 
 import { reduxifiedServices } from "../reducers/feathers";
@@ -26,13 +27,11 @@ const REGION_LIST = [
   "All"
 ];
 
-const SelectionWrapper = styled(Grid)`
+const SelectionWrapper = styled.div`
+  margin: 0 auto;
+  width: 50%;
+  min-width: 500px;
   padding: 1rem;
-`;
-
-const Map = styled.img`
-  max-width: 800px;
-  padding: 2rem;
 `;
 
 const ResultWrapper = styled.div`
@@ -49,14 +48,13 @@ class HelpCenter extends Component {
   };
 
   handleSearch = event => {
-    this.setState({ initialRender: false });
-    // this.loading();
-
-    const region = event.target.value;
+    const region = event.featureData.name;
     this.setState({ region });
     // const result = this.searchByRegion(region);
-    if (region === "All") {
-      this.props.onFind();
+    if (region === "Greater Melbourne") {
+      this.props.onFindByRegion("Port Philips");
+    } else if (region === "Loddon Mallee") {
+      this.props.onFindByRegion("Loddon-Mallee");
     } else {
       this.props.onFindByRegion(region);
     }
@@ -72,29 +70,13 @@ class HelpCenter extends Component {
         <NavAppBar />
         <PageContainer minHeight="90vh">
           <BreadcrumbsWithRouter />
-          <Title variant="display2" txtColor={green[900]}>
-            HELP CENTER
-          </Title>
-          <SelectionWrapper container justify="center" alignItems="flex-end">
-            <Grid item>
-              <Title
-                variant="subheading"
-                txtColor={green[900]}
-                txtSize="1.3rem"
-              >
-                Please select your region:
-              </Title>
-            </Grid>
-            <Grid item>
-              <SelectionField
-                handleChange={this.handleSearch}
-                options={REGION_LIST}
-                value={region}
-              />
-            </Grid>
+          <SelectionWrapper>
+            <Title variant="subheading" txtColor={green[900]} txtSize="1.3rem">
+              Please select your region:
+            </Title>
+            <MapWithKmlLayers handleClick={this.handleSearch} />
           </SelectionWrapper>
           <ResultWrapper>
-            {/* {initialRender && <Map src={VictoriaMap} alt="Map of Victoria" />} */}
             {helpCenters.isLoading ? (
               <Loader type="bars" />
             ) : (
