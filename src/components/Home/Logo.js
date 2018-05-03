@@ -23,7 +23,7 @@ const Logo = () => (
     </Grid>
     <Grid item>
       <Title variant="title" txtColor={green[50]}>
-        Victorian Guardian
+        Victoria Guardian
       </Title>
     </Grid>
   </Wrapper>

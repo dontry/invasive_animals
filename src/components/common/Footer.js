@@ -62,7 +62,7 @@ function renderMenuItems(items) {
 export const Copyright = () => (
   <CopyrightWrapper container direction="column">
     <Grid item>
-      <Title txtColor={grey[500]}>© 2018 Victorian Guardian</Title>
+      <Title txtColor={grey[500]}>© 2018 Victoria Guardian</Title>
       <Title txtColor={grey[500]}>Powered by G4</Title>
     </Grid>
   </CopyrightWrapper>
