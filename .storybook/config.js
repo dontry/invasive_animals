@@ -1,7 +1,8 @@
-import { configure } from '@storybook/react';
+import { configure } from "@storybook/react";
+import "babel-polyfill"; //fixed "regeneratorRuntime is not defined" issue
 
 function loadStories() {
-  require('../src/stories');
+  require("../src/stories");
 }
 
 configure(loadStories, module);

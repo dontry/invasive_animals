@@ -4,10 +4,14 @@ export const validate = values => {
     errors.username = "Required";
   }
 
-  if (!values.email) {
-    errors.email = "Required";
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = "Invalid email address";
+  if (!values.from) {
+    errors.from = "Required";
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.from)) {
+    errors.from = "Invalid email address";
+  }
+
+  if (values.to === "") {
+    errors.to = "Required";
   }
 
   if (Number(values.amount) <= 0) {

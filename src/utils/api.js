@@ -1,12 +1,11 @@
-import ax from "axios";
-import { SpeciesDB, ImageDB, HelpCenterDB } from "./firebase";
+import axios from "axios";
+import { SpeciesDB } from "./firebase";
+import { GOOGLE_VISION_APIKEY } from "./credentials";
 import feathers from "@feathersjs/client";
 import rest from "@feathersjs/rest-client";
-import superagent from "superagent";
 
 //API_KEY AIzaSyC-PWrqdqmyEc89eBv4rAfyWiqLcVZTV8I
-const GOOGLE_VISION_API_URL =
-  "https://vision.googleapis.com/v1/images:annotate?key=AIzaSyC-PWrqdqmyEc89eBv4rAfyWiqLcVZTV8I";
+const GOOGLE_VISION_API_URL = `https://vision.googleapis.com/v1/images:annotate?key=${GOOGLE_VISION_APIKEY}`;
 
 export function sendImage(content, options) {
   const payload = {
@@ -17,7 +16,7 @@ export function sendImage(content, options) {
       }
     ]
   };
-  return ax.post(GOOGLE_VISION_API_URL, payload);
+  return axios.post(GOOGLE_VISION_API_URL, payload);
 }
 
 export async function getAllSpecies() {
@@ -26,7 +25,7 @@ export async function getAllSpecies() {
   return snap.val();
 }
 
-
+//Create Feathersjs RESTFUL API
 export const client = feathers()
-// .configure(rest("https://invasive-node.appspot.com").superagent(superagent));
-    .configure(rest("http://localhost:3030").superagent(superagent));
+  // .configure(rest("https://invasive-node.appspot.com").superagent(superagent));
+  .configure(rest("http://localhost:3030").axios(axios));

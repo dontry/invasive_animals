@@ -2,7 +2,7 @@ import * as api from "../utils/api";
 import { getInvasiveSpecies } from "../utils/detectInvasiveSpecies";
 import { encodeImageFromFile } from "../utils/encodeImage";
 
-export const ADD_IMAGE = "detection/ADD_IMAGE";
+export const REQUEST_ADD_IMAGE = "detection/REQUEST_ADD_IMAGE";
 export const ADD_IMAGE_SUCCESS = "detection/ADD_IMAGE_SUCCESS";
 export const ADD_IMAGE_FAILURE = "detection/ADD_IMAGE_FAILURE";
 
@@ -11,9 +11,9 @@ export const FETCH_DETECTION_RESULT_SUCCESS = "detection/FETCH_DETECTION_RESULT_
 export const FETCH_DETECTION_RESULT_FAILURE = "detection/FETCH_DETECTION_RESULT_FAILURE";
 export const RESET_IMAGE = "RESET_IMAGE";
 
-export function addImage(image) {
+export function requestAddImage(image) {
   return {
-    type: ADD_IMAGE,
+    type: REQUEST_ADD_IMAGE,
     payload: image
   };
 }

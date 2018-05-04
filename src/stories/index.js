@@ -199,15 +199,15 @@ storiesOf("Footer", module)
 //   .add("ProfileGrid", () => <ProfileGrid />)
 //   .add("About Us page", () => <AboutUs />);
 
-// //Due to async/await issue Report form is not available at the moment
-// // storiesOf("Report", module)
-// //   .addDecorator(story => (
-// //     <MemoryRouter initialEntries={["/get_involved/detect", "/about"]}>
-// //       {story()}
-// //     </MemoryRouter>
-// //   ))
-// //   .add("Form", () => <ReportForm />)
-// //   .add("Report page", () => <Report />);
+//Due to async/await issue Report form is not available at the moment
+storiesOf("Report", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/get_involved/detect", "/about"]}>
+      {story()}
+    </MemoryRouter>
+  ))
+  .add("Form", () => <ReportForm />)
+  .add("Report page", () => <Report />);
 
 // storiesOf("Search", module)
 //   .addDecorator(story => (

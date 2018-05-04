@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="open-popup">ok</button>
+    <script type="text/javascript">
+        function showMailingPopUp() {
+            require(["mojo/signup-forms/Loader"], function (L) {
+                L.start({
+                    "baseUrl": "mc.us18.list-manage.com",
+                    "uuid": "24f1d7a8269684bd046565d7c",
+                    "lid": "6f819e9c64"
+                })
+            })
+        }
+
+        document.getElementById("open-popup").onclick = function () {
+            showMailingPopUp()
+        };
+    </script>
+</body>
+
+</html>

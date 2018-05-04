@@ -14,7 +14,12 @@ import ActionButtonGroup, { StyledButton } from "../common/ActionButtonGroup";
 import { Mask } from "../common/Mask";
 import { Title, Paragraph } from "../common/Text";
 import Loader from "../common/Loader";
-import { DateField, TextField, FieldWrapper } from "../common/FormFields";
+import {
+  DateField,
+  TextField,
+  Select,
+  FieldWrapper
+} from "../common/FormFields";
 import Recaptcha from "../common/Recaptcha";
 //Utils
 import { validate } from "../../utils/formValidation";
@@ -103,6 +108,20 @@ const renderDropZone = ({ name, label, image, ...custom }) => (
   </FieldWrapper>
 );
 
+const Recipients = [
+  {
+    name: "",
+    value: ""
+  },
+  {
+    name: "monash",
+    value: "dcai16@student.monash.edu"
+  },
+  {
+    name: "google",
+    value: "mccoy018@gmail.com"
+  }
+];
 export class ReportForm extends Component {
   static contextTypes = {
     router: PropTypes.object // replace with PropTypes.object if you use them
@@ -121,10 +140,6 @@ export class ReportForm extends Component {
     if (nextProps.submitSucceeded === true) this.setState({ dialogOpen: true });
   }
 
-  handleChangeSpeciesField = event => {
-    this.setState({ species: event.target.value });
-  };
-
   handleDialogOpen = () => {
     this.setState({ dialogOpen: true });
   };
@@ -133,8 +148,9 @@ export class ReportForm extends Component {
     this.setState({ dialogOpen: false, complete: true });
   };
 
-  handleSubmit = () => {
-    console.log("submit");
+  handleSubmit = async (values) => {
+    const email = values;
+    await this.props.sendEmail(email);
     this.handleDialogOpen();
   };
 
@@ -151,7 +167,7 @@ export class ReportForm extends Component {
       submitSucceeded
     } = this.props;
 
-    const { dialogOpen, complete } = this.state;
+    const { dialogOpen, complete, to } = this.state;
 
     if (complete === true) {
       return <Redirect to="/" />;
@@ -196,7 +212,7 @@ export class ReportForm extends Component {
             <Field
               required
               component={TextField}
-              name="email"
+              name="from"
               label="Email"
               type="email"
             />
@@ -227,6 +243,14 @@ export class ReportForm extends Component {
               width="200px"
             />
             <Field
+              required
+              component={Select}
+              name="to"
+              label="Authority email *"
+              value={to}
+              options={Recipients}
+            />
+            <Field
               name="description"
               label="Description"
               component={TextField}
@@ -242,8 +266,8 @@ export class ReportForm extends Component {
             />
           </FormBody>
           <FormFooter container justify="flex-end">
-            <Grid item sm={6} >
-            <Recaptcha />
+            <Grid item sm={6}>
+              <Recaptcha />
             </Grid>
             <Grid item sm={12}>
               <FormButtonGroup

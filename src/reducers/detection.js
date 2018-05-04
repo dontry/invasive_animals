@@ -1,5 +1,5 @@
 import {
-  ADD_IMAGE,
+  REQUEST_ADD_IMAGE,
   ADD_IMAGE_SUCCESS,
   ADD_IMAGE_FAILURE,
   REQUEST_FETCH_DETECTION_RESULT,
@@ -16,7 +16,7 @@ const INITIAL_STATE = {
 export default function(state = INITIAL_STATE, action) {
   let error;
   switch (action.type) {
-    case ADD_IMAGE:
+    case REQUEST_ADD_IMAGE:
       return {
         ...state,
         uploadImage: {
