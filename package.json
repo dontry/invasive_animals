@@ -47,7 +47,8 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "toolbox": "react-toolbox-themr"
+    "toolbox": "react-toolbox-themr",
+    "debug": "node --nolazy --inspect-brk=9229 src/"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.3.15",

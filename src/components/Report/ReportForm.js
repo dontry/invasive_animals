@@ -1,19 +1,19 @@
-import React, { Component } from "react";
+import React, { Component, PureComponent } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Redirect, withRouter } from "react-router-dom";
 import { Field, reduxForm } from "redux-form";
 //Material UI
-import { InputLabel } from "material-ui/Input";
+import Input, { InputLabel } from "material-ui/Input";
 import Grid from "material-ui/Grid";
 import { grey } from "material-ui/colors";
-import Dialog, { DialogActions, DialogContent } from "material-ui/Dialog";
 //Components
 import DropImageZone from "../Detect/DropImageZone";
 import ActionButtonGroup, { StyledButton } from "../common/ActionButtonGroup";
 import { Mask } from "../common/Mask";
 import { Title, Paragraph } from "../common/Text";
 import Loader from "../common/Loader";
+import ConfirmationDialog from "../common/ConfirmationDialog";
 import {
   DateField,
   TextField,
@@ -21,8 +21,11 @@ import {
   FieldWrapper
 } from "../common/FormFields";
 import Recaptcha from "../common/Recaptcha";
+import Regions from "../../assets/regions";
+import DropImageZoneContainer from "../../containers/DropImageZoneContainer";
 //Utils
 import { validate } from "../../utils/formValidation";
+import { encodeImageFromFile } from "../../utils/encodeImage";
 
 const FormWrapper = styled.div`
   position: relative;
@@ -69,44 +72,34 @@ const DialogBody = styled.div`
   padding: 1rem 1.5rem;
 `;
 
-const ConfirmationDialog = ({ handleClose, title, message, ...rest }) => {
-  return (
-    <Dialog
-      disableBackdropClick
-      disableEscapeKeyDown
-      maxWidth="xs"
-      aria-lablledby={title}
-      {...rest}
-    >
-      <DialogContent>
-        <Paragraph variant="body1" txtColor={grey[700]}>
-          {message}
-        </Paragraph>
-      </DialogContent>
-      <DialogActions>
-        <StyledButton
-          onClick={handleClose}
-          type="message"
-          trait="main"
-          variant="flat"
-        >
-          Confirm
-        </StyledButton>
-      </DialogActions>
-    </Dialog>
-  );
-};
+class UploadImageBlock extends Component {
+  uploadImage = async image => {
+    if (image) {
+      const imageBase64 = await encodeImageFromFile(image);
+      this.props.input.onChange(imageBase64);
+    }
+  };
 
-const renderDropZone = ({ name, label, image, ...custom }) => (
-  <FieldWrapper>
-    <InputLabel style={{ fontSize: "0.75rem" }} shrink={true}>
-      {label}
-    </InputLabel>
-    <DropzoneWrapper>
-      <DropImageZone image={image} />
-    </DropzoneWrapper>
-  </FieldWrapper>
-);
+  render() {
+    const {
+      name,
+      label,
+      input,
+      meta: { touched, error }
+    } = this.props;
+    return (
+      <FieldWrapper>
+        <InputLabel style={{ fontSize: "0.75rem" }} shrink={true}>
+          {label}
+        </InputLabel>
+        <DropzoneWrapper>
+          <DropImageZoneContainer uploadImage={this.uploadImage} />
+        </DropzoneWrapper>
+        {error && <span>{error}</span>}
+      </FieldWrapper>
+    );
+  }
+}
 
 const Recipients = [
   {
@@ -129,7 +122,8 @@ export class ReportForm extends Component {
 
   state = {
     dialogOpen: false,
-    complete: false
+    complete: false,
+    message: "Default"
   };
 
   componentWillUnmount() {
@@ -137,21 +131,32 @@ export class ReportForm extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.submitSucceeded === true) this.setState({ dialogOpen: true });
+    if (
+      nextProps.submitSucceeded &&
+      (!nextProps.email.loading && !!nextProps.email.entity)
+    ) {
+      this.handleDialogOpen("Your report has been sent successfully");
+    } else if (nextProps.submitSucceeded && nextProps.email.error) {
+      this.handleDialogOpen(
+        `The email delivery failed: ${JSON.stringify(nextProps.email.error)}`
+      );
+    }
   }
 
-  handleDialogOpen = () => {
-    this.setState({ dialogOpen: true });
+  handleDialogOpen = message => {
+    this.setState({ dialogOpen: true, message });
   };
 
   handleDialogClose = () => {
     this.setState({ dialogOpen: false, complete: true });
   };
 
-  handleSubmit = async (values) => {
-    const email = values;
+  handleSubmit = async values => {
+    let email = values;
+    if (!email.species) {
+      email = { ...email, species: "UNKNOWN" };
+    }
     await this.props.sendEmail(email);
-    this.handleDialogOpen();
   };
 
   handleCancel = () => {
@@ -162,12 +167,13 @@ export class ReportForm extends Component {
     const {
       handleSubmit,
       image,
+      email,
       pristine,
       submitting,
       submitSucceeded
     } = this.props;
 
-    const { dialogOpen, complete, to } = this.state;
+    const { dialogOpen, complete, message } = this.state;
 
     if (complete === true) {
       return <Redirect to="/" />;
@@ -192,7 +198,7 @@ export class ReportForm extends Component {
 
     return (
       <FormWrapper>
-        {submitting && (
+        {(submitting || email.loading) && (
           <Mask>
             <Loader />
           </Mask>
@@ -218,9 +224,10 @@ export class ReportForm extends Component {
             />
             <Field
               required
-              component={TextField}
+              component={Select}
               name="location"
-              label="Location"
+              label="Location *"
+              options={[{ name: "", value: "" }, ...Regions]}
             />
             <Field
               required
@@ -247,7 +254,7 @@ export class ReportForm extends Component {
               component={Select}
               name="to"
               label="Authority email *"
-              value={to}
+              defaultValue={Recipients[0].value}
               options={Recipients}
             />
             <Field
@@ -260,7 +267,7 @@ export class ReportForm extends Component {
             />
             <Field
               name="image"
-              component={renderDropZone}
+              component={UploadImageBlock}
               label="Image"
               image={image}
             />
@@ -280,7 +287,7 @@ export class ReportForm extends Component {
         <ConfirmationDialog
           open={dialogOpen}
           handleClose={this.handleDialogClose}
-          message="Your report form has been submitted"
+          message={message}
         />
       </FormWrapper>
     );

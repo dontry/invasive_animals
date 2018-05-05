@@ -6,10 +6,13 @@ export const REQUEST_ADD_IMAGE = "detection/REQUEST_ADD_IMAGE";
 export const ADD_IMAGE_SUCCESS = "detection/ADD_IMAGE_SUCCESS";
 export const ADD_IMAGE_FAILURE = "detection/ADD_IMAGE_FAILURE";
 
-export const REQUEST_FETCH_DETECTION_RESULT = "detection/REQUEST_DETECTION_IMAGE_RESULT";
-export const FETCH_DETECTION_RESULT_SUCCESS = "detection/FETCH_DETECTION_RESULT_SUCCESS";
-export const FETCH_DETECTION_RESULT_FAILURE = "detection/FETCH_DETECTION_RESULT_FAILURE";
-export const RESET_IMAGE = "RESET_IMAGE";
+export const REQUEST_FETCH_DETECTION_RESULT =
+  "detection/REQUEST_DETECTION_IMAGE_RESULT";
+export const FETCH_DETECTION_RESULT_SUCCESS =
+  "detection/FETCH_DETECTION_RESULT_SUCCESS";
+export const FETCH_DETECTION_RESULT_FAILURE =
+  "detection/FETCH_DETECTION_RESULT_FAILURE";
+export const RESET_DETECTION = "RESET_DETECTION";
 
 export function requestAddImage(image) {
   return {
@@ -30,23 +33,7 @@ export function addImageFailure() {
   };
 }
 
-const DEFAULT_OPTIONS = {
-  features: [
-    {
-      type: "WEB_DETECTION",
-      maxResults: 20
-    },
-    {
-      type: "TYPE_UNSPECIFIED",
-      maxResults: 20
-    },
-    {
-      type: "LABEL_DETECTION",
-      maxResults: 20
-    }
-  ]
-};
-export async function fetchDetectionResult(image, options = DEFAULT_OPTIONS) {
+export async function fetchDetectionResult(image, options = undefined) {
   return async dispatch => {
     dispatch(requestfetchDetectionResult());
     let content;
@@ -56,10 +43,13 @@ export async function fetchDetectionResult(image, options = DEFAULT_OPTIONS) {
       dispatch(fetchDetectionResultFailure(error));
     }
     try {
-      const res = await api.sendImage(content, options);
-      const data = res.data.responses[0];
-      const result = await getInvasiveSpecies(data);
-      dispatch(fetchDetectionResultSuccess(result));
+      const meta = await api.sendImage(content);
+      if (api.checkImageSatefy(meta)) {
+        const result = await getInvasiveSpecies(meta);
+        dispatch(fetchDetectionResultSuccess(result));
+      } else {
+        throw `Sorry, the image may contain explicit content`;
+      }
     } catch (error) {
       dispatch(fetchDetectionResultFailure(error));
     }
@@ -86,8 +76,8 @@ function fetchDetectionResultFailure(error) {
   };
 }
 
-export function resetImage() {
+export function resetDetection() {
   return {
-    type: RESET_IMAGE
+    type: RESET_DETECTION
   };
 }

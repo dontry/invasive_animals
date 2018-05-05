@@ -2,7 +2,6 @@ import React, { Fragment, Component } from "react";
 import styled from "styled-components";
 
 import { grey } from "material-ui/colors";
-import FacebookProvider, { Comments } from "react-facebook";
 
 import { Title } from "../common/Text";
 import Passage from "../common/Passage";
@@ -11,6 +10,7 @@ import Gallery, { Slider } from "./Gallery";
 import Loader from "../common/Loader";
 import GalleryComposite from "./GalleryComposite";
 import DistributionMap from "../Insight/DistributionMap";
+import CommentSection from "../common/CommentSection";
 
 const ATTRIBUTE_NAMES = [
   { key: "BriefIntroduction", value: "Brief Introduction" },
@@ -75,15 +75,6 @@ function renderItem(attr) {
     </Fragment>
   );
 }
-
-const CommentSection = () => (
-  <Fragment>
-    <Title variant="title" txtColor={grey[700]} align="left" />
-    <FacebookProvider appId="439671156486299">
-      <Comments />
-    </FacebookProvider>
-  </Fragment>
-);
 
 class DetailInfo extends Component {
   componentWillMount() {

@@ -10,7 +10,7 @@ export const validate = values => {
     errors.from = "Invalid email address";
   }
 
-  if (values.to === "") {
+  if (!values.to) {
     errors.to = "Required";
   }
 

@@ -1,8 +1,8 @@
 import {connect} from "react-redux";
-import {requestAddImage, fetchDetectionResult, resetImage} from "../actions/detection";
+import {requestAddImage, fetchDetectionResult, resetDetection} from "../actions/detection";
 import UploadImageModule from "../components/Detect/UploadImageModule";
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     image: state.detection.uploadImage
   };
@@ -16,8 +16,8 @@ const mapDispatchToProps = dispatch => {
     getDetectionResult: async (image, options) => {
       dispatch(await fetchDetectionResult(image, options));
     },
-    resetImage: () => {
-      dispatch(resetImage());
+    reset: () => {
+      dispatch(resetDetection());
     }
   };
 };

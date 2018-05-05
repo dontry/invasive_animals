@@ -79,34 +79,40 @@ export const DateField = ({
 );
 
 export const Select = ({
-  value,
-  handleChange,
+  id,
   name,
   label,
   input,
   meta: { touched, error },
+  defaultValue,
+  onChange,
   options,
   xs = 12,
   sm = 6,
   ...custom
-}) => (
-  <FieldWrapper item xs={xs} sm={sm}>
-    <StyledFormControl error={touched && !!error}>
-      <InputLabel htmlFor={`id-${name}`}>{label}</InputLabel>
-      <MuiSelect
-        native
-        value={value}
-        onChange={(event, index, value) => input.onChange(value)}
-        {...input}
-        inputProps={{ id: `id-${name}` }}
-        {...custom}
-      >
-        {options.map(option => (
-          <option key={option.value} value={option.value}>
-            {option.name}
-          </option>
-        ))}
-      </MuiSelect>
-    </StyledFormControl>
-  </FieldWrapper>
-);
+}) => {
+  if (onChange) {
+    input = { ...input, onChange };
+  }
+  return (
+    <FieldWrapper item xs={xs} sm={sm}>
+      <StyledFormControl error={touched && !!error}>
+        <InputLabel htmlFor={ id || `id-${name}`}>{label}</InputLabel>
+        <MuiSelect
+          native
+          defaultValue={defaultValue}
+          {...input}
+          inputProps={{ id: id || `id-${name}` }}
+          {...custom}
+        >
+          {options.map(option => (
+            <option key={option.value} value={option.value}>
+              {option.name || option.value}
+            </option>
+          ))}
+        </MuiSelect>
+        <FormHelperText>{error}</FormHelperText>
+      </StyledFormControl>
+    </FieldWrapper>
+  );
+};

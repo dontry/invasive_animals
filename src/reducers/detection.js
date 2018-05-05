@@ -5,7 +5,7 @@ import {
   REQUEST_FETCH_DETECTION_RESULT,
   FETCH_DETECTION_RESULT_SUCCESS,
   FETCH_DETECTION_RESULT_FAILURE,
-  RESET_IMAGE
+  RESET_DETECTION
 } from "../actions/detection";
 
 const INITIAL_STATE = {
@@ -39,7 +39,7 @@ export default function(state = INITIAL_STATE, action) {
         ...state,
         detectionResult: { entity: null, error: error, loading: false }
       };
-    case RESET_IMAGE:
+    case RESET_DETECTION:
       return INITIAL_STATE;
     default:
       return state;

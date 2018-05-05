@@ -1,18 +1,20 @@
-import React, {Component, Fragment} from "react";
+import React, { Component, Fragment } from "react";
 import styled from "styled-components";
-import {connect} from "react-redux";
-import {withRouter} from "react-router-dom";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import UploadImageContainer from "../containers/UploadImageContainer";
 import SwipeableViews from "react-swipeable-views";
 import PageContainer from "../components/common/PageContainer";
-import {Title} from "../components/common/Text";
-import {green, lime} from "material-ui/colors";
+import { Title } from "../components/common/Text";
+import { green, lime } from "material-ui/colors";
 import BriefInfo from "../components/Info/BriefInfo";
 import NavAppBar from "../components/common/NavAppBar";
 import Loader from "../components/common/Loader";
-import {ScreenMask} from "../components/common/Mask";
+import { ScreenMask } from "../components/common/Mask";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
 import ActionButtonGroup from "../components/common/ActionButtonGroup";
+import ConfirmationDialog from "../components/common/ConfirmationDialog";
+import { resetDetection } from "../actions/detection";
 
 const ViewWrapper = styled.section`
   height: 100vh;
@@ -47,25 +49,31 @@ const SeekHelpActionProps = history => ({
 class Detection extends Component {
   state = {
     viewIndex: 0,
-    loading: false
-  };
-
-  componentWillMount() {}
-  handeChangeIndex = index => {
-    this.setState({ viewIndex: index });
+    loading: false,
+    dialogOpen: false
   };
 
   componentWillReceiveProps(nxtProps) {
     if (
-      nxtProps.species.entity &&
-      nxtProps.species.entity != this.props.species.entity
+      nxtProps.result.entity &&
+      nxtProps.result.entity != this.props.result.entity
     ) {
       this.setState({ viewIndex: 1, loading: false });
+    } else if (nxtProps.result.error) {
+      this.setState({ dialogOpen: true });
     }
   }
 
+  handeChangeIndex = index => {
+    this.setState({ viewIndex: index });
+  };
   handleSubmit = () => {
     this.setState({ loading: true });
+  };
+
+  handleDialogClose = () => {
+    this.setState({ dialogOpen: false });
+    this.props.reset();
   };
 
   handleBack = () => {
@@ -73,13 +81,12 @@ class Detection extends Component {
   };
 
   render() {
-    const { viewIndex, loading } = this.state;
-    const { species, history } = this.props;
-    console.log(viewIndex);
+    const { result, history } = this.props;
+    const { viewIndex, loading, dialogOpen } = this.state;
     return (
       <Fragment>
         <NavAppBar />
-        {species.loading && (
+        {result.loading && (
           <ScreenMask>
             <Loader />
           </ScreenMask>
@@ -90,7 +97,7 @@ class Detection extends Component {
           onChangeIndex={() => {
             console.log("no change view");
           }}
-          style={{ height: "100%" }}
+          style={{ height: "120vh" }}
         >
           <PageContainer>
             <BreadcrumbsWithRouter />
@@ -104,12 +111,17 @@ class Detection extends Component {
               </Title>
               <UploadImageContainer handleSubmit={this.handleSubmit} />
             </DropboxWrapper>
+            <ConfirmationDialog
+              open={dialogOpen}
+              message={result.error}
+              handleClose={this.handleDialogClose}
+            />
           </PageContainer>
-          <PageContainer >
-            {species.entity && (
+          <PageContainer>
+            {result.entity && (
               <BriefInfo
                 handleBack={this.handleBack}
-                species={species.entity.candidates}
+                species={result.entity.candidates}
               />
             )}
             <ActionButtonGroup
@@ -133,8 +145,18 @@ Detection.defaultProps = {
 
 const mapStateToProps = state => {
   return {
-    species: state.detection.detectionResult
+    result: state.detection.detectionResult
   };
 };
 
-export default connect(mapStateToProps)(withRouter(Detection));
+const mapDisptachToProps = dispatch => {
+  return {
+    reset: () => {
+      dispatch(resetDetection());
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDisptachToProps)(
+  withRouter(Detection)
+);

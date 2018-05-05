@@ -5,6 +5,23 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceRoot}/src"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch via Yarn",
+      "cwd": "${workspaceRoot}",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["debug"],
+      "port": 9229,
+      "stopOnEntry": false
+    },
+    {
       "type": "node",
       "request": "launch",
       "name": "Jest Tests",
@@ -20,12 +37,6 @@
       "args": ["${file}"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch Program",
-      "program": "${workspaceFolder}/start"
     }
   ]
 }

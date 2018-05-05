@@ -19,7 +19,7 @@ const getSpacing = (number = 1) => Number(16 / number);
 
 class UploadImageModule extends PureComponent {
   componentWillMount() {
-    this.props.resetImage();
+    this.props.reset();
   }
 
   handleSubmitBtnClick = () => {
@@ -38,7 +38,7 @@ class UploadImageModule extends PureComponent {
           spacing={getSpacing()}
         >
           <Grid item sm={8}>
-            <DropImageZone uploadImage={uploadImage} />
+            <DropImageZone uploadImage={uploadImage} image={image.entity} />
           </Grid>
           <Grid item sm={8}>
             <BrowseButton
