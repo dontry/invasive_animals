@@ -49,16 +49,6 @@ const UploadedImage = styled.img`
 `;
 
 class DropImageZone extends Component {
-  state = {
-    image: null
-  };
-
-  componentDidMount() {
-    if (this.props.image && null !== this.props.image.entity) {
-      this.setState({ image: this.props.image.entity });
-    }
-  }
-
   handleDrop = (accepted, rejected) => {
     let image;
     if (accepted.length > 1) {
@@ -66,16 +56,12 @@ class DropImageZone extends Component {
       window.alert("Sorry, you can only drop one photo at a time");
     } else {
       image = accepted[0];
-      this.setState({
-        image
-      });
       this.props.uploadImage(image);
     }
   };
 
   render() {
-    const { classes } = this.props;
-    const { image } = this.state;
+    const { image } = this.props;
     // const imageURL = image && this.createImageURL(image.preview);
     return (
       <StyledDropzone
@@ -100,12 +86,10 @@ class DropImageZone extends Component {
 }
 
 DropImageZone.propTypes = {
-  classes: PropTypes.object.isRequired,
   uploadImage: PropTypes.func.isRequired
 };
 
 DropImageZone.defaultProps = {
-  classes: {},
   uploadImage() {
     console.log("upload image");
   }

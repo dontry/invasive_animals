@@ -13,19 +13,10 @@ import { Title } from "../components/common/Text";
 import LocationInfo from "../components/HelpCenter/LocationInfo";
 import SelectionField from "../components/HelpCenter/SelectionField";
 import MapWithKmlLayers from "../components/HelpCenter/MapWithKmlLayers";
-import VictoriaMap from "../assets/images/vitoria_map.png";
-
+import Regions from "../assets/regions";
 import { reduxifiedServices } from "../reducers/feathers";
 
-const REGION_LIST = [
-  "Loddon-Mallee",
-  "Hume",
-  "Grampians",
-  "Port Philips",
-  "Gippsland",
-  "Barwon South West",
-  "All"
-];
+const REGION_LIST = [...Regions.map(region => region.name), "All"];
 
 const SelectionWrapper = styled.div`
   margin: 0 auto;
