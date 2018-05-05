@@ -1,5 +1,5 @@
-import React, {Component, Fragment} from "react";
-import {Redirect, Route} from "react-router";
+import React, { Component, Fragment } from "react";
+import { Redirect, Route } from "react-router";
 import Switch from "react-router-dom/Switch";
 //Pages
 import Login from "../pages/Login";
@@ -11,6 +11,7 @@ import SpeciesWiki from "../pages/SpeciesWiki";
 import Insight from "../pages/Insight";
 import Report from "../pages/Report";
 import HelpCenter from "../pages/HelpCenter";
+import Subscription from "../pages/Subscription";
 import AboutUs from "../pages/AboutUs";
 import ContactUs from "../pages/ContactUs";
 import ComingSoon from "../pages/ComingSoon";
@@ -64,7 +65,7 @@ class Routes extends Component {
   };
   render() {
     let { isAuthenticated } = this.state;
-    isAuthenticated=true;
+    isAuthenticated = true;
     return (
       <Fragment>
         <Switch>
@@ -122,6 +123,12 @@ class Routes extends Component {
             exact
             path="/help_center"
             component={HelpCenter}
+            isAuthenticated={isAuthenticated}
+          />
+          <ProtectedRoute
+            exact
+            path="/subscription"
+            component={Subscription}
             isAuthenticated={isAuthenticated}
           />
           <ProtectedRoute
