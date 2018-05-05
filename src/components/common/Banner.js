@@ -44,13 +44,13 @@ const Banner = ({ timeout = 0, heading, subheading, description, imgUrl, textCol
       <BannerWrapper imgUrl={imgUrl}>
         <BlurbWrapper container direction="column" spacing={8}>
           <Grid item>
-            <Title variant="display1" textColor={textColor} align="left">
+            <Title variant="display1" txtColor={textColor} align="left">
               {heading}
             </Title>
           </Grid>
           {subheading && (
             <Grid item>
-              <Title variant="title" textColor={textColor} align="left">
+              <Title variant="title" txtColor={textColor} align="left">
                 {subheading}
               </Title>
             </Grid>
@@ -58,7 +58,7 @@ const Banner = ({ timeout = 0, heading, subheading, description, imgUrl, textCol
           <Grid item xs={12} sm={8}>
             <Paragraph
               variant="title"
-              textColor={textColor}
+              txtColor={textColor}
               lineHeight={"1.5em"}
             >
               {description}
