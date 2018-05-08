@@ -19,9 +19,9 @@ const introData = [
     path: "/find"
   },
   {
-    title: "Trend Observation",
+    title: "Insight",
     icon: <BinocularsIcon color={lightGreen[500]} size={ICON_SIZE} />,
-    path: "/observe"
+    path: "/insight"
   }
 ];
 

@@ -20,9 +20,6 @@ const FormWrapper = styled(Grid)`
 const Asterisk = () => <span style={{ verticalAlign: "upper" }}>*</span>;
 const Regions = [
   {
-    value: ""
-  },
-  {
     value: "Loddon-Mallee"
   },
   {
