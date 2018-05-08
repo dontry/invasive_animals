@@ -34,7 +34,7 @@ const SideWrapper = styled(Grid)`
 const ContactUs = () => (
   <Fragment>
     <NavAppBar />
-    <PageContainer>
+    <PageContainer maxWidth="100%">
       <Wrapper container justify="space-between">
         <Grid item xs={12} sm={8}>
           <BreadcrumbsWithRouter />
