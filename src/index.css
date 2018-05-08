@@ -1,9 +1,9 @@
-
 html,
 body {
   margin: 0;
   height: 100%;
 }
+
 body {
   padding: 0;
   font-family: sans-serif;
@@ -28,4 +28,15 @@ a {
 
 .react-swipeable-view-container {
   height: 100%;
+}
+
+.react-swipeable-view-container>div {
+  width: 100% !important;
+  height: auto !important;
+  overflow-x: hidden;
+}
+
+.MuiGrid-spacing-xs-16-128 {
+  width: auto !important;
+  margin: 0;
 }

@@ -12,9 +12,9 @@ export const theme = {
     },
     secondary: {
       light: cyan[100],
-      main: cyan[500],
+      main: cyan[200],
       dark: cyan[700],
-      contrastText: teal[900]
+      contrastText: teal[800]
     },
     error: {
       light: red[100],

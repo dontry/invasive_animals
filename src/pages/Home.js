@@ -15,7 +15,7 @@ const Home = () => (
   <Fragment>
     <Logo />
     <NavAppBar title={<div />} />
-    <PageContainer minHeight="85%">
+    <PageContainer minHeight="85%" maxWidth="100%">
       <Banner imgUrl={banner} description={BANNER_DESCRIPTION} timeout={3000} textColor="#fff"/>
       <IntroGrid />
     </PageContainer>

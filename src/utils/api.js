@@ -1,5 +1,4 @@
 import axios from "axios";
-import { SpeciesDB } from "./firebase";
 import { GOOGLE_VISION_APIKEY } from "./credentials";
 import feathers from "@feathersjs/client";
 import rest from "@feathersjs/rest-client";
@@ -61,13 +60,7 @@ export function checkImageSatefy(meta) {
   return true;
 }
 
-export async function getAllSpecies() {
-  const dbRef = SpeciesDB.database().ref();
-  const snap = await dbRef.once("value");
-  return snap.val();
-}
-
 //Create Feathersjs RESTFUL API
 export const client = feathers()
-  // .configure(rest("https://invasive-node.appspot.com").superagent(superagent));
-  .configure(rest("http://localhost:3030").axios(axios));
+  .configure(rest("https://invasive-node.appspot.com").axios(axios));
+  // .configure(rest("http://localhost:3030").axios(axios));
