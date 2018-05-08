@@ -9,17 +9,18 @@ const StyledGridList = styled(GridList)`
   && {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
     overflow: hidden;
     width: 100%;
     padding-top: 2rem;
+    max-width: 1000px;
   }
 `;
 
 const Image = styled.img`
   width: 100%;
   height: 100%;
-`
+`;
 
 const species = speciesImageList.slice(0, 6);
 function renderTileItems(list) {
@@ -35,7 +36,11 @@ function renderTileItems(list) {
 
 const TileBarGridList = ({ dataList = species }) => {
   const tileItems = renderTileItems(dataList);
-  return <StyledGridList cellHeight={200}>{tileItems}</StyledGridList>;
+  return (
+    <StyledGridList cellHeight={200} style={{ margin: "0 auto" }}>
+      {tileItems}
+    </StyledGridList>
+  );
 };
 
 TileBarGridList.propTypes = {

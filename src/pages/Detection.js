@@ -4,6 +4,11 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import UploadImageContainer from "../containers/UploadImageContainer";
 import SwipeableViews from "react-swipeable-views";
+import Button from "material-ui/Button";
+import Stepper, { Step, StepLabel } from "material-ui/Stepper";
+import Grid from "material-ui/Grid";
+
+//Components
 import PageContainer from "../components/common/PageContainer";
 import { Title } from "../components/common/Text";
 import { green, lime } from "material-ui/colors";
@@ -12,9 +17,20 @@ import NavAppBar from "../components/common/NavAppBar";
 import Loader from "../components/common/Loader";
 import { ScreenMask } from "../components/common/Mask";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
-import ActionButtonGroup from "../components/common/ActionButtonGroup";
+import ActionButtonGroup, {
+  StyledButton,
+  ActionButton
+} from "../components/common/ActionButtonGroup";
 import ConfirmationDialog from "../components/common/ConfirmationDialog";
 import { resetDetection } from "../actions/detection";
+import GalleryComposite from "../components/Info/GalleryComposite";
+import Gallery, { Slider } from "../components/Info/Gallery";
+
+const STEPS = [
+  "Upload the photos and submit",
+  "View the result",
+  "Take Actions"
+];
 
 const ViewWrapper = styled.section`
   height: 100vh;
@@ -24,9 +40,21 @@ const DropboxWrapper = styled.div`
   margin-top: 50px;
 `;
 
+const BackButton = styled(Button)`
+  &&& {
+    position: absolute;
+    z-index: 100;
+    transform: translateY(-50%);
+    top: 50%;
+    left: 1rem;
+    color: #fff;
+  }
+`;
+
 const ReportActionProps = history => ({
   raised: true,
   label: "Report",
+  width: "300px",
   action() {
     return history.push("/report");
   },
@@ -38,12 +66,13 @@ const ReportActionProps = history => ({
 const SeekHelpActionProps = history => ({
   raised: true,
   label: "Seek Help",
+  width: "300px",
   action() {
     return history.push("/help_center");
   },
   disabled: false,
   type: "secondary",
-  trait: "dark"
+  trait: "main"
 });
 
 class Detection extends Component {
@@ -91,46 +120,89 @@ class Detection extends Component {
             <Loader />
           </ScreenMask>
         )}
-        <SwipeableViews
-          axis={"x"}
-          index={viewIndex}
-          onChangeIndex={() => {
-            console.log("no change view");
-          }}
-          style={{ height: "120vh" }}
-        >
-          <PageContainer>
-            <BreadcrumbsWithRouter />
-            <DropboxWrapper>
-              <Title
-                variant="display1"
-                txtColor={green[700]}
-                padding="0 0 2rem"
-              >
-                Identify the invasive species
-              </Title>
-              <UploadImageContainer handleSubmit={this.handleSubmit} />
-            </DropboxWrapper>
-            <ConfirmationDialog
-              open={dialogOpen}
-              message={result.error}
-              handleClose={this.handleDialogClose}
-            />
-          </PageContainer>
-          <PageContainer>
-            {result.entity && (
-              <BriefInfo
-                handleBack={this.handleBack}
-                species={result.entity.candidates}
+        <PageContainer>
+          <BreadcrumbsWithRouter />
+          <Stepper
+            activeStep={viewIndex}
+            alternativeLabel
+            style={{ backgroundColor: "transparent" }}
+          >
+            {STEPS.map(label => {
+              return (
+                <Step key={label}>
+                  <StepLabel>{label}</StepLabel>
+                </Step>
+              );
+            })}
+          </Stepper>
+          <SwipeableViews
+            axis={"x"}
+            index={viewIndex}
+            onChangeIndex={() => {
+              console.log("no change view");
+            }}
+          >
+            <PageContainer minHeight="auto" padding="0 0 4rem">
+              <DropboxWrapper>
+                <Title
+                  variant="display1"
+                  txtColor={green[700]}
+                  padding="0 0 2rem"
+                >
+                  Identify the invasive species
+                </Title>
+                <UploadImageContainer handleSubmit={this.handleSubmit} />
+              </DropboxWrapper>
+              <ConfirmationDialog
+                open={dialogOpen}
+                message={result.error}
+                handleClose={this.handleDialogClose}
               />
-            )}
-            <ActionButtonGroup
-              btnStyle={{ margin: "2rem" }}
-              primaryProps={ReportActionProps(history)}
-              secondaryProps={SeekHelpActionProps(history)}
-            />
-          </PageContainer>
-        </SwipeableViews>
+            </PageContainer>
+            <PageContainer minHeight="auto" padding="0 0 4rem">
+              {result.entity && (
+                <BriefInfo
+                  handleBack={this.handleBack}
+                  species={result.entity.candidates}
+                  labels={result.entity.labels}
+                />
+              )}
+              <Grid container direction="column" alignItems="center">
+                <Title variant="title">Similar Images</Title>
+                <Grid item xs={12} sm={8} style={{ maxWidth: "800px" }}>
+                  {result.entity && (
+                    <GalleryComposite images={result.entity.images}>
+                      <Slider />
+                    </GalleryComposite>
+                  )}
+                </Grid>
+              </Grid>
+              <Grid
+                container
+                direction="column"
+                style={{
+                  width: "100%",
+                  padding: "2rem",
+                  margin: "0 auto",
+                  position: "relative"
+                }}
+                alignItems="center"
+              >
+                <Grid item xs={6}>
+                  <ActionButton {...ReportActionProps(history)} />
+                </Grid>
+                <Grid item xs={6}>
+                  <ActionButton {...SeekHelpActionProps(history)} />
+                </Grid>
+                <BackButton onClick={this.handleBack} type="primary">
+                  <Title variant="display1" txtColor={lime[800]}>
+                    ◀︎ BACK
+                  </Title>
+                </BackButton>
+              </Grid>
+            </PageContainer>
+          </SwipeableViews>
+        </PageContainer>
       </Fragment>
     );
   }

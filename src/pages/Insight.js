@@ -1,75 +1,83 @@
 import React, { Component, Fragment } from "react";
 import styled from "styled-components";
+//MUI Components
+import Tabs, { Tab } from "material-ui/Tabs";
 import Grid from "material-ui/Grid";
+import SwipeableViews from "react-swipeable-views";
+//Components
 import PageContainer from "../components/common/PageContainer";
 import NavAppBar from "../components/common/NavAppBar";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
 import Loader from "../components/common/Loader";
 import { Title } from "../components/common/Text";
+import TabContainer from "../components/common/TabContainer";
+import { TableauScript } from "../components/common/3rdPartyScripts";
+
+import {
+  GeograhicalDensity,
+  GeographicalDistribution
+} from "../components/Insight/DistributionMap";
+import {
+  RecordsByState,
+  TimeSeries,
+  MonthlyRecords
+} from "../components/Insight/Charts";
 
 export default class Insight extends Component {
   state = {
-    height: "100%"
+    index: 0
   };
-  componentDidMount() {
-    const divElement = document.getElementById("viz1525064740653");
-    const vizElement = divElement.getElementsByTagName("object")[0];
-    vizElement.style.width = "100%";
-    vizElement.style.height = divElement.offsetWidth * 0.75 + "px";
-    const scriptElement = document.createElement("script");
-    scriptElement.src = "https://public.tableau.com/javascripts/api/viz_v1.js";
-    vizElement.parentNode.insertBefore(scriptElement, vizElement);
-  }
+  handleChange = (event, value) => {
+    this.setState({ index: value });
+  };
+  handleChangeIndex = index => {
+    this.setState({ index });
+  };
   render() {
+    const { index } = this.state;
     return (
       <Fragment>
         <NavAppBar />
-        <BreadcrumbsWithRouter />
         <PageContainer>
-          <Grid container justify="center">
-            <Grid item xs={8}>
-              <div
-                className="tableauPlaceholder"
-                id="viz1525064740653"
-                style={{ position: "relative" }}
-              >
-                <noscript>
-                  <a href="#">
-                    <img
-                      alt="Distribution "
-                      src="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;vi&#47;vizproject_0&#47;Distribution&#47;1_rss.png"
-                      style={{ border: "none" }}
-                    />
-                  </a>
-                </noscript>
-                <object className="tableauViz" style={{ display: "none" }}>
-                  <param
-                    name="host_url"
-                    value="https%3A%2F%2Fpublic.tableau.com%2F"
-                  />
-                  <param name="embed_code_version" value="3" />
-                  <param
-                    name="path"
-                    value="views&#47;vizproject_0&#47;Distribution?:embed=y&amp;:display_count=y&amp;publish=yes"
-                  />
-                  <param name="toolbar" value="yes" />
-                  <param
-                    name="static_image"
-                    value="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;vi&#47;vizproject_0&#47;Distribution&#47;1.png"
-                  />
-                  <param name="animate_transition" value="yes" />
-                  <param name="display_static_image" value="yes" />
-                  <param name="display_spinner" value="yes" />
-                  <param name="display_overlay" value="yes" />
-                  <param name="display_count" value="yes" />
-                  <param
-                    name="filter"
-                    value="publish=yes&Scientific Name=Sus scrofa"
-                  />
-                </object>
-              </div>
-            </Grid>
-          </Grid>
+          <BreadcrumbsWithRouter />
+          <Tabs
+            value={index}
+            onChange={this.handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            centered
+          >
+            <Tab label="Distribution" />
+            <Tab label="Records by State" />
+            <Tab label="Time Series" />
+          </Tabs>
+          <SwipeableViews
+            axis="x"
+            index={index}
+            onChangeIndex={this.onChangeIndex}
+          >
+            <TabContainer width="100%">
+              <Grid container justify="center">
+                <Grid item xs={12} sm={6} />
+                <Grid item xs={12} sm={6}>
+                  <GeographicalDistribution />
+                </Grid>
+              </Grid>
+              <Grid container justify="center">
+                <Grid item>
+                  <GeograhicalDensity />
+                </Grid>
+              </Grid>
+            </TabContainer>
+            <TabContainer width="100%">
+              <RecordsByState />
+            </TabContainer>
+            <TabContainer width="100%">
+              <TimeSeries />
+              <br />
+              <MonthlyRecords />
+            </TabContainer>
+          </SwipeableViews>
         </PageContainer>
       </Fragment>
     );

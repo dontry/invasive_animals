@@ -9,7 +9,7 @@ import { ScreenMask } from "../common/Mask";
 import Gallery, { Slider } from "./Gallery";
 import Loader from "../common/Loader";
 import GalleryComposite from "./GalleryComposite";
-import DistributionMap from "../Insight/DistributionMap";
+import { GeographicalDistribution } from "../Insight/DistributionMap";
 import CommentSection from "../common/CommentSection";
 
 const ATTRIBUTE_NAMES = [
@@ -66,7 +66,7 @@ function renderItem(attr) {
       <Passage title={attr.value} content={this[attr.key]} />
       {attr.key == "Distribution" && (
         <div style={{ width: "75%", margin: "0 auto" }}>
-          <DistributionMap species={this.AcademicalName} />
+          <GeographicalDistribution species={this.CommonName} />
           <Title txtColor={grey[700]}>
             Distribution of {this.CommonName} in Australia
           </Title>

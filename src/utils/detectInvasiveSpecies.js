@@ -1,6 +1,13 @@
 // import InvasiveSpecies from "./InvasiveSpecies";
 import { client } from "./api";
 
+const REGEX_CATEGORIES = /(plants*|animals*|fish)/i;
+const CATEGORIES = [
+  { name: "animal", regex: /animal/i },
+  { name: "plant", regex: /plant/i },
+  { name: "fish", regex: /fish/i }
+];
+
 function createSpeciesMap(speciesArray) {
   const speciesMap = new Map();
   for (const species of speciesArray) {
@@ -9,13 +16,30 @@ function createSpeciesMap(speciesArray) {
   return speciesMap;
 }
 
-function dataPreprocessing(data) {
+function processLabel(meta) {
   const labels = [];
-  const annotations = data.labelAnnotations;
-  const entities = data.webDetection.webEntities;
+  const annotations = meta.labelAnnotations;
+  const entities = meta.webDetection.webEntities;
   labels.push(...annotations, ...entities);
+  return labels.slice(10);
+}
 
-  return labels;
+function processSimilarImages(meta) {
+  const images = [];
+  const partialMatchingImageUrls = meta.webDetection.partialMatchingImages.map(
+    image => {
+      return image.url;
+    }
+  );
+
+  const visuallySimilarImageUrls = meta.webDetection.visuallySimilarImages.map(
+    image => {
+      return image.url;
+    }
+  );
+
+  images.push(...partialMatchingImageUrls, ...visuallySimilarImageUrls);
+  return images;
 }
 
 function compare(label, name) {
@@ -33,19 +57,36 @@ export function getByName(name) {
   return items[0];
 }
 
-let INVASIVE_SPECIES = null;
-export async function getInvasiveSpecies(data) {
+export async function getInvasiveSpecies(meta) {
   const candidateNames = [];
-  const info = [];
-  const labels = dataPreprocessing(data);
+  const labels = processLabel(meta);
+  const images = processSimilarImages(meta);
+
+  //eliminate the possibility across different category
+  const categories =
+    labels
+      .filter(label => REGEX_CATEGORIES.test(label.description))
+      .reduce((acc, label, index, array) => {
+        for (const category of CATEGORIES) {
+          if (category.regex.test(label.description)) {
+            return acc + category.name + (index < array.length - 1 ? "|" : "");
+          }
+        }
+        return;
+      }, "(") + ")";
+
   const queries =
-    labels.reduce((acc, label, index) => {
-      return acc + label.description + (index < labels.length - 1 && "|");
+    labels.reduce((acc, label, index, array) => {
+      return acc + label.description + (index < array.length - 1 ? "|" : "");
     }, "(") + ")";
   const candidates = await client.service("species").find({
     query: {
       CommonName: {
         $regex: queries,
+        $options: "i"
+      },
+      Category: {
+        $regex: categories,
         $options: "i"
       }
     }
@@ -53,6 +94,7 @@ export async function getInvasiveSpecies(data) {
 
   return {
     candidates,
-    info
+    labels,
+    images
   };
 }

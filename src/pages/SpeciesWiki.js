@@ -34,7 +34,7 @@ class SpeciesWiki extends Component {
             <Loader />
           ) : (
             Array.isArray(species.queryResult) && (
-              <SpeciesGallery dataList={species.queryResult} />
+              <SpeciesGallery speciesList={species.queryResult} />
             )
           )}
         </PageContainer>

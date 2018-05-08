@@ -15,7 +15,6 @@ const BrowseButton = styled(Button)`
   }
 `;
 
-const getSpacing = (number = 1) => Number(16 / number);
 
 class UploadImageModule extends PureComponent {
   componentWillMount() {
@@ -35,7 +34,6 @@ class UploadImageModule extends PureComponent {
           direction="column"
           justify="center"
           alignItems="center"
-          spacing={getSpacing()}
         >
           <Grid item sm={8}>
             <DropImageZone uploadImage={uploadImage} image={image.entity} />

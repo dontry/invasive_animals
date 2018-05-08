@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -8,14 +8,15 @@ import { grey, lime, red } from "material-ui/colors";
 import Paper from "material-ui/Paper";
 import Grid from "material-ui/Grid";
 import Button from "material-ui/Button";
+import { Typography } from "material-ui";
 
 const Root = styled.div`
   position: relative;
 `;
 const BriefInfoWrapper = styled(Grid)`
   position: relative;
-  min-height: 80vh;
-  padding: 5rem 3rem 2rem;
+  min-height: 60vh;
+  padding: 2rem 3rem 1rem;
 `;
 
 const InfoGridItem = styled(Grid)`
@@ -66,23 +67,13 @@ const InfoDescription = Paragraph.extend`
   margin-bottom: 1rem !important;
 `;
 
-const MessageWrapper = Title.extend`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+const MessageWrapper = styled.div`
+  max-width: 800px;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  text-align: center;
+  margin: 0 auto;
 `;
-
-const BackButton = styled(Button)`
-  &&& {
-    position: absolute;
-    z-index: 100;
-    top: 50%;
-    left: 2rem;
-    color: #fff;
-  }
-`;
-
 
 function renderSpeciesInfo(speciesArray = []) {
   return speciesArray.map(species => {
@@ -90,9 +81,6 @@ function renderSpeciesInfo(speciesArray = []) {
     return (
       <InfoGridItem item>
         <InfoPaper>
-          <Title variant="title" txtColor={red[700]}>
-            Possible invasive species detected
-          </Title>
           <Image
             src={species.ImageURL || ImagePlaceHolder}
             alt={species.CommonName}
@@ -108,9 +96,12 @@ function renderSpeciesInfo(speciesArray = []) {
               {species.BriefIntroduction}
             </InfoDescription>
             <Link
-              to={`/species/${species.CommonName.toLowerCase().replace( " ", "_")}`}
+              to={`/species/${species.CommonName.toLowerCase().replace(
+                " ",
+                "_"
+              )}`}
             >
-              Learn More ……
+              Learn More …
             </Link>
           </Intro>
         </InfoPaper>
@@ -119,23 +110,34 @@ function renderSpeciesInfo(speciesArray = []) {
   });
 }
 
-const BriefInfo = ({ species, handleBack }) => {
+const BriefInfo = ({ species, labels }) => {
   return (
     <Root>
-      <BriefInfoWrapper container justify="center" alignItems="flex-start">
-        {species.length === 0 ? (
-          <MessageWrapper variant="display3" txtColor={red[500]}>
-            It may be not an invasive species.
-          </MessageWrapper>
-        ) : (
-          renderSpeciesInfo(species)
-        )}
-      </BriefInfoWrapper>
-      <BackButton onClick={handleBack}>
-        <Title variant="display2" txtColor={lime[800]}>
-          ⬅ BACK
-        </Title>
-      </BackButton>
+      {species.length === 0 ? (
+        <MessageWrapper>
+          <Title variant="display1" txtColor={grey[700]} padding="0 0 1rem">
+            Sorry, it may be not an invasive species.
+          </Title>
+          <Paragraph variant="body" >
+            <span style={{fontWeight: "bolder"}}>Relavant Annotations of the uploaded image:&nbsp;</span>
+            <br />
+            {labels.map(label => (
+              <span key={label.description} style={{ marginRight: "0.5em" }}>
+                {label.description},
+              </span>
+            ))}
+          </Paragraph>
+        </MessageWrapper>
+      ) : (
+        <Fragment>
+          <Title variant="title" txtColor={red[700]}>
+            Possible invasive species identified
+          </Title>
+          <BriefInfoWrapper container justify="center" alignItems="flex-start">
+            {renderSpeciesInfo(species)}
+          </BriefInfoWrapper>
+        </Fragment>
+      )}
     </Root>
   );
 };

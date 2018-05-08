@@ -11,7 +11,7 @@ import SpeciesWiki from "../pages/SpeciesWiki";
 import Insight from "../pages/Insight";
 import Report from "../pages/Report";
 import HelpCenter from "../pages/HelpCenter";
-import Subscription from "../pages/Subscription";
+import Subscription from "../pages/Subscribe";
 import AboutUs from "../pages/AboutUs";
 import ContactUs from "../pages/ContactUs";
 import ComingSoon from "../pages/ComingSoon";
@@ -127,7 +127,7 @@ class Routes extends Component {
           />
           <ProtectedRoute
             exact
-            path="/subscription"
+            path="/subscribe"
             component={Subscription}
             isAuthenticated={isAuthenticated}
           />

@@ -51,7 +51,7 @@ export async function fetchDetectionResult(image, options = undefined) {
         throw `Sorry, the image may contain explicit content`;
       }
     } catch (error) {
-      dispatch(fetchDetectionResultFailure(error));
+      dispatch(fetchDetectionResultFailure(JSON.stringify(error)));
     }
   };
 }

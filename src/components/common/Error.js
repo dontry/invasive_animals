@@ -1,25 +1,41 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import {grey, red} from "material-ui/colors";
+import Icon from "material-ui/Icon";
+import { grey, red } from "material-ui/colors";
+import { StyledButton } from "./ActionButtonGroup";
 
-const ErrorMessage = styled.h3`
+const ErrorMessage = styled.h1`
   text-align: center;
-  color: ${props => props.color || props.theme.error || red[500]};
+  color: ${props => props.color || props.theme.error || "#fff"};
   font-weight: bold;
+  text-shadow: 3px 3px 2px ${grey[500]};
 `;
 
-const ErrorLink = styled.h4`
+const ErrorCode = styled.h2`
   text-align: center;
-  color: ${grey[700]}
+  color: ${props => props.color || props.theme.error || "#fff"};
+  font-weight: bold;
+  text-shadow: 3px 3px 2px ${grey[500]};
+`
+
+const ErrorLink = styled.h3`
+  text-align: center;
+  color: #fff;
+  text-shadow: 2px 2px ${grey[500]};
 `;
 
-const Error = ({ errorCode = "404" }) => {
+const Error = ({ errorMessage, errorCode = "404" }) => {
   return (
     <div>
-      <ErrorMessage>Oops, Error {errorCode}</ErrorMessage>
+      <ErrorMessage>{errorMessage}</ErrorMessage>
+      <ErrorCode>{errorCode}</ErrorCode>
       <ErrorLink>
-        Please go back to <Link to="/">Homepage</Link>
+        <Link to="/">
+          <StyledButton type="primary" trait="dark">
+            <Icon>home</Icon>&nbsp;&nbsp;Home
+          </StyledButton>
+        </Link>
       </ErrorLink>
     </div>
   );
