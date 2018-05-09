@@ -2,22 +2,33 @@ import React, { Fragment, Component } from "react";
 import styled from "styled-components";
 
 import { Grid } from "material-ui";
+import { green } from "material-ui/colors";
 import Button from "material-ui/Button";
 import PageContainer from "../components/common/PageContainer";
 import { TextField, Select } from "../components/common/FormFields";
-import { Title } from "../components/common/Text";
+import { Title, Paragraph } from "../components/common/Text";
 import NavAppBar from "../components/common/NavAppBar";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
 import { StyledButton } from "../components/common/ActionButtonGroup";
 
-const FormWrapper = styled(Grid)`
+const DescriptionWrapper = styled.div`
+  max-width: 800px;
+  margin: 0 auto;
+  padding-top: 1.5rem;
+`;
+
+const FormWrapper = styled.div`
+  max-width: 800px;
+  margin: 0 auto;
+`;
+
+const FormBody = styled(Grid)`
   && {
     padding: 2rem;
     text-align: center;
   }
 `;
 
-const Asterisk = () => <span style={{ verticalAlign: "upper" }}>*</span>;
 const Regions = [
   {
     value: "Loddon-Mallee"
@@ -52,9 +63,18 @@ class Subscription extends Component {
         <NavAppBar />
         <BreadcrumbsWithRouter />
         <PageContainer style={{ padding: "1rem 2rem" }}>
-          <Title variant="title">Subscribe to our mailing list</Title>
-          <Title variant="subheading">* indicates required</Title>
-          <div id="mc_embed_signup">
+          <Title variant="display1">Subscribe to our mailing list</Title>
+          <DescriptionWrapper>
+            <Paragraph variant="body" align="left">
+              Do not miss out on the up-to-date trends and alert of presence of
+              invasive animals in your farming areas. Fill out the form below,
+              let us know which region you are interested in, and we will send
+              you monthly updates! Subscribe now to our mailing list to receive
+              our newletters in your inbox!
+            </Paragraph>
+          </DescriptionWrapper>
+          <FormWrapper id="mc_embed_signup">
+            {/*  <Title variant="subheading">* indicates required</Title> */}
             <form
               action="https://facebook.us18.list-manage.com/subscribe/post?u=24f1d7a8269684bd046565d7c&amp;id=6f819e9c64"
               method="post"
@@ -64,7 +84,7 @@ class Subscription extends Component {
               target="_blank"
               novalidate
             >
-              <FormWrapper
+              <FormBody
                 id="mc_embed_signup_scroll"
                 container
                 direction="column"
@@ -129,7 +149,7 @@ class Subscription extends Component {
                 <div className="clear">
                   <Button
                     variant="raised"
-                    primary
+                    style={{ background: green[500], color: "#fff" }}
                     type="submit"
                     value="Subscribe"
                     name="subscribe"
@@ -138,9 +158,9 @@ class Subscription extends Component {
                     Submit
                   </Button>
                 </div>
-              </FormWrapper>
+              </FormBody>
             </form>
-          </div>
+          </FormWrapper>
         </PageContainer>
       </Fragment>
     );

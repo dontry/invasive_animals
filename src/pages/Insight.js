@@ -9,7 +9,7 @@ import PageContainer from "../components/common/PageContainer";
 import NavAppBar from "../components/common/NavAppBar";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
 import Loader from "../components/common/Loader";
-import { Title } from "../components/common/Text";
+import { Title, Paragraph } from "../components/common/Text";
 import TabContainer from "../components/common/TabContainer";
 import { TableauScript } from "../components/common/3rdPartyScripts";
 
@@ -22,6 +22,12 @@ import {
   TimeSeries,
   MonthlyRecords
 } from "../components/Insight/Charts";
+
+const GraphWrapper = styled(Grid)`
+  && {
+    margin-bottom: 4rem;
+  }
+`;
 
 export default class Insight extends Component {
   state = {
@@ -48,8 +54,8 @@ export default class Insight extends Component {
             centered
           >
             <Tab label="Distribution" />
-            <Tab label="Records by State" />
-            <Tab label="Time Series" />
+            <Tab label="Trend Observation" />
+            <Tab label="Occurrence by State" />
           </Tabs>
           <SwipeableViews
             axis="x"
@@ -58,24 +64,65 @@ export default class Insight extends Component {
           >
             <TabContainer width="100%">
               <Grid container justify="center">
-                <Grid item xs={12} sm={6} />
-                <Grid item xs={12} sm={6}>
+                <GraphWrapper item>
+                  <Title variant="display1" align="left">
+                    Geographical Distribution
+                  </Title>
+                  <Paragraph variant="subheading" lineHeight="2em">
+                    View the location of all the occurrences of all the species
+                    in specific time period. The indicator can be selected to
+                    view the only one species.
+                  </Paragraph>
                   <GeographicalDistribution />
-                </Grid>
+                </GraphWrapper>
               </Grid>
               <Grid container justify="center">
-                <Grid item>
+                <GraphWrapper item>
+                  <Title variant="display1" align="left">
+                    Geographical Density
+                  </Title>
+                  <Paragraph variant="subheading" lineHeight="2em">
+                    View the location of all the occurrences of all the species
+                    in specific time period. The indicator can be selected to
+                    view the only one species.
+                  </Paragraph>
                   <GeograhicalDensity />
-                </Grid>
+                </GraphWrapper>
               </Grid>
             </TabContainer>
             <TabContainer width="100%">
-              <RecordsByState />
+              <GraphWrapper item>
+                <Title variant="display1" align="left">
+                  Time Series
+                </Title>
+                <Paragraph variant="subheading" lineHeight="2em">
+                  View the comparison of the monthly occurrences of the selected
+                  species in specific time period.
+                </Paragraph>
+                <TimeSeries />
+              </GraphWrapper>
+              <GraphWrapper item>
+                <Title variant="display1" align="left">
+                  Monthly Records
+                </Title>
+                <Paragraph variant="subheading" lineHeight="2em">
+                  View the comparison of the monthly occurrences of the selected
+                  species in specific time period.
+                </Paragraph>
+                <MonthlyRecords />
+              </GraphWrapper>
             </TabContainer>
             <TabContainer width="100%">
-              <TimeSeries />
-              <br />
-              <MonthlyRecords />
+              <GraphWrapper>
+                <Title variant="display1" align="left">
+                  Occurrences by States
+                </Title>
+                <Paragraph variant="subheading" lineHeightgh="2em">
+                  View the amount of occurrences of the selected species in a
+                  specific time period by state in descending sorting.
+                </Paragraph>
+                <RecordsByState />
+              </GraphWrapper>
             </TabContainer>
           </SwipeableViews>
         </PageContainer>
