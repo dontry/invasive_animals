@@ -2,13 +2,13 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import Grid from "material-ui/Grid";
-import { green } from "material-ui/colors";
+import { green, grey } from "material-ui/colors";
 
 import PageContainer from "../components/common/PageContainer";
 import NavAppBar from "../components/common/NavAppBar";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
 import Loader from "../components/common/Loader";
-import { Title } from "../components/common/Text";
+import { Title, Paragraph } from "../components/common/Text";
 
 import LocationInfo from "../components/HelpCenter/LocationInfo";
 import SelectionField from "../components/HelpCenter/SelectionField";
@@ -18,19 +18,32 @@ import { reduxifiedServices } from "../reducers/feathers";
 
 const REGION_LIST = [...Regions.map(region => region.name), "All"];
 
-const SelectionWrapper = styled.div`
-  margin: 0 auto;
-  width: 50%;
-  min-width: 500px;
-  padding: 1rem;
+const Wrapper = styled(Grid)`
+  && {
+    padding: 2rem;
+  }
 `;
 
-const ResultWrapper = styled.div`
+const MapWrapper = styled(Grid)`
+  && {
+    margin: 0 auto;
+    min-height: 500px;
+  }
+`;
+
+const ResultWrapper = styled(Grid)`
+  && {
+    margin: 0 auto;
+  }
+`;
+
+const ResultList = styled.div`
   position: relative;
-  margin: 0 auto;
+  background-color: ${grey[300]};
   max-width: 800px;
-  min-height: 200px;
-  padding: 2rem 3rem 4rem;
+  height: 80vh;
+  overflow-y: auto;
+  padding: 0.5rem;
 `;
 
 class HelpCenter extends Component {
@@ -61,22 +74,54 @@ class HelpCenter extends Component {
         <NavAppBar />
         <PageContainer minHeight="90vh">
           <BreadcrumbsWithRouter />
-          <SelectionWrapper>
-            <Title variant="subheading" txtColor={green[900]} txtSize="1.3rem">
-              Please select your region:
-            </Title>
-            <MapWithKmlLayers handleClick={this.handleSearch} />
-          </SelectionWrapper>
-          <ResultWrapper>
-            {helpCenters.isLoading ? (
-              <Loader type="bars" />
-            ) : (
-              Array.isArray(helpCenters.queryResult) &&
-              helpCenters.queryResult.map(center => (
-                <LocationInfo info={center} />
-              ))
-            )}
-          </ResultWrapper>
+          <Wrapper container>
+            <MapWrapper item xs={12} sm={6}>
+              <Title
+                variant="subheading"
+                txtColor={green[900]}
+                txtSize="1.3rem"
+                lineHeight="3em"
+              >
+                Please select your region:
+              </Title>
+              <MapWithKmlLayers handleClick={this.handleSearch} />
+              <Paragraph variant="body" style={{ paddingTop: "1rem" }}>
+                As defined by DELWP* , there are six Victoria divided farming
+                regions - which are Loddon-Mallee, Hume, Grampians, Port
+                Phillip, Gippsland, Barwon South West. Each region has its own
+                groups, agencies and organisations that involved in pest animal
+                management. Just simply choosing your farming areas to see the
+                certified help centre near you.
+              </Paragraph>
+              <br />
+              <Paragraph variant="caption">
+                * The Department of Environment, Land, Water and Planning
+                (DELWP) and Parks Victoria are responsible for the managing
+                established weeds and pests on public land, including in parks.
+              </Paragraph>
+            </MapWrapper>
+            <ResultWrapper item xs={12} sm={6}>
+              <Title
+                variant="subheading"
+                txtColor={green[900]}
+                txtSize="1.3rem"
+                lineHeight="3em"
+              >
+                {/* TOFIX: the region does not update */}
+                Help centers
+              </Title>
+              <ResultList>
+                {helpCenters.isLoading ? (
+                  <Loader type="bars" />
+                ) : (
+                  Array.isArray(helpCenters.queryResult) &&
+                  helpCenters.queryResult.map(center => (
+                    <LocationInfo info={center} />
+                  ))
+                )}
+              </ResultList>
+            </ResultWrapper>
+          </Wrapper>
         </PageContainer>
       </Fragment>
     );
