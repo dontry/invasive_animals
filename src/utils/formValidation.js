@@ -14,6 +14,10 @@ export const validate = values => {
     errors.to = "Required";
   }
 
+  if(!values.recaptcha) {
+    errors.recaptcha = "Required";
+  }
+
   if (Number(values.amount) <= 0) {
     errors.amount = "The amount value should be greater than 0";
   }

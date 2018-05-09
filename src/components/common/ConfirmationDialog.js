@@ -12,7 +12,7 @@ const ConfirmationDialog = ({ handleClose, title, message, ...rest }) => {
       maxWidth="xs"
       aria-lablledby={title}
       {...rest}
-      style={{padding: '2rem'}}
+      style={{ padding: "2rem", minWidth: "500px" }}
     >
       <DialogContent>
         <Paragraph variant="title" txtColor={grey[700]}>

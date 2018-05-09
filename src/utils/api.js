@@ -60,7 +60,9 @@ export function checkImageSatefy(meta) {
   return true;
 }
 
+const ENDPOINT =
+  process.env.NODE_ENV === "production"
+    ? "https://invasive-node.appspot.com"
+    : "http://localhost:3030";
 //Create Feathersjs RESTFUL API
-export const client = feathers()
-  .configure(rest("https://invasive-node.appspot.com").axios(axios));
-  // .configure(rest("http://localhost:3030").axios(axios));
+export const client = feathers().configure(rest(ENDPOINT).axios(axios));

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Redirect, withRouter } from "react-router-dom";
 import { Field, reduxForm } from "redux-form";
+import ReCAPTCHA from "react-google-recaptcha";
 //Material UI
 import Input, { InputLabel } from "material-ui/Input";
 import Grid from "material-ui/Grid";
@@ -20,9 +21,7 @@ import {
   Select,
   FieldWrapper
 } from "../common/FormFields";
-import Recaptcha from "../common/Recaptcha";
 import Regions from "../../assets/regions";
-import DropImageZoneContainer from "../../containers/DropImageZoneContainer";
 //Utils
 import { validate } from "../../utils/formValidation";
 import { encodeImageFromFile } from "../../utils/encodeImage";
@@ -73,10 +72,14 @@ const DialogBody = styled.div`
 `;
 
 class UploadImageBlock extends Component {
+  state = {
+    image: null
+  };
   uploadImage = async image => {
     if (image) {
       const imageBase64 = await encodeImageFromFile(image);
       this.props.input.onChange(imageBase64);
+      this.setState({ image });
     }
   };
 
@@ -87,19 +90,27 @@ class UploadImageBlock extends Component {
       input,
       meta: { touched, error }
     } = this.props;
+    const { image } = this.state;
     return (
       <FieldWrapper>
         <InputLabel style={{ fontSize: "0.75rem" }} shrink={true}>
           {label}
         </InputLabel>
         <DropzoneWrapper>
-          <DropImageZoneContainer uploadImage={this.uploadImage} />
+          <DropImageZone uploadImage={this.uploadImage} image={image} />
         </DropzoneWrapper>
         {error && <span>{error}</span>}
       </FieldWrapper>
     );
   }
 }
+
+const Captcha = ({ input, meta: { touched, error } }) => (
+  <ReCAPTCHA
+    sitekey="6LfMElYUAAAAAH8NaQnWfmsegkiaRjFqZ9Qq9ILi"
+    onChange={res => input.onChange(res)}
+  />
+);
 
 const Recipients = [
   {
@@ -152,15 +163,19 @@ export class ReportForm extends Component {
   };
 
   handleSubmit = async values => {
-    let email = values;
+    let { recaptcha, ...email } = values;
     if (!email.species) {
-      email = { ...email, species: "UNKNOWN" };
+      email = { ...email, species: "UNKNOWN", to: "vic.invasive@gmail.com" };
     }
     await this.props.sendEmail(email);
   };
 
   handleCancel = () => {
     this.context.router.history.goBack();
+  };
+
+  handleRecaptchaChange = value => {
+    this.setState({ recaptchaValue: value });
   };
 
   render() {
@@ -173,7 +188,7 @@ export class ReportForm extends Component {
       submitSucceeded
     } = this.props;
 
-    const { dialogOpen, complete, message } = this.state;
+    const { dialogOpen, complete, message, recaptchaValue } = this.state;
 
     if (complete === true) {
       return <Redirect to="/" />;
@@ -206,7 +221,7 @@ export class ReportForm extends Component {
         <StyledForm
           onSubmit={handleSubmit(this.handleSubmit)}
           noValidate
-          autoComplete="off"
+          autoComplete="on"
         >
           <FormBody container direction="row" justify="flex-start">
             <Field
@@ -219,7 +234,7 @@ export class ReportForm extends Component {
               required
               component={TextField}
               name="from"
-              label="Email"
+              label="Your email address"
               type="email"
             />
             <Field
@@ -249,14 +264,14 @@ export class ReportForm extends Component {
               type="number"
               width="200px"
             />
-            <Field
+            {/* <Field
               required
               component={Select}
               name="to"
               label="Authority email *"
               defaultValue={Recipients[0].value}
               options={Recipients}
-            />
+            /> */}
             <Field
               name="description"
               label="Description"
@@ -273,9 +288,7 @@ export class ReportForm extends Component {
             />
           </FormBody>
           <FormFooter container justify="flex-end">
-            <Grid item sm={6}>
-              <Recaptcha />
-            </Grid>
+            <Field name="recaptcha" component={Captcha} />
             <Grid item sm={12}>
               <FormButtonGroup
                 primaryProps={SubmitProps}
