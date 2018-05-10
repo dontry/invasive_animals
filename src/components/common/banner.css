@@ -1,0 +1,13 @@
+.slick-dots {
+    bottom: 25px;
+}
+
+
+.slick-dots li button::before {
+    font-size: 12px;
+    color: rgba(217, 243, 186, 1);
+}
+
+.slick-dots li.slick-active button::before {
+    color: rgb(139, 195, 74);
+}

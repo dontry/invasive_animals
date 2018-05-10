@@ -29,11 +29,7 @@ const TileWrapper = styled(Grid)`
   }
 `;
 
-const TileTitle = Title.extend`
-  && {
-    color: ${green[500]};
-  }
-`;
+
 
 const Tile = ({ tile }) => (
   <Link to={tile.path}>
@@ -45,9 +41,7 @@ const Tile = ({ tile }) => (
       style={{ height: "100%", padding: "0 2rem" }}
     >
       <Grid item>
-        <TileTitle className="text" variant="text">
           {tile.title}
-        </TileTitle>
       </Grid>
       <Grid item>{tile.icon}</Grid>
       <Grid item className="text">{tile.description}</Grid>
