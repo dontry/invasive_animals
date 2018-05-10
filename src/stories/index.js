@@ -37,8 +37,8 @@ import AboutUs from "../pages/AboutUs";
 import DropImageZone from "../components/Detect/DropImageZone";
 // import Detection from "../pages/Detection";
 
-import ReportForm from "../components/Report/ReportForm";
-import Report from "../pages/Report";
+// import ReportForm from "../components/Report/ReportForm"
+// import Report from "../pages/Report";
 
 import SearchBar from "../components/Search/SearchBar";
 import ResultList from "../components/Search/ResultList";
@@ -47,6 +47,8 @@ import Search from "../pages/Search";
 
 import Gallery, { Slider } from "../components/Info/Gallery";
 import BriefInfo from "../components/Info/BriefInfo";
+import DetailInfo from "../components/Info/DetailInfo";
+import species from "./species";
 
 import imageFile from "../assets/images/dandenong-ranges.jpg";
 import GalleryComposite from "../components/Info/GalleryComposite";
@@ -200,14 +202,14 @@ storiesOf("Footer", module)
 //   .add("About Us page", () => <AboutUs />);
 
 //Due to async/await issue Report form is not available at the moment
-storiesOf("Report", module)
-  .addDecorator(story => (
-    <MemoryRouter initialEntries={["/get_involved/detect", "/about"]}>
-      {story()}
-    </MemoryRouter>
-  ))
-  .add("Form", () => <ReportForm />)
-  .add("Report page", () => <Report />);
+// storiesOf("Report", module)
+//   .addDecorator(story => (
+//     <MemoryRouter initialEntries={["/get_involved/detect", "/about"]}>
+//       {story()}
+//     </MemoryRouter>
+//   ))
+  // .add("Form", () => <ReportForm />)
+  // .add("Report page", () => <Report />);
 
 // storiesOf("Search", module)
 //   .addDecorator(story => (
@@ -229,4 +231,5 @@ storiesOf("Species info", module)
   .add("Gallery", () => <Gallery />)
   .add("Slider", () => <Slider />)
   .add("Gallery Composite", () => <GalleryComposite />)
-  // .add("Brief Info", () => <BriefInfo species={results[0]} />);
+  .add("Brief Info", () => <BriefInfo species={species} />)
+  .add("Detail Info", () => <DetailInfo species={species} />);

@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import {grey} from "material-ui/colors";
+import { grey } from "material-ui/colors";
 
-import {Paragraph, Title} from "../common/Text";
-import {addLineBreaker} from "../../utils/tools";
+import { Paragraph, Title } from "../common/Text";
+import { addLineBreaker } from "../../utils/tools";
 
 const Wrapper = styled.div`
-  padding: ${props => props.padding || "0.5rem 1rem"};
+  padding: ${props => props.padding || "0.5rem 0"};
 `;
 
 const Passage = ({ title = "", content }) => {
@@ -24,7 +24,7 @@ const Passage = ({ title = "", content }) => {
         </Title>
       )}
       <Paragraph
-        txtsize="1.1rem"
+        txtSize="1.1em"
         txtColor={grey[600]}
         lineHeight="1.2em"
         padding="1rem 0 0.5rem"

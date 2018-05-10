@@ -1,16 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Grid from "material-ui/Grid";
-import {Title} from "../common/Text";
-import {green} from "material-ui/colors";
+import { Title } from "../common/Text";
+import { green, grey } from "material-ui/colors";
 
 const TileWrapper = styled(Grid)`
   && {
     border: 1px solid #fff;
     margin: 0 !important;
-    background-color: ${props => props.bgColor || "#efefef"};
+    background-color: ${props => props.bgColor || grey[50]};
     transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
     cursor: pointer;
     & * {
@@ -19,7 +19,7 @@ const TileWrapper = styled(Grid)`
     &:hover {
       background-color: #fff;
     }
-    &:hover .title {
+    &:hover .text {
       text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
       filter: brightness(80%);
     }
@@ -42,14 +42,15 @@ const Tile = ({ tile }) => (
       direction="column"
       justify="center"
       alignItems="center"
-      style={{ height: "100%" }}
+      style={{ height: "100%", padding: "0 2rem" }}
     >
       <Grid item>
-        <TileTitle className="title" variant="title">
+        <TileTitle className="text" variant="text">
           {tile.title}
         </TileTitle>
       </Grid>
       <Grid item>{tile.icon}</Grid>
+      <Grid item className="text">{tile.description}</Grid>
     </TileWrapper>
   </Link>
 );

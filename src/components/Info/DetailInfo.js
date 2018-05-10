@@ -1,9 +1,10 @@
 import React, { Fragment, Component } from "react";
 import styled from "styled-components";
 
-import { grey } from "material-ui/colors";
+import Grid from "material-ui/Grid";
+import { grey, green } from "material-ui/colors";
 
-import { Title } from "../common/Text";
+import { Title, Paragraph } from "../common/Text";
 import Passage from "../common/Passage";
 import { ScreenMask } from "../common/Mask";
 import Gallery, { Slider } from "./Gallery";
@@ -11,6 +12,8 @@ import Loader from "../common/Loader";
 import GalleryComposite from "./GalleryComposite";
 import { GeographicalDistribution } from "../Insight/DistributionMap";
 import CommentSection from "../common/CommentSection";
+
+const TAXONOMY = ["Kingdom", "Phylum", "Class", "Order", "Family"];
 
 const ATTRIBUTE_NAMES = [
   { key: "BriefIntroduction", value: "Brief Introduction" },
@@ -22,6 +25,7 @@ const ATTRIBUTE_NAMES = [
   { key: "Control", value: "Control" }
 ];
 
+
 const DetailInfoWrapper = styled.div`
   position: relative;
   height: 100%;
@@ -30,6 +34,9 @@ const DetailInfoWrapper = styled.div`
   padding: 1rem 2rem 4rem;
 `;
 
+const IntroWrapper = styled(Grid)`
+  padding-top: 1rem;
+`;
 const SectionWrapper = styled.div`
   padding-top: 1rem;
 `;
@@ -44,7 +51,6 @@ const SpeciesName = ({ commonName, academicalName }) => {
         variant="title"
         txtColor={grey[600]}
         align="left"
-        padding="0.5rem 0 2rem"
       >
         {academicalName}
       </Title>
@@ -64,7 +70,7 @@ function renderItem(attr) {
   return (
     <Fragment>
       <Passage title={attr.value} content={this[attr.key]} />
-      {attr.key == "Distribution" && (
+      {attr.key === "Distribution" && (
         <div style={{ width: "75%", margin: "0 auto" }}>
           <GeographicalDistribution species={this.CommonName} />
           <Title txtColor={grey[700]}>
@@ -102,14 +108,44 @@ class DetailInfo extends Component {
           commonName={species.CommonName}
           academicalName={species.AcademicalName}
         />
+        <IntroWrapper container justify="space-between">
+          <Grid item xs={5}>
+            <img
+              style={{ maxHeight: 300, maxWidth: "100%" }}
+              src={species.ImageURL}
+              alt={species.CommonName}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <Grid container>
+              {TAXONOMY.map(attr => (
+                <Grid item xs={6}>
+                  <Paragraph
+                    variant="subheading"
+                    fontWeight="bold"
+                    txtColor={green[700]}
+                  >
+                    {attr}:
+                  </Paragraph>
+                  <Paragraph variant="body1">{species[attr]}</Paragraph>
+                </Grid>
+              ))}
+            </Grid>
+          </Grid>
+        </IntroWrapper>
         {images &&
           images.isFinished &&
           Array.isArray(images.queryResult) && (
-            <GalleryComposite
-              images={images.queryResult.map(img => img.ImageURL)}
-            >
-              <Slider />
-            </GalleryComposite>
+            <SectionWrapper>
+              <Title variant="title" txtColor={grey[800]} align="left" >
+                Gallery
+              </Title>
+              <GalleryComposite
+                images={images.queryResult.slice(1,-1).map(img => img.ImageURL)}
+              >
+                <Slider />
+              </GalleryComposite>
+            </SectionWrapper>
           )}
         {speciesInfo}
         <CommentSection />

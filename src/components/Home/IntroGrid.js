@@ -1,26 +1,42 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import GridList, {GridListTile} from "material-ui/GridList";
+//Material UI
+import GridList, { GridListTile } from "material-ui/GridList";
+import { lightGreen } from "material-ui/colors";
+//Components
+import { BinocularsIcon, MagnifierIcon, TargetIcon } from "../common/Icons";
+import { Title } from "../common/Text";
 import Tile from "./Tile";
-import {lightGreen} from "material-ui/colors";
-import {BinocularsIcon, MagnifierIcon, TargetIcon} from "../common/Icons";
 
 const ICON_SIZE = "64px";
 const introData = [
   {
     title: "Identify",
     icon: <TargetIcon color={lightGreen[500]} size={ICON_SIZE} />,
+    description: (
+      <Title txtColor={lightGreen[700]}>Explore many different species</Title>
+    ),
     path: "/identify"
   },
   {
     title: "Find",
     icon: <MagnifierIcon color={lightGreen[500]} size={ICON_SIZE} />,
+    description: (
+      <Title txtColor={lightGreen[700]}>
+        Learn about more species
+      </Title>
+    ),
     path: "/find"
   },
   {
     title: "Insight",
     icon: <BinocularsIcon color={lightGreen[500]} size={ICON_SIZE} />,
+    description: (
+      <Title txtColor={lightGreen[700]}>
+        Analyse data & Observe predictions
+      </Title>
+    ),
     path: "/insight"
   }
 ];

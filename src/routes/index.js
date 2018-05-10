@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
 import { Redirect, Route } from "react-router";
 import Switch from "react-router-dom/Switch";
+import Icon from "material-ui/Icon";
+import { green } from "material-ui/colors";
 //Pages
 import Login from "../pages/Login";
 import Home from "../pages/Home";
@@ -17,6 +19,7 @@ import ContactUs from "../pages/ContactUs";
 import ComingSoon from "../pages/ComingSoon";
 import Error404 from "../pages/Error404";
 import Footer from "../components/common/Footer";
+import ScrollToTop from "react-scroll-up";
 
 const CREDENTIAL = "fit5120";
 
@@ -153,6 +156,17 @@ class Routes extends Component {
           <Route component={Error404} />
         </Switch>
         <Footer />
+        <ScrollToTop
+          style={{
+            background: green[500],
+            width: 50,
+            height: 50,
+            borderRadius: 5
+          }}
+          showUnder={160}
+        >
+          <Icon style={{ fontSize: 50, color: "#fff" }}>arrow_upward</Icon>
+        </ScrollToTop>
       </Fragment>
     );
   }
