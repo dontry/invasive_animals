@@ -11,7 +11,6 @@ const AboutUs = () => (
     <PageContainer style={{paddingBottom: "3rem"}} >
       <BreadcrumbsWithRouter />
       <Testimonial />
-      <ProfileGrid width="90%" />
     </PageContainer>
   </Fragment>
 );

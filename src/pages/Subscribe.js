@@ -10,6 +10,7 @@ import { Title, Paragraph } from "../components/common/Text";
 import NavAppBar from "../components/common/NavAppBar";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
 import { StyledButton } from "../components/common/ActionButtonGroup";
+import Regions from "../assets/regions";
 
 const DescriptionWrapper = styled.div`
   max-width: 800px;
@@ -29,23 +30,6 @@ const FormBody = styled(Grid)`
   }
 `;
 
-const Regions = [
-  {
-    value: "Loddon-Mallee"
-  },
-  {
-    value: "Hume"
-  },
-  {
-    value: "Port Phillip"
-  },
-  {
-    value: "Gippsland"
-  },
-  {
-    value: "Barwon South West"
-  }
-];
 const meta = { touched: false, error: false };
 class Subscription extends Component {
   state = {

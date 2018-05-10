@@ -3,6 +3,7 @@ import NavAppBar from "../components/common/NavAppBar";
 import PageContainer from "../components/common/PageContainer";
 import Banner from "../components/common/Banner";
 import IntroGrid from "../components/Home/IntroGrid";
+import FeatureGrid from "../components/Home/FeatureGrid";
 import Logo from "../components/Home/Logo";
 import { Paragraph } from "../components/common/Text";
 import banner1 from "../assets/images/banner_fox2.jpg";
@@ -23,7 +24,7 @@ const BANNERS = [
         <h1 style={{ lineHeight: "1.2em" }}>
           Captured unknown species on your camera?
         </h1>
-        Upload the image any species you have come across and check out what it
+        Upload the image of any species you have come across and check out what it
         is.
       </Blurb>
     )
@@ -61,6 +62,7 @@ const Home = () => (
     <PageContainer minHeight="85%" maxWidth="100%">
       <Banner banners={BANNERS} timeout={3000} textColor="#fff" />
       <IntroGrid />
+      <FeatureGrid />
     </PageContainer>
   </Fragment>
 );

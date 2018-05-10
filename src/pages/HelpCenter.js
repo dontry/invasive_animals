@@ -81,6 +81,7 @@ class HelpCenter extends Component {
                 txtColor={green[900]}
                 txtSize="1.3rem"
                 lineHeight="3em"
+                fontWeight="bolder"
               >
                 Please select your region:
               </Title>
@@ -106,11 +107,23 @@ class HelpCenter extends Component {
                 txtColor={green[900]}
                 txtSize="1.3rem"
                 lineHeight="3em"
+                fontWeight="bolder"
               >
                 {/* TOFIX: the region does not update */}
                 Help centers
               </Title>
               <ResultList>
+                {!Array.isArray(helpCenters.queryResult) &&
+                  !helpCenters.isLoading && (
+                    <Title
+                      variant="title"
+                      txtColor={grey[400]}
+                      fontWeight="bold"
+                      style={{ marginTop: 50 }}
+                    >
+                      Please select a region on the map.
+                    </Title>
+                  )}
                 {helpCenters.isLoading ? (
                   <Loader type="bars" />
                 ) : (

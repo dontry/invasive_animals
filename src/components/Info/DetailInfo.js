@@ -42,6 +42,7 @@ const DetailInfoWrapper = styled.div`
 
 const IntroWrapper = styled(Grid)`
   padding-top: 1rem;
+  padding-bottom: 2rem;
 `;
 const SectionWrapper = styled.div`
   padding-bottom: 2rem;
@@ -72,15 +73,11 @@ function renderItem(attr) {
   return (
     <ExpansionPanel>
       <ExpansionPanelSummary expandIcon={<Icon>expand_more</Icon>}>
-        <Title
-          variant="title"
-          txtColor={grey[800]}
-          align="left"
-        >
+        <Title variant="title" txtColor={grey[800]} align="left">
           {attr.value}
         </Title>
       </ExpansionPanelSummary>
-      <ExpansionPanelDetails style={{display: "block"}}>
+      <ExpansionPanelDetails style={{ display: "block" }}>
         <Paragraph
           txtSize="1.1em"
           txtColor={grey[600]}
@@ -128,8 +125,8 @@ class DetailInfo extends Component {
           commonName={species.CommonName}
           academicalName={species.AcademicalName}
         />
-        <IntroWrapper container justify="space-between">
-          <Grid item xs={5}>
+        <IntroWrapper container justify="felx-start">
+          <Grid item style={{ marginRight: "2rem" }}>
             <img
               style={{ maxHeight: 300, maxWidth: "100%" }}
               src={species.ImageURL}

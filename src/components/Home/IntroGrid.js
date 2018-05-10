@@ -9,7 +9,7 @@ import { BinocularsIcon, MagnifierIcon, TargetIcon } from "../common/Icons";
 import { Title } from "../common/Text";
 import Tile from "./Tile";
 
-const ICON_SIZE = "80px";
+const ICON_SIZE = "64px";
 const TileTitle = Title.extend`
   && {
     color: ${green[500]};
@@ -18,14 +18,16 @@ const TileTitle = Title.extend`
 const introData = [
   {
     title: (
-      <TileTitle className="text" variant="display1">
+      <TileTitle className="title text" variant="title">
         Identify
       </TileTitle>
     ),
 
-    icon: <TargetIcon color={lightGreen[500]} size={ICON_SIZE} />,
+    icon: (
+      <TargetIcon className="icon" color={lightGreen[500]} size={ICON_SIZE} />
+    ),
     description: (
-      <Title variant="subheading" txtColor={lightGreen[700]}>
+      <Title calssName="text" variant="subheading" txtColor={lightGreen[700]}>
         Identify the invasive species <br /> by taking photos
       </Title>
     ),
@@ -33,13 +35,19 @@ const introData = [
   },
   {
     title: (
-      <TileTitle className="text" variant="display1">
+      <TileTitle className="title text" variant="title">
         Find
       </TileTitle>
     ),
-    icon: <MagnifierIcon color={lightGreen[500]} size={ICON_SIZE} />,
+    icon: (
+      <MagnifierIcon
+        className="icon"
+        color={lightGreen[500]}
+        size={ICON_SIZE}
+      />
+    ),
     description: (
-      <Title variant="subheading" txtColor={lightGreen[700]}>
+      <Title className="text" variant="subheading" txtColor={lightGreen[700]}>
         Explore more about invasive species<br /> on our database
       </Title>
     ),
@@ -47,14 +55,21 @@ const introData = [
   },
   {
     title: (
-      <TileTitle className="text" variant="display1">
+      <TileTitle className="title text" variant="title">
         Insight
       </TileTitle>
     ),
-    icon: <BinocularsIcon color={lightGreen[500]} size={ICON_SIZE} />,
+    icon: (
+      <BinocularsIcon
+        className="icon"
+        color={lightGreen[500]}
+        size={ICON_SIZE}
+      />
+    ),
     description: (
-      <Title variant="subheading" txtColor={lightGreen[700]}>
-        Analyse data & Observe predictions <br /> of invasive species in Australia
+      <Title className="text" variant="subheading" txtColor={lightGreen[700]}>
+        Analyse data & Observe predictions <br /> of invasive species in
+        Australia
       </Title>
     ),
     path: "/insight"

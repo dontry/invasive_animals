@@ -1,42 +1,59 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import List, { ListItem, ListItemText } from "material-ui/List";
 import Divider from "material-ui/Divider";
-import { grey } from "material-ui/colors";
-import Typography from "material-ui/Typography";
+import { grey, indigo } from "material-ui/colors";
+import { Title } from "../common/Text";
 
 const ListWrapper = styled(List)`
   border: 1px solid ${grey[300]};
   background-color: ${grey[100]};
 `;
 
-const ListTitle = styled(Typography)`
+const StyledTitle = Title.extend`
+  && {
+    background-color: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    padding: 1rem;
+    &:hover {
+      color: ${grey[900]};
+    }
+  }
+`;
+
+const ListTitle = Title.extend`
   padding: 1rem;
 `;
 
 function renderListItem(items, handleClick) {
   return items.map(item => (
-    <Link to={item.link}>
-      <ListItem button key={item.name} onClick={handleClick}>
-        <ListItemText primary={item.name} />
-        <Divider />
-      </ListItem>
-    </Link>
+    <ListItem button key={item.value} onClick={handleClick}>
+      <ListItemText
+        primary={item.name}
+        style={{ textAlign: "center", fontWeight: "bolder" }}
+      />
+      <Divider />
+    </ListItem>
   ));
 }
 
 const SidePane = ({ list, handleClick }) => {
   const listItems = renderListItem(list.children, handleClick);
   return (
-    <ListWrapper>
-      <ListTitle variant="title" align="center">
-        {list.name}
-      </ListTitle>
-      <Divider />
-      {listItems}
-    </ListWrapper>
+    <Fragment>
+      <Link to="/species">
+        <StyledTitle variant="title">Species Wiki</StyledTitle>
+      </Link>
+      <ListWrapper>
+        <ListTitle variant="title" align="center">
+          {list.name}
+        </ListTitle>
+        <Divider />
+        {listItems}
+      </ListWrapper>
+    </Fragment>
   );
 };
 
@@ -53,8 +70,16 @@ SidePane.defaultProps = {
     name: "Popular search",
     children: [
       {
-        name: "Species Wiki",
-        link: "/species"
+        name: "Animal",
+        value: "Animal"
+      },
+      {
+        name: "Fish",
+        value: "Fish"
+      },
+      {
+        name: "Plant",
+        value: "Plant"
       }
     ]
   },

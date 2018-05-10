@@ -5,6 +5,7 @@ import { sendEmail, resetEmail } from "../actions/email";
 const mapStateToProps = state => {
   return {
     image: state.detection.uploadImage,
+    species: state.detection.detectionResult.entity,
     email: state.email
   };
 };

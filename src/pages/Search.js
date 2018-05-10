@@ -53,6 +53,11 @@ class Search extends Component {
     this.props.onReset();
   }
 
+  handleQuickSearch = event => {
+    this.setState({ initialRender: false });
+    this.props.onFind({Category: event.target.innerText});
+  };
+
   render() {
     const { initialRender } = this.state;
     const { species } = this.props;
@@ -63,7 +68,7 @@ class Search extends Component {
           <BreadcrumbsWithRouter />
           <Wrapper container justify="space-around">
             <SidePaneWrapper item sm={4}>
-              <SidePane />
+              <SidePane handleClick={this.handleQuickSearch} />
             </SidePaneWrapper>
             <SearchWrapper item xs={12} sm={8}>
               <SearchBarWrapper container justify="center">
@@ -83,7 +88,8 @@ class Search extends Component {
                   <Loader type="bars" />
                 </Mask>
               ) : (
-                species.isFinished && species.queryResult && (
+                species.isFinished &&
+                species.queryResult && (
                   <ResultList results={species.queryResult} />
                 )
               )}
@@ -109,6 +115,9 @@ const mapDispatchToProps = dispatch => {
           query: { CommonName: { $search: query } }
         })
       );
+    },
+    onFind: query => {
+      dispatch(reduxifiedServices.species.find({ query }));
     },
     onReset: () => {
       dispatch(reduxifiedServices.species.reset());

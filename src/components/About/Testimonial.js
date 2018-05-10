@@ -14,45 +14,54 @@ const Wrapper = styled.div`
 const Testimonial = () => (
   <Fragment>
     <Wrapper>
-      <Title variant="display1" gutterBottom txtColor={grey[700]}>
+      <Title
+        variant="display1"
+        gutterBottom
+        txtColor={grey[700]}
+        fontWeight="bolder"
+      >
         Our Mission
+      </Title>
+      <Title variant="title" gutterBottom txtColor={grey[700]}>
+        Protect Victoria from invasive species
       </Title>
       <Paragraph
         variant="subheading"
         txtColor={grey[600]}
         align="justify"
-        lineHeight="1.5em"
+        lineHeight="2em"
       >
-        In 2015 - 2016, Victoria produced $13.16 billion of agriculture product,
-        thus making this southeastern state the largest agricultural producer in
-        Australia. However, as reported by the Government of Victoria, invasive
-        species have been costing the state more than $900 million every year.
-        Money is largely spent on insecticides, pesticides, fencing and
-        conducting research to keep invasive species in control. Therefore,
-        managing any threats at an early stage - to alert and notify them about
-        a possible attack - is the most economical solution.
+        <h2>Who we are</h2>
+        Victoria Guardian was formed in 2018. It aims to develop a web platform
+        that assists local Victorian farmers and researchers to manage the
+        eminent and potential threats of invasive species. As reported by the
+        goverment of Victora, invasive species has been costing the state more
+        than $900 million per year. Preventing any threat at an early stage - to
+        alert and notify people about a possible attack - is the most economical
+        solution.
         <br />
         <br />
-        The project aims to develop a web platform that assist local Victorian
-        farmers and researchers about the possible and eminent attack of
-        invasive species. With the use of image recognition technology, farmers
-        have the ability to identify whether the species that they have just
-        found in their farmyards are invasive or not by uploading images to the
-        website. Additional features to serve the needs of farmer users such as
-        reporting species, finding help centre and searching species are
-        provided. To support researchers users, we provide the occurrence
-        distribution map along with predictive analysis to predict future
-        occurrence based on time series forecasting.
+        <h2>What we do</h2>
+        Victoria Guardian offers a wide range of features to address the
+        invasive species issues. With the use of image recognition technology,
+        it helps farmers to identify whether the species that they found are
+        invasive or not by uploading images to the website. Additional features
+        to serve the needs of farmer users such as reporting species, finding
+        help centre and searching species are also offered. To support
+        researchers, we also provide the occurrence distribution map along with
+        predictive analysis to envisage future occurrence based on time series.
         <br />
         <br />
-        Successful implementation of the project will greatly benefit the
-        Victorian society in multiple aspects, for instance, helping local
-        farmers to gain the right profits and to preserve Victoria ecosystems.
-        Furthermore, the project also tries to shed a light into starting a new
-        industry and calling for investments into invasive species solutions.
+        <h2>What benefits we bring</h2>
+        The successful implementation of this project will bring massive
+        benefits to Victoria society in various aspects including preventing
+        crops from being destroyed, keep biodiversity safe, and preserving local
+        ecosystem. Furthermore, the project also tries to shed a light into
+        starting a new industry and calling for investments into invasive
+        species solutions.
       </Paragraph>
     </Wrapper>
-    <Wrapper>
+    {/* <Wrapper>
       <Title variant="display1" gutterBottom txtColor={grey[700]}>
         About Us
       </Title>
@@ -68,7 +77,7 @@ const Testimonial = () => (
         Technology. We are here to tackle challenges and to find solution to
         real world problems. application.
       </Paragraph>
-    </Wrapper>
+    </Wrapper> */}
   </Fragment>
 );
 

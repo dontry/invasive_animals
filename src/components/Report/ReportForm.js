@@ -75,6 +75,11 @@ class UploadImageBlock extends Component {
   state = {
     image: null
   };
+
+  componentDidMount() {
+    this.setState({image: this.props.image})
+  }
+
   uploadImage = async image => {
     if (image) {
       const imageBase64 = await encodeImageFromFile(image);
@@ -112,20 +117,6 @@ const Captcha = ({ input, meta: { touched, error } }) => (
   />
 );
 
-const Recipients = [
-  {
-    name: "",
-    value: ""
-  },
-  {
-    name: "monash",
-    value: "dcai16@student.monash.edu"
-  },
-  {
-    name: "google",
-    value: "mccoy018@gmail.com"
-  }
-];
 export class ReportForm extends Component {
   static contextTypes = {
     router: PropTypes.object // replace with PropTypes.object if you use them
@@ -182,6 +173,7 @@ export class ReportForm extends Component {
     const {
       handleSubmit,
       image,
+      species,
       email,
       pristine,
       submitting,
@@ -218,6 +210,7 @@ export class ReportForm extends Component {
             <Loader />
           </Mask>
         )}
+        <Paragraph>Fields marked with * are required.</Paragraph>
         <StyledForm
           onSubmit={handleSubmit(this.handleSubmit)}
           noValidate
@@ -255,7 +248,11 @@ export class ReportForm extends Component {
               component={TextField}
               name="species"
               label="Species Name"
-              placeholder="Unknown"
+              placeholder={
+                species
+                  ? species.candidates.map(species => species.CommonName).join("/")
+                  : "Unknown"
+              }
             />
             <Field
               component={TextField}
@@ -284,7 +281,7 @@ export class ReportForm extends Component {
               name="image"
               component={UploadImageBlock}
               label="Image"
-              image={image}
+              image={image.entity}
             />
           </FormBody>
           <FormFooter container justify="flex-end">

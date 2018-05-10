@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-import {grey} from "material-ui/colors";
+import { grey } from "material-ui/colors";
 import Icon from "material-ui/Icon";
 
-import {Paragraph, Title} from "../common/Text";
+import { Paragraph, Title } from "../common/Text";
 
 const Wrapper = styled.section`
   padding: 1rem 0;
@@ -23,13 +23,10 @@ const Instruction = () => (
       industries.
     </Paragraph>
     <br />
-    <Title variant="title" txtColor={grey[700]} align="left">
-      2 ways to report a sighting:
-    </Title>
     <ul>
       <li>
-        <Title variant="subheading" txtColor={grey[900]} align="left">
-          <Icon style={{ verticalAlign: "bottom" }}>phone</Icon> Call for help
+        <Title variant="title" txtColor={grey[700]} align="left">
+          <Icon style={{ verticalAlign: "baseline" }}>phone</Icon> Call for help
         </Title>
         <br />
         <Paragraph variant="subheading" txtColor={grey[600]} lineHeight="1.5em">
@@ -46,15 +43,16 @@ const Instruction = () => (
       </li>
       <br />
       <li>
-        <Title variant="subheading" txtColor={grey[900]} align="left">
-          <Icon style={{ verticalAlign: "bottom" }}>email</Icon> Use our online
-          form!
+        <Title variant="title" txtColor={grey[700]} align="left">
+          <Icon style={{ verticalAlign: "baseline" }}>email</Icon> Use our
+          online form!
         </Title>
         <br />
         <Paragraph variant="subheading" txtColor={grey[600]} lineHeight="1.5em">
           You can submit your report or sighting using the form below. Fill out
           as much as possible and a member of G4 team will contact you directly.
-          Fields marked with * are mandatory.
+          The report will be sent to{" "}
+          <span style={{ color: grey[800] }}>vic.invasive@gmail.com</span>
         </Paragraph>
       </li>
     </ul>

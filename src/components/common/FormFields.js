@@ -46,7 +46,7 @@ export const TextField = ({
           label={label}
           InputLabelProps={{ shrink: true }}
           error={touched && !!error}
-          helperText={error}
+          helperText={touched && error}
           {...input}
           {...custom}
         />
@@ -97,7 +97,7 @@ export const Select = ({
   return (
     <FieldWrapper item xs={xs} sm={sm}>
       <StyledFormControl error={touched && !!error}>
-        <InputLabel htmlFor={ id || `id-${name}`}>{label}</InputLabel>
+        <InputLabel htmlFor={id || `id-${name}`}>{label}</InputLabel>
         <MuiSelect
           native
           defaultValue={defaultValue}
