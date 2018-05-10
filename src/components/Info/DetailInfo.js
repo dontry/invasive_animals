@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Grid from "material-ui/Grid";
 import { grey, green } from "material-ui/colors";
+import Icon from "material-ui/Icon";
 
 import { Title, Paragraph } from "../common/Text";
 import Passage from "../common/Passage";
@@ -12,6 +13,12 @@ import Loader from "../common/Loader";
 import GalleryComposite from "./GalleryComposite";
 import { GeographicalDistribution } from "../Insight/DistributionMap";
 import CommentSection from "../common/CommentSection";
+import {
+  ExpansionPanel,
+  ExpansionPanelSummary,
+  ExpansionPanelActions,
+  ExpansionPanelDetails
+} from "material-ui";
 
 const TAXONOMY = ["Kingdom", "Phylum", "Class", "Order", "Family"];
 
@@ -25,7 +32,6 @@ const ATTRIBUTE_NAMES = [
   { key: "Control", value: "Control" }
 ];
 
-
 const DetailInfoWrapper = styled.div`
   position: relative;
   height: 100%;
@@ -38,7 +44,7 @@ const IntroWrapper = styled(Grid)`
   padding-top: 1rem;
 `;
 const SectionWrapper = styled.div`
-  padding-top: 1rem;
+  padding-bottom: 2rem;
 `;
 
 const SpeciesName = ({ commonName, academicalName }) => {
@@ -47,11 +53,7 @@ const SpeciesName = ({ commonName, academicalName }) => {
       <Title variant="display1" txtColor={grey[800]} align="left">
         {commonName}
       </Title>
-      <Title
-        variant="title"
-        txtColor={grey[600]}
-        align="left"
-      >
+      <Title variant="title" txtColor={grey[600]} align="left">
         {academicalName}
       </Title>
     </Fragment>
@@ -68,17 +70,35 @@ function renderSpeciesInfo(content) {
 function renderItem(attr) {
   if (this[attr.key] === "") return null;
   return (
-    <Fragment>
-      <Passage title={attr.value} content={this[attr.key]} />
-      {attr.key === "Distribution" && (
-        <div style={{ width: "75%", margin: "0 auto" }}>
-          <GeographicalDistribution species={this.CommonName} />
-          <Title txtColor={grey[700]}>
-            Distribution of {this.CommonName} in Australia
-          </Title>
-        </div>
-      )}
-    </Fragment>
+    <ExpansionPanel>
+      <ExpansionPanelSummary expandIcon={<Icon>expand_more</Icon>}>
+        <Title
+          variant="title"
+          txtColor={grey[800]}
+          align="left"
+        >
+          {attr.value}
+        </Title>
+      </ExpansionPanelSummary>
+      <ExpansionPanelDetails style={{display: "block"}}>
+        <Paragraph
+          txtSize="1.1em"
+          txtColor={grey[600]}
+          lineHeight="1.2em"
+          padding="0.5rem 0 2rem"
+        >
+          {this[attr.key]}
+        </Paragraph>
+        {attr.key === "Distribution" && (
+          <div style={{ width: "100%", margin: "0 auto" }}>
+            <GeographicalDistribution species={this.CommonName} />
+            <Title txtColor={grey[700]}>
+              Distribution of {this.CommonName} in Australia
+            </Title>
+          </div>
+        )}
+      </ExpansionPanelDetails>
+    </ExpansionPanel>
   );
 }
 
@@ -137,17 +157,19 @@ class DetailInfo extends Component {
           images.isFinished &&
           Array.isArray(images.queryResult) && (
             <SectionWrapper>
-              <Title variant="title" txtColor={grey[800]} align="left" >
+              <Title variant="title" txtColor={grey[800]} align="left">
                 Gallery
               </Title>
               <GalleryComposite
-                images={images.queryResult.slice(1,-1).map(img => img.ImageURL)}
+                images={images.queryResult
+                  .slice(1, -1)
+                  .map(img => img.ImageURL)}
               >
                 <Slider />
               </GalleryComposite>
             </SectionWrapper>
           )}
-        {speciesInfo}
+        <SectionWrapper>{speciesInfo}</SectionWrapper>
         <CommentSection />
       </DetailInfoWrapper>
     );
