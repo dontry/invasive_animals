@@ -52,7 +52,8 @@ export function checkImageSatefy(meta) {
   for (const property in annotation) {
     if (
       annotation[property] === "VERY_LIKELY" ||
-      annotation[property] === "LIKELY"
+      annotation[property] === "LIKELY" ||
+      annotation[property] === "POSSIBLE"
     ) {
       return false;
     }

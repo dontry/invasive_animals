@@ -18,6 +18,8 @@ export function encodeImageFromFile(file) {
       const content = result.substr(index);
       resolve(content);
     };
-    reader.onerror = error => reject(error);
+    reader.onerror = error => {
+      reject(error);
+    };
   });
 }

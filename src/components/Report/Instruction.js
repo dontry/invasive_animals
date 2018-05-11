@@ -28,7 +28,6 @@ const Instruction = () => (
         <Title variant="title" txtColor={grey[700]} align="left">
           <Icon style={{ verticalAlign: "baseline" }}>phone</Icon> Call for help
         </Title>
-        <br />
         <Paragraph variant="subheading" txtColor={grey[600]} lineHeight="1.5em">
           For animals: To report pests and diseases in animals (including
           livestock, wildlife, birds and aquatic animals), phone the ​Emergency
@@ -47,11 +46,10 @@ const Instruction = () => (
           <Icon style={{ verticalAlign: "baseline" }}>email</Icon> Use our
           online form!
         </Title>
-        <br />
         <Paragraph variant="subheading" txtColor={grey[600]} lineHeight="1.5em">
-          You can submit your report or sighting using the form below. Fill out
-          as much as possible and a member of G4 team will contact you directly.
-          The report will be sent to{" "}
+          You can submit your report or sighting using the form below. Please
+          fill out the form and send it to us. A member of our team will contact
+          you directly. The form will be sent to{" "}
           <span style={{ color: grey[800] }}>vic.invasive@gmail.com</span>
         </Paragraph>
       </li>

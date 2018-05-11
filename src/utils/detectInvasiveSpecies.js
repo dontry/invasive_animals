@@ -26,19 +26,13 @@ function processLabel(meta) {
 
 function processSimilarImages(meta) {
   const images = [];
-  const partialMatchingImageUrls = meta.webDetection.partialMatchingImages.map(
-    image => {
-      return image.url;
-    }
-  );
+  const visuallySimilarImageUrls = meta.webDetection.visuallySimilarImages
+    ? meta.webDetection.visuallySimilarImages.map(image => {
+        return image.url;
+      })
+    : [];
 
-  const visuallySimilarImageUrls = meta.webDetection.visuallySimilarImages.map(
-    image => {
-      return image.url;
-    }
-  );
-
-  images.push(...partialMatchingImageUrls, ...visuallySimilarImageUrls);
+  images.push(...visuallySimilarImageUrls);
   return images;
 }
 

@@ -48,7 +48,7 @@ export async function fetchDetectionResult(image, options = undefined) {
         const result = await getInvasiveSpecies(meta);
         dispatch(fetchDetectionResultSuccess(result));
       } else {
-        throw `Sorry, the image may contain explicit content`;
+        throw `Sorry, the image may contain inappropriate content`;
       }
     } catch (error) {
       dispatch(fetchDetectionResultFailure(JSON.stringify(error)));

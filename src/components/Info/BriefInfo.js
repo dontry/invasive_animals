@@ -116,7 +116,7 @@ const BriefInfo = ({ species, labels }) => {
       {species.length === 0 ? (
         <MessageWrapper>
           <Title variant="display1" txtColor={grey[700]} padding="0 0 1rem">
-            Sorry, it may be not an invasive species.
+            Hmmm, it may be not an invasive species.
           </Title>
           <Paragraph variant="body" >
             <span style={{fontWeight: "bolder"}}>Relavant Annotations of the uploaded image:&nbsp;</span>

@@ -128,12 +128,12 @@ class DetailInfo extends Component {
         <IntroWrapper container justify="felx-start">
           <Grid item style={{ marginRight: "2rem" }}>
             <img
-              style={{ maxHeight: 300, maxWidth: "100%" }}
+              style={{ maxHeight: 300, maxWidth: 300 }}
               src={species.ImageURL}
               alt={species.CommonName}
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={4}>
             <Grid container>
               {TAXONOMY.map(attr => (
                 <Grid item xs={6}>

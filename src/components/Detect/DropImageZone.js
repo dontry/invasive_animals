@@ -1,9 +1,9 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Dropzone from "react-dropzone";
 import styled from "styled-components";
 import MoveToInbox from "material-ui-icons/MoveToInbox";
-import {grey} from "material-ui/colors";
+import { grey } from "material-ui/colors";
 
 const StyledDropzone = styled(Dropzone)`
   position: relative;
@@ -54,9 +54,16 @@ class DropImageZone extends Component {
     if (accepted.length > 1) {
       //TODO: use modal box
       window.alert("Sorry, you can only drop one photo at a time");
-    } else {
+    } else if (accepted.length === 1) {
       image = accepted[0];
       this.props.uploadImage(image);
+    }
+
+    if (
+      rejected.length > 0 &&
+      rejected.filter(item => item.size >= 2000).length > 0
+    ) {
+      window.alert("Sorry, the size of image should be smaller than 2MB");
     }
   };
 
@@ -68,6 +75,7 @@ class DropImageZone extends Component {
         id="dropzone"
         onDrop={this.handleDrop}
         accept="image/jpeg, image/png, image/jpg"
+        maxSize={5000000}
       >
         {image ? (
           <UploadedImage src={image.preview} />
@@ -75,7 +83,7 @@ class DropImageZone extends Component {
           <div>
             <HintText>
               Please drop the suspicious invasive species here, we will tell you
-              if it is.<br />(Accept image format: jpg, png)
+              if it is.<br />(Accept image format: jpg, png; Max size: 2MB)
             </HintText>
             <StyledMoveToInbox />
           </div>

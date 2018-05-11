@@ -30,8 +30,5 @@ export const validate = values => {
     errors.date = "Required";
   }
 
-  if (!values.description) {
-    errors.description = "Required";
-  }
   return errors;
 };

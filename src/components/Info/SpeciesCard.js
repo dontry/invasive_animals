@@ -22,7 +22,7 @@ const styles = {
 
 const SpeciesCard = ({ classes, species }) => {
   return (
-    <Link to={`/species/${species.CommonName.toUpperCase().replace(" ", "_")}`} >
+    <Link to={`/species/${species.CommonName.toUpperCase().replace(" ", "_")}#`} >
       <Card className={classes.card}>
         <CardMedia
           className={classes.media}
