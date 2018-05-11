@@ -5,14 +5,11 @@ import { Field, reduxForm } from "redux-form";
 import { Redirect, withRouter } from "react-router-dom";
 //Material UI
 import Grid from "material-ui/Grid";
-import { grey } from "material-ui/colors";
 //Components
-import { Title, Paragraph } from "../common/Text";
 import { Mask } from "../common/Mask";
 import { StyledButton } from "../common/ActionButtonGroup";
 import Loader from "../common/Loader";
 import { TextField } from "../common/FormFields";
-import Recaptcha from "../common/Recaptcha";
 
 const StyledForm = styled.form`
   padding: 2.5rem 2rem 3rem 0;
@@ -65,7 +62,6 @@ export class ContactForm extends Component {
         </FormBody>
         <FormFooter container direction="column" alignItems="flex-end">
           <Grid item>
-            <Recaptcha />
           </Grid>
           <Grid item>
             <StyledButton type="primary">Send</StyledButton>

@@ -13,9 +13,9 @@ const StyledNavLink = styled(NavLink)`
     padding: ${props =>
       props.display !== "inline" && (props.padding || "0.5rem 0.8rem")};
     font-size: ${props =>
-      props.textSize
-        ? props.theme.textSize[props.textSize]
-        : props.theme.textSize.medium};
+      props.text_size
+        ? props.theme.text_size[props.text_size]
+        : props.theme.text_size.medium};
     &:hover {
       background-color: ${props =>
         props.display !== "inline" && props.theme.palette.primary.dark};
@@ -35,24 +35,24 @@ const StyledLinkText = styled(Typography)`
     color: ${props =>
       props.display !== "inline"
         ? props.theme.palette.primary.contrastText
-        : (props.txtColor || props.theme.palette.primary.main)};
+        : (props.text_color || props.theme.palette.primary.main)};
   }
 `;
 
 StyledNavLink.propTypes = {
   to: PropTypes.string.isRequired,
-  textSize: PropTypes.string
+  text_size: PropTypes.string
 };
 
 StyledNavLink.defaultProps = {
   display: "inline",
-  textSize: "sm",
+  text_size: "sm",
   type: "primary",
   trait: "light"
 };
 
-const CustomizedNavLink = ({ children, to, display, textSize, ...rest }) => (
-  <StyledNavLink to={to} display={display} textSize={textSize} {...rest}>
+const CustomizedNavLink = ({ children, to, display, text_size, ...rest }) => (
+  <StyledNavLink to={to} display={display} text_size={text_size} {...rest}>
     <StyledLinkText invariant="caption" display={display}>
       {children}
     </StyledLinkText>

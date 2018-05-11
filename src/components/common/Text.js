@@ -1,11 +1,10 @@
-import React from "react";
 import styled from "styled-components";
 import Typography from "material-ui/Typography";
 import { grey } from "material-ui/colors";
 
 export const Paragraph = styled(Typography)`
   && {
-    color: ${props => props.txtColor || grey[700]};
+    color: ${props => props.text_color || grey[700]};
     text-align: ${props => props.align || "start"};
     padding: ${props => props.padding || "none"};
     font-weight: ${props => props.fontWeight};

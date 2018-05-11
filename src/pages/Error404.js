@@ -21,7 +21,7 @@ const Error404 = () => {
   return (
     <Fragment>
       <NavAppBar />
-      <PageContainerWithBackground height="80vh" maxWidth="100%">
+      <PageContainerWithBackground height="80vh" max_width="100%">
         <ErrorMessageWrapper>
           <Error errorMessage="Is this what you are looking for...?" errorCode="Error 404, page not found" />
         </ErrorMessageWrapper>

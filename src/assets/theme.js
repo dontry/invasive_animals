@@ -28,7 +28,7 @@ export const theme = {
       contrastText: lightGreen[500]
     }
   },
-  textSize: {
+  text_size: {
     xsm: "12px",
     sm: "16px",
     md: "20px",

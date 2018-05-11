@@ -78,7 +78,7 @@ class Search extends Component {
               </SearchBarWrapper>
               {initialRender ? (
                 <div>
-                  <Title variant="display1" txtColor="#666" align="center">
+                  <Title variant="display1" text_color="#666" align="center">
                     6 Most Harmful Species
                   </Title>
                   <TileBarGridList />

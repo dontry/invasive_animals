@@ -68,10 +68,11 @@ class Routes extends Component {
   };
   render() {
     let { isAuthenticated } = this.state;
+    isAuthenticated = true;
     return (
       <Fragment>
         <Switch>
-          <Route
+          {/* <Route
             path="/login"
             render={() => (
               <Login
@@ -79,7 +80,7 @@ class Routes extends Component {
                 handleSubmit={this.handleSubmit.bind(this)}
               />
             )}
-          />
+          /> */}
           <ProtectedRoute
             exact
             path="/"

@@ -1,12 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 //Material UI
 import Grid from "material-ui/Grid";
 import MuiTextField from "material-ui/TextField";
-import Input, { InputLabel } from "material-ui/Input";
+import { InputLabel } from "material-ui/Input";
 import { FormControl, FormHelperText } from "material-ui/Form";
 import MuiSelect from "material-ui/Select";
-import { MenuItem } from "material-ui";
 
 export const FieldWrapper = styled(Grid)`
   && {
@@ -70,7 +69,7 @@ export const DateField = ({
         error={touched && !!error}
         helperText={error}
         defaultValue="2018-04-01"
-        style={{ maxWidth: 200 }}
+        style={{ max_width: 200 }}
         {...input}
         {...custom}
       />

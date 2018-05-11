@@ -1,8 +1,5 @@
 import React, { Component, Fragment } from "react";
-import styled from "styled-components";
 import PropTypes from "prop-types";
-
-import Gallery from "./Gallery";
 import LightBox from "./LightBox";
 
 class GalleryComposite extends Component {
@@ -42,7 +39,6 @@ class GalleryComposite extends Component {
     return (
       <Fragment>
         {gallery}
-        {/* <Gallery images={images} handleClick={this.selectImage} /> */}
         <LightBox
           images={images}
           imgIndex={imgIndex}

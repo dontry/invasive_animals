@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import List, { ListItem, ListItemText } from "material-ui/List";
 import Divider from "material-ui/Divider";
-import { grey, indigo } from "material-ui/colors";
+import { grey} from "material-ui/colors";
 import { Title } from "../common/Text";
 
 const ListWrapper = styled(List)`

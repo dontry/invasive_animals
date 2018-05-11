@@ -4,11 +4,9 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Paragraph, Title } from "../common/Text";
 import ImagePlaceHolder from "../../assets/images/placeholder.png";
-import { grey, lime, red } from "material-ui/colors";
+import { grey, red } from "material-ui/colors";
 import Paper from "material-ui/Paper";
 import Grid from "material-ui/Grid";
-import Button from "material-ui/Button";
-import { Typography } from "material-ui";
 
 const Root = styled.div`
   position: relative;
@@ -77,7 +75,6 @@ const MessageWrapper = styled.div`
 
 function renderSpeciesInfo(speciesArray = []) {
   return speciesArray.map(species => {
-    const speciesId = species.CommonName.replace(" ", "_").toLowerCase();
     return (
       <InfoGridItem item>
         <InfoPaper>
@@ -86,13 +83,13 @@ function renderSpeciesInfo(speciesArray = []) {
             alt={species.CommonName}
           />
           <Intro>
-            <Title variant="title" align="left" txtColor={grey[800]}>
+            <Title variant="title" align="left" text_color={grey[800]}>
               {species.CommonName}
             </Title>
-            <Title variant="subheading" align="left" txtColor={grey[600]}>
+            <Title variant="subheading" align="left" text_color={grey[600]}>
               {species.AcademicalName}
             </Title>
-            <InfoDescription txtColor={grey[800]} padding={"1rem 0 1rem"}>
+            <InfoDescription text_color={grey[800]} padding={"1rem 0 1rem"}>
               {species.BriefIntroduction}
             </InfoDescription>
             <Link
@@ -115,7 +112,7 @@ const BriefInfo = ({ species, labels }) => {
     <Root>
       {species.length === 0 ? (
         <MessageWrapper>
-          <Title variant="display1" txtColor={grey[700]} padding="0 0 1rem">
+          <Title variant="display1" text_color={grey[700]} padding="0 0 1rem">
             Hmmm, it may be not an invasive species.
           </Title>
           <Paragraph variant="body" >
@@ -130,7 +127,7 @@ const BriefInfo = ({ species, labels }) => {
         </MessageWrapper>
       ) : (
         <Fragment>
-          <Title variant="title" txtColor={red[700]}>
+          <Title variant="title" text_color={red[700]}>
             Possible invasive species identified
           </Title>
           <BriefInfoWrapper container justify="center" alignItems="flex-start">

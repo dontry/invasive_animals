@@ -11,12 +11,8 @@ import Loader from "../components/common/Loader";
 import { Title, Paragraph } from "../components/common/Text";
 
 import LocationInfo from "../components/HelpCenter/LocationInfo";
-import SelectionField from "../components/HelpCenter/SelectionField";
 import MapWithKmlLayers from "../components/HelpCenter/MapWithKmlLayers";
-import Regions from "../assets/regions";
 import { reduxifiedServices } from "../reducers/feathers";
-
-const REGION_LIST = [...Regions.map(region => region.name), "All"];
 
 const Wrapper = styled(Grid)`
   && {
@@ -47,13 +43,8 @@ const ResultList = styled.div`
 `;
 
 class HelpCenter extends Component {
-  state = {
-    region: ""
-  };
-
   handleSearch = event => {
     const region = event.featureData.name;
-    this.setState({ region });
     // const result = this.searchByRegion(region);
     if (region === "Greater Melbourne") {
       this.props.onFindByRegion("Port Philips");
@@ -67,21 +58,20 @@ class HelpCenter extends Component {
     this.props.onReset();
   }
   render() {
-    const { region } = this.state;
     const { helpCenters } = this.props;
     return (
       <Fragment>
         <NavAppBar />
-        <PageContainer minHeight="90vh">
+        <PageContainer min_height="90vh">
           <BreadcrumbsWithRouter />
           <Wrapper container>
             <MapWrapper item xs={12} sm={6}>
               <Title
                 variant="subheading"
-                txtColor={green[900]}
+                text_color={green[900]}
                 txtSize="1.3rem"
                 lineHeight="3em"
-                fontWeight="bolder"
+                font_weight="bolder"
               >
                 Please select your region:
               </Title>
@@ -104,10 +94,10 @@ class HelpCenter extends Component {
             <ResultWrapper item xs={12} sm={6}>
               <Title
                 variant="subheading"
-                txtColor={green[900]}
+                text_color={green[900]}
                 txtSize="1.3rem"
                 lineHeight="3em"
-                fontWeight="bolder"
+                font_weight="bolder"
               >
                 {/* TOFIX: the region does not update */}
                 Help centers
@@ -117,8 +107,8 @@ class HelpCenter extends Component {
                   !helpCenters.isLoading && (
                     <Title
                       variant="title"
-                      txtColor={grey[400]}
-                      fontWeight="bold"
+                      text_color={grey[400]}
+                      font_weight="bold"
                       style={{ marginTop: 50 }}
                     >
                       Please select a region on the map.
@@ -129,7 +119,7 @@ class HelpCenter extends Component {
                 ) : (
                   Array.isArray(helpCenters.queryResult) &&
                   helpCenters.queryResult.map(center => (
-                    <LocationInfo info={center} />
+                    <LocationInfo key={center.name} info={center} />
                   ))
                 )}
               </ResultList>

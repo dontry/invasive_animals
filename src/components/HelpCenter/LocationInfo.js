@@ -16,7 +16,7 @@ const PaperWrapper = styled(Paper)`
 
 const LocationInfo = ({info}) => (
     <PaperWrapper>
-        <Title variant="headline"  txtColor={grey[600]}>{info.Name}</Title>
+        <Title variant="headline"  text_color={grey[600]}>{info.Name}</Title>
         <Passage  content={info.Description} />
         <Passage title="Contact" content={info.Contact} />
     </PaperWrapper>

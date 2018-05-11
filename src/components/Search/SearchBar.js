@@ -1,10 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import MUISearchBar from "material-ui-search-bar";
 
 const style = { 
-  maxWidth: 800,
+  max_width: 800,
   margin: "0 auto" 
 };
 

@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import Grid from "material-ui/Grid";
 import {grey} from "material-ui/colors";
 import {Title} from "./Text";
-import {SITE_MAP} from "../../utils/routing";
+import {SITE_MAP} from "../../routes/routing"
 
 const FooterWrapper = styled.div`
   position: relative;
@@ -62,8 +62,8 @@ function renderMenuItems(items) {
 export const Copyright = () => (
   <CopyrightWrapper container direction="column">
     <Grid item>
-      <Title txtColor={grey[500]}>© 2018 Victoria Guardian</Title>
-      <Title txtColor={grey[500]}>Powered by G4</Title>
+      <Title text_color={grey[500]}>© 2018 Victoria Guardian</Title>
+      <Title text_color={grey[500]}>Powered by G4</Title>
     </Grid>
   </CopyrightWrapper>
 );

@@ -8,10 +8,8 @@ import SwipeableViews from "react-swipeable-views";
 import PageContainer from "../components/common/PageContainer";
 import NavAppBar from "../components/common/NavAppBar";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
-import Loader from "../components/common/Loader";
 import { Title, Paragraph } from "../components/common/Text";
 import TabContainer from "../components/common/TabContainer";
-import { TableauScript } from "../components/common/3rdPartyScripts";
 
 import {
   GeograhicalDensity,

@@ -8,13 +8,6 @@ const CATEGORIES = [
   { name: "fish", regex: /fish/i }
 ];
 
-function createSpeciesMap(speciesArray) {
-  const speciesMap = new Map();
-  for (const species of speciesArray) {
-    speciesMap.set(species.name, species);
-  }
-  return speciesMap;
-}
 
 function processLabel(meta) {
   const labels = [];
@@ -36,12 +29,6 @@ function processSimilarImages(meta) {
   return images;
 }
 
-function compare(label, name) {
-  label = label.toLowerCase();
-  name = name.toLowerCase();
-  return label.includes(name);
-}
-
 // const speciesArray = InvasiveSpecies.species;
 // export const INVASIVE_SPECIES = createSpeciesMap(speciesArray);
 // export const INVASIVE_SPECIES_NAMES = speciesArray.map(item => item.name);
@@ -52,7 +39,6 @@ export function getByName(name) {
 }
 
 export async function getInvasiveSpecies(meta) {
-  const candidateNames = [];
   const labels = processLabel(meta);
   const images = processSimilarImages(meta);
 
@@ -66,7 +52,7 @@ export async function getInvasiveSpecies(meta) {
             return acc + category.name + (index < array.length - 1 ? "|" : "");
           }
         }
-        return;
+        return acc;
       }, "(") + ")";
 
   const queries =

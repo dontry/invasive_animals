@@ -1,5 +1,4 @@
-import React, { Component, Fragment } from "react";
-import { TableauScript } from "../common/3rdPartyScripts";
+import React, { Component} from "react";
 
 export function renderChart(id, width="100%") {
   const divElement = document.getElementById(id);
@@ -14,15 +13,10 @@ export function renderChart(id, width="100%") {
 }
 
 export class RecordsByState extends Component {
-  state = {
-    loadScript: false
-  };
   componentDidMount() {
     renderChart("viz1525295303036", this.props.width);
-    this.setState({ loadScript: true });
   }
   render() {
-    const { loadScript } = this.state;
     return (
       <div
         className="tableauPlaceholder"
@@ -55,22 +49,17 @@ export class RecordsByState extends Component {
           <param name="display_overlay" value="yes" />
           <param name="display_count" value="yes" />
         </object>
-        {/* {loadScript && <TableauScript />} */}
       </div>
     );
   }
 }
 
 export class MonthlyRecords extends Component {
-  state = {
-    loadScript: false
-  };
   componentDidMount() {
     renderChart("viz1525295474778", this.props.width);
     this.setState({ loadScript: true });
   }
   render() {
-    const { loadScript } = this.state;
     return (
       <div
         className="tableauPlaceholder"
@@ -103,21 +92,16 @@ export class MonthlyRecords extends Component {
           <param name="display_overlay" value="yes" />
           <param name="display_count" value="yes" />
         </object>
-        {/* {loadScript && <TableauScript />} */}
       </div>
     );
   }
 }
 
 export class TimeSeries extends Component {
-  state = {
-    loadScript: false
-  };
   componentDidMount() {
     renderChart("viz1525295432167", this.props.width);
   }
   render() {
-    const { loadScript } = this.state;
     return (
       <div
         className="tableauPlaceholder"
@@ -150,7 +134,6 @@ export class TimeSeries extends Component {
           <param name="display_overlay" value="yes" />
           <param name="display_count" value="yes" />
         </object>
-        {/* {loadScript && <TableauScript />} */}
       </div>
     );
   }

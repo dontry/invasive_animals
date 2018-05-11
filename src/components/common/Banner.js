@@ -2,14 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 //Material UI
-import { lightGreen } from "material-ui/colors";
 import Grid from "material-ui/Grid";
-import Fade from "material-ui/transitions/Fade";
 
 import Slider from "react-slick";
-import { Paragraph, Title } from "./Text";
 import "./banner.css";
-
 
 const BannerWrapper = styled.div`
   position: relative;
@@ -47,27 +43,28 @@ const Banner = ({ timeout = 0, heading, description, banners, textColor }) => {
     lazyLoad: true,
     fade: true,
     autoplay: true,
-    speed: 1000,
+    speed: 5000,
     slidesToShow: 1,
     slidesToScroll: 1
   };
   return (
-    <Fade in={true} timeout={timeout}>
-      <Slider {...settings}>
-        {banners.map(banner => (
-          <BannerWrapper>
-            <BackgroundImage src={banner.image} />
-            <BlurbWrapper
-              container direction="column" justify="center"
-              alignItems="flex-start" >
-              <Grid item xs={10} sm={7}>
-                {banner.description}
-              </Grid>
-            </BlurbWrapper>
-          </BannerWrapper>
-        ))}
-      </Slider>
-    </Fade>
+    <Slider {...settings}>
+      {banners.map((banner, index) => (
+        <BannerWrapper key={`banner-${index}`}>
+          <BackgroundImage src={banner.image} />
+          <BlurbWrapper
+            container
+            direction="column"
+            justify="center"
+            alignItems="flex-start"
+          >
+            <Grid item xs={10} sm={7}>
+              {banner.description}
+            </Grid>
+          </BlurbWrapper>
+        </BannerWrapper>
+      ))}
+    </Slider>
   );
 };
 

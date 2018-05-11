@@ -7,7 +7,7 @@ import { green, grey, teal } from "material-ui/colors";
 import NavAppBar from "../components/common/NavAppBar";
 import PageContainer from "../components/common/PageContainer";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
-import { Paragraph, Title } from "../components/common/Text";
+import {  Title } from "../components/common/Text";
 import ContactDetail from "../components/Contact/ContactDetail";
 import ContactForm from "../components/Contact/ContactForm";
 
@@ -34,7 +34,7 @@ const SideWrapper = styled(Grid)`
 const ContactUs = () => (
   <Fragment>
     <NavAppBar />
-    <PageContainer maxWidth="100%">
+    <PageContainer max_width="100%">
       <Wrapper container justify="space-between">
         <Grid item xs={12} sm={8}>
           <BreadcrumbsWithRouter />
@@ -42,7 +42,7 @@ const ContactUs = () => (
             <Title
               variant="display1"
               align="left"
-              txtColor={green[700]}
+              text_color={green[700]}
               component="h3"
             >
               Contact Us
@@ -51,7 +51,7 @@ const ContactUs = () => (
             <Title
               variant="title"
               align="left"
-              txtColor={grey[600]}
+              text_color={grey[600]}
               component="h4"
               lineHeight="1.5em"
             >

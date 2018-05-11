@@ -16,7 +16,7 @@ const Passage = ({ title = "", content }) => {
       {title && (
         <Title
           variant="title"
-          txtColor={grey[800]}
+          text_color={grey[800]}
           padding="1rem 0 0"
           align="left"
         >
@@ -25,7 +25,7 @@ const Passage = ({ title = "", content }) => {
       )}
       <Paragraph
         txtSize="1.1em"
-        txtColor={grey[600]}
+        text_color={grey[600]}
         lineHeight="1.2em"
         padding="1rem 0 0.5rem"
       >

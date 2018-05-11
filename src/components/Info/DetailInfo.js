@@ -6,9 +6,8 @@ import { grey, green } from "material-ui/colors";
 import Icon from "material-ui/Icon";
 
 import { Title, Paragraph } from "../common/Text";
-import Passage from "../common/Passage";
 import { ScreenMask } from "../common/Mask";
-import Gallery, { Slider } from "./Gallery";
+import { Slider } from "./Gallery";
 import Loader from "../common/Loader";
 import GalleryComposite from "./GalleryComposite";
 import { GeographicalDistribution } from "../Insight/DistributionMap";
@@ -16,7 +15,6 @@ import CommentSection from "../common/CommentSection";
 import {
   ExpansionPanel,
   ExpansionPanelSummary,
-  ExpansionPanelActions,
   ExpansionPanelDetails
 } from "material-ui";
 
@@ -51,10 +49,10 @@ const SectionWrapper = styled.div`
 const SpeciesName = ({ commonName, academicalName }) => {
   return (
     <Fragment>
-      <Title variant="display1" txtColor={grey[800]} align="left">
+      <Title variant="display1" text_color={grey[800]} align="left">
         {commonName}
       </Title>
-      <Title variant="title" txtColor={grey[600]} align="left">
+      <Title variant="title" text_color={grey[600]} align="left">
         {academicalName}
       </Title>
     </Fragment>
@@ -73,14 +71,14 @@ function renderItem(attr) {
   return (
     <ExpansionPanel>
       <ExpansionPanelSummary expandIcon={<Icon>expand_more</Icon>}>
-        <Title variant="title" txtColor={grey[800]} align="left">
+        <Title variant="title" text_color={grey[800]} align="left">
           {attr.value}
         </Title>
       </ExpansionPanelSummary>
       <ExpansionPanelDetails style={{ display: "block" }}>
         <Paragraph
           txtSize="1.1em"
-          txtColor={grey[600]}
+          text_color={grey[600]}
           lineHeight="1.2em"
           padding="0.5rem 0 2rem"
         >
@@ -89,7 +87,7 @@ function renderItem(attr) {
         {attr.key === "Distribution" && (
           <div style={{ width: "100%", margin: "0 auto" }}>
             <GeographicalDistribution species={this.CommonName} />
-            <Title txtColor={grey[700]}>
+            <Title text_color={grey[700]}>
               Distribution of {this.CommonName} in Australia
             </Title>
           </div>
@@ -128,7 +126,7 @@ class DetailInfo extends Component {
         <IntroWrapper container justify="felx-start">
           <Grid item style={{ marginRight: "2rem" }}>
             <img
-              style={{ maxHeight: 300, maxWidth: 300 }}
+              style={{ max_height: 300, max_width: 300 }}
               src={species.ImageURL}
               alt={species.CommonName}
             />
@@ -139,8 +137,8 @@ class DetailInfo extends Component {
                 <Grid item xs={6}>
                   <Paragraph
                     variant="subheading"
-                    fontWeight="bold"
-                    txtColor={green[700]}
+                    font_weight="bold"
+                    text_color={green[700]}
                   >
                     {attr}:
                   </Paragraph>
@@ -154,7 +152,7 @@ class DetailInfo extends Component {
           images.isFinished &&
           Array.isArray(images.queryResult) && (
             <SectionWrapper>
-              <Title variant="title" txtColor={grey[800]} align="left">
+              <Title variant="title" text_color={grey[800]} align="left">
                 Gallery
               </Title>
               <GalleryComposite

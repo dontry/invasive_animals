@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Icon from "material-ui/Icon";
-import { grey, red } from "material-ui/colors";
+import { grey } from "material-ui/colors";
 import { StyledButton } from "./ActionButtonGroup";
 
 const ErrorMessage = styled.h1`

@@ -11,7 +11,7 @@ import banner2 from "../assets/images/banner_frog.jpg";
 import banner3 from "../assets/images/banner_crops.jpg";
 
 const Blurb = ({ children }) => (
-  <Paragraph variant="title" txtColor="#fff" lineHeight="1.5em">
+  <Paragraph variant="title" text_color="#fff" lineHeight="1.5em">
     {children}
   </Paragraph>
 );
@@ -59,7 +59,7 @@ const Home = () => (
   <Fragment>
     <Logo />
     <NavAppBar title={<div />} />
-    <PageContainer minHeight="85%" maxWidth="100%">
+    <PageContainer min_height="85%" max_width="100%">
       <Banner banners={BANNERS} timeout={3000} textColor="#fff" />
       <IntroGrid />
       <FeatureGrid />

@@ -27,7 +27,7 @@ const introData = [
       <TargetIcon className="icon" color={lightGreen[500]} size={ICON_SIZE} />
     ),
     description: (
-      <Title calssName="text" variant="subheading" txtColor={lightGreen[700]}>
+      <Title className="text" variant="subheading" text_color={lightGreen[700]}>
         Identify the invasive species <br /> by taking photos
       </Title>
     ),
@@ -47,7 +47,7 @@ const introData = [
       />
     ),
     description: (
-      <Title className="text" variant="subheading" txtColor={lightGreen[700]}>
+      <Title className="text" variant="subheading" text_color={lightGreen[700]}>
         Explore more about invasive species<br /> on our database
       </Title>
     ),
@@ -67,7 +67,7 @@ const introData = [
       />
     ),
     description: (
-      <Title className="text" variant="subheading" txtColor={lightGreen[700]}>
+      <Title className="text" variant="subheading" text_color={lightGreen[700]}>
         Analyse data & Observe predictions <br /> of invasive species in
         Australia
       </Title>
@@ -101,8 +101,8 @@ const IntroGrid = ({ tileData }) => {
   return (
     <GridWrapper>
       <StyledGridList cols={3}>
-        {tileData.map(tile => (
-          <StyledGridListTile key={tile.title} cols={tile.cols || 1}>
+        {tileData.map((tile, index) => (
+          <StyledGridListTile key={`${tile.title}-${index}`} cols={tile.cols || 1}>
             <Tile tile={tile} />
           </StyledGridListTile>
         ))}

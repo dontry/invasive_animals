@@ -35,19 +35,19 @@ const Profile = ({ profile }) => (
     <Photo src={profile.photo || ImagePlaceholder} alt={profile.name} />
     <Title
       variant="title"
-      txtColor={grey[800]}
+      text_color={grey[800]}
       padding="1rem 0 0.5rem"
-      fontWeight="bold"
+      font_weight="bold"
     >
       {profile.name}
     </Title>
-    <Title variant="subheading" txtColor={grey[800]}>
+    <Title variant="subheading" text_color={grey[800]}>
       {profile.role}
     </Title>
     <SkillList>
       {profile.description.map(item => (
         <li>
-          <Paragraph variant="body1" txtColor={grey[600]}>
+          <Paragraph variant="body1" text_color={grey[600]}>
             {item}
           </Paragraph>
         </li>

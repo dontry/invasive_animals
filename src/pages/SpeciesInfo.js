@@ -4,7 +4,6 @@ import { Redirect } from "react-router-dom";
 //Components
 import PageContainer from "../components/common/PageContainer";
 import Loader from "../components/common/Loader";
-import DetailInfo from "../components/Info/DetailInfo";
 import DetailInfoContainer from "../containers/DetailInfoContainer";
 import NavAppBar from "../components/common/NavAppBar";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
@@ -36,7 +35,7 @@ class SpeciesInfo extends Component {
     return (
       <Fragment>
         <NavAppBar />
-        <PageContainer minHeight="90vh">
+        <PageContainer min_height="90vh">
           <BreadcrumbsWithRouter />
           {species.isLoading ? (
             <Loader />

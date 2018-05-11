@@ -19,7 +19,6 @@ Separator.displayName = "Separator";
 
 export const BreadcrumbsItem = ({ match, hasSeparator = false }) => {
   let routeName = findRouteName(match.url);
-  let content = null;
   if (routeName) {
     routeName = strEqual.call(routeName, "Home") ? (
       <Icon style={{ verticalAlign: "-0.2rem" }}>home</Icon>
@@ -28,7 +27,7 @@ export const BreadcrumbsItem = ({ match, hasSeparator = false }) => {
     );
     return (
       <span>
-        <NavLink style={{textTransform: "uppercase"}}display="inline" textSize="small" to={match.url || ""}>
+        <NavLink style={{textTransform: "uppercase"}}display="inline" text_size="small" to={match.url || ""}>
           {routeName}
         </NavLink>
         {hasSeparator && <Separator>/</Separator>}

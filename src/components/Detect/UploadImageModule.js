@@ -1,4 +1,4 @@
-import React, {Fragment, PureComponent} from "react";
+import React, { Fragment, PureComponent } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Grid from "material-ui/Grid";
@@ -15,7 +15,6 @@ const BrowseButton = styled(Button)`
   }
 `;
 
-
 class UploadImageModule extends PureComponent {
   componentWillMount() {
     this.props.reset();
@@ -26,15 +25,10 @@ class UploadImageModule extends PureComponent {
     this.props.handleSubmit();
   };
   render() {
-    const { image, uploadImage, getDetectionResult, handleSubmit } = this.props;
+    const { image, uploadImage } = this.props;
     return (
       <Fragment>
-        <Grid
-          container
-          direction="column"
-          justify="center"
-          alignItems="center"
-        >
+        <Grid container direction="column" justify="center" alignItems="center">
           <Grid item sm={8}>
             <DropImageZone uploadImage={uploadImage} image={image.entity} />
           </Grid>

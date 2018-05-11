@@ -20,7 +20,7 @@ const Logo = () => (
       <LogoIcon size="64px" />
     </Grid>
     <Grid item>
-      <Title variant="title" txtColor={green[50]}>
+      <Title variant="title" text_color={green[50]}>
         Victoria Guardian
       </Title>
     </Grid>

@@ -1,9 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import team_profile from "../../assets/team_profile";
 
-import GridList, { GridListTile } from "material-ui/GridList";
 import Grid from "material-ui/Grid";
 import Profile from "./Profile";
 

@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "material-ui/styles";
 import Button from "material-ui/Button";
 import styled from "styled-components";
 
@@ -19,7 +18,7 @@ export const StyledButton = styled(Button)`
           : props.theme.palette[props.type].main
         : props.theme.primary.main};
     color: ${props => props.theme.palette[props.type].contrastText};
-    font-size: ${props => props.theme.textSize.size};
+    font-size: ${props => props.theme.text_size.size};
     height: ${props => props.height || "auto"};
     width: ${props => props.width || "auto"};
     padding ${props => props.padding || "auto"};

@@ -1,7 +1,7 @@
 import React from "react";
 import Dialog, { DialogActions, DialogContent } from "material-ui/Dialog";
 import { grey } from "material-ui/colors";
-import { Title, Paragraph } from "../common/Text";
+import { Paragraph } from "../common/Text";
 import { StyledButton } from "../common/ActionButtonGroup";
 
 const ConfirmationDialog = ({ handleClose, title, message, ...rest }) => {
@@ -9,13 +9,13 @@ const ConfirmationDialog = ({ handleClose, title, message, ...rest }) => {
     <Dialog
       disableBackdropClick
       disableEscapeKeyDown
-      maxWidth="xs"
+      max_width="xs"
       aria-lablledby={title}
       {...rest}
-      style={{ padding: "2rem", minWidth: "500px" }}
+      style={{ padding: "2rem", min_width: "500px" }}
     >
       <DialogContent>
-        <Paragraph variant="title" txtColor={grey[700]}>
+        <Paragraph variant="title" text_color={grey[700]}>
           {message}
         </Paragraph>
       </DialogContent>

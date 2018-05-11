@@ -20,7 +20,7 @@ const featureData = [
     name: "report",
     description: "Report sightings to us",
     title: (
-      <Title variant="title" className="title" txtColor={green[500]}>
+      <Title variant="title" className="title" text_color={green[500]}>
         Report
       </Title>
     ),
@@ -30,7 +30,7 @@ const featureData = [
     name: "help center",
     description: "Find a location for help",
     title: (
-      <Title variant="title" className="title" txtColor={green[500]}>
+      <Title variant="title" className="title" text_color={green[500]}>
         Help Center
       </Title>
     ),
@@ -40,7 +40,7 @@ const featureData = [
     name: "subscribe",
     description: "Subscribe our newsletters",
     title: (
-      <Title variant="title" className="title" txtColor={green[500]}>
+      <Title variant="title" className="title" text_color={green[500]}>
         Subscribe
       </Title>
     ),
@@ -50,7 +50,7 @@ const featureData = [
     name: "species",
     description: "Explore all invasive species",
     title: (
-      <Title variant="title" className="title" txtColor={green[500]}>
+      <Title variant="title" className="title" text_color={green[500]}>
         Species Wiki
       </Title>
     ),
@@ -123,7 +123,7 @@ const FeatureGrid = ({ features = [] }) => (
   <GridWrapper>
     <Title
       variant="display1"
-      txtColor={green[500]}
+      text_color={green[500]}
       style={{ marginBottom: "2rem" }}
     >
       MORE FEATURES
@@ -135,7 +135,7 @@ const FeatureGrid = ({ features = [] }) => (
           xs={6}
           md={3}
           key={feature.name}
-          style={{ maxWidth: 300, minHeight: 200 }}
+          style={{ max_width: 300, min_height: 200 }}
         >
           <Grid container direction="column">
             <Tooltip

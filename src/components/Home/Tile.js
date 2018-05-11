@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Grid from "material-ui/Grid";
-import { Title } from "../common/Text";
 import { green, grey } from "material-ui/colors";
 
 const TileWrapper = styled(Grid)`

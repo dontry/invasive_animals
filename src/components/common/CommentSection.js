@@ -5,7 +5,7 @@ import { Title } from "../common/Text";
 
 export default () => (
   <Fragment>
-    <Title variant="title" txtColor={grey[700]} align="left" />
+    <Title variant="title" text_color={grey[700]} align="left" />
     <FacebookProvider appId="439671156486299">
       <Comments />
     </FacebookProvider>

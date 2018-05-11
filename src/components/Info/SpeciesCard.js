@@ -2,13 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {withStyles} from "material-ui/styles";
-import Card, {CarActions, CardContent, CardMedia} from "material-ui/Card";
+import Card, { CardContent, CardMedia} from "material-ui/Card";
 import Typography from "material-ui/Typography";
 
 const styles = {
   card: {
-    maxWidth: 376,
-    minWidth: 200,
+    max_width: 376,
+    min_width: 200,
     margin: "1rem"
   },
   media: {

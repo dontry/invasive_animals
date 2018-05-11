@@ -1,6 +1,5 @@
 import React, {Fragment} from "react";
 import PageContainer from "../components/common/PageContainer";
-import ProfileGrid from "../components/About/ProfileGrid";
 import Testimonial from "../components/About/Testimonial";
 import NavAppBar from "../components/common/NavAppBar";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";

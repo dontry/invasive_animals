@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { Title, Paragraph } from "../common/Text";
 import ImagePlaceholder from "../../assets/images/placeholder.png";
 import { grey } from "material-ui/colors";
-import { speciesPicFinder } from "../../utils/tools";
 
 const EntryWrapper = styled(Grid)`
   && {
@@ -46,14 +45,14 @@ const Entry = ({ species }) => {
             />
           </ContentWrapper>
           <ContentWrapper item padding={"0.5rem 1rem"} xs={12} sm={7}>
-            <Title variant="title" align="left" txtColor={grey[800]}>
+            <Title variant="title" align="left" text_color={grey[800]}>
               {species.CommonName}
             </Title>
-            <Title variant="body1" align="left" txtColor={grey[700]}>
+            <Title variant="body1" align="left" text_color={grey[700]}>
               {species.AcademicalName}
             </Title>
             <BriefIntroWrapper>
-              <Paragraph txtColor={grey[700]}>
+              <Paragraph text_color={grey[700]}>
                 {species.BriefIntroduction}
               </Paragraph>
             </BriefIntroWrapper>

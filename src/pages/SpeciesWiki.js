@@ -27,7 +27,7 @@ class SpeciesWiki extends Component {
         <NavAppBar />
         <BreadcrumbsWithRouter />
         <PageContainer style={{ padding: "1rem 2rem" }}>
-          <Title variant="display2" txtColor={lime[700]} padding="0 1rem 2rem">
+          <Title variant="display2" text_color={lime[700]} padding="0 1rem 2rem">
             Invasive Species Wiki
           </Title>
           {species.isLoading ? (

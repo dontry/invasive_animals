@@ -15,12 +15,6 @@ const NavItem = styled(NavLink)`
   }
 `
 
-const styles = {
-  popperClose: {
-    pointerEvents: "none"
-  }
-};
-
 const StyledPaper = styled(Paper)`
   margin: 3px;
 `;

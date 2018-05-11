@@ -9,7 +9,6 @@ import { TextField, Select } from "../components/common/FormFields";
 import { Title, Paragraph } from "../components/common/Text";
 import NavAppBar from "../components/common/NavAppBar";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
-import { StyledButton } from "../components/common/ActionButtonGroup";
 import Regions from "../assets/regions";
 
 const DescriptionWrapper = styled.div`

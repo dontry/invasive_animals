@@ -17,17 +17,17 @@ const Testimonial = () => (
       <Title
         variant="display1"
         gutterBottom
-        txtColor={grey[700]}
-        fontWeight="bolder"
+        text-color={grey[700]}
+        font_weight="bolder"
       >
         Our Mission
       </Title>
-      <Title variant="title" gutterBottom txtColor={grey[700]}>
+      <Title variant="title" gutterBottom text_color={grey[700]}>
         Protect Victoria from invasive species
       </Title>
       <Paragraph
         variant="subheading"
-        txtColor={grey[600]}
+        text_color={grey[600]}
         align="justify"
         lineHeight="2em"
       >
@@ -62,12 +62,12 @@ const Testimonial = () => (
       </Paragraph>
     </Wrapper>
     {/* <Wrapper>
-      <Title variant="display1" gutterBottom txtColor={grey[700]}>
+      <Title variant="display1" gutterBottom text_color={grey[700]}>
         About Us
       </Title>
       <Paragraph
         variant="subheading"
-        txtColor={grey[600]}
+        text_color={grey[600]}
         align="justify"
         lineHeight="1.5em"
       >

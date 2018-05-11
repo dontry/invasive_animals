@@ -17,7 +17,7 @@ const ComingSoon = () => {
       <NavAppBar />
       <PageContainer height="80vh">
         <ErrorMessageWrapper>
-            <Title variant="display3" txtColor="#777">Coming Soon...</Title>
+            <Title variant="display3" text_color="#777">Coming Soon...</Title>
         </ErrorMessageWrapper>
       </PageContainer>
     </Fragment>

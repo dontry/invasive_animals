@@ -1,18 +1,18 @@
-import React, { Component, PureComponent } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Redirect, withRouter } from "react-router-dom";
 import { Field, reduxForm } from "redux-form";
 import ReCAPTCHA from "react-google-recaptcha";
 //Material UI
-import Input, { InputLabel } from "material-ui/Input";
+import { InputLabel } from "material-ui/Input";
 import Grid from "material-ui/Grid";
 import { grey } from "material-ui/colors";
 //Components
 import DropImageZone from "../Detect/DropImageZone";
-import ActionButtonGroup, { StyledButton } from "../common/ActionButtonGroup";
+import ActionButtonGroup from "../common/ActionButtonGroup";
 import { Mask } from "../common/Mask";
-import { Title, Paragraph } from "../common/Text";
+import { Paragraph } from "../common/Text";
 import Loader from "../common/Loader";
 import ConfirmationDialog from "../common/ConfirmationDialog";
 import {
@@ -67,17 +67,13 @@ const FormButtonGroup = styled(ActionButtonGroup)`
   float: right;
 `;
 
-const DialogBody = styled.div`
-  padding: 1rem 1.5rem;
-`;
-
 class UploadImageBlock extends Component {
   state = {
     image: null
   };
 
   componentDidMount() {
-    this.setState({image: this.props.image})
+    this.setState({ image: this.props.image });
   }
 
   uploadImage = async image => {
@@ -90,10 +86,8 @@ class UploadImageBlock extends Component {
 
   render() {
     const {
-      name,
       label,
-      input,
-      meta: { touched, error }
+      meta: { error }
     } = this.props;
     const { image } = this.state;
     return (
@@ -176,11 +170,10 @@ export class ReportForm extends Component {
       species,
       email,
       pristine,
-      submitting,
-      submitSucceeded
+      submitting
     } = this.props;
 
-    const { dialogOpen, complete, message, recaptchaValue } = this.state;
+    const { dialogOpen, complete, message  } = this.state;
 
     if (complete === true) {
       return <Redirect to="/" />;
@@ -250,7 +243,9 @@ export class ReportForm extends Component {
               label="Species Name"
               placeholder={
                 species
-                  ? species.candidates.map(species => species.CommonName).join("/")
+                  ? species.candidates
+                      .map(species => species.CommonName)
+                      .join("/")
                   : "Unknown"
               }
             />

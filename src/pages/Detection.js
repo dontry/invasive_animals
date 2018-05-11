@@ -17,24 +17,19 @@ import NavAppBar from "../components/common/NavAppBar";
 import Loader from "../components/common/Loader";
 import { ScreenMask } from "../components/common/Mask";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
-import ActionButtonGroup, {
-  StyledButton,
+import  {
   ActionButton
 } from "../components/common/ActionButtonGroup";
 import ConfirmationDialog from "../components/common/ConfirmationDialog";
 import { resetDetection } from "../actions/detection";
 import GalleryComposite from "../components/Info/GalleryComposite";
-import Gallery, { Slider } from "../components/Info/Gallery";
+import  { Slider } from "../components/Info/Gallery";
 
 const STEPS = [
   "Upload the photos and submit",
   "View the result",
   "Take Actions"
 ];
-
-const ViewWrapper = styled.section`
-  height: 100vh;
-`;
 
 const DropboxWrapper = styled.div`
   margin-top: 50px;
@@ -78,14 +73,13 @@ const SeekHelpActionProps = history => ({
 class Detection extends Component {
   state = {
     viewIndex: 0,
-    loading: false,
     dialogOpen: false
   };
 
   componentWillReceiveProps(nxtProps) {
     if (
       nxtProps.result.entity &&
-      nxtProps.result.entity != this.props.result.entity
+      nxtProps.result.entity !== this.props.result.entity
     ) {
       this.setState({ viewIndex: 1, loading: false });
     } else if (nxtProps.result.error) {
@@ -111,7 +105,7 @@ class Detection extends Component {
 
   render() {
     const { result, history } = this.props;
-    const { viewIndex, loading, dialogOpen } = this.state;
+    const { viewIndex, dialogOpen } = this.state;
     return (
       <Fragment>
         <NavAppBar />
@@ -142,11 +136,11 @@ class Detection extends Component {
               console.log("no change view");
             }}
           >
-            <PageContainer minHeight="auto" padding="0 0 4rem">
+            <PageContainer min_height="auto" padding="0 0 4rem">
               <DropboxWrapper>
                 <Title
                   variant="display1"
-                  txtColor={green[700]}
+                  text_color={green[700]}
                   padding="0 0 2rem"
                 >
                   Identify the invasive species
@@ -159,7 +153,7 @@ class Detection extends Component {
                 handleClose={this.handleDialogClose}
               />
             </PageContainer>
-            <PageContainer minHeight="auto" padding="0 0 4rem">
+            <PageContainer min_height="auto" padding="0 0 4rem">
               {result.entity && (
                 <BriefInfo
                   handleBack={this.handleBack}
@@ -169,7 +163,7 @@ class Detection extends Component {
               )}
               <Grid container direction="column" alignItems="center">
                 <Title variant="title">Similar Images</Title>
-                <Grid item xs={12} sm={8} style={{ maxWidth: "800px" }}>
+                <Grid item xs={12} sm={8} style={{ max_width: "800px" }}>
                   {result.entity && (
                     <GalleryComposite images={result.entity.images}>
                       <Slider />
@@ -195,7 +189,7 @@ class Detection extends Component {
                   <ActionButton {...SeekHelpActionProps(history)} />
                 </Grid>
                 <BackButton onClick={this.handleBack} type="primary">
-                  <Title variant="display1" txtColor={lime[800]}>
+                  <Title variant="display1" text_color={lime[800]}>
                     ◀︎ BACK
                   </Title>
                 </BackButton>

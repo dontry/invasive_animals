@@ -12,10 +12,10 @@ const ResultList = ({ results }) => {
   if (results.length === 0) {
     return (
       <Fragment>
-        <Title variant="title" txtColor="#666">
+        <Title variant="title" text_color="#666">
           Sorry, no matched result found.
         </Title>
-        <Title variant="title" txtColor="#666">
+        <Title variant="title" text_color="#666">
           Can you have another try?
         </Title>
       </Fragment>

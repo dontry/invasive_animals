@@ -23,7 +23,7 @@ const Report = () => {
       <PageContainer >
         <BreadcrumbsWithRouter />
         <Wrapper>
-          <Title variant="display1" txtColor={grey[700]} align="left">
+          <Title variant="display1" text_color={grey[700]} align="left">
             Report invasive species
           </Title>
           <Instruction />

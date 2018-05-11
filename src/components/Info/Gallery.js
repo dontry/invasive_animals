@@ -48,7 +48,7 @@ const Gallery = ({ images, handleClick }) => {
       <StyledGridList cols={2.5}>
         {images.map((img, index) => (
           <GridListTile key={index} onClick={handleClick}>
-            <img src={img || ImagePlaceholder} data-index={index} />
+            <img src={img || ImagePlaceholder} alt="gallery-img" data-index={index} />
           </GridListTile>
         ))}
       </StyledGridList>

@@ -1,5 +1,4 @@
-import React, { Component, Fragment } from "react";
-import { TableauScript } from "../common/3rdPartyScripts";
+import React, { Component} from "react";
 
 export function renderMap(id,width="100%") {
   const divElement = document.getElementById(id);
@@ -14,9 +13,6 @@ export function renderMap(id,width="100%") {
 }
 
 export class GeographicalDistribution extends Component {
-  state = {
-    loadScript: false
-  };
   componentDidMount() {
     renderMap("viz1525295396952", this.props.width);
     this.setState({ loadScript: true });
@@ -24,7 +20,6 @@ export class GeographicalDistribution extends Component {
 
   render() {
     const { species } = this.props;
-    const { loadScript } = this.state;
     return (
       <div
         className="tableauPlaceholder"
@@ -62,22 +57,17 @@ export class GeographicalDistribution extends Component {
             value={`publish=yes${species && `&&CommonName=${species}`}`}
           />
         </object>
-        {/* {loadScript && <TableauScript />} */}
       </div>
     );
   }
 }
 
 export class GeograhicalDensity extends Component {
-  state = {
-    loadScript: false
-  };
   componentDidMount() {
     renderMap("viz1525295396953");
     this.setState({ loadScript: true });
   }
   render() {
-    const { loadScript } = this.state;
     return (
       <div
         className="tableauPlaceholder"
@@ -110,7 +100,6 @@ export class GeograhicalDensity extends Component {
           <param name="display_overlay" value="yes" />
           <param name="display_count" value="yes" />
         </object>
-        {/* {loadScript && <TableauScript />} */}
       </div>
     );
   }
