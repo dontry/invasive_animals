@@ -3,8 +3,9 @@
 ## Install
 
 ```bash
-npm install 
+npm install
 ```
+
 If use yarn
 
 ```bash
