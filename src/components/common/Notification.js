@@ -4,7 +4,7 @@ import {withStyles} from "material-ui/styles";
 
 import Snackbar from "material-ui/Snackbar";
 import IconButton from "material-ui/IconButton";
-import CloseIcon from "material-ui-icons/Close";
+import Icon from "material-ui/Icon"
 
 const AUTO_HIDE_DURATION = 2000;
 
@@ -44,7 +44,7 @@ class Notification extends Component {
             className={classes.close}
             onClick={this.handleClose}
           >
-            <CloseIcon />
+            <Icon>close</Icon>
           </IconButton>
         ]}
       />

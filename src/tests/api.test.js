@@ -3,6 +3,7 @@ import { encodeImageFromDir } from "../utils/encodeImage";
 import { getInvasiveSpecies } from "../utils/detectInvasiveSpecies";
 
 test("detect an image of a cane toad", async () => {
+  jest.setTimeout(10000);
   const content = encodeImageFromDir(
     "../../public/assets/images/species/cane_toad.jpg"
   );
@@ -23,11 +24,9 @@ test("detect an image of a cane toad", async () => {
     ]
   };
   try {
-    const res = await api.sendImage(content, option);
-    const data = res.data.responses[0];
-    const names = getInvasiveSpecies(data).candidates.map(item =>
-      item.CommonName.toLowerCase()
-    );
+    const meta = await api.sendImage(content, option);
+    const res = await getInvasiveSpecies(meta);
+    const names = res.candidates.map(item => item.CommonName.toLowerCase());
 
     expect(names).toContain("cane toad");
   } catch (exception) {

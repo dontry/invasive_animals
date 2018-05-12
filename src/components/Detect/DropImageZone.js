@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Dropzone from "react-dropzone";
 import styled from "styled-components";
-import MoveToInbox from "material-ui-icons/MoveToInbox";
+import Icon from "material-ui/Icon";
 import { grey } from "material-ui/colors";
 
 const StyledDropzone = styled(Dropzone)`
@@ -31,11 +31,10 @@ const HintText = styled.p`
   max-width: 600;
 `;
 
-const StyledMoveToInbox = styled(MoveToInbox)`
-  color: ${grey[600]};
+const StyledIcon = styled(Icon)`
   && {
-    width: 3em;
-    height: 3em;
+    color: ${grey[600]};
+    font-size: 3em;
   }
 `;
 
@@ -75,7 +74,7 @@ class DropImageZone extends Component {
         id="dropzone"
         onDrop={this.handleDrop}
         accept="image/jpeg, image/png, image/jpg"
-        maxSize={5000000}
+        maxSize={3000000}
       >
         {image ? (
           <UploadedImage src={image.preview} />
@@ -85,7 +84,7 @@ class DropImageZone extends Component {
               Please drop the suspicious invasive species here, we will tell you
               if it is.<br />(Accept image format: jpg, png; Max size: 2MB)
             </HintText>
-            <StyledMoveToInbox />
+            <StyledIcon>move_to_inbox</StyledIcon>
           </div>
         )}
       </StyledDropzone>

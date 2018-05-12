@@ -12,7 +12,6 @@
     "date-fns": "^1.29.0",
     "feathers-redux": "^2.1.0",
     "material-ui": "next",
-    "material-ui-icons": "^1.0.0-beta.36",
     "material-ui-search-bar": "beta",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
@@ -46,11 +45,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "jest",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "toolbox": "react-toolbox-themr",
     "debug": "node --nolazy --inspect-brk=9229 src/"
   },
   "devDependencies": {
