@@ -11,3 +11,15 @@ If use yarn
 ```bash
 yarn install
 ```
+
+##To run the dev server:
+
+```bash
+yarn start
+```
+
+or
+
+```bash
+npm start
+```
