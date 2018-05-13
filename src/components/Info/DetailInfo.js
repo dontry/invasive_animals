@@ -84,7 +84,11 @@ function renderItem(attr) {
         >
           {this[attr.key]}
         </Paragraph>
-        {attr.key === "Distribution" && (
+        {/* Only Animals have distribution map
+        
+        
+        */}
+        {attr.key === "Distribution" && this.Category === "Animal" && (
           <div style={{ width: "100%", margin: "0 auto" }}>
             <GeographicalDistribution species={this.CommonName} />
             <Title text_color={grey[700]}>
