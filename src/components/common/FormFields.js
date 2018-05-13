@@ -69,7 +69,7 @@ export const DateField = ({
         error={touched && !!error}
         helperText={error}
         defaultValue="2018-04-01"
-        style={{ max_width: 200 }}
+        style={{ maxWidth: 200 }}
         {...input}
         {...custom}
       />

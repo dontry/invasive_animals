@@ -53,7 +53,7 @@ const ContactUs = () => (
               align="left"
               text_color={grey[600]}
               component="h4"
-              lineHeight="1.5em"
+              line_height="1.5em"
             >
               We're happy to answer any question you have.<br />Reach out to us
               and we'll get back to you as soon as possible.

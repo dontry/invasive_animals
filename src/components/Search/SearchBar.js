@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import MUISearchBar from "material-ui-search-bar";
 
 const style = { 
-  max_width: 800,
+  maxWidth: 800,
   margin: "0 auto" 
 };
 

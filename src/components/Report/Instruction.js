@@ -12,7 +12,7 @@ const Wrapper = styled.section`
 
 const Instruction = () => (
   <Wrapper>
-    <Paragraph variant="subheading" text_color={grey[600]} lineHeight="1.5em">
+    <Paragraph variant="subheading" text_color={grey[600]} line_height="1.5em">
       Early intervention is critical in a pest or invasive animal. If you
       suspect an invasive animal or have seen something unusual and you’re not
       sure whether it is invasive or not – report it. Small signs may be an
@@ -28,7 +28,7 @@ const Instruction = () => (
         <Title variant="title" text_color={grey[700]} align="left">
           <Icon style={{ verticalAlign: "baseline" }}>phone</Icon> Call for help
         </Title>
-        <Paragraph variant="subheading" text_color={grey[600]} lineHeight="1.5em">
+        <Paragraph variant="subheading" text_color={grey[600]} line_height="1.5em">
           For animals: To report pests and diseases in animals (including
           livestock, wildlife, birds and aquatic animals), phone the ​Emergency
           Animal Disease Watch Hotline on{" "}
@@ -46,7 +46,7 @@ const Instruction = () => (
           <Icon style={{ verticalAlign: "baseline" }}>email</Icon> Use our
           online form!
         </Title>
-        <Paragraph variant="subheading" text_color={grey[600]} lineHeight="1.5em">
+        <Paragraph variant="subheading" text_color={grey[600]} line_height="1.5em">
           You can submit your report or sighting using the form below. Please
           fill out the form and send it to us. A member of our team will contact
           you directly. The form will be sent to{" "}

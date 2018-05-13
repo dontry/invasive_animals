@@ -279,7 +279,7 @@ export class ReportForm extends Component {
               image={image.entity}
             />
           </FormBody>
-          <FormFooter container justify="flex-end">
+          <FormFooter container justify="flex-end" spacing={16}>
             <Field name="recaptcha" component={Captcha} />
             <Grid item sm={12}>
               <FormButtonGroup

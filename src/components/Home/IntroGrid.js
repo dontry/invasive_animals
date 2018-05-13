@@ -13,6 +13,7 @@ const ICON_SIZE = "64px";
 const TileTitle = Title.extend`
   && {
     color: ${green[500]};
+    padding: 0.5rem;
   }
 `;
 const introData = [

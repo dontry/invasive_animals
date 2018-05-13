@@ -25,7 +25,7 @@ const Image = styled.img`
 const species = speciesImageList.slice(0, 6);
 function renderTileItems(list) {
   return list.map(item => (
-    <GridListTile key={item.image} style={{ max_width: 280, padding: "1rem" }}>
+    <GridListTile key={item.image} style={{ maxWidth: 280, padding: "1rem" }}>
       <Link to={`/species/${item.name.toLowerCase().replace(" ", "_")}`}>
         <Image src={item.image} alt={item.name} />
         <GridListTileBar title={item.name} />

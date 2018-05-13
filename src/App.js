@@ -13,7 +13,7 @@ const muiTheme = createMuiTheme({
     primary: lightGreen,
     secondary: lime,
     error: red,
-    contrastThreshold: 3
+    contrastThreshold: 3,
   }
 });
 

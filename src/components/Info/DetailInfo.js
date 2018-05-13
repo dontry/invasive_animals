@@ -79,7 +79,7 @@ function renderItem(attr) {
         <Paragraph
           txtSize="1.1em"
           text_color={grey[600]}
-          lineHeight="1.2em"
+          line_height="1.2em"
           padding="0.5rem 0 2rem"
         >
           {this[attr.key]}
@@ -130,7 +130,7 @@ class DetailInfo extends Component {
         <IntroWrapper container justify="felx-start">
           <Grid item style={{ marginRight: "2rem" }}>
             <img
-              style={{ max_height: 300, max_width: 300 }}
+              style={{ maxHeight: 300, maxWidth: 300 }}
               src={species.ImageURL}
               alt={species.CommonName}
             />
@@ -161,7 +161,7 @@ class DetailInfo extends Component {
               </Title>
               <GalleryComposite
                 images={images.queryResult
-                  .slice(1, -1)
+                  .slice(1)
                   .map(img => img.ImageURL)}
               >
                 <Slider />

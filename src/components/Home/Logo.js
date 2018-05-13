@@ -15,7 +15,7 @@ const Wrapper = styled(Grid)`
 `;
 
 const Logo = () => (
-  <Wrapper container justify="center" alignItems="center">
+  <Wrapper container justify="center" alignItems="center" spacing={16} >
     <Grid item>
       <LogoIcon size="64px" />
     </Grid>

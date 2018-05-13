@@ -63,6 +63,7 @@ const Tile = ({ tile }) => (
     >
       <Grid item>{tile.title}</Grid>
       <Grid item>{tile.icon}</Grid>
+      <br />
       <Grid item className="text">
         {tile.description}
       </Grid>
@@ -71,7 +72,7 @@ const Tile = ({ tile }) => (
 );
 
 Tile.propTypes = {
-  data: PropTypes.object.isRequired
+  tile: PropTypes.object.isRequired
 };
 
 export default Tile;

@@ -163,7 +163,7 @@ class Detection extends Component {
               )}
               <Grid container direction="column" alignItems="center">
                 <Title variant="title">Similar Images</Title>
-                <Grid item xs={12} sm={8} style={{ max_width: "800px" }}>
+                <Grid item xs={12} sm={8} style={{ maxWidth: "800px" }}>
                   {result.entity && (
                     <GalleryComposite images={result.entity.images}>
                       <Slider />
@@ -181,6 +181,7 @@ class Detection extends Component {
                   position: "relative"
                 }}
                 alignItems="center"
+                spacing={16}
               >
                 <Grid item xs={6}>
                   <ActionButton {...ReportActionProps(history)} />

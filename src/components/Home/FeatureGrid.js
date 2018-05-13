@@ -135,7 +135,7 @@ const FeatureGrid = ({ features = [] }) => (
           xs={6}
           md={3}
           key={feature.name}
-          style={{ max_width: 300, min_height: 200 }}
+          style={{ maxWidth: 300, minHeight: 200 }}
         >
           <Grid container direction="column">
             <Tooltip

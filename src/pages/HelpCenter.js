@@ -64,13 +64,13 @@ class HelpCenter extends Component {
         <NavAppBar />
         <PageContainer min_height="90vh">
           <BreadcrumbsWithRouter />
-          <Wrapper container>
+          <Wrapper container  spacing={16}>
             <MapWrapper item xs={12} sm={6}>
               <Title
                 variant="subheading"
                 text_color={green[900]}
                 txtSize="1.3rem"
-                lineHeight="3em"
+                line_height="3em"
                 font_weight="bolder"
               >
                 Please select your region:
@@ -96,7 +96,7 @@ class HelpCenter extends Component {
                 variant="subheading"
                 text_color={green[900]}
                 txtSize="1.3rem"
-                lineHeight="3em"
+                line_height="3em"
                 font_weight="bolder"
               >
                 {/* TOFIX: the region does not update */}

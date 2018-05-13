@@ -57,7 +57,7 @@ const ContactDetail = () => (
         variant="title"
         align="left"
         text_color={grey[600]}
-        lineHeight="1.5em"
+        line_height="1.5em"
       >
         K, Monash University
         <br />

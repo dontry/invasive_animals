@@ -28,7 +28,7 @@ class UploadImageModule extends PureComponent {
     const { image, uploadImage } = this.props;
     return (
       <Fragment>
-        <Grid container direction="column" justify="center" alignItems="center">
+        <Grid container direction="column" justify="center" alignItems="center" spacing={16}>
           <Grid item sm={8}>
             <DropImageZone uploadImage={uploadImage} image={image.entity} />
           </Grid>

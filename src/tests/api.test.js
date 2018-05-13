@@ -3,7 +3,6 @@ import { encodeImageFromDir } from "../utils/encodeImage";
 import { getInvasiveSpecies } from "../utils/detectInvasiveSpecies";
 
 test("detect an image of a cane toad", async () => {
-  jest.setTimeout(10000);
   const content = encodeImageFromDir(
     "../../public/assets/images/species/cane_toad.jpg"
   );

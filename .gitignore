@@ -58,8 +58,13 @@ typings/
 .env
 
 
-build/
+.editorconfig
+.jshintrc
+.travis.yml
+.istanbul.yml
+.idea/
 .vscode/
-
+build/
+.github/
 
 

@@ -66,7 +66,7 @@ export default class Insight extends Component {
                   <Title variant="display1" align="left">
                     Geographical Distribution
                   </Title>
-                  <Paragraph variant="subheading" lineHeight="2em">
+                  <Paragraph variant="subheading" line_height="2em">
                     View the location of all the occurrences of all the species
                     in specific time period. The indicator can be selected to
                     view the only one species.
@@ -79,7 +79,7 @@ export default class Insight extends Component {
                   <Title variant="display1" align="left">
                     Geographical Density
                   </Title>
-                  <Paragraph variant="subheading" lineHeight="2em">
+                  <Paragraph variant="subheading" line_height="2em">
                     View the location of all the occurrences of all the species
                     in specific time period. The indicator can be selected to
                     view the only one species.
@@ -93,7 +93,7 @@ export default class Insight extends Component {
                 <Title variant="display1" align="left">
                   Time Series
                 </Title>
-                <Paragraph variant="subheading" lineHeight="2em">
+                <Paragraph variant="subheading" line_height="2em">
                   View the comparison of the monthly occurrences of the selected
                   species in specific time period.
                 </Paragraph>
@@ -103,7 +103,7 @@ export default class Insight extends Component {
                 <Title variant="display1" align="left">
                   Monthly Records
                 </Title>
-                <Paragraph variant="subheading" lineHeight="2em">
+                <Paragraph variant="subheading" line_height="2em">
                   View the comparison of the monthly occurrences of the selected
                   species in specific time period.
                 </Paragraph>
@@ -115,7 +115,7 @@ export default class Insight extends Component {
                 <Title variant="display1" align="left">
                   Occurrences by States
                 </Title>
-                <Paragraph variant="subheading" lineHeightgh="2em">
+                <Paragraph variant="subheading" line_height="2em">
                   View the amount of occurrences of the selected species in a
                   specific time period by state in descending sorting.
                 </Paragraph>

@@ -29,7 +29,7 @@ const Testimonial = () => (
         variant="subheading"
         text_color={grey[600]}
         align="justify"
-        lineHeight="2em"
+        line_height="2em"
       >
         <h2>Who we are</h2>
         Victoria Guardian was formed in 2018. It aims to develop a web platform
@@ -69,7 +69,7 @@ const Testimonial = () => (
         variant="subheading"
         text_color={grey[600]}
         align="justify"
-        lineHeight="1.5em"
+        line_height="1.5em"
       >
         In 2018, Monash University calls for its final year students to come
         together as one to find solutions to make the world a better place. We
