@@ -14,7 +14,7 @@ import ActionButtonGroup from "../common/ActionButtonGroup";
 import { Mask } from "../common/Mask";
 import { Paragraph } from "../common/Text";
 import Loader from "../common/Loader";
-import ConfirmationDialog from "../common/ConfirmationDialog";
+import MessageDialog from "../common/ConfirmationDialog";
 import {
   DateField,
   TextField,
@@ -289,7 +289,7 @@ export class ReportForm extends Component {
             </Grid>
           </FormFooter>
         </StyledForm>
-        <ConfirmationDialog
+        <MessageDialog
           open={dialogOpen}
           handleClose={this.handleDialogClose}
           message={message}

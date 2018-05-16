@@ -20,7 +20,7 @@ import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
 import  {
   ActionButton
 } from "../components/common/ActionButtonGroup";
-import ConfirmationDialog from "../components/common/ConfirmationDialog";
+import MessageDialog from "../components/common/ConfirmationDialog";
 import { resetDetection } from "../actions/detection";
 import GalleryComposite from "../components/Info/GalleryComposite";
 import  { Slider } from "../components/Info/Gallery";
@@ -147,7 +147,7 @@ class Detection extends Component {
                 </Title>
                 <UploadImageContainer handleSubmit={this.handleSubmit} />
               </DropboxWrapper>
-              <ConfirmationDialog
+              <MessageDialog
                 open={dialogOpen}
                 message={result.error}
                 handleClose={this.handleDialogClose}

@@ -4,7 +4,7 @@ import { grey } from "material-ui/colors";
 import { Paragraph } from "../common/Text";
 import { StyledButton } from "../common/ActionButtonGroup";
 
-const ConfirmationDialog = ({ handleClose, title, message, ...rest }) => {
+const MessageDialog = ({ handleClose, title, message, ...rest }) => {
   return (
     <Dialog
       disableBackdropClick
@@ -33,4 +33,4 @@ const ConfirmationDialog = ({ handleClose, title, message, ...rest }) => {
   );
 };
 
-export default ConfirmationDialog;
+export default MessageDialog;
