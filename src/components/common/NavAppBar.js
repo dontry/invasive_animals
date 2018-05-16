@@ -1,18 +1,22 @@
-import React, {Component} from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import AppBar from "material-ui/AppBar";
 import Button from "material-ui/Button";
 import Toolbar from "material-ui/Toolbar";
 import Typography from "material-ui/Typography";
+import Hidden from "material-ui/Hidden";
+import Icon from "material-ui/Icon";
+import IconButton from "material-ui/IconButton";
 
 import NavLink from "./NavLink";
-import {Manager, Target} from "react-popper";
+import { Manager, Target } from "react-popper";
 import DropdownMenu from "./DropdownMenu";
-import {NAV_BAR} from "../../routes/routing";
-import {LogoIcon} from "./Icons";
+import { NAV_BAR } from "../../routes/routing";
+import { LogoIcon } from "./Icons";
+import Drawer from "./Drawer";
 
 const AppBarWrapper = styled.div`
   flex-grow: 1;
@@ -97,8 +101,12 @@ class DropdownNavMenu extends Component {
   }
 }
 
-const NavAppBar = ({ title, menuItems }) => {
-  const _renderMenuItems = items => {
+class NavAppBar extends Component {
+  state = {
+    drawerOpen: false
+  };
+
+  renderMenuItems = items => {
     return items.map(item => {
       if (item.path) {
         return (
@@ -112,18 +120,45 @@ const NavAppBar = ({ title, menuItems }) => {
     });
   };
 
-  const NavItems = _renderMenuItems(menuItems);
-  return (
-    <AppBarWrapper>
-      <StyledAppBar position="static">
-        <Toolbar>
-          <Typography variant="title">{title}</Typography>
-          <NavMenu>{NavItems}</NavMenu>
-        </Toolbar>
-      </StyledAppBar>
-    </AppBarWrapper>
-  );
-};
+  toggleDrawer = open => () => {
+    console.log(open);
+    this.setState({ drawerOpen: open });
+  };
+
+  render() {
+    const { title, menuItems } = this.props;
+    const { drawerOpen } = this.state;
+    return (
+      <Fragment>
+        <AppBarWrapper>
+          <StyledAppBar position="static">
+            <Toolbar>
+              <Hidden smUp>
+                <IconButton
+                  color="inherit"
+                  aria-label="open drawer"
+                  onClick={this.toggleDrawer(true)}
+                >
+                  <Icon style={{ color: "#fff" }}>menu</Icon>
+                </IconButton>
+              </Hidden>
+              <Typography variant="title">{title}</Typography>
+              <Hidden xsDown>
+                <NavMenu>{this.renderMenuItems(menuItems)}</NavMenu>
+              </Hidden>
+            </Toolbar>
+          </StyledAppBar>
+        </AppBarWrapper>
+        <Drawer
+          anchor="left"
+          open={drawerOpen}
+          handleClose={this.toggleDrawer(false)}
+          menuItems={menuItems}
+        />
+      </Fragment>
+    );
+  }
+}
 
 NavAppBar.propTypes = {
   menuItems: PropTypes.array.isRequired,

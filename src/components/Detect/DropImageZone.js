@@ -10,7 +10,6 @@ const StyledDropzone = styled(Dropzone)`
   display: flex;
   height: 30vh;
   width: 60vw;
-  min-width: 360px;
   min-height: 360px;
   border: 2px dashed #999;
   align-items: center;

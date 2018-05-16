@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import styled from "styled-components";
 import NavAppBar from "../components/common/NavAppBar";
 import PageContainer from "../components/common/PageContainer";
 import Banner from "../components/common/Banner";
@@ -10,20 +11,23 @@ import banner1 from "../assets/images/banner_fox2.jpg";
 import banner2 from "../assets/images/banner_frog.jpg";
 import banner3 from "../assets/images/banner_crops.jpg";
 
-const Blurb = ({ children }) => (
-  <Paragraph variant="display2" text_color="#fff" line_height="1.5em">
-    {children}
-  </Paragraph>
-);
+const Heading = styled.h1`
+  color: #fff;
+  line-height: 1.5em;
+`
+
+const Blurb = styled.h2`
+  color: #fff;
+  line-height: 1.5em;
+  font-weight: 500;
+`
 
 const BANNERS = [
   {
     image: banner1,
     description: (
       <Fragment>
-        <h1 style={{ lineHeight: "1.2em" }}>
-          Captured unknown species on your camera?
-        </h1>
+        <Heading>Captured unknown species on your camera?</Heading>
         <Blurb>
           Upload the image of any species you have come across and check out
           what it is.
@@ -35,9 +39,9 @@ const BANNERS = [
     image: banner2,
     description: (
       <Fragment>
-        <h1 style={{ lineHeight: "1.2em" }}>
+        <Heading >
           Find out more about invasive species.
-        </h1>
+        </Heading>
         <Blurb>
           Explore our wide range of options or simply subscribe to our
           newsletter.
@@ -50,9 +54,9 @@ const BANNERS = [
     image: banner3,
     description: (
       <Fragment>
-        <h1 style={{ lineHeight: "1.2em" }}>
+        <Heading>
           Does trend observation and prediction takes your fancy?
-        </h1>
+        </Heading>
         <Blurb>
           Analyse and observe the different trends with our analyse function and
           peek into the past present and future.

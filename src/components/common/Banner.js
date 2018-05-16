@@ -10,7 +10,6 @@ import "./banner.css";
 const BannerWrapper = styled.div`
   position: relative;
   box-sizing: border-box;
-  height: 45vh;
   min-height: 300px;
   max-height: 500px;
   width: 100%;
@@ -45,7 +44,8 @@ const Banner = ({ timeout = 0, heading, description, banners, textColor }) => {
     autoplay: true,
     speed: 5000,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    arrows: false
   };
   return (
     <Slider {...settings}>

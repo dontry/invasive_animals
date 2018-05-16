@@ -23,7 +23,6 @@ const Wrapper = styled(Grid)`
 const MapWrapper = styled(Grid)`
   && {
     margin: 0 auto;
-    min-height: 500px;
   }
 `;
 

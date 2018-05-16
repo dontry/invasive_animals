@@ -4,6 +4,7 @@ import styled from "styled-components";
 //Material UI
 import GridList, { GridListTile } from "material-ui/GridList";
 import { lightGreen, green } from "material-ui/colors";
+import Hidden from "material-ui/Hidden";
 //Components
 import { BinocularsIcon, MagnifierIcon, TargetIcon } from "../common/Icons";
 import { Title } from "../common/Text";
@@ -28,9 +29,15 @@ const introData = [
       <TargetIcon className="icon" color={lightGreen[500]} size={ICON_SIZE} />
     ),
     description: (
-      <Title className="text" variant="subheading" text_color={lightGreen[700]}>
-        Identify the invasive species <br /> by taking photos
-      </Title>
+      <Hidden xsDown>
+        <Title
+          className="text"
+          variant="subheading"
+          text_color={lightGreen[700]}
+        >
+          Identify the invasive species <br /> by taking photos
+        </Title>
+      </Hidden>
     ),
     path: "/identify"
   },
@@ -48,9 +55,15 @@ const introData = [
       />
     ),
     description: (
-      <Title className="text" variant="subheading" text_color={lightGreen[700]}>
-        Explore more about invasive species<br /> on our database
-      </Title>
+      <Hidden xsDown>
+        <Title
+          className="text"
+          variant="subheading"
+          text_color={lightGreen[700]}
+        >
+          Explore more about invasive species<br /> on our database
+        </Title>
+      </Hidden>
     ),
     path: "/find"
   },
@@ -68,10 +81,16 @@ const introData = [
       />
     ),
     description: (
-      <Title className="text" variant="subheading" text_color={lightGreen[700]}>
-        Analyse data & Observe predictions <br /> of invasive species in
-        Australia
-      </Title>
+      <Hidden xsDown>
+        <Title
+          className="text"
+          variant="subheading"
+          text_color={lightGreen[700]}
+        >
+          Analyse data & Observe predictions <br /> of invasive species in
+          Australia
+        </Title>
+      </Hidden>
     ),
     path: "/insight"
   }
@@ -99,11 +118,15 @@ const StyledGridListTile = styled(GridListTile)`
 `;
 
 const IntroGrid = ({ tileData }) => {
+  if (window.innerWidth < 600) tileData = tileData.slice(0, 2);
   return (
     <GridWrapper>
-      <StyledGridList cols={3}>
+      <StyledGridList cols={window.innerWidth < 600 ? 2 : 3}>
         {tileData.map((tile, index) => (
-          <StyledGridListTile key={`${tile.title}-${index}`} cols={tile.cols || 1}>
+          <StyledGridListTile
+            key={`${tile.title}-${index}`}
+            cols={tile.cols || 1}
+          >
             <Tile tile={tile} />
           </StyledGridListTile>
         ))}

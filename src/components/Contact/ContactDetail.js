@@ -51,7 +51,7 @@ const ContactDetail = () => (
     </li>
     <li>
       <Title variant="title" align="left" text_color={grey[600]}>
-        <i class="fas fa-map-marker" />
+        <i className="fas fa-map-marker" />
       </Title>
       <Paragraph
         variant="title"

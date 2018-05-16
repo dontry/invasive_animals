@@ -57,8 +57,7 @@ const FormFooter = styled(Grid)`
 `;
 
 const DropzoneWrapper = styled.div`
-  width: 80%;
-  min-width: 376px;
+  width: 100%;
   margin-top: 1rem;
 `;
 

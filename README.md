@@ -157,16 +157,3 @@ Once the project is deloyed, you can log on Google Cloud Platform to check out t
 ![Dashboard](/docs/dashboard.png)
 
 App Engine application is auto-scalable which means that if the traffic increases, the app will scale up the number of instances to provide consistent performance.
-
-### Billing
-
-We host the instance of our codebase on Google Cloud Platform using App Engine. The project costs around $40 AUD per month. Given that the website is still in infancy, the traffic is very low. If the traffic increases, it would cost more accordingly. Our project currently is enjoying a 365-day free trial with $350 AUD credit. According to the payment charged every month, it's likely that the credit will run out within 5 months. The screenshot below shows the billing details of a month.
-
-![Billing detail](/docs/billing.png)
-
----
-
-## Security
-
-Because this project in running on Google Cloud Server, and the Google server has provided a range of built-in security features to protect our website. It also backup the last couple of versions of our codebase. If something goes wrong, we can restore it. 
-

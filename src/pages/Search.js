@@ -26,15 +26,21 @@ const SearchBarWrapper = styled(Grid)`
 
 const SidePaneWrapper = styled(Grid)`
   && {
-    max-width: 250px;
+    max-width: 3000px;
     padding: 0 1rem !important;
+    margin-bottom: 2rem;
+    @media (max-width: 600px) {
+      & {
+        padding: 0 3rem !important;
+      }
+    }
   }
 `;
 
 const SearchWrapper = styled(Grid)`
   position: relative;
   && {
-    padding: 0 2rem 3rem 0 !important;
+    padding: 0 2rem 3rem !important;
   }
 `;
 
@@ -55,7 +61,7 @@ class Search extends Component {
 
   handleQuickSearch = event => {
     this.setState({ initialRender: false });
-    this.props.onFind({Category: event.target.innerText});
+    this.props.onFind({ Category: event.target.innerText });
   };
 
   render() {
@@ -67,7 +73,7 @@ class Search extends Component {
         <PageContainer>
           <BreadcrumbsWithRouter />
           <Wrapper container justify="space-around">
-            <SidePaneWrapper item sm={4}>
+            <SidePaneWrapper item xs={12} sm={3}>
               <SidePane handleClick={this.handleQuickSearch} />
             </SidePaneWrapper>
             <SearchWrapper item xs={12} sm={8}>
