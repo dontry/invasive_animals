@@ -61,7 +61,7 @@ class Search extends Component {
 
   handleQuickSearch = event => {
     this.setState({ initialRender: false });
-    this.props.onFind({ Category: event.target.innerText });
+    this.props.onFind({ Category: event.target.dataset.value });
   };
 
   render() {

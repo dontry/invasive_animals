@@ -13,6 +13,18 @@ const EntryWrapper = styled(Grid)`
     padding: 1rem;
   }
 `;
+
+const ThumbnailWrapper = styled(Grid)`
+  && {
+    @media screen and (max-width: 599px) {
+      & {
+        margin: 0 auto;
+        align-self: center;
+      }
+    }
+  }
+`;
+
 const ContentWrapper = styled(Grid)`
   && {
     padding: ${props => props.padding || "none"};
@@ -23,6 +35,11 @@ const ContentWrapper = styled(Grid)`
 const Thumbnail = styled.img`
   width: ${props => props.size || "180px"};
   height: ${props => props.size || "180px"};
+  @media screen and (max-width: 400px) {
+    & {
+      margin: 0 auto;
+    }
+  }
 `;
 
 const BriefIntroWrapper = styled.div`
@@ -35,15 +52,17 @@ const BriefIntroWrapper = styled.div`
 
 const Entry = ({ species }) => {
   return (
-    <Link to={`/species/${species.CommonName.toLowerCase().replace(" ", "_")}#`}>
-      <Paper style={{marginBottom: "1rem"}}>
-        <EntryWrapper container>
-          <ContentWrapper item>
+    <Link
+      to={`/species/${species.CommonName.toLowerCase().replace(" ", "_")}#`}
+    >
+      <Paper style={{ marginBottom: "1rem" }}>
+        <EntryWrapper container justify="space-around">
+          <ThumbnailWrapper item>
             <Thumbnail
               src={species.ImageURL || ImagePlaceholder}
               alt={species.CommonName}
             />
-          </ContentWrapper>
+          </ThumbnailWrapper>
           <ContentWrapper item padding={"0.5rem 1rem"} xs={12} sm={7}>
             <Title variant="title" align="left" text_color={grey[800]}>
               {species.CommonName}

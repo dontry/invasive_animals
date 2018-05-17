@@ -31,7 +31,7 @@ function renderListItem(items, handleClick) {
   return items.map(item => (
     <ListItem button key={item.value} onClick={handleClick}>
       <ListItemText
-        primary={item.name}
+        primary={<span data-value={item.value}>{item.name}</span>}
         style={{ textAlign: "center", fontWeight: "bolder" }}
       />
       <Divider />

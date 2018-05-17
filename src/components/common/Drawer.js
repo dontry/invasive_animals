@@ -27,7 +27,7 @@ function renderListItems(items) {
   return items.map(item => (
     <ListItem button key={item.name}>
       <Link style={{ margin: "0 auto" }} to={item.path}>
-        <StyledListItemText primary={<h2 style={{color: green[600]}}>{item.name}</h2>} />
+        <StyledListItemText primary={<h3 style={{color: green[600]}}>{item.name}</h3>} />
       </Link>
       <Divider />
     </ListItem>

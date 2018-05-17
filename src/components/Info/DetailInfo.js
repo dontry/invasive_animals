@@ -30,18 +30,36 @@ const ATTRIBUTE_NAMES = [
   { key: "Control", value: "Control" }
 ];
 
+const SpeciesImage = styled.img`
+  max-height: 300px;
+  max-width: 300px;
+  padding-right: 2rem;
+  @media screen and (max-width: 376px) {
+    & {
+      width: 80%;
+      margin: 1rem auto;
+    }
+  }
+`;
+
 const DetailInfoWrapper = styled.div`
   position: relative;
   height: 100%;
   width: 80%;
   margin: 0 auto;
   padding: 1rem 2rem 4rem;
+  @media screen and (max-width: 376px) {
+    & {
+      width: 100%;
+    }
+  }
 `;
 
 const IntroWrapper = styled(Grid)`
   padding-top: 1rem;
   padding-bottom: 2rem;
 `;
+
 const SectionWrapper = styled.div`
   padding-bottom: 2rem;
 `;
@@ -88,14 +106,15 @@ function renderItem(attr) {
         
         
         */}
-        {attr.key === "Distribution" && this.Category === "Animal" && (
-          <div style={{ width: "100%", margin: "0 auto" }}>
-            <GeographicalDistribution species={this.CommonName} />
-            <Title text_color={grey[700]}>
-              Distribution of {this.CommonName} in Australia
-            </Title>
-          </div>
-        )}
+        {attr.key === "Distribution" &&
+          this.Category === "Animal" && (
+            <div style={{ width: "100%", margin: "0 auto" }}>
+              <GeographicalDistribution species={this.CommonName} />
+              <Title text_color={grey[700]}>
+                Distribution of {this.CommonName} in Australia
+              </Title>
+            </div>
+          )}
       </ExpansionPanelDetails>
     </ExpansionPanel>
   );
@@ -128,14 +147,10 @@ class DetailInfo extends Component {
           academicalName={species.AcademicalName}
         />
         <IntroWrapper container justify="felx-start">
-          <Grid item style={{ marginRight: "2rem" }}>
-            <img
-              style={{ maxHeight: 300, maxWidth: 300 }}
-              src={species.ImageURL}
-              alt={species.CommonName}
-            />
+          <Grid item >
+            <SpeciesImage src={species.ImageURL} alt={species.CommonName} />
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={4}>
             <Grid container>
               {TAXONOMY.map(attr => (
                 <Grid item xs={6}>
@@ -160,9 +175,7 @@ class DetailInfo extends Component {
                 Gallery
               </Title>
               <GalleryComposite
-                images={images.queryResult
-                  .slice(1)
-                  .map(img => img.ImageURL)}
+                images={images.queryResult.slice(1).map(img => img.ImageURL)}
               >
                 <Slider />
               </GalleryComposite>

@@ -16,20 +16,29 @@ const Wrapper = styled.div`
   padding: 1rem 2rem;
 `;
 
+const ReportWrapper = styled(Paper)`
+  padding: 2rem;
+  margin-bottom: 3rem;
+  @media screen and (max-width: 600px) {
+    & {
+      padding: 0.5rem;
+    }
+  }
+`;
 const Report = () => {
   return (
     <Fragment>
       <NavAppBar />
-      <PageContainer >
+      <PageContainer>
         <BreadcrumbsWithRouter />
         <Wrapper>
           <Title variant="display1" text_color={grey[700]} align="left">
             Report invasive species
           </Title>
           <Instruction />
-          <Paper style={{ padding: "2rem", marginBottom: "3rem" }}>
+          <ReportWrapper>
             <ReportFormContainer />
-          </Paper>
+          </ReportWrapper>
         </Wrapper>
       </PageContainer>
     </Fragment>

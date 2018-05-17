@@ -69,10 +69,11 @@ Gallery.defaultProps = {
 };
 
 export const Slider = ({ images = [], handleClick }) => {
+  const slideNumber = window.innerWidth < 400 ?  1 : 3;
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: slideNumber,
     slidesToScroll: 1
   };
   return (
