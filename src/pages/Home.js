@@ -14,13 +14,25 @@ import banner3 from "../assets/images/banner_crops.jpg";
 const Heading = styled.h1`
   color: #fff;
   line-height: 1.5em;
-`
+  @media screen and (max-width: 400px) {
+    & {
+      font-size: 24px;
+      line-height: 1.2em;
+    }
+  }
+`;
 
 const Blurb = styled.h2`
   color: #fff;
   line-height: 1.5em;
   font-weight: 500;
-`
+  @media screen and (max-width: 400px) {
+    & {
+      font-size: 16px;
+      line-height: 1.2em;
+    }
+  }
+`;
 
 const BANNERS = [
   {
@@ -39,9 +51,7 @@ const BANNERS = [
     image: banner2,
     description: (
       <Fragment>
-        <Heading >
-          Find out more about invasive species.
-        </Heading>
+        <Heading>Find out more about invasive species.</Heading>
         <Blurb>
           Explore our wide range of options or simply subscribe to our
           newsletter.

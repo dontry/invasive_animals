@@ -16,7 +16,7 @@ export default [
   },
   {
     id: 4,
-    name: "Eropean Honey Bee",
+    name: "European Honey Bee",
     image: "/assets/images/species/european_honey_bee.jpg"
   },
   {

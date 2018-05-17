@@ -7,6 +7,7 @@ import ImagePlaceHolder from "../../assets/images/placeholder.png";
 import { grey, red } from "material-ui/colors";
 import Paper from "material-ui/Paper";
 import Grid from "material-ui/Grid";
+import { underscoreName } from "../../utils/tools";
 
 const Root = styled.div`
   position: relative;
@@ -36,6 +37,7 @@ const InfoPaper = styled(Paper)`
     text-align: center;
     @media screen and (max-width: 599px) {
       width: 80%;
+      margin: 0 auto;
     }
   }
 `;
@@ -76,7 +78,7 @@ const MessageWrapper = styled.div`
 function renderSpeciesInfo(speciesArray = []) {
   return speciesArray.map(species => {
     return (
-      <InfoGridItem item>
+      <InfoGridItem item xs={12}>
         <InfoPaper>
           <Image
             src={species.ImageURL || ImagePlaceHolder}
@@ -92,12 +94,7 @@ function renderSpeciesInfo(speciesArray = []) {
             <InfoDescription text_color={grey[800]} padding={"1rem 0 1rem"}>
               {species.BriefIntroduction}
             </InfoDescription>
-            <Link
-              to={`/species/${species.CommonName.toLowerCase().replace(
-                " ",
-                "_"
-              )}`}
-            >
+            <Link to={`/species/${underscoreName(species.CommonName)}`}>
               Learn More …
             </Link>
           </Intro>
@@ -115,8 +112,10 @@ const BriefInfo = ({ species, labels }) => {
           <Title variant="display1" text_color={grey[700]} padding="0 0 1rem">
             Hmmm, it may be not an invasive species.
           </Title>
-          <Paragraph variant="body" >
-            <span style={{fontWeight: "bolder"}}>Relavant Annotations of the uploaded image:&nbsp;</span>
+          <Paragraph variant="body">
+            <span style={{ fontWeight: "bolder" }}>
+              Relavant Annotations of the uploaded image:&nbsp;
+            </span>
             <br />
             {labels.map(label => (
               <span key={label.description} style={{ marginRight: "0.5em" }}>

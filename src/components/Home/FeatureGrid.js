@@ -13,6 +13,7 @@ import {
   ReportIcon
 } from "../common/Icons";
 import { Title } from "../common/Text";
+import { underscoreName } from "../../utils/tools";
 
 const ICON_SIZE = "48px";
 const featureData = [
@@ -143,7 +144,7 @@ const FeatureGrid = ({ features = [] }) => (
               title={feature.description}
               placement="top"
             >
-              <Link to={`/${feature.name.toLowerCase().replace(" ", "_")}`}>
+              <Link to={`/${underscoreName(feature.name)}`}>
                 <Grid item>
                   <IconWrapper className="feature">
                     <div className="icon">{feature.icon}</div>

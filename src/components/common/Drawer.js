@@ -4,7 +4,6 @@ import styled from "styled-components";
 //MUI Components
 import { green } from "material-ui/colors";
 import MuiDrawer from "material-ui/Drawer";
-import Icon from "material-ui/Icon";
 import Divider from "material-ui/Divider";
 //Components
 import List, { ListItem, ListItemText } from "material-ui/List";

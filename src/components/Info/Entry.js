@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { Title, Paragraph } from "../common/Text";
 import ImagePlaceholder from "../../assets/images/placeholder.png";
 import { grey } from "material-ui/colors";
+import { underscoreName } from "../../utils/tools";
 
 const EntryWrapper = styled(Grid)`
   && {
@@ -53,7 +54,7 @@ const BriefIntroWrapper = styled.div`
 const Entry = ({ species }) => {
   return (
     <Link
-      to={`/species/${species.CommonName.toLowerCase().replace(" ", "_")}#`}
+      to={`/species/${underscoreName(species.CommonName)}`}
     >
       <Paper style={{ marginBottom: "1rem" }}>
         <EntryWrapper container justify="space-around">

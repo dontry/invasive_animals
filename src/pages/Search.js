@@ -93,6 +93,8 @@ class Search extends Component {
                 <Mask>
                   <Loader type="bars" />
                 </Mask>
+              ) : species.isError ? (
+                <Title variant="title">Sorry, network error occurs.</Title>
               ) : (
                 species.isFinished &&
                 species.queryResult && (

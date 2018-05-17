@@ -17,6 +17,7 @@ import {
   ExpansionPanelSummary,
   ExpansionPanelDetails
 } from "material-ui";
+import { addLineBreaker } from "../../utils/tools";
 
 const TAXONOMY = ["Kingdom", "Phylum", "Class", "Order", "Family"];
 
@@ -87,7 +88,7 @@ function renderSpeciesInfo(content) {
 function renderItem(attr) {
   if (this[attr.key] === "") return null;
   return (
-    <ExpansionPanel>
+    <ExpansionPanel key={attr.value}>
       <ExpansionPanelSummary expandIcon={<Icon>expand_more</Icon>}>
         <Title variant="title" text_color={grey[800]} align="left">
           {attr.value}
@@ -95,17 +96,13 @@ function renderItem(attr) {
       </ExpansionPanelSummary>
       <ExpansionPanelDetails style={{ display: "block" }}>
         <Paragraph
-          txtSize="1.1em"
+          font_size="1.1em"
           text_color={grey[600]}
-          line_height="1.2em"
+          line_height="1.5em"
           padding="0.5rem 0 2rem"
         >
-          {this[attr.key]}
+          {addLineBreaker(this[attr.key])}
         </Paragraph>
-        {/* Only Animals have distribution map
-        
-        
-        */}
         {attr.key === "Distribution" &&
           this.Category === "Animal" && (
             <div style={{ width: "100%", margin: "0 auto" }}>
@@ -121,7 +118,7 @@ function renderItem(attr) {
 }
 
 class DetailInfo extends Component {
-  componentWillMount() {
+  componentDidMount() {
     const { species } = this.props;
     if (species.ID) {
       this.props.onFindImagesBySpeciesId(species.ID);
@@ -146,14 +143,14 @@ class DetailInfo extends Component {
           commonName={species.CommonName}
           academicalName={species.AcademicalName}
         />
-        <IntroWrapper container justify="felx-start">
-          <Grid item >
+        <IntroWrapper container justify="flex-start">
+          <Grid item>
             <SpeciesImage src={species.ImageURL} alt={species.CommonName} />
           </Grid>
           <Grid item xs={12} sm={4}>
             <Grid container>
               {TAXONOMY.map(attr => (
-                <Grid item xs={6}>
+                <Grid item xs={6} key={attr} style={{ marginBottom: "0.5rem" }}>
                   <Paragraph
                     variant="subheading"
                     font_weight="bold"

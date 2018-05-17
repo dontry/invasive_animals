@@ -84,6 +84,7 @@ export const Slider = ({ images = [], handleClick }) => {
             src={img || ImagePlaceholder}
             data-index={index}
             onClick={handleClick}
+            key={`image-${index}`}
           />
         ))}
       </SlickSlider>

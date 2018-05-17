@@ -1,1 +1,1 @@
-export const GOOGLE_VISION_APIKEY = "AIzaSyC-PWrqdqmyEc89eBv4rAfyWiqLcVZTV8I";
+export const GOOGLE_VISION_APIKEY = "AIzaSyD0kpwKo8KXcfUmCslP-2w_CjmUEOTq-C8";

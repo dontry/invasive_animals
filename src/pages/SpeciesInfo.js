@@ -20,7 +20,7 @@ class SpeciesInfo extends Component {
     // const id = this.props.match.params.id;
     // const content = await getSpeciesById(parseInt(id));
     const name = this.props.match.params.id;
-    this.props.onFindByCommonName(name.toLowerCase().replace("_", " "));
+    this.props.onFindByCommonName(name.toLowerCase().replace(/_/g, " "));
   }
   componentDidUpdate() {
     renderMap();
@@ -31,7 +31,11 @@ class SpeciesInfo extends Component {
   render() {
     // const { content, images, notFound } = this.state;
     const { species } = this.props;
-    if (species.isError) return <Redirect to="/error" />;
+    if (
+      species.isError ||
+      (species.isFinished && species.queryResult.length === 0)
+    )
+      return <Redirect to="/error" />;
     return (
       <Fragment>
         <NavAppBar />

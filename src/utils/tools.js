@@ -42,7 +42,7 @@ export function getCurrentGeoLocation() {
   }
 }
 
-export function addLineBreaker(text, breaker = "/n") {
+export function addLineBreaker(text, breaker = "\\n") {
   return text.split(breaker).map((item, index) => {
     return (
       <span key={index}>
@@ -55,7 +55,7 @@ export function addLineBreaker(text, breaker = "/n") {
 }
 
 export function underscoreName(name) {
-  return name.toLowerCase().replace(" ", "_");
+  return name.toLowerCase().replace(/ /g, "_");
 }
 
 export function speciesPicFinder(speciesName) {

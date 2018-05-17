@@ -66,6 +66,7 @@ const ENDPOINT =
     ? "https://invasive-node.appspot.com"
     : "http://localhost:3030";
 //Create Feathersjs RESTFUL API
+const instance = axios.create({ timeout: 10000 });
 export const client = feathers().configure(
-  rest("https://invasive-node.appspot.com").axios(axios)
+  rest("https://invasive-node.appspot.com").axios(instance)
 );
