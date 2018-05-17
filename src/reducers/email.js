@@ -1,7 +1,8 @@
 import {
   REQUEST_SEND_EMAIL,
   SEND_EMAIL_SUCCESS,
-  SEND_EMAIL_FAILURE
+  SEND_EMAIL_FAILURE,
+  RESET_EMAIL
 } from "../actions/email";
 
 const INITIAL_STATE = {
@@ -29,6 +30,8 @@ export default function(state = INITIAL_STATE, action) {
         loading: false,
         error: action.payload
       };
+    case RESET_EMAIL:
+      return INITIAL_STATE;
     default:
       return state;
   }

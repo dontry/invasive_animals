@@ -68,7 +68,6 @@ export const DateField = ({
         InputLabelProps={{ shrink: true }}
         error={touched && !!error}
         helperText={error}
-        defaultValue="2018-04-01"
         style={{ maxWidth: 200 }}
         {...input}
         {...custom}

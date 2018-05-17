@@ -25,14 +25,25 @@ export function sendEmailSuccess(data) {
   };
 }
 
-export async function sendEmail(email) {
+export async function sendReportEmail(email) {
   return async dispatch => {
     dispatch(requestSendEmail());
     try {
       const res = await client.service("reports").create(email);
       dispatch(sendEmailSuccess(res));
     } catch (error) {
-      debugger
+      dispatch(sendEmailFailure(error));
+    }
+  };
+}
+
+export async function sendContactEmail(email) {
+  return async dispatch => {
+    dispatch(requestSendEmail());
+    try {
+      const res = await client.service("contact_emails").create(email);
+      dispatch(sendEmailSuccess(res));
+    } catch (error) {
       dispatch(sendEmailFailure(error));
     }
   };

@@ -15,7 +15,7 @@ export const validate = values => {
   }
 
   if(!values.recaptcha) {
-    errors.recaptcha = "Required";
+    errors.recaptcha = "Verification required";
   }
 
   if (Number(values.amount) <= 0) {

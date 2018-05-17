@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Redirect, withRouter } from "react-router-dom";
@@ -7,7 +7,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 //Material UI
 import { InputLabel } from "material-ui/Input";
 import Grid from "material-ui/Grid";
-import { grey } from "material-ui/colors";
+import { grey, red } from "material-ui/colors";
 //Components
 import DropImageZone from "../Detect/DropImageZone";
 import ActionButtonGroup from "../common/ActionButtonGroup";
@@ -104,10 +104,14 @@ class UploadImageBlock extends Component {
 }
 
 const Captcha = ({ input, meta: { touched, error } }) => (
-  <ReCAPTCHA
-    sitekey="6LfMElYUAAAAAH8NaQnWfmsegkiaRjFqZ9Qq9ILi"
-    onChange={res => input.onChange(res)}
-  />
+  <Fragment>
+    <Paragraph text_color={red[500]}>{touched && error}</Paragraph>
+    <ReCAPTCHA
+      sitekey="6LfMElYUAAAAAH8NaQnWfmsegkiaRjFqZ9Qq9ILi"
+      onChange={res => input.onChange(res)}
+      style={{ float: "right" }}
+    />
+  </Fragment>
 );
 
 export class ReportForm extends Component {
@@ -149,8 +153,9 @@ export class ReportForm extends Component {
   handleSubmit = async values => {
     let { recaptcha, ...email } = values;
     if (!email.species) {
-      email = { ...email, species: "UNKNOWN", to: "vic.invasive@gmail.com" };
+      email = { ...email, species: "UNKNOWN" };
     }
+    email = { ...email, to: "vic.invasive@gmail.com" };
     await this.props.sendEmail(email);
   };
 
@@ -172,7 +177,7 @@ export class ReportForm extends Component {
       submitting
     } = this.props;
 
-    const { dialogOpen, complete, message  } = this.state;
+    const { dialogOpen, complete, message } = this.state;
 
     if (complete === true) {
       return <Redirect to="/" />;
@@ -279,7 +284,9 @@ export class ReportForm extends Component {
             />
           </FormBody>
           <FormFooter container justify="flex-end" spacing={16}>
-            <Field name="recaptcha" component={Captcha} />
+            <Grid item sm={12}>
+              <Field name="recaptcha" component={Captcha} />
+            </Grid>
             <Grid item sm={12}>
               <FormButtonGroup
                 primaryProps={SubmitProps}

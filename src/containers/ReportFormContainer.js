@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import ReportForm from "../components/Report/ReportForm";
-import { sendEmail, resetEmail } from "../actions/email";
+import { sendReportEmail, resetEmail } from "../actions/email";
 
 const mapStateToProps = state => {
   return {
@@ -13,7 +13,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     sendEmail: async email => {
-      dispatch(await sendEmail(email));
+      dispatch(await sendReportEmail(email));
     },
     reset: () => {
       dispatch( resetEmail());
