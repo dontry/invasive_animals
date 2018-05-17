@@ -49,7 +49,7 @@ const BackButton = styled(Button)`
 const ReportActionProps = history => ({
   raised: true,
   label: "Report",
-  width: "300px",
+  width: "auto",
   action() {
     return history.push("/report");
   },
@@ -61,7 +61,7 @@ const ReportActionProps = history => ({
 const SeekHelpActionProps = history => ({
   raised: true,
   label: "Seek Help",
-  width: "300px",
+  width: "auto",
   action() {
     return history.push("/help_center");
   },
@@ -163,7 +163,7 @@ class Detection extends Component {
               )}
               <Grid container direction="column" alignItems="center">
                 <Title variant="title">Similar Images</Title>
-                <Grid item xs={12} sm={8} style={{ maxWidth: "800px" }}>
+                <Grid item xs={10} sm={8} >
                   {result.entity && (
                     <GalleryComposite images={result.entity.images}>
                       <Slider />
@@ -183,10 +183,10 @@ class Detection extends Component {
                 alignItems="center"
                 spacing={16}
               >
-                <Grid item xs={6}>
+                <Grid item xs={6} md={8}>
                   <ActionButton {...ReportActionProps(history)} />
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={6} md={8}>
                   <ActionButton {...SeekHelpActionProps(history)} />
                 </Grid>
                 <BackButton onClick={this.handleBack} type="primary">

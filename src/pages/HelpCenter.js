@@ -68,7 +68,7 @@ class HelpCenter extends Component {
               <Title
                 variant="subheading"
                 text_color={green[900]}
-                txtSize="1.3rem"
+                font_size="1.3rem"
                 line_height="3em"
                 font_weight="bolder"
               >
@@ -94,7 +94,7 @@ class HelpCenter extends Component {
               <Title
                 variant="subheading"
                 text_color={green[900]}
-                txtSize="1.3rem"
+                font_size="1.3rem"
                 line_height="3em"
                 font_weight="bolder"
               >

@@ -24,7 +24,7 @@ const Passage = ({ title = "", content }) => {
         </Title>
       )}
       <Paragraph
-        txtSize="1.1em"
+        font_size="1.1em"
         text_color={grey[600]}
         line_height="1.2em"
         padding="1rem 0 0.5rem"

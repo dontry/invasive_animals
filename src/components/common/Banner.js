@@ -7,17 +7,26 @@ import Grid from "material-ui/Grid";
 import Slider from "react-slick";
 import "./banner.css";
 
+const StyledSlider = styled(Slider)`
+  && {
+  }
+`;
+
 const BannerWrapper = styled.div`
   position: relative;
   box-sizing: border-box;
   min-height: 300px;
-  max-height: 500px;
   width: 100%;
   z-index: 1;
   &::before {
     content: "";
     position: absolute;
     margin: ${props => (props.padding ? "-" + props.padding : "-1rem")};
+  }
+  @media screen and (max-width: 400px) {
+    & {
+      height: 30vh;
+    }
   }
 `;
 
@@ -31,7 +40,7 @@ const BackgroundImage = styled.img`
 
 const BlurbWrapper = styled(Grid)`
   && {
-    padding: 2rem;
+    padding: 1rem;
   }
 `;
 
@@ -48,7 +57,7 @@ const Banner = ({ timeout = 0, heading, description, banners, textColor }) => {
     arrows: false
   };
   return (
-    <Slider {...settings}>
+    <StyledSlider {...settings}>
       {banners.map((banner, index) => (
         <BannerWrapper key={`banner-${index}`}>
           <BackgroundImage src={banner.image} />
@@ -58,13 +67,13 @@ const Banner = ({ timeout = 0, heading, description, banners, textColor }) => {
             justify="center"
             alignItems="flex-start"
           >
-            <Grid item xs={10} sm={7}>
+            <Grid item xs={12} md={9}>
               {banner.description}
             </Grid>
           </BlurbWrapper>
         </BannerWrapper>
       ))}
-    </Slider>
+    </StyledSlider>
   );
 };
 

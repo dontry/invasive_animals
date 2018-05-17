@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import GridList, { GridListTile, GridListTileBar } from "material-ui/GridList";
 import speciesImageList from "../../assets/species_img_url";
+import { underscoreName } from "../../utils/tools";
 
 const StyledGridList = styled(GridList)`
   && {
@@ -23,10 +24,11 @@ const Image = styled.img`
 `;
 
 const species = speciesImageList.slice(0, 6);
+
 function renderTileItems(list) {
   return list.map(item => (
     <GridListTile key={item.image} style={{ maxWidth: 280, padding: "1rem" }}>
-      <Link to={`/species/${item.name.toLowerCase().replace(" ", "_")}`}>
+      <Link to={`/species/${underscoreName(item.name)}`}>
         <Image src={item.image} alt={item.name} />
         <GridListTileBar title={item.name} />
       </Link>

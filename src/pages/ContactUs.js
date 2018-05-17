@@ -9,7 +9,7 @@ import PageContainer from "../components/common/PageContainer";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
 import {  Title } from "../components/common/Text";
 import ContactDetail from "../components/Contact/ContactDetail";
-import ContactForm from "../components/Contact/ContactForm";
+import ContactFormContainer from "../containers/ContactFormContainer";
 
 const Wrapper = styled(Grid)`
   width: 100%;
@@ -32,6 +32,7 @@ const SideWrapper = styled(Grid)`
 `;
 
 const ContactUs = () => (
+  
   <Fragment>
     <NavAppBar />
     <PageContainer max_width="100%">
@@ -58,7 +59,7 @@ const ContactUs = () => (
               We're happy to answer any question you have.<br />Reach out to us
               and we'll get back to you as soon as possible.
             </Title>
-            <ContactForm />
+            <ContactFormContainer />
           </MainBody>
         </Grid>
         <SideWrapper item xs={12} sm={4}>
