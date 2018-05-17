@@ -29,7 +29,7 @@ export function addImageSuccess() {
 
 export function addImageFailure() {
   return {
-    type: addImageFailure
+    type: ADD_IMAGE_FAILURE
   };
 }
 
