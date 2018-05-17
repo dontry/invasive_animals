@@ -32,3 +32,26 @@ test("detect an image of a cane toad", async () => {
     console.log(exception);
   }
 });
+
+test("send email", async () => {
+  const image = encodeImageFromDir(
+    "../../public/assets/images/species/cane_toad.jpg"
+  );
+  const email = {
+    username: "tester",
+    from: "mccoy018@gmail.com",
+    to: "vic.guardian@gmail.com",
+    location: "monash",
+    date: "05-06-2018",
+    amount: 1,
+    description: "aadfadf",
+    image
+  };
+  try {
+   const res = await api.client.service("reports").create(email);
+   expect(res).toBeTruthy();
+  } catch(error) {
+    expect(res).toBeFalsy();
+  }
+
+});
