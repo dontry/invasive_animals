@@ -8,6 +8,9 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { InputLabel } from "material-ui/Input";
 import Grid from "material-ui/Grid";
 import { grey, red } from "material-ui/colors";
+import Badge from "material-ui/Badge";
+import Icon from "material-ui/Icon";
+import Tooltip from "material-ui/Tooltip";
 //Components
 import DropImageZone from "../Detect/DropImageZone";
 import ActionButtonGroup from "../common/ActionButtonGroup";
@@ -22,9 +25,11 @@ import {
   FieldWrapper
 } from "../common/FormFields";
 import Regions from "../../assets/regions";
+import Lightbox from "react-image-lightbox";
 //Utils
 import { validate } from "../../utils/formValidation";
 import { encodeImageFromFile } from "../../utils/encodeImage";
+import VictoriaMap from "../../assets/images/vitoria_map.png";
 
 const FormWrapper = styled.div`
   position: relative;
@@ -121,8 +126,9 @@ export class ReportForm extends Component {
 
   state = {
     dialogOpen: false,
+    lightboxOpen: false,
     complete: false,
-    message: "Default"
+    dialogMessage: "Default"
   };
 
   componentWillUnmount() {
@@ -167,6 +173,14 @@ export class ReportForm extends Component {
     this.setState({ recaptchaValue: value });
   };
 
+  handleLightBoxClose = () => {
+    this.setState({ lightboxOpen: false });
+  };
+
+  handleLightBoxOpen = () => {
+    this.setState({ lightboxOpen: true });
+  };
+
   render() {
     const {
       handleSubmit,
@@ -177,7 +191,7 @@ export class ReportForm extends Component {
       submitting
     } = this.props;
 
-    const { dialogOpen, complete, message } = this.state;
+    const { dialogOpen, lightboxOpen, complete, dialogMessage } = this.state;
 
     if (complete === true) {
       return <Redirect to="/" />;
@@ -231,7 +245,18 @@ export class ReportForm extends Component {
               required
               component={Select}
               name="location"
-              label="Location *"
+              label={
+                <Tooltip title="Map of Victoria's regions">
+                  <Badge
+                    color="primary"
+                    badgeContent={<span style={{ color: "#fff" }}>?</span>}
+                    style={{ paddingRight: 20 }}
+                    onClick={this.handleLightBoxOpen}
+                  >
+                    location
+                  </Badge>
+                </Tooltip>
+              }
               options={[{ name: "", value: "" }, ...Regions]}
             />
             <Field
@@ -298,8 +323,16 @@ export class ReportForm extends Component {
         <MessageDialog
           open={dialogOpen}
           handleClose={this.handleDialogClose}
-          message={message}
+          message={dialogMessage}
         />
+        {lightboxOpen && (
+          <Lightbox
+            mainSrc={VictoriaMap}
+            onCloseRequest={this.handleLightBoxClose}
+            onMovePrevRequest={() => {}}
+            onMoveNextRequest={() => {}}
+          />
+        )}
       </FormWrapper>
     );
   }

@@ -94,8 +94,8 @@ export const Select = ({
   }
   return (
     <FieldWrapper item xs={xs} sm={sm}>
+      <InputLabel htmlFor={id || `id-${name}`}>{label}</InputLabel>
       <StyledFormControl error={touched && !!error}>
-        <InputLabel htmlFor={id || `id-${name}`}>{label}</InputLabel>
         <MuiSelect
           native
           defaultValue={defaultValue}

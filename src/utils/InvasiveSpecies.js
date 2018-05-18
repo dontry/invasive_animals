@@ -19,7 +19,7 @@ export default {
       "damage level": "high",
       "academical name": "Camelus dromedarius",
       "reference": "http://eol.org/pages/309019/details",
-      "pic": "/assets/images/dromedary.jpg"
+      "pic": "/assets/images/camel.jpg"
     },
     {
       name: "European Honey Bee",

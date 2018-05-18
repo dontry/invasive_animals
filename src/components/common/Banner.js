@@ -8,14 +8,13 @@ import Slider from "react-slick";
 import "./banner.css";
 
 const StyledSlider = styled(Slider)`
-  && {
-  }
 `;
 
 const BannerWrapper = styled.div`
   position: relative;
   box-sizing: border-box;
   min-height: 300px;
+  height: 45vh;
   width: 100%;
   z-index: 1;
   &::before {

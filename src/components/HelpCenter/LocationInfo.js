@@ -5,6 +5,7 @@ import {grey} from "material-ui/colors";
 import Paper from "material-ui/Paper";
 import Passage from "../common/Passage";
 import {Title} from "../common/Text";
+import { addLineBreaker } from "../../utils/tools";
 
 
 const PaperWrapper = styled(Paper)`
@@ -17,8 +18,8 @@ const PaperWrapper = styled(Paper)`
 const LocationInfo = ({info}) => (
     <PaperWrapper>
         <Title variant="headline"  text_color={grey[600]}>{info.Name}</Title>
-        <Passage  content={info.Description} />
-        <Passage title="Contact" content={info.Contact} />
+        <Passage  content={addLineBreaker( info.Description, "/n")} />
+        <Passage title="Contact" content={addLineBreaker(info.Contact, "/n")} />
     </PaperWrapper>
 )
 

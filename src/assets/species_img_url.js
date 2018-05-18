@@ -11,8 +11,8 @@ export default [
   },
   {
     id: 3,
-    name: "Dromedary",
-    image: "/assets/images/species/dromedary.jpg"
+    name: "Camel",
+    image: "/assets/images/species/camel.jpg"
   },
   {
     id: 4,
@@ -54,6 +54,6 @@ export default [
 export const name_image_url = {
   cane_toad: "/assets/images/species/cane_toad.jpg",
   brumby: "/assets/images/species/brumby.jpg",
-  dromedary: "/assets/images/species/dromedary.jpg",
+  camel: "/assets/images/species/camel.jpg",
   eropean_honey_bee: "/assets/images/species/eropean_honey_bee.jpg"
 };

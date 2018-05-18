@@ -35,7 +35,7 @@ const introData = [
           variant="subheading"
           text_color={lightGreen[700]}
         >
-          Identify the invasive species <br /> by taking photos
+          Identify invasive species <br /> by taking photos
         </Title>
       </Hidden>
     ),
@@ -61,7 +61,7 @@ const introData = [
           variant="subheading"
           text_color={lightGreen[700]}
         >
-          Explore more about invasive species<br /> on our database
+          Explore more about invasive species<br /> from our database
         </Title>
       </Hidden>
     ),

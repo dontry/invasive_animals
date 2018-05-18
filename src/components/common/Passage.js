@@ -10,7 +10,6 @@ const Wrapper = styled.div`
 `;
 
 const Passage = ({ title = "", content }) => {
-  content = addLineBreaker(content);
   return (
     <Wrapper>
       {title && (

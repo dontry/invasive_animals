@@ -42,7 +42,7 @@ export function getCurrentGeoLocation() {
   }
 }
 
-export function addLineBreaker(text, breaker = "\\n") {
+export function addLineBreaker(text="", breaker = "\\n") {
   return text.split(breaker).map((item, index) => {
     return (
       <span key={index}>

@@ -44,7 +44,7 @@ const Instruction = () => (
       <li>
         <Title variant="title" text_color={grey[700]} align="left">
           <Icon style={{ verticalAlign: "baseline" }}>email</Icon> Use our
-          online form!
+          online form
         </Title>
         <Paragraph variant="subheading" text_color={grey[600]} line_height="1.5em">
           You can submit your report or sighting using the form below. Please

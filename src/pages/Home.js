@@ -41,7 +41,7 @@ const BANNERS = [
       <Fragment>
         <Heading>Captured unknown species on your camera?</Heading>
         <Blurb>
-          Upload the image of any species you have come across and check out
+          Upload an image of any species you have come across and check out
           what it is.
         </Blurb>
       </Fragment>
@@ -68,7 +68,7 @@ const BANNERS = [
           Does trend observation and prediction takes your fancy?
         </Heading>
         <Blurb>
-          Analyse and observe the different trends with our analyse function and
+          Analyse and observe the different trends with our insight function and
           peek into the past present and future.
         </Blurb>
       </Fragment>
