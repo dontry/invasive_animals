@@ -9,7 +9,6 @@ import { InputLabel } from "material-ui/Input";
 import Grid from "material-ui/Grid";
 import { grey, red } from "material-ui/colors";
 import Badge from "material-ui/Badge";
-import Icon from "material-ui/Icon";
 import Tooltip from "material-ui/Tooltip";
 //Components
 import DropImageZone from "../Detect/DropImageZone";
@@ -149,7 +148,7 @@ export class ReportForm extends Component {
   }
 
   handleDialogOpen = message => {
-    this.setState({ dialogOpen: true, message });
+    this.setState({ dialogOpen: true, dialogMessage: message });
   };
 
   handleDialogClose = () => {
@@ -187,7 +186,6 @@ export class ReportForm extends Component {
       image,
       species,
       email,
-      pristine,
       submitting
     } = this.props;
 

@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+import App from "../App"
 import { Provider } from "react-redux";
-import ConfigureStore from "./stores/configureStore";
+import ConfigureStore from "../stores/configureStore";
+
 
 it("renders without crashing", () => {
   const store = ConfigureStore();
