@@ -12,8 +12,8 @@ export default [
     value: "Grampians"
   },
   {
-    name: "Port Philips",
-    value: "Port Philips"
+    name: "Port Phillips",
+    value: "Port Phillips"
   },
   {
     name: "Gippsland",

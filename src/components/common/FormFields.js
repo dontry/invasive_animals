@@ -7,6 +7,7 @@ import { InputLabel } from "material-ui/Input";
 import { FormControl, FormHelperText } from "material-ui/Form";
 import MuiSelect from "material-ui/Select";
 
+
 export const FieldWrapper = styled(Grid)`
   && {
     width: ${props => props.width || "50%"};
@@ -100,7 +101,7 @@ export const Select = ({
           native
           defaultValue={defaultValue}
           {...input}
-          inputProps={{ id: id || `id-${name}` }}
+          inputProps={{ id: id || `id-${name}`, name }}
           {...custom}
         >
           {options.map(option => (
