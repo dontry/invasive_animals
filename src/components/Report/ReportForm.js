@@ -70,6 +70,9 @@ const FormButtonGroup = styled(ActionButtonGroup)`
   float: right;
 `;
 
+const notlessThan = limit => 
+  (value, previousValue, allValues) => value > limit ? value : previousValue
+
 class UploadImageBlock extends Component {
   state = {
     image: null
@@ -181,13 +184,7 @@ export class ReportForm extends Component {
   };
 
   render() {
-    const {
-      handleSubmit,
-      image,
-      species,
-      email,
-      submitting
-    } = this.props;
+    const { handleSubmit, image, species, email, submitting } = this.props;
 
     const { dialogOpen, lightboxOpen, complete, dialogMessage } = this.state;
 
@@ -244,7 +241,7 @@ export class ReportForm extends Component {
               component={Select}
               name="location"
               label={
-                <Tooltip title="Map of Victoria's regions">
+                <Tooltip title="Map of Victoria's regions" placement="top">
                   <Badge
                     color="primary"
                     badgeContent={<span style={{ color: "#fff" }}>?</span>}
@@ -282,6 +279,7 @@ export class ReportForm extends Component {
               label="Amount of sighting"
               type="number"
               width="200px"
+              normalize={notlessThan(0)}
             />
             {/* <Field
               required

@@ -4539,6 +4539,10 @@ functional-red-black-tree@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/functional-red-black-tree/-/functional-red-black-tree-1.0.1.tgz#1b0ab3bd553b2a0d6399d29c0e3ea0b252078327"
 
+fundebug-javascript@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/fundebug-javascript/-/fundebug-javascript-1.0.2.tgz#b968b8de36c2f8d2a47d2792c18656352c1e8ee7"
+
 fuse.js@^3.0.1, fuse.js@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/fuse.js/-/fuse.js-3.2.0.tgz#f0448e8069855bf2a3e683cdc1d320e7e2a07ef4"
@@ -6699,6 +6703,12 @@ material-ui-icons@^1.0.0-beta.17:
   resolved "https://registry.yarnpkg.com/material-ui-icons/-/material-ui-icons-1.0.0-beta.36.tgz#86390a61f4c83f718eaba77ccce575834f2cf2a8"
   dependencies:
     recompose "^0.26.0"
+
+material-ui-pagination@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/material-ui-pagination/-/material-ui-pagination-1.1.6.tgz#f7990fefd5afaf5eca1c066b2766c3e7e9794d6c"
+  dependencies:
+    prop-types "^15.5.9"
 
 material-ui-search-bar@beta:
   version "1.0.0-beta.4"

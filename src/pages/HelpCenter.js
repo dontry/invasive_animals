@@ -42,6 +42,9 @@ const ResultList = styled.div`
 `;
 
 class HelpCenter extends Component {
+  state = {
+    region: ""
+  }
   handleSearch = event => {
     const region = event.featureData.name;
     // const result = this.searchByRegion(region);
@@ -52,12 +55,14 @@ class HelpCenter extends Component {
     } else {
       this.props.onFindByRegion(region);
     }
+    this.setState({region})
   };
   componentWillUnmount() {
     this.props.onReset();
   }
   render() {
     const { helpCenters } = this.props;
+    const {region}  = this.state;
     return (
       <Fragment>
         <NavAppBar />
@@ -98,8 +103,7 @@ class HelpCenter extends Component {
                 line_height="3em"
                 font_weight="bolder"
               >
-                {/* TOFIX: the region does not update */}
-                Help centers
+                Help centers {region && `in  ${region}`}
               </Title>
               <ResultList>
                 {!Array.isArray(helpCenters.queryResult) &&

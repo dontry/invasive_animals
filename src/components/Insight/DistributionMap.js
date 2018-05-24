@@ -1,4 +1,5 @@
 import React, { Component} from "react";
+import { strEqual } from "../../utils/tools";
 
 export function renderMap(id,width="100%") {
   const divElement = document.getElementById(id);
@@ -12,6 +13,7 @@ export function renderMap(id,width="100%") {
   vizElement.parentNode.insertBefore(scriptElement, vizElement);
 }
 
+
 export class GeographicalDistribution extends Component {
   componentDidMount() {
     renderMap("viz1525295396952", this.props.width);
@@ -19,7 +21,8 @@ export class GeographicalDistribution extends Component {
   }
 
   render() {
-    const { species } = this.props;
+    let { species } = this.props;
+    species = species === "Camel" ? "Dromedary" : species;
     return (
       <div
         className="tableauPlaceholder"

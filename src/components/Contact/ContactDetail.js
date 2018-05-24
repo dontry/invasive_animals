@@ -45,7 +45,7 @@ const ContactDetail = () => (
       </Title>
       <Paragraph variant="title" align="left" text_color={grey[600]}>
         <a href="https://wwww.facebook.com/Invasive-Defender-Vic-2160207437541280">
-          Victorian Guardian
+          Victoria Guardian
         </a>
       </Paragraph>
     </li>

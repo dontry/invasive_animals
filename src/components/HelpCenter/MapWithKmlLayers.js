@@ -22,6 +22,7 @@ const MapWithKmlLayers = compose(
   <GoogleMap defaultZoom={6} defaultCenter={{ lat: -36.4713, lng: 144.7852 }}>
     {KmlCode.map(code => (
       <KmlLayer
+        key={code}
         url={`http://global.mapit.mysociety.org/area/${code}.kml`}
         options={{ preserveViewport: true }}
         onClick={props.handleClick}

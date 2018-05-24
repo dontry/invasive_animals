@@ -39,7 +39,8 @@ const BackgroundImage = styled.img`
 
 const BlurbWrapper = styled(Grid)`
   && {
-    padding: 1rem;
+    padding-top: 1rem;
+    padding-left: 2rem;
   }
 `;
 

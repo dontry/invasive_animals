@@ -18,8 +18,8 @@ const PaperWrapper = styled(Paper)`
 const LocationInfo = ({info}) => (
     <PaperWrapper>
         <Title variant="headline"  text_color={grey[600]}>{info.Name}</Title>
-        <Passage  content={addLineBreaker( info.Description, "/n")} />
-        <Passage title="Contact" content={addLineBreaker(info.Contact, "/n")} />
+        <Passage  content={addLineBreaker( info.Description)} />
+        <Passage title="Contact" content={addLineBreaker(info.Contact)} />
     </PaperWrapper>
 )
 
