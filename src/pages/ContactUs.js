@@ -32,7 +32,6 @@ const SideWrapper = styled(Grid)`
 `;
 
 const ContactUs = () => (
-  
   <Fragment>
     <NavAppBar />
     <PageContainer max_width="100%">

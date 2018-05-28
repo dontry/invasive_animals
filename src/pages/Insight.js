@@ -94,8 +94,9 @@ export default class Insight extends Component {
                   Time Series
                 </Title>
                 <Paragraph variant="subheading" line_height="2em">
-                  View the comparison of the monthly occurrences of the selected
-                  species in specific time period.
+                  View the comparison of occurrences of all the species or one single species
+                  based on the timeline in specific time period and the pridiciton in the next 
+                  3 years.
                 </Paragraph>
                 <TimeSeries />
               </GraphWrapper>
