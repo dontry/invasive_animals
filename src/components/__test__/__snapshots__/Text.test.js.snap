@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Paragraph /> Paragraph accepts text_color  props 1`] = `
+.c0.c0 {
+  color: #010;
+  text-align: start;
+  padding: none;
+  white-space: pre-line;
+  line-height: 1.5em;
+  font-size: none;
+}
+
+.c0.c0 {
+  text-align: center;
+}
+
+<Styled(WithStyles(Typography))
+  text_color="#010"
+>
+  <WithStyles(Typography)
+    className="c0"
+    text_color="#010"
+  >
+    <Typography
+      align="inherit"
+      className="c0"
+      classes={
+        Object {
+          "alignCenter": "MuiTypography-alignCenter-14",
+          "alignJustify": "MuiTypography-alignJustify-16",
+          "alignLeft": "MuiTypography-alignLeft-13",
+          "alignRight": "MuiTypography-alignRight-15",
+          "body1": "MuiTypography-body1-10",
+          "body2": "MuiTypography-body2-9",
+          "button": "MuiTypography-button-12",
+          "caption": "MuiTypography-caption-11",
+          "colorError": "MuiTypography-colorError-24",
+          "colorInherit": "MuiTypography-colorInherit-20",
+          "colorPrimary": "MuiTypography-colorPrimary-21",
+          "colorSecondary": "MuiTypography-colorSecondary-22",
+          "colorTextSecondary": "MuiTypography-colorTextSecondary-23",
+          "display1": "MuiTypography-display1-5",
+          "display2": "MuiTypography-display2-4",
+          "display3": "MuiTypography-display3-3",
+          "display4": "MuiTypography-display4-2",
+          "gutterBottom": "MuiTypography-gutterBottom-18",
+          "headline": "MuiTypography-headline-6",
+          "noWrap": "MuiTypography-noWrap-17",
+          "paragraph": "MuiTypography-paragraph-19",
+          "root": "MuiTypography-root-1",
+          "subheading": "MuiTypography-subheading-8",
+          "title": "MuiTypography-title-7",
+        }
+      }
+      color="default"
+      gutterBottom={false}
+      headlineMapping={
+        Object {
+          "body1": "p",
+          "body2": "aside",
+          "display1": "h1",
+          "display2": "h1",
+          "display3": "h1",
+          "display4": "h1",
+          "headline": "h1",
+          "subheading": "h3",
+          "title": "h2",
+        }
+      }
+      noWrap={false}
+      paragraph={false}
+      text_color="#010"
+      variant="body1"
+    >
+      <p
+        className="MuiTypography-root-1 MuiTypography-body1-10 c0"
+        text_color="#010"
+      />
+    </Typography>
+  </WithStyles(Typography)>
+</Styled(WithStyles(Typography))>
+`;

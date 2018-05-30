@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Icon from "material-ui/Icon";
@@ -27,7 +27,7 @@ const ErrorLink = styled.h3`
 
 const Error = ({ errorMessage, errorCode = "404" }) => {
   return (
-    <div>
+    <Fragment>
       <ErrorMessage>{errorMessage}</ErrorMessage>
       <ErrorCode>{errorCode}</ErrorCode>
       <ErrorLink>
@@ -37,7 +37,7 @@ const Error = ({ errorMessage, errorCode = "404" }) => {
           </StyledButton>
         </Link>
       </ErrorLink>
-    </div>
+    </Fragment>
   );
 };
 

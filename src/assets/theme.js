@@ -2,7 +2,7 @@ import { green, lightGreen, cyan, red, teal } from "material-ui/colors";
 /**
  * Created by caidong on 11/4/18.
  */
-export const theme = {
+export default {
   palette: {
     primary: {
       light: green[200],

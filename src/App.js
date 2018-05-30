@@ -4,7 +4,7 @@ import Routes from "./routes";
 import CssBaseLine from "material-ui/CssBaseline";
 import NotificationContainer from "./containers/NotificationContainer";
 import { ThemeProvider } from "styled-components";
-import { theme } from "./assets/theme";
+import theme from "./assets/theme";
 import { MuiThemeProvider, createMuiTheme } from "material-ui/styles";
 import { lightGreen, lime, red } from "material-ui/colors";
 import ScrollToTop from "./components/common/ScrollToTop";

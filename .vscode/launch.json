@@ -27,7 +27,7 @@
       "request": "launch",
       "name": "Jest Tests",
       "program": "${workspaceFolder}/node_modules/jest/bin/jest",
-      "args": ["--runInBand"],
+      "args": ["--runInBand", "--env=jsdom"],
       "internalConsoleOptions": "openOnSessionStart"
     },
     {
@@ -35,7 +35,7 @@
       "request": "launch",
       "name": "Jest Current File",
       "program": "${workspaceFolder}/node_modules/jest/bin/jest",
-      "args": ["${file}"],
+      "args": ["${file}", "--env=jsdom"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     }

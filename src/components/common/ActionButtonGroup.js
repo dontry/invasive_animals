@@ -12,19 +12,21 @@ export const StyledButton = styled(Button)`
     margin-left: 5px;
     margin-right: 5px;
     background-color: ${props =>
-      props.type
-        ? props.trait
-          ? props.theme.palette[props.type][props.trait]
-          : props.theme.palette[props.type].main
-        : props.theme.primary.main};
-    color: ${props => props.theme.palette[props.type].contrastText};
-    font-size: ${props => props.theme.text_size.size};
+      props.theme.palette
+        ? props.type
+          ? props.trait
+            ? props.theme.palette[props.type][props.trait]
+            : props.theme.palette[props.type].main
+          : props.theme.primary.main
+        : "#fff"};
+    color: ${props => props.theme.palette ? props.theme.palette[props.type].contrastText : "#222"};
+    font-size: ${props => props.theme.palette ? props.theme.text_size.size : "1em"};
     height: ${props => props.height || "auto"};
     width: ${props => props.width || "auto"};
     padding ${props => props.padding || "auto"};
 
     &:hover {
-      background-color: ${props => props.theme.palette[props.type].dark};
+      background-color: ${props => props.theme.palette ? props.theme.palette[props.type].dark : "#acacac"};
     }
   }
 `;
