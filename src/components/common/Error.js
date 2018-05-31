@@ -1,4 +1,5 @@
 import React, {Fragment} from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Icon from "material-ui/Icon";
@@ -40,5 +41,11 @@ const Error = ({ errorMessage, errorCode = "404" }) => {
     </Fragment>
   );
 };
+
+Error.propTypes = {
+  errorMessage: PropTypes.string,
+  errorCode: PropTypes.string
+}
+
 
 export default Error;

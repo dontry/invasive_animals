@@ -1,7 +1,5 @@
 import React from "react";
 import { ContactForm, StyledForm } from "../Contact/ContactForm";
-import { shallowWithTheme } from "./helpers";
-import { ExpansionPanelActions } from "material-ui";
 
 describe("<ContactForm />", () => {
   let submitting, touched, error, reset, sendEmail, handleSubmit;
@@ -57,7 +55,7 @@ describe("<ContactForm />", () => {
     const wrapper = buildForm();
     wrapper.find(StyledForm).simulate("submit");
 
-    expect(sendEmail.mock.calls.length).toBe(1);
+    expect(sendEmail.mock.calls).toHaveLength(1);
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.unmount();
     expect(reset.mock.calls.length).toBe(1);

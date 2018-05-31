@@ -1,5 +1,5 @@
 import React, { Component} from "react";
-
+/* eslint react/prop-types: 0 */
 export function renderChart(id, width="100%") {
   const divElement = document.getElementById(id);
   if (!divElement) return;

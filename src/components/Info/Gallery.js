@@ -92,6 +92,11 @@ export const Slider = ({ images = [], handleClick }) => {
   );
 };
 
+Slider.propTypes = {
+  images: PropTypes.array,
+  handleClick: PropTypes.func
+}
+
 Slider.defaultProps = {
   images: ["", "", ""],
   handleClick() {

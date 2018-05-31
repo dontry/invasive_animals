@@ -33,7 +33,7 @@ export function addImageFailure() {
   };
 }
 
-export async function fetchDetectionResult(image, options = undefined) {
+export async function fetchDetectionResult(image) {
   return async dispatch => {
     dispatch(requestfetchDetectionResult());
     let content;

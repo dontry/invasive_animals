@@ -4,6 +4,7 @@ import {NavLink} from "react-router-dom";
 import styled from "styled-components";
 import Typography from "material-ui/Typography";
 
+/* eslint react/prop-types: 0 */
 const StyledNavLink = styled(NavLink)`
   && {
     display: ${props => props.display};
@@ -51,7 +52,7 @@ StyledNavLink.defaultProps = {
   trait: "light"
 };
 
-const CustomizedNavLink = ({ children, to, display, text_size, ...rest }) => (
+const CustomNavLink = ({ children, to, display, text_size, ...rest }) => (
   <StyledNavLink to={to} display={display} text_size={text_size} {...rest}>
     <StyledLinkText invariant="caption" display={display}>
       {children}
@@ -59,4 +60,10 @@ const CustomizedNavLink = ({ children, to, display, text_size, ...rest }) => (
   </StyledNavLink>
 );
 
-export default CustomizedNavLink;
+CustomNavLink.propTypes = {
+  to: PropTypes.string.isRequired,
+  display: PropTypes.string,
+  text_size: PropTypes.string
+}
+
+export default CustomNavLink;

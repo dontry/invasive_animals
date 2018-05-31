@@ -1,4 +1,5 @@
 import React, {PureComponent} from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import {MenuList} from "material-ui/Menu";
 import {Popper} from "react-popper";
@@ -32,6 +33,13 @@ const MenuItemLink = ({ item }) => (
     {item.name}
   </Link>
 );
+
+MenuItemLink.propTypes = {
+  item: PropTypes.shape({
+    path: PropTypes.string,
+    name: PropTypes.string
+  })
+}
 
 class DropdownMenu extends PureComponent {
   renderMenuItems = items => {
@@ -67,5 +75,13 @@ class DropdownMenu extends PureComponent {
       </Portal>
     );
   }
+}
+
+DropdownMenu.propTypes = {
+  open: PropTypes.bool,
+  placement: PropTypes.string,
+  handleClose: PropTypes.func,
+  menuId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  menuItems: PropTypes.array
 }
 export default DropdownMenu;

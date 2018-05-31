@@ -54,6 +54,17 @@ export const ActionButton = ({
   </StyledButton>
 );
 
+ActionButton.propTypes = {
+  raised: PropTypes.bool,
+  action: PropTypes.func,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  height: PropTypes.string,
+  width: PropTypes.string,
+  padding: PropTypes.string,
+  type: PropTypes.string,
+  trait: PropTypes.string
+}
+
 const ActionButtonGroup = ({ btnStyle, primaryProps, secondaryProps }) => {
   return (
     <ButtonGroupWrapper btnStyle={btnStyle}>
@@ -64,7 +75,7 @@ const ActionButtonGroup = ({ btnStyle, primaryProps, secondaryProps }) => {
 };
 
 ActionButtonGroup.propTypes = {
-  style: PropTypes.object.isRequired,
+  btnStyle: PropTypes.object.isRequired,
   primaryProps: PropTypes.shape({
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     primary: PropTypes.bool,

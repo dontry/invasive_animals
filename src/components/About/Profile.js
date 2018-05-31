@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Grid from "material-ui/Grid";
 import ImagePlaceholder from "../../assets/images/placeholder.png";
-import Paper from "material-ui/Paper";
 import { Title, Paragraph } from "../common/Text";
 import { grey } from "material-ui/colors";
 
@@ -45,9 +44,9 @@ const Profile = ({ profile }) => (
       {profile.role}
     </Title>
     <SkillList>
-      {profile.description.map(item => (
-        <li>
-          <Paragraph variant="body1" text_color={grey[600]}>
+      {profile.description.map((item, index) => (
+        <li key={index}>
+          <Paragraph variant="body1" text_color={grey[600]} >
             {item}
           </Paragraph>
         </li>

@@ -20,8 +20,7 @@ import { BreadcrumbsItem, Breadcrumbs } from "../components/common/Breadcrumbs";
 import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
 import ActionButtonGroup from "../components/common/ActionButtonGroup";
 import NavAppBar from "../components/common/NavAppBar";
-import Banner from "../components/common/Banner";
-import Sidebar from "../components/common/Sidebar";
+import Carousel from "../components/common/Carousel";
 import { LogoIcon, SubscribeIcon, BinocularsIcon, BuildingIcon, Target2Icon, TargetIcon, AnimalIcon, DetectionIcon } from "../components/common/Icons";
 import Footer, { Copyright, Sitemap } from "../components/common/Footer";
 import Icon from "material-ui/Icon";
@@ -130,8 +129,6 @@ storiesOf("Navigation", module)
   .addDecorator(story => (
     <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
   ))
-  .add("Default AppBar", () => <NavAppBar />)
-  .add("Sidebar", () => <Sidebar />);
 
 storiesOf("Footer", module)
   .addDecorator(story => (

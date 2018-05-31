@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
@@ -20,7 +21,7 @@ import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
 import  {
   ActionButton
 } from "../components/common/ActionButtonGroup";
-import MessageDialog from "../components/common/ConfirmationDialog";
+import MessageDialog from "../components/common/MessageDialog";
 import { resetDetection } from "../actions/detection";
 import GalleryComposite from "../components/Info/GalleryComposite";
 import  { Slider } from "../components/Info/Gallery";
@@ -76,7 +77,8 @@ class Detection extends Component {
     dialogOpen: false
   };
 
-  componentWillReceiveProps(nxtProps) {
+  // eslint react/no-deprecated: 0
+  UNSAFE_componentWillReceiveProps(nxtProps) {
     if (
       nxtProps.result.entity &&
       nxtProps.result.entity !== this.props.result.entity
@@ -201,6 +203,12 @@ class Detection extends Component {
       </Fragment>
     );
   }
+}
+
+Detection.propTypes = {
+  result: PropTypes.object,
+  reset: PropTypes.func,
+  history: PropTypes.object
 }
 
 Detection.defaultProps = {

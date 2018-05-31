@@ -55,8 +55,8 @@ const ContactUs = () => (
               component="h4"
               line_height="1.5em"
             >
-              We're happy to answer any question you have.<br />Reach out to us
-              and we'll get back to you as soon as possible.
+              We are happy to answer any question you have.<br />Reach out to us
+              and we will get back to you as soon as possible.
             </Title>
             <ContactFormContainer />
           </MainBody>

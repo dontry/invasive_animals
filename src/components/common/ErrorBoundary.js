@@ -2,6 +2,7 @@ import React from "react";
 import fundebug from "fundebug-javascript";
 fundebug.apikey = "57df08fc09d43042c879b919ee41e6faaf9a5414c37b4e49bf7b4b5cd105b7f4";
 
+/* eslint react/prop-types: 0 */
 class ErrorBoundary extends React.Component {
     constructor(props) {
       super(props);

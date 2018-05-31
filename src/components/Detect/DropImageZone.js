@@ -93,6 +93,7 @@ class DropImageZone extends Component {
 }
 
 DropImageZone.propTypes = {
+  image: PropTypes.object,
   uploadImage: PropTypes.func.isRequired
 };
 

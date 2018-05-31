@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 //Material UI
 import Grid from "material-ui/Grid";
@@ -55,6 +56,14 @@ export const TextField = ({
   );
 };
 
+TextField.propTypes = {
+  input: PropTypes.object.isRequired,
+  label: PropTypes.string.isRequired,
+  meta: PropTypes.shape({touched: PropTypes.bool, error: PropTypes.string}),
+  xs: PropTypes.number,
+  sm: PropTypes.number,
+}
+
 export const DateField = ({
   input,
   label,
@@ -76,6 +85,12 @@ export const DateField = ({
     </StyledFormControl>
   </FieldWrapper>
 );
+
+DateField.propTypes = {
+  input: PropTypes.object.isRequired,
+  label: PropTypes.string.isRequired,
+  meta: PropTypes.shape({touched: PropTypes.bool, error: PropTypes.string}),
+}
 
 export const Select = ({
   id,
@@ -115,3 +130,18 @@ export const Select = ({
     </FieldWrapper>
   );
 };
+
+Select.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.name,
+  input: PropTypes.object.isRequired,
+  label: PropTypes.string.isRequired,
+  meta: PropTypes.shape({touched: PropTypes.bool, error: PropTypes.string}),
+  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  onChange: PropTypes.func,
+  options: PropTypes.array.isRequired,
+  xs: PropTypes.number,
+  sm: PropTypes.number
+}
+
+

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Grid from "material-ui/Grid";
 import SpeciesCard from "./SpeciesCard";
 import speciesImageList from "../../assets/species_img_url";
@@ -23,8 +24,12 @@ const SpeciesGallery = ({ speciesList }) => {
   );
 };
 
+SpeciesGallery.propTypes = {
+  speciesList: PropTypes.array
+}
+
 SpeciesGallery.defaultProps = {
-  dataList: speciesImageList
+  speciesList: speciesImageList
 };
 
 export default SpeciesGallery;

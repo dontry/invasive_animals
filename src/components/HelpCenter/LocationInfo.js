@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import {grey} from "material-ui/colors";
@@ -22,5 +23,13 @@ const LocationInfo = ({info}) => (
         <Passage title="Contact" content={addLineBreaker(info.Contact)} />
     </PaperWrapper>
 )
+
+LocationInfo.propTypes = {
+    info: PropTypes.shape({
+        Name: PropTypes.string,
+        Description: PropTypes.string,
+        Contact: PropTypes.string
+    }).isRequired
+}
 
 export default LocationInfo;

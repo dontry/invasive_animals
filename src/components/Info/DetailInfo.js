@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import Grid from "material-ui/Grid";
@@ -77,6 +78,11 @@ const SpeciesName = ({ commonName, academicalName }) => {
     </Fragment>
   );
 };
+
+SpeciesName.propTypes = {
+  commonName: PropTypes.string,
+  academicalName: PropTypes.string,
+}
 
 function renderSpeciesInfo(content) {
   return ATTRIBUTE_NAMES.map(attr => {
@@ -184,4 +190,13 @@ class DetailInfo extends Component {
     );
   }
 }
+
+DetailInfo.propTypes = {
+  species: PropTypes.object.isRequired,
+  images: PropTypes.array,
+  onFindImagesBySpeciesId: PropTypes.func.isRequired,
+  onReset: PropTypes.func.isRequired
+}
+
+
 export default DetailInfo;

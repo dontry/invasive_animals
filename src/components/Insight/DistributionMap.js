@@ -1,6 +1,6 @@
 import React, { Component} from "react";
-import { strEqual } from "../../utils/tools";
 
+/* eslint react/prop-types: 0 */
 export function renderMap(id,width="100%") {
   const divElement = document.getElementById(id);
   if (!divElement) return;

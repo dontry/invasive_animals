@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import Grid from "material-ui/Grid";
@@ -132,6 +133,12 @@ class HelpCenter extends Component {
       </Fragment>
     );
   }
+}
+
+HelpCenter.propTypes = {
+  onFindByRegion: PropTypes.func,
+  onReset: PropTypes.func,
+  helpCenters: PropTypes.object
 }
 
 const mapStateToProps = state => {

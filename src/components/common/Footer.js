@@ -36,10 +36,10 @@ const CopyrightWrapper = ContentWrapper.extend`
 `;
 
 function renderFooterMenuList(menu) {
-  return menu.map(list => {
+  return menu.map((list, index) => {
     const listItems = renderMenuItems(list.children);
     return (
-      <Grid item xs={3} md={2}>
+      <Grid item xs={3} md={2} key={index}>
         <Title variant="subheading" color={grey[300]} padding={"0 0 0.5rem 0"}>
           {list.name}
         </Title>
@@ -50,8 +50,8 @@ function renderFooterMenuList(menu) {
 }
 
 function renderMenuItems(items) {
-  return items.map(item => (
-    <Link to={item.path}>
+  return items.map((item, index) => (
+    <Link to={item.path} key={index}>
       <Title variant="caption" color={grey[500]}>
         {item.name}
       </Title>

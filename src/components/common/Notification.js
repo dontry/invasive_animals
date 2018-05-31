@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
-import {withStyles} from "material-ui/styles";
+import styled from "styled-components";
 
 import Snackbar from "material-ui/Snackbar";
 import IconButton from "material-ui/IconButton";
@@ -8,18 +8,17 @@ import Icon from "material-ui/Icon"
 
 const AUTO_HIDE_DURATION = 2000;
 
-const styles = {
-  root: {
-    backgroundColor: "rgba(0,0,0,0.5)",
-    textAlign: "center"
-  }
-};
+const StyledSnackBar = styled(Snackbar)`
+  background-color: rgba(0,0,0,0.5);
+  text-align: center;
+`
+
 
 class Notification extends Component {
   state = {
     open: false
   };
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState({ open: nextProps.message.length !== 0 });
   }
 
@@ -27,12 +26,11 @@ class Notification extends Component {
     this.setState({ open: false });
   };
   render() {
-    const { classes, message } = this.props;
+    const { message } = this.props;
     const { open } = this.state;
     return (
-      <Snackbar
+      <StyledSnackBar
         open={open}
-        className={classes.root}
         message={message}
         autoHideDuration={AUTO_HIDE_DURATION}
         onClose={this.handleClose}
@@ -41,7 +39,6 @@ class Notification extends Component {
             key="close"
             aria-label="Close"
             color="inherit"
-            className={classes.close}
             onClick={this.handleClose}
           >
             <Icon>close</Icon>
@@ -56,4 +53,4 @@ Notification.propTypes = {
   message: PropTypes.string.isRequired
 };
 
-export default withStyles(styles)(Notification);
+export default Notification;

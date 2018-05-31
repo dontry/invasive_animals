@@ -1,6 +1,5 @@
 import React from "react";
 import { ActionButton, StyledButton } from "../common/ActionButtonGroup";
-import { shallowWithTheme } from "./helpers";
 
 describe("<StyledButton />", () => {
   it("StyledButton default props", () => {

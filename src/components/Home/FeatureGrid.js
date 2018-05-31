@@ -160,6 +160,10 @@ const FeatureGrid = ({ features = [] }) => (
   </GridWrapper>
 );
 
+FeatureGrid.propTypes = {
+  features: PropTypes.array.isRequired
+}
+
 FeatureGrid.defaultProps = {
   features: featureData
 };

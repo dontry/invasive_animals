@@ -78,7 +78,7 @@ const MessageWrapper = styled.div`
 function renderSpeciesInfo(speciesArray = []) {
   return speciesArray.map(species => {
     return (
-      <InfoGridItem item xs={12}>
+      <InfoGridItem item xs={12} key={species.CommonName}>
         <InfoPaper>
           <Image
             src={species.ImageURL || ImagePlaceHolder}
@@ -139,7 +139,8 @@ const BriefInfo = ({ species, labels }) => {
 };
 
 BriefInfo.propTypes = {
-  species: PropTypes.object.isRequired
+  species: PropTypes.object.isRequired,
+  labels: PropTypes.array
 };
 
 export default BriefInfo;

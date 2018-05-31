@@ -30,7 +30,7 @@ const Instruction = () => (
         </Title>
         <Paragraph variant="subheading" text_color={grey[600]} line_height="1.5em">
           For animals: To report pests and diseases in animals (including
-          livestock, wildlife, birds and aquatic animals), phone the ​Emergency
+          livestock, wildlife, birds and aquatic animals), phone the Emergency
           Animal Disease Watch Hotline on{" "}
           <a href="tel:1800 675 888">1800 675 888</a> or Agriculture Victoria
           Customer Service Centre on <a href="tel:136 186">136 186</a>.

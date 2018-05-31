@@ -1,10 +1,9 @@
 import React, { Component, Fragment } from "react";
-import { Redirect, Route } from "react-router";
+import { Route } from "react-router";
 import Switch from "react-router-dom/Switch";
 import Icon from "material-ui/Icon";
 import { green } from "material-ui/colors";
 //Pages
-import Login from "../pages/Login";
 import Home from "../pages/Home";
 import Detection from "../pages/Detection";
 import Search from "../pages/Search";
@@ -23,35 +22,10 @@ import ScrollToTop from "react-scroll-up";
 
 const CREDENTIAL = "fit5120";
 
-const ProtectedRoute = ({
-  component: Component,
-  isAuthenticated = true,
-  ...rest
-}) => {
-  return (
-    <Route
-      {...rest}
-      render={props =>
-        isAuthenticated ? (
-          <Component {...props} />
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/login",
-              state: { from: props.location }
-            }}
-          />
-        )
-      }
-    />
-  );
-};
+
+
 
 class Routes extends Component {
-  state = {
-    isAuthenticated: false,
-    password: ""
-  };
   authenticate = () => {
     this.setState({ isAuthenticated: true });
   };
@@ -67,90 +41,67 @@ class Routes extends Component {
     }
   };
   render() {
-    let { isAuthenticated } = this.state;
-    isAuthenticated = true;
     return (
       <Fragment>
         <Switch>
-          {/* <Route
-            path="/login"
-            render={() => (
-              <Login
-                handleChange={this.handleChange.bind(this)}
-                handleSubmit={this.handleSubmit.bind(this)}
-              />
-            )}
-          /> */}
-          <ProtectedRoute
+          <Route
             exact
             path="/"
             component={Home}
-            isAuthenticated={isAuthenticated}
           />
-          <ProtectedRoute
+          <Route
             exact
             path="/identify"
             component={Detection}
-            isAuthenticated={isAuthenticated}
           />
-          <ProtectedRoute
+          <Route
             exact
             path="/report"
             component={Report}
-            isAuthenticated={isAuthenticated}
           />
-          <ProtectedRoute
+          <Route
             path="/find"
             component={Search}
-            isAuthenticated={isAuthenticated}
           />
-          <ProtectedRoute
+          <Route
             exact
             path="/species"
             component={SpeciesWiki}
-            isAuthenticated={isAuthenticated}
           />
-          <ProtectedRoute
+          <Route
             exact
             path="/species/:id"
             component={SpeciesInfo}
-            isAuthenticated={isAuthenticated}
           />
-          <ProtectedRoute
+          <Route
             exact
             path="/insight"
             component={Insight}
-            isAuthenticated={isAuthenticated}
           />
-          <ProtectedRoute
+          <Route
             exact
             path="/help_center"
             component={HelpCenter}
-            isAuthenticated={isAuthenticated}
           />
-          <ProtectedRoute
+          <Route
             exact
             path="/subscribe"
             component={Subscribe}
-            isAuthenticated={isAuthenticated}
           />
-          <ProtectedRoute
+          <Route
             exact
             path="/about"
-            isAuthenticated={isAuthenticated}
             component={AboutUs}
           />
-          <ProtectedRoute
+          <Route
             exact
             path="/contact"
-            isAuthenticated={isAuthenticated}
             component={ContactUs}
           />
-          <ProtectedRoute
+          <Route
             exact
             path="/"
             component={Home}
-            isAuthenticated={isAuthenticated}
           />
           <Route path="/comingsoon" component={ComingSoon} />
           <Route component={Error404} />

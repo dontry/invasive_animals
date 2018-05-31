@@ -101,6 +101,10 @@ class DropdownNavMenu extends Component {
   }
 }
 
+DropdownNavMenu.propTypes = {
+  navItem: PropTypes.object
+}
+
 class NavAppBar extends Component {
   state = {
     drawerOpen: false

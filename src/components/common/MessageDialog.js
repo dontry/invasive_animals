@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import Dialog, { DialogActions, DialogContent } from "material-ui/Dialog";
 import { grey } from "material-ui/colors";
@@ -15,7 +16,7 @@ const StyledDialog = styled(Dialog)`
   }
 `;
 
-const MessageDialog = ({ handleClose, title, message, ...rest }) => {
+const MessageDialog = ({ handleClose, title="", message, ...rest }) => {
   return (
     <StyledDialog
       disableBackdropClick
@@ -42,5 +43,11 @@ const MessageDialog = ({ handleClose, title, message, ...rest }) => {
     </StyledDialog>
   );
 };
+
+MessageDialog.propTypes = {
+  handleClose: PropTypes.func,
+  title: PropTypes.string,
+  message: PropTypes.string.isRequired
+}
 
 export default MessageDialog;

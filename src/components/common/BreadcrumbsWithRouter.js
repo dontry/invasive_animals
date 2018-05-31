@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {Route, withRouter} from "react-router-dom";
 import {BreadcrumbsItem} from "./Breadcrumbs";
 
+/* eslint react/prop-types: 0 */
 const BreadcrumbsWrapper = styled.div`
   padding-top: 1rem;
   padding-left: 2rem;
@@ -24,7 +25,7 @@ function renderBreadcrumbItems(paths) {
   });
 }
 
-const BreadcrumbsWithRouter = ({ location, match }) => {
+const BreadcrumbsWithRouter = ({ location }) => {
   const paths = [];
   location.pathname.split("/").reduce((prev, curr, index) => {
     paths[index] = `${prev}/${curr}`;

@@ -1,10 +1,8 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { red } from "material-ui/colors";
 import { Field, reduxForm } from "redux-form";
 import { Redirect, withRouter } from "react-router-dom";
-import ReCAPTCHA from "react-google-recaptcha";
 //Material UI
 import Grid from "material-ui/Grid";
 //Components
@@ -12,8 +10,8 @@ import { Mask } from "../common/Mask";
 import Loader from "../common/Loader";
 import { StyledButton } from "../common/ActionButtonGroup";
 import { TextField } from "../common/FormFields";
-import { Paragraph } from "../common/Text";
-import MessageDialog from "../common/ConfirmationDialog";
+import Captcha from "../common/Captcha";
+import MessageDialog from "../common/MessageDialog";
 import { validate } from "../../utils/formValidation";
 
 const RECEPIENT = "vic.invasive@gmail.com";
@@ -24,6 +22,7 @@ export const StyledForm = styled.form`
   width: 100%;
 `;
 
+/* eslint react/no-deprecated: 0 */
 const FormBody = styled(Grid)`
   && {
     padding-bottom: 2rem;
@@ -36,16 +35,6 @@ const FormFooter = styled(Grid)`
     text-align: right;
   }
 `;
-
-const Captcha = ({ input, meta: { touched, error } }) => (
-  <Fragment>
-    <Paragraph text_color={red[500]}>{touched && error}</Paragraph>
-    <ReCAPTCHA
-      sitekey="6LfMElYUAAAAAH8NaQnWfmsegkiaRjFqZ9Qq9ILi"
-      onChange={res => input.onChange(res)}
-    />
-  </Fragment>
-);
 
 export class ContactForm extends Component {
   state = {
@@ -85,7 +74,7 @@ export class ContactForm extends Component {
   };
 
   render() {
-    const { handleSubmit, submitting, submitSucceeded, email } = this.props;
+    const { handleSubmit, submitting,  email } = this.props;
     const { dialogOpen, message, complete } = this.state;
 
     if (complete === true) {
@@ -145,6 +134,15 @@ export class ContactForm extends Component {
       </Fragment>
     );
   }
+}
+
+ContactForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  submitting: PropTypes.bool.isRequired,
+  submitSucceeded: PropTypes.bool.isRequired,
+  email: PropTypes.object.isRequired,
+  reset: PropTypes.func.isRequired,
+  sendEmail: PropTypes.func.isRequired,
 }
 
 export default reduxForm({ form: "contact", validate })(

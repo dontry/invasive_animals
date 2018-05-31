@@ -26,7 +26,8 @@ const ProfileGrid = ({ profiles, width }) => (
 );
 
 ProfileGrid.propTypes = {
-  profiles: PropTypes.arrayOf(PropTypes.object).isRequired
+  profiles: PropTypes.arrayOf(PropTypes.object).isRequired,
+  width: PropTypes.string
 };
 
 ProfileGrid.defaultProps = {

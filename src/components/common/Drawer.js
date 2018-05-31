@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 //MUI Components
@@ -7,7 +8,6 @@ import MuiDrawer from "material-ui/Drawer";
 import Divider from "material-ui/Divider";
 //Components
 import List, { ListItem, ListItemText } from "material-ui/List";
-import IconButton from "material-ui/IconButton";
 import { Title } from "./Text";
 import { LogoIcon } from "./Icons";
 
@@ -33,7 +33,7 @@ function renderListItems(items) {
   ));
 }
 
-export default ({ open, anchor, handleClose, menuItems }) => (
+const Drawer = ({ open, anchor, handleClose, menuItems }) => (
   <MuiDrawer anchor={anchor} open={open} onClose={handleClose}>
     <LogoWrapper>
       <Link to="/">
@@ -45,3 +45,14 @@ export default ({ open, anchor, handleClose, menuItems }) => (
     <List style={{ width: 250 }}>{renderListItems(menuItems)}</List>
   </MuiDrawer>
 );
+
+Drawer.propTypes = {
+  open: PropTypes.bool.isRequired,
+  anchor: PropTypes.string,
+  handleClose: PropTypes.func.isRequired,
+  menuItems: PropTypes.arrayOf(PropTypes.object)
+}
+
+
+
+export default Drawer;

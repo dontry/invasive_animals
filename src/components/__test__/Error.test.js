@@ -2,7 +2,7 @@ import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import Error from "../common/Error";
 
-configure({ adapter: new Adapter() });
+/* global shallow */
 describe("<Error />", () => {
   const ERR_MSG = "Error found";
   const ERR_CODE = "404"

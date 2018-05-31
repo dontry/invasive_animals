@@ -3,7 +3,7 @@ import FacebookProvider, { Comments } from "react-facebook";
 import { grey } from "material-ui/colors";
 import { Title } from "../common/Text";
 
-export default () => (
+const CommentSection =  () => (
   <Fragment>
     <Title variant="title" text_color={grey[700]} align="left" />
     <FacebookProvider appId="439671156486299">
@@ -11,3 +11,5 @@ export default () => (
     </FacebookProvider>
   </Fragment>
 );
+
+export default CommentSection;

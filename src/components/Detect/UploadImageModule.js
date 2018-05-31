@@ -16,7 +16,7 @@ const BrowseButton = styled(Button)`
 `;
 
 class UploadImageModule extends PureComponent {
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.reset();
   }
 
@@ -50,7 +50,9 @@ class UploadImageModule extends PureComponent {
 UploadImageModule.propTypes = {
   image: PropTypes.object.isRequired,
   uploadImage: PropTypes.func.isRequired,
-  getDetectionResult: PropTypes.func.isRequired
+  getDetectionResult: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  reset: PropTypes.func.isRequired
 };
 
 UploadImageModule.defaultProps = {

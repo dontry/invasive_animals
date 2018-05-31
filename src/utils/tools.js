@@ -27,22 +27,19 @@ export function getCurrentGeoLocation() {
       timeout: 5000,
       maximumAge: 0
     };
-
-    function success(pos) {
-      return pos.coords;
-    }
-
-    function error(err) {
-      console.log(`ERROR(${err.code}): ${err.message}`);
-    }
-
     return navigator.geolocation.getCurrentPosition(success, error, options);
-  } else {
-    /* geolocation IS NOT available */
+  }
+
+  function success(pos) {
+    return pos.coords;
+  }
+
+  function error(err) {
+    console.log(`ERROR(${err.code}): ${err.message}`);
   }
 }
 
-export function addLineBreaker(text="", breaker = "\\n") {
+export function addLineBreaker(text = "", breaker = "\\n") {
   return text.split(breaker).map((item, index) => {
     return (
       <span key={index}>

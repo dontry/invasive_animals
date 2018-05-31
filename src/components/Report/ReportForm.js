@@ -16,7 +16,7 @@ import ActionButtonGroup from "../common/ActionButtonGroup";
 import { Mask } from "../common/Mask";
 import { Paragraph } from "../common/Text";
 import Loader from "../common/Loader";
-import MessageDialog from "../common/ConfirmationDialog";
+import MessageDialog from "../common/MessageDialog";
 import {
   DateField,
   TextField,
@@ -30,6 +30,8 @@ import { validate } from "../../utils/formValidation";
 import { encodeImageFromFile } from "../../utils/encodeImage";
 import VictoriaMap from "../../assets/images/vitoria_map.png";
 
+// eslint-disable-file  react/no-deprecated
+/* eslint react/prop-types: 0 */
 const FormWrapper = styled.div`
   position: relative;
   width: 100%;
@@ -71,7 +73,7 @@ const FormButtonGroup = styled(ActionButtonGroup)`
 `;
 
 const notlessThan = limit => 
-  (value, previousValue, allValues) => value > limit ? value : previousValue
+  (value, previousValue) => value > limit ? value : previousValue
 
 class UploadImageBlock extends Component {
   state = {
@@ -133,11 +135,7 @@ export class ReportForm extends Component {
     dialogMessage: "Default"
   };
 
-  componentWillUnmount() {
-    this.props.reset();
-  }
-
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (
       nextProps.submitSucceeded &&
       (!nextProps.email.loading && !!nextProps.email.entity)
@@ -150,6 +148,10 @@ export class ReportForm extends Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.reset();
+  }
+
   handleDialogOpen = message => {
     this.setState({ dialogOpen: true, dialogMessage: message });
   };
@@ -159,6 +161,7 @@ export class ReportForm extends Component {
   };
 
   handleSubmit = async values => {
+    //eslint-disable-next-line
     let { recaptcha, ...email } = values;
     if (!email.species) {
       email = { ...email, species: "UNKNOWN" };

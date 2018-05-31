@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 //Components
@@ -16,7 +17,7 @@ class SpeciesInfo extends Component {
     images: [],
     notFound: false
   };
-  async componentWillMount() {
+  async componentDidMount() {
     // const id = this.props.match.params.id;
     // const content = await getSpeciesById(parseInt(id));
     const name = this.props.match.params.id;
@@ -53,6 +54,13 @@ class SpeciesInfo extends Component {
       </Fragment>
     );
   }
+}
+
+SpeciesInfo.propTypes = {
+  species: PropTypes.object.isRequired,
+  match: PropTypes.object,
+  onReset: PropTypes.func.isRequired,
+  onFindByCommonName: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => {

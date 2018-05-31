@@ -1,5 +1,6 @@
 import React, {Component} from "react";
-import {withStyles} from "material-ui/styles";
+import PropTypes from "prop-types";
+import styled from "styled-components";
 import TextField from "material-ui/TextField";
 import {StyledButton} from "../components/common/ActionButtonGroup";
 import Grid from "material-ui/Grid";
@@ -7,15 +8,14 @@ import {Redirect} from "react-router-dom";
 import Paper from "material-ui/Paper";
 import PageContainer from "../components/common/PageContainer";
 
-const styles = {
-  root: {
-    position: "relative",
-    margin: "0 auto",
-    top: "20vh",
-    width: "80vw",
-    padding: "100px 0"
-  }
-};
+const LoginWrapper = styled(Paper)`
+    position: relative;
+    margin: 0 auto;
+    top: 20vh;
+    width: 80vw;
+    padding: 100px 0;
+
+`
 
 class Login extends Component {
   state = {
@@ -37,12 +37,12 @@ class Login extends Component {
   render() {
     const { from } = { from: { pathname: "/" } };
     const { redirectToReferrer, error, helperText } = this.state;
-    const { classes, handleChange } = this.props;
+    const { handleChange } = this.props;
 
     if (redirectToReferrer) return <Redirect to={from} />;
     return (
       <PageContainer>
-        <Paper className={classes.root}>
+        <LoginWrapper >
           <h2 style={{ textAlign: "center" }}>Welcome to Victorian Guardian</h2>
           <Grid
             container
@@ -71,10 +71,15 @@ class Login extends Component {
               </StyledButton>
             </Grid>
           </Grid>
-        </Paper>
+        </LoginWrapper>
       </PageContainer>
     );
   }
 }
 
-export default withStyles(styles)(Login);
+Login.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired
+}
+
+export default Login;

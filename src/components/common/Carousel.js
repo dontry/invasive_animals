@@ -10,7 +10,7 @@ import "./banner.css";
 const StyledSlider = styled(Slider)`
 `;
 
-const BannerWrapper = styled.div`
+const CarouselWrapper = styled.div`
   position: relative;
   box-sizing: border-box;
   min-height: 300px;
@@ -44,14 +44,14 @@ const BlurbWrapper = styled(Grid)`
   }
 `;
 
-const Banner = ({ timeout = 0, heading, description, banners, textColor }) => {
+const Carousel = ({ timeout = 5000, banners}) => {
   const settings = {
     dots: true,
     infinite: true,
     lazyLoad: true,
     fade: true,
     autoplay: true,
-    speed: 5000,
+    speed: timeout,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false
@@ -59,7 +59,7 @@ const Banner = ({ timeout = 0, heading, description, banners, textColor }) => {
   return (
     <StyledSlider {...settings}>
       {banners.map((banner, index) => (
-        <BannerWrapper key={`banner-${index}`}>
+        <CarouselWrapper key={`banner-${index}`}>
           <BackgroundImage src={banner.image} />
           <BlurbWrapper
             container
@@ -71,24 +71,16 @@ const Banner = ({ timeout = 0, heading, description, banners, textColor }) => {
               {banner.description}
             </Grid>
           </BlurbWrapper>
-        </BannerWrapper>
+        </CarouselWrapper>
       ))}
     </StyledSlider>
   );
 };
 
-Banner.propTypes = {
-  heading: PropTypes.string.isRequired,
-  subheading: PropTypes.string,
-  description: PropTypes.string,
-  imgUrl: PropTypes.string
+Carousel.propTypes = {
+  timeout: PropTypes.number,
+  banners: PropTypes.array
 };
 
-Banner.defaultProps = {
-  heading: "",
-  description: "",
-  imgUrl: "",
-  textColor: "#fff"
-};
 
-export default Banner;
+export default Carousel;

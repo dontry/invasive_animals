@@ -18,7 +18,7 @@ const muiTheme = createMuiTheme({
   }
 });
 
-const App = ({ children }) => (
+const App = () => (
   <ThemeProvider theme={theme}>
     <MuiThemeProvider theme={muiTheme}>
       <div className="App">

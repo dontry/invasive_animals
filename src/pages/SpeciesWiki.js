@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from "react";
-
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import { lime } from "material-ui/colors";
@@ -14,7 +14,7 @@ import SpeciesGallery from "../components/Info/SpeciesGallery";
 import { reduxifiedServices } from "../reducers/feathers";
 
 class SpeciesWiki extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.onFind();
   }
   componentWillUnmount() {
@@ -41,6 +41,12 @@ class SpeciesWiki extends Component {
       </Fragment>
     );
   }
+}
+
+SpeciesWiki.propTypes = {
+  species: PropTypes.object,
+  resetSpecies: PropTypes.func,
+  onFind: PropTypes.func
 }
 
 const mapStateToProps = state => {

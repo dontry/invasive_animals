@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import PageContainer from "../components/common/PageContainer";
@@ -108,6 +109,13 @@ class Search extends Component {
       </Fragment>
     );
   }
+}
+
+Search.propTypes = {
+  onFindByCommonName: PropTypes.func,
+  onReset: PropTypes.func,
+  onFind: PropTypes.func,
+  species: PropTypes.object,
 }
 
 const mapStateToProps = state => {
