@@ -1,7 +1,5 @@
 import React from "react";
-import { configure,  shallow } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
-import Adapter from "enzyme-adapter-react-16";
 import Error from "../common/Error";
 
 configure({ adapter: new Adapter() });

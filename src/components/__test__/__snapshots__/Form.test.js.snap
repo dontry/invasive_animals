@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ContactForm /> calls sendemail after submit; calls reset after unmount 1`] = `
+<React.Fragment>
+  <styled.form
+    onSubmit={[Function]}
+  >
+    <Styled(WithStyles(GridWrapper))
+      container={true}
+      direction="row"
+      justify="flex-start"
+    >
+      <Field
+        component={[Function]}
+        label="Your name"
+        name="username"
+        required={true}
+      />
+      <Field
+        component={[Function]}
+        label="Your email address"
+        name="from"
+        required={true}
+        type="email"
+      />
+      <Field
+        component={[Function]}
+        fullWidth={true}
+        label="Message"
+        multiline={true}
+        name="message"
+        required={true}
+        rows={5}
+        sm={12}
+        witdh="100%"
+      />
+    </Styled(WithStyles(GridWrapper))>
+    <Styled(WithStyles(GridWrapper))
+      alignItems="flex-end"
+      container={true}
+      direction="column"
+    >
+      <WithStyles(GridWrapper)
+        item={true}
+      >
+        <Field
+          component={[Function]}
+          name="recaptcha"
+        />
+      </WithStyles(GridWrapper)>
+      <br />
+      <WithStyles(GridWrapper)
+        item={true}
+      >
+        <Styled(WithStyles(Button))
+          type="primary"
+        >
+          Send
+        </Styled(WithStyles(Button))>
+      </WithStyles(GridWrapper)>
+    </Styled(WithStyles(GridWrapper))>
+  </styled.form>
+  <MessageDialog
+    handleClose={[Function]}
+    message=""
+    open={false}
+  />
+</React.Fragment>
+`;

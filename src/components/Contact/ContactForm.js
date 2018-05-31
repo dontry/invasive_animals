@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import {  red } from "material-ui/colors";
+import { red } from "material-ui/colors";
 import { Field, reduxForm } from "redux-form";
 import { Redirect, withRouter } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -16,7 +16,9 @@ import { Paragraph } from "../common/Text";
 import MessageDialog from "../common/ConfirmationDialog";
 import { validate } from "../../utils/formValidation";
 
-const StyledForm = styled.form`
+const RECEPIENT = "vic.invasive@gmail.com";
+
+export const StyledForm = styled.form`
   position: relative;
   padding: 2.5rem 2rem 3rem 0;
   width: 100%;
@@ -70,7 +72,7 @@ export class ContactForm extends Component {
   }
 
   handleSubmit = async email => {
-    email = { ...email, to: "vic.invasive@gmail.com" };
+    email = { ...email, to: RECEPIENT };
     await this.props.sendEmail(email);
   };
 
@@ -145,4 +147,6 @@ export class ContactForm extends Component {
   }
 }
 
-export default reduxForm({ form: "contact", validate })(withRouter(ContactForm));
+export default reduxForm({ form: "contact", validate })(
+  withRouter(ContactForm)
+);
