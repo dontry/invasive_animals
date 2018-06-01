@@ -16,7 +16,7 @@ const Captcha = ({ input, meta: { touched, error } }) => (
 );
 
 Captcha.propTypes = {
-  input: PropTypes.object.isrequired,
+  input: PropTypes.object,
   meta: PropTypes.object
 }
 

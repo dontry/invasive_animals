@@ -18,7 +18,8 @@ const RECEPIENT = "vic.invasive@gmail.com";
 
 export const StyledForm = styled.form`
   position: relative;
-  padding: 2.5rem 2rem 3rem 0;
+  margin-top: 2.5rem;
+  margin-bottom: 3rem;
   width: 100%;
 `;
 

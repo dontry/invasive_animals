@@ -59,7 +59,7 @@ class HelpCenter extends Component {
     this.setState({region})
   };
   componentWillUnmount() {
-    this.props.onReset();
+    this.props.reset();
   }
   render() {
     const { helpCenters } = this.props;
@@ -137,7 +137,7 @@ class HelpCenter extends Component {
 
 HelpCenter.propTypes = {
   onFindByRegion: PropTypes.func,
-  onReset: PropTypes.func,
+  reset: PropTypes.func,
   helpCenters: PropTypes.object
 }
 
@@ -157,7 +157,7 @@ const mapDispatchToProps = dispatch => {
         reduxifiedServices.help_centers.find({ query: { Region: region } })
       );
     },
-    onReset: () => {
+    reset: () => {
       dispatch(reduxifiedServices.help_centers.reset());
     }
   };

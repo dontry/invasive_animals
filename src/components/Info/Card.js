@@ -1,33 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Link} from "react-router-dom";
-import {withStyles} from "material-ui/styles";
-import Card, { CardContent, CardMedia} from "material-ui/Card";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import Card, { CardContent, CardMedia } from "material-ui/Card";
 import Typography from "material-ui/Typography";
 
-const styles = {
-  card: {
-    maxWidth: 376,
-    minWidth: 200,
-    margin: "1rem"
-  },
-  media: {
-    height: 200
-  },
-  link: {
-    color: "#000",
-    cursoer: "pointer"
-  }
-};
+const StyledCard = styled(Card)`
+  max-width: 376;
+  min-width: 200;
+  margin: 1rem;
+`;
 
-const SpeciesCard = ({ classes, species }) => {
+const SpeciesCard = ({ species }) => {
   return (
-    <Link to={`/species/${species.CommonName.toUpperCase().replace(" ", "_")}#`} >
-      <Card className={classes.card}>
+    <Link
+      to={`/species/${species.CommonName.toUpperCase().replace(" ", "_")}#`}
+    >
+      <StyledCard>
         <CardMedia
-          className={classes.media}
           image={species.ImageURL}
           title={species.CommonName}
+          style={{ height: 200 }}
         />
         <CardContent>
           <Typography variant="subheading" component="h4" align="center">
@@ -35,14 +28,13 @@ const SpeciesCard = ({ classes, species }) => {
           </Typography>
           {/* <Typography component="p">{species.BriefIntroduction}</Typography> */}
         </CardContent>
-      </Card>
+      </StyledCard>
     </Link>
   );
 };
 
 SpeciesCard.propTypes = {
-  classes: PropTypes.object.isRequired,
   species: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(SpeciesCard);
+export default SpeciesCard;

@@ -25,32 +25,26 @@ const Image = styled.img`
 
 const species = speciesImageList.slice(0, 6);
 
-function renderTileItems(list) {
-  return list.map(item => (
-    <GridListTile key={item.image} style={{ maxWidth: 280, padding: "1rem" }}>
-      <Link to={`/species/${underscoreName(item.name)}`}>
-        <Image src={item.image} alt={item.name} />
-        <GridListTileBar title={item.name} />
-      </Link>
-    </GridListTile>
-  ));
-}
-
 const TileBarGridList = ({ dataList = species }) => {
-  const tileItems = renderTileItems(dataList);
+  function renderTileItems(list) {
+    return list.map(item => (
+      <GridListTile key={item.image} style={{ maxWidth: 280, padding: "1rem" }}>
+        <Link to={`/species/${underscoreName(item.name)}`}>
+          <Image src={item.image} alt={item.name} />
+          <GridListTileBar title={item.name} />
+        </Link>
+      </GridListTile>
+    ));
+  }
   return (
     <StyledGridList cellHeight={200} style={{ margin: "0 auto" }}>
-      {tileItems}
+      {renderTileItems(dataList)}
     </StyledGridList>
   );
 };
 
 TileBarGridList.propTypes = {
   dataList: PropTypes.array.isRequired
-};
-
-TileBarGridList.defaulProps = {
-  dataList: species
 };
 
 export default TileBarGridList;

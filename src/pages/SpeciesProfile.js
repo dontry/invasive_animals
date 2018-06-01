@@ -11,15 +11,13 @@ import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
 import { reduxifiedServices } from "../reducers/feathers";
 import { renderMap } from "../components/Insight/DistributionMap";
 
-class SpeciesInfo extends Component {
+class SpeciesProfile extends Component {
   state = {
     content: null,
     images: [],
     notFound: false
   };
   async componentDidMount() {
-    // const id = this.props.match.params.id;
-    // const content = await getSpeciesById(parseInt(id));
     const name = this.props.match.params.id;
     this.props.onFindByCommonName(name.toLowerCase().replace(/_/g, " "));
   }
@@ -27,10 +25,9 @@ class SpeciesInfo extends Component {
     renderMap();
   }
   componentWillUnmount() {
-    this.props.onReset();
+    this.props.reset();
   }
   render() {
-    // const { content, images, notFound } = this.state;
     const { species } = this.props;
     if (
       species.isError ||
@@ -56,10 +53,10 @@ class SpeciesInfo extends Component {
   }
 }
 
-SpeciesInfo.propTypes = {
+SpeciesProfile.propTypes = {
   species: PropTypes.object.isRequired,
   match: PropTypes.object,
-  onReset: PropTypes.func.isRequired,
+  reset: PropTypes.func.isRequired,
   onFindByCommonName: PropTypes.func.isRequired
 }
 
@@ -82,10 +79,10 @@ const mapDispatchToProps = dispatch => {
       );
     },
 
-    onReset: () => {
+    reset: () => {
       dispatch(reduxifiedServices.species.reset());
     }
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SpeciesInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(SpeciesProfile);

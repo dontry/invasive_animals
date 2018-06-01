@@ -123,7 +123,7 @@ function renderItem(attr) {
   );
 }
 
-class DetailInfo extends Component {
+class Profile extends Component {
   componentDidMount() {
     const { species } = this.props;
     if (species.ID) {
@@ -131,7 +131,7 @@ class DetailInfo extends Component {
     }
   }
   componentWillUnmount() {
-    this.props.onReset();
+    this.props.reset();
   }
   render() {
     const { species, images } = this.props;
@@ -191,12 +191,12 @@ class DetailInfo extends Component {
   }
 }
 
-DetailInfo.propTypes = {
+Profile.propTypes = {
   species: PropTypes.object.isRequired,
   images: PropTypes.array,
   onFindImagesBySpeciesId: PropTypes.func.isRequired,
-  onReset: PropTypes.func.isRequired
+  reset: PropTypes.func.isRequired
 }
 
 
-export default DetailInfo;
+export default Profile;

@@ -13,7 +13,7 @@ import Grid from "material-ui/Grid";
 import PageContainer from "../components/common/PageContainer";
 import { Title } from "../components/common/Text";
 import { green, lime } from "material-ui/colors";
-import BriefInfo from "../components/Info/BriefInfo";
+import BriefInfo from "../components/Info/Brief";
 import NavAppBar from "../components/common/NavAppBar";
 import Loader from "../components/common/Loader";
 import { ScreenMask } from "../components/common/Mask";

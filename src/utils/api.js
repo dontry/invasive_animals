@@ -64,9 +64,9 @@ export function checkImageSatefy(meta) {
 // eslint-disable-next-line no-unused-vars
 const ENDPOINT =
   process.env.NODE_ENV === "production"
-    ? "https://invasive-node.appspot.com"
+    ? "https://invasive-species-g4/backend"
     : "http://localhost:3030"; //Create Feathersjs RESTFUL API
 const instance = axios.create({ timeout: 10000 });
 export const client = feathers().configure(
-  rest("https://invasive-node.appspot.com").axios(instance)
+  rest(ENDPOINT).axios(instance)
 );

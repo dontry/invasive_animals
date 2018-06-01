@@ -46,8 +46,8 @@ import SidePane from "../components/Search/SidePane";
 import Search from "../pages/Search";
 
 import Gallery, { Slider } from "../components/Info/Gallery";
-import BriefInfo from "../components/Info/BriefInfo";
-import DetailInfo from "../components/Info/DetailInfo";
+import BriefInfo from "../components/Info/Brief";
+import DetailInfo from "../components/Info/Profile";
 import species from "./species";
 
 import GalleryComposite from "../components/Info/GalleryComposite";

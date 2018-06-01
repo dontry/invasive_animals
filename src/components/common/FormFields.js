@@ -58,7 +58,7 @@ export const TextField = ({
 
 TextField.propTypes = {
   input: PropTypes.object.isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   meta: PropTypes.shape({touched: PropTypes.bool, error: PropTypes.string}),
   xs: PropTypes.number,
   sm: PropTypes.number,
@@ -88,7 +88,7 @@ export const DateField = ({
 
 DateField.propTypes = {
   input: PropTypes.object.isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   meta: PropTypes.shape({touched: PropTypes.bool, error: PropTypes.string}),
 }
 
@@ -135,7 +135,7 @@ Select.propTypes = {
   id: PropTypes.string,
   name: PropTypes.name,
   input: PropTypes.object.isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   meta: PropTypes.shape({touched: PropTypes.bool, error: PropTypes.string}),
   defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   onChange: PropTypes.func,

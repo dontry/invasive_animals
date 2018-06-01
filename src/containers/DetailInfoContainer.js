@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { reduxifiedServices } from "../reducers/feathers";
-import DetailInfo from "../components/Info/DetailInfo";
+import Profile from "../components/Info/Profile";
 
 const mapStateToProps = state => {
   return {
@@ -17,10 +17,10 @@ const mapDispatchToProps = dispatch => {
         })
       );
     },
-    onReset: () => {
+    reset: () => {
       dispatch(reduxifiedServices.species_images.reset());
     }
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DetailInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

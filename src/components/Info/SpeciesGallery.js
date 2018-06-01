@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Grid from "material-ui/Grid";
-import SpeciesCard from "./SpeciesCard";
+import SpeciesCard from "./Card";
 import speciesImageList from "../../assets/species_img_url";
 
 function createSpeciesCards(speciesArray) {

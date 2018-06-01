@@ -7,7 +7,7 @@ import { green } from "material-ui/colors";
 import Home from "../pages/Home";
 import Detection from "../pages/Detection";
 import Search from "../pages/Search";
-import SpeciesInfo from "../pages/SpeciesInfo";
+import SpeciesInfo from "../pages/SpeciesProfile";
 import SpeciesWiki from "../pages/SpeciesWiki";
 import Insight from "../pages/Insight";
 import Report from "../pages/Report";

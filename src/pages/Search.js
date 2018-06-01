@@ -57,7 +57,7 @@ class Search extends Component {
   };
 
   componentWillUnmount() {
-    this.props.onReset();
+    this.props.reset();
   }
 
   handleQuickSearch = event => {
@@ -113,7 +113,7 @@ class Search extends Component {
 
 Search.propTypes = {
   onFindByCommonName: PropTypes.func,
-  onReset: PropTypes.func,
+  reset: PropTypes.func,
   onFind: PropTypes.func,
   species: PropTypes.object,
 }
@@ -136,7 +136,7 @@ const mapDispatchToProps = dispatch => {
     onFind: query => {
       dispatch(reduxifiedServices.species.find({ query }));
     },
-    onReset: () => {
+    reset: () => {
       dispatch(reduxifiedServices.species.reset());
     }
   };

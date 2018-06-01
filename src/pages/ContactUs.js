@@ -20,6 +20,7 @@ const MainBody = styled(Grid)`
   && {
     padding-top: 1rem !important;
     padding-left: 2rem !important;
+    padding-right: 2rem !important;
   }
 `;
 
