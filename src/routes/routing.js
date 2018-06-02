@@ -101,5 +101,5 @@ export function findRouteName(url) {
 
     return speciesName;
   }
-  return ROUTE_TABLE[url];
+  return ROUTE_TABLE[url.toLowerCase()];
 }

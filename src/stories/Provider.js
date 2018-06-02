@@ -4,10 +4,11 @@ import configureStore from '../stores/mockStore'
 
 let store = configureStore();
 
+/* eslint-disable-next-line */
 export default function Provider({story}) {
   return (
     <ReduxProvider store={store}>
         {story}
     </ReduxProvider>
   );
-};
+}

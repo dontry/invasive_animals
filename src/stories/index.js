@@ -1,23 +1,15 @@
 import React from "react";
 
 import { storiesOf, addDecorator } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
-import { linkTo } from "@storybook/addon-links";
 import { withNotes } from "@storybook/addon-notes";
 import { MemoryRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { lightGreen } from "material-ui/colors";
-import { theme } from "../assets/theme";
+import theme from "../assets/theme";
 import { Fade } from "material-ui/transitions";
 import Provider from "./Provider";
 import "../index.css";
 
-import BlankPage from "./BlankPage";
-import { ScreenMask, Mask } from "../components/common/Mask";
-import Loader from "../components/common/Loader";
-import Error from "../components/common/Error";
-import { BreadcrumbsItem, Breadcrumbs } from "../components/common/Breadcrumbs";
-import BreadcrumbsWithRouter from "../components/common/BreadcrumbsWithRouter";
 import ActionButtonGroup from "../components/common/ActionButtonGroup";
 import NavAppBar from "../components/common/NavAppBar";
 import Carousel from "../components/common/Carousel";
@@ -30,7 +22,6 @@ import Home from "../pages/Home";
 import Logo from "../components/Home/Logo";
 
 
-import Testimonial from "../components/About/Testimonial";
 import Profile from "../components/About/Profile";
 import ProfileGrid from "../components/About/ProfileGrid";
 import AboutUs from "../pages/AboutUs";
@@ -46,7 +37,7 @@ import SidePane from "../components/Search/SidePane";
 import Search from "../pages/Search";
 
 import Gallery, { Slider } from "../components/Info/Gallery";
-import BriefInfo from "../components/Info/Brief";
+import Brief from "../components/Info/Brief";
 import DetailInfo from "../components/Info/Profile";
 import species from "./species";
 
@@ -73,52 +64,6 @@ addDecorator(story => {
 });
 
 addDecorator(story => <ThemeProvider theme={theme}>{story()}</ThemeProvider>);
-
-storiesOf("Mask", module)
-  .add("screen mask", () => (
-    <ScreenMask>
-      <h3 style={{ color: "blue" }}>Screen mask</h3>
-    </ScreenMask>
-  ))
-  .add("block mask", () => (
-    <div>
-      <Mask>
-        <h3 style={{ color: "blue" }}>Block mask</h3>
-      </Mask>
-      <br />
-      <Mask opacity={0.5}>
-        <h3>Opacity is 0.8</h3>
-      </Mask>
-    </div>
-  ));
-
-storiesOf("Loading", module)
-  .add("default loading spinner", () => (
-    <BlankPage>
-      <Loader />
-    </BlankPage>
-  ))
-  .add("loading bar ", () => (
-    <BlankPage>
-      <Loader type="bars" />
-    </BlankPage>
-  ));
-
-storiesOf("Error ", module)
-  .addDecorator(story => (
-    <MemoryRouter initialEntries={["/abc/asaa", "/abc", "adf"]}>
-      {story()}
-    </MemoryRouter>
-  ))
-  .add("Default Error 404", () => <Error />);
-
-storiesOf("Breadcrumbs", module)
-  .addDecorator(story => (
-    <MemoryRouter initialEntries={["/get_involved/detect", "/about"]}>
-      {story()}
-    </MemoryRouter>
-  ))
-  .add("Breadcrumbs on Home page", () => <BreadcrumbsWithRouter />);
 
 storiesOf("Buttons", module).add(
   "Action button group",

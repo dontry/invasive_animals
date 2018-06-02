@@ -17,16 +17,27 @@ export const StyledButton = styled(Button)`
           ? props.trait
             ? props.theme.palette[props.type][props.trait]
             : props.theme.palette[props.type].main
-          : props.theme.primary.main
+          : props.theme.palette.primary.main
         : "#fff"};
-    color: ${props => props.theme.palette ? props.theme.palette[props.type].contrastText : "#222"};
-    font-size: ${props => props.theme.palette ? props.theme.text_size.size : "1em"};
+    color: ${props =>
+      props.theme.palette
+        ? props.type
+          ? props.theme.palette[props.type].contrastText
+          : props.theme.palette.primary.contrastText
+        : "#222"};
+    font-size: ${props =>
+      props.theme.palette ? props.theme.text_size.size : "1em"};
     height: ${props => props.height || "auto"};
     width: ${props => props.width || "auto"};
     padding ${props => props.padding || "auto"};
 
     &:hover {
-      background-color: ${props => props.theme.palette ? props.theme.palette[props.type].dark : "#acacac"};
+      background-color: ${props =>
+        props.theme.palette
+          ? props.type
+            ? props.theme.palette[props.type].dark
+            : props.theme.palette.primary.dark
+          : "#acacac"};
     }
   }
 `;
@@ -63,7 +74,7 @@ ActionButton.propTypes = {
   padding: PropTypes.string,
   type: PropTypes.string,
   trait: PropTypes.string
-}
+};
 
 const ActionButtonGroup = ({ btnStyle, primaryProps, secondaryProps }) => {
   return (
