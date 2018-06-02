@@ -1,7 +1,6 @@
 import axios from "axios";
 import { GOOGLE_VISION_APIKEY } from "./credentials";
 import feathers from "@feathersjs/client";
-import rest from "@feathersjs/rest-client";
 
 //API_KEY AIzaSyC-PWrqdqmyEc89eBv4rAfyWiqLcVZTV8I
 const GOOGLE_VISION_API_URL = `https://vision.googleapis.com/v1/images:annotate?key=${GOOGLE_VISION_APIKEY}`;
@@ -63,10 +62,10 @@ export function checkImageSatefy(meta) {
 
 // eslint-disable-next-line no-unused-vars
 const ENDPOINT =
-  process.env.NODE_ENV === "production"
-    ? "https://invasive-species-g4/backend"
-    : "http://localhost:3030"; //Create Feathersjs RESTFUL API
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3030" //Create Feathersjs RESTFUL API
+    : "https://backend-dot-invasive-species-g4.appspot.com";
 const instance = axios.create({ timeout: 10000 });
 export const client = feathers().configure(
-  rest(ENDPOINT).axios(instance)
+  feathers.rest("https://backend-dot-invasive-species-g4.appspot.com").axios(instance)
 );
