@@ -1,5 +1,5 @@
 // Read the file into memory.
-import fs from "fs";
+const fs = require("fs");
 import path from "path";
 
 // Covert the image data to a Buffer and base64 encode it.

@@ -11,8 +11,6 @@ import { underscoreName } from "../../../utils/tools";
 
 const InfoGridItem = styled(Grid)`
   && {
-    height: 80%;
-    width: 50%;
     max-width: 400px;
     margin: 1rem;
   }

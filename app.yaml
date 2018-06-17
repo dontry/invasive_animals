@@ -22,7 +22,12 @@ service: default
 # [START runtime]
 runtime: nodejs
 env: flex
-# [END runtime]
+manual_scaling:
+  instances: 1
+resources:
+  cpu: .5
+  memory_gb: 0.18
+  disk_size_gb: 10
 
 handlers:
  - url: /

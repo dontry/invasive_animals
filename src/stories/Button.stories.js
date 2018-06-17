@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { storiesOf } from "@storybook/react";
 import { ThemeProvider } from "styled-components";
 import theme from "../assets/theme";
+import {action} from '@storybook/addon-actions'
 import ActionButtonGroup, {
   StyledButton,
   ActionButton
@@ -16,13 +17,13 @@ storiesOf("Buttons", module)
   .addDecorator(story => <ThemeProvider theme={theme}>{story()}</ThemeProvider>)
   .add("StyledButtons", () => (
     <Fragment>
-      <StyledButton>Primary</StyledButton>
+      <StyledButton onClick={action("action-click")}>Primary</StyledButton>
       <br />
       <br />
-      <StyledButton type="secondary">Secondary</StyledButton>
+      <StyledButton onClick={action("action-click")} type="secondary">Secondary</StyledButton>
       <br />
       <br />
-      <StyledButton type="error">Error</StyledButton>
+      <StyledButton onClick={action("action-click")} type="error">Error</StyledButton>
       <br />
       <br />
       <StyledButton type="message">Message</StyledButton>

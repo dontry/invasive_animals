@@ -37,7 +37,7 @@ const FormFooter = styled(Grid)`
   }
 `;
 
-export class ContactForm extends Component {
+export class PureContactForm extends Component {
   state = {
     dialogOpen: false,
     complete: false,
@@ -75,7 +75,7 @@ export class ContactForm extends Component {
   };
 
   render() {
-    const { handleSubmit, submitting,  email } = this.props;
+    const { handleSubmit, submitting, email } = this.props;
     const { dialogOpen, message, complete } = this.state;
 
     if (complete === true) {
@@ -137,15 +137,30 @@ export class ContactForm extends Component {
   }
 }
 
-ContactForm.propTypes = {
+PureContactForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
   submitSucceeded: PropTypes.bool.isRequired,
   email: PropTypes.object.isRequired,
   reset: PropTypes.func.isRequired,
-  sendEmail: PropTypes.func.isRequired,
-}
+  sendEmail: PropTypes.func.isRequired
+};
+
+PureContactForm.defaultProps = {
+  handleSubmit: () => {
+    console.log("submit");
+  },
+  submitting: false,
+  submitSucceeded: false,
+  email: {},
+  reset: () => {
+    console.log("reset");
+  },
+  sendEmail: () => {
+    console.log("email sending");
+  }
+};
 
 export default reduxForm({ form: "contact", validate })(
-  withRouter(ContactForm)
+  withRouter(PureContactForm)
 );
